@@ -41,7 +41,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center group mb-4">
               <Image 
-                src="/logo-primary.png" 
+                src="/logo-dark.png" 
                 alt="AK Prime Consulting" 
                 width={160} 
                 height={35} 
