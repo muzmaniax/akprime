@@ -63,11 +63,11 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center group shrink-0">
             <Image 
-              src="/logo-dark.png" 
+              src="/logo-primary.png" 
               alt="AK Prime Consulting" 
-              width={180} 
-              height={40} 
-              className="h-10 w-auto object-contain"
+              width={324} 
+              height={72} 
+              className="h-[72px] w-auto object-contain"
               priority
             />
           </Link>
@@ -194,11 +194,11 @@ export function Navbar() {
                     onClick={() => setMobileOpen(false)}
                   >
                     <Image 
-                      src="/logo-dark.png" 
+                      src="/logo-primary.png" 
                       alt="AK Prime Consulting" 
-                      width={140} 
-                      height={32} 
-                      className="h-8 w-auto object-contain"
+                      width={252} 
+                      height={56} 
+                      className="h-14 w-auto object-contain"
                     />
                   </Link>
                 </div>

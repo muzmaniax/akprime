@@ -41,11 +41,11 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center group mb-4">
               <Image 
-                src="/logo-dark.png" 
+                src="/logo-primary.png" 
                 alt="AK Prime Consulting" 
-                width={160} 
-                height={35} 
-                className="h-9 w-auto object-contain"
+                width={288} 
+                height={64} 
+                className="h-[64px] w-auto object-contain"
               />
             </Link>
             <p className="text-white/45 text-sm leading-relaxed mb-5">
