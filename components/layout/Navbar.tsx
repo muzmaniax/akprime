@@ -57,19 +57,21 @@ export function Navbar() {
             ? "top-4 bg-white/5 backdrop-blur-2xl shadow-[0_8px_32px_rgba(55,180,180,0.25)] border border-white/10"
             : "top-6 bg-white/[0.02] backdrop-blur-md shadow-[0_4px_24px_rgba(55,180,180,0.15)] border border-white/5"
         }`}
-        style={{ height: "80px" }}
+        style={{ height: "84px" }}
       >
         <div className="mx-auto px-6 sm:px-8 lg:px-10 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center group shrink-0">
-            <Image 
-              src="/logo-primary.png" 
-              alt="AK Prime Consulting" 
-              width={324} 
-              height={72} 
-              className="h-[72px] w-auto object-contain"
-              priority
-            />
+            <div className="w-[62px] h-[62px] rounded-full bg-white flex items-center justify-center p-2.5 shadow-lg shadow-[rgba(55,180,180,0.2)] border-2 border-white/10 group-hover:border-white/50 transition-all duration-300">
+              <Image 
+                src="/logo-primary.png" 
+                alt="AK Prime Consulting" 
+                width={200} 
+                height={200} 
+                className="w-full h-full object-contain"
+                priority
+              />
+            </div>
           </Link>
 
           {/* Desktop Nav */}
@@ -193,13 +195,15 @@ export function Navbar() {
                     className="flex shrink-0"
                     onClick={() => setMobileOpen(false)}
                   >
-                    <Image 
-                      src="/logo-primary.png" 
-                      alt="AK Prime Consulting" 
-                      width={252} 
-                      height={56} 
-                      className="h-14 w-auto object-contain"
-                    />
+                    <div className="w-[52px] h-[52px] rounded-full bg-white flex items-center justify-center p-2 shadow-sm border border-black/5">
+                      <Image 
+                        src="/logo-primary.png" 
+                        alt="AK Prime Consulting" 
+                        width={200} 
+                        height={200} 
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                   </Link>
                 </div>
                 <nav className="flex-1 overflow-y-auto px-4 py-6 space-y-1">

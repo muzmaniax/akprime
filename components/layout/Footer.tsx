@@ -40,13 +40,15 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center group mb-4">
-              <Image 
-                src="/logo-primary.png" 
-                alt="AK Prime Consulting" 
-                width={288} 
-                height={64} 
-                className="h-[64px] w-auto object-contain"
-              />
+              <div className="w-[64px] h-[64px] rounded-full bg-white flex items-center justify-center p-2.5 shadow-lg shadow-[#37B4B4]/10 border border-white/10 group-hover:scale-105 transition-transform duration-300">
+                <Image 
+                  src="/logo-primary.png" 
+                  alt="AK Prime Consulting" 
+                  width={200} 
+                  height={200} 
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </Link>
             <p className="text-white/45 text-sm leading-relaxed mb-5">
               Modernise Your Business Operations With AI, ERP &amp; Strategic Advisory. Headquartered in Nairobi, Kenya — delivering across Africa.
