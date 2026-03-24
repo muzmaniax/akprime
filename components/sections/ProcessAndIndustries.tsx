@@ -55,6 +55,7 @@ export function ProcessSection() {
   );
 }
 
+
 export function IndustriesSection() {
   return (
     <section className="py-24 section-light">
@@ -68,26 +69,82 @@ export function IndustriesSection() {
           </div>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {industriesData.map((ind, i) => (
             <ScrollReveal key={ind.slug} delay={i * 0.07}>
               <Link
                 href={`/industries/${ind.slug}`}
-                className="block light-card rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:border-[#37B4B4]/40"
-                style={{ boxShadow: "0 2px 16px rgba(8,33,33,.06)" }}
+                className="group block relative rounded-[32px] overflow-hidden cursor-pointer"
+                style={{ aspectRatio: "10 / 11" }}
               >
+                {/* Full-bleed background image */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={ind.photo}
                   alt={ind.name}
-                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  style={{ height: "120px", filter: "brightness(.82)" }}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                 />
-                <div className="p-5 bg-white relative z-10 transition-colors group-hover:bg-[#F4FAFA]">
-                  <h3 className="font-bold text-lg mb-1.5 text-[#082121] group-hover:text-[#37B4B4] transition-colors line-clamp-1">{ind.name}</h3>
-                  <p className="text-sm leading-relaxed text-[#3a5a5a] mb-3 line-clamp-2">{ind.shortDescription}</p>
-                  <span className="text-sm font-bold text-[#37B4B4] uppercase tracking-wider">Explore Capabilities →</span>
+
+                {/* Layer 1: Base dark gradient from bottom */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(4,20,20,0.97) 0%, rgba(4,20,20,0.75) 35%, rgba(4,20,20,0.2) 60%, transparent 100%)",
+                  }}
+                />
+
+                {/* Layer 2: Progressive blur — masked to bottom half only */}
+                <div
+                  className="absolute inset-0 backdrop-blur-[6px]"
+                  style={{
+                    maskImage:
+                      "linear-gradient(to top, black 0%, black 30%, transparent 60%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to top, black 0%, black 30%, transparent 60%)",
+                  }}
+                />
+
+                {/* Layer 3: Subtle teal tint at the very bottom */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(55,180,180,0.18) 0%, transparent 40%)",
+                  }}
+                />
+
+                {/* Content — bottom-left aligned */}
+                <div className="absolute inset-x-0 bottom-0 p-7 z-10">
+                  {/* Category label */}
+                  <p className="text-[#37B4B4] text-[11px] font-bold uppercase tracking-[0.18em] mb-2 opacity-90">
+                    {ind.shortDescription}
+                  </p>
+
+                  {/* Industry name */}
+                  <h3 className="text-white font-bold text-xl leading-tight mb-2 group-hover:text-[#29E0C8] transition-colors duration-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+                    {ind.name}
+                  </h3>
+
+                  {/* CTA */}
+                  <span className="inline-flex items-center gap-1.5 text-white/70 text-xs font-semibold group-hover:text-white transition-colors duration-300">
+                    Explore Capabilities
+                    <svg
+                      className="w-3 h-3 translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
+                      fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth={2.5}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+                    </svg>
+                  </span>
                 </div>
+
+                {/* Hover border glow */}
+                <div
+                  className="absolute inset-0 rounded-[32px] border-2 border-transparent group-hover:border-[#37B4B4]/40 transition-all duration-400 pointer-events-none"
+                  style={{
+                    boxShadow: "inset 0 0 0 0 rgba(55,180,180,0)",
+                  }}
+                />
               </Link>
             </ScrollReveal>
           ))}
@@ -96,3 +153,4 @@ export function IndustriesSection() {
     </section>
   );
 }
+
