@@ -96,7 +96,7 @@ export function Navbar() {
             <div className="h-full flex items-center group/nav">
               <Link
                 href="/services"
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                   pathname.startsWith("/services")
                     ? "text-[#37B4B4]"
                     : "text-white/70 hover:text-white"
@@ -135,7 +135,7 @@ export function Navbar() {
             <div className="h-full flex items-center group/nav">
               <Link
                 href="/industries"
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                   pathname.startsWith("/industries")
                     ? "text-[#37B4B4]"
                     : "text-white/70 hover:text-white"
@@ -167,7 +167,7 @@ export function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors ${
+                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors whitespace-nowrap ${
                   pathname.startsWith(link.href)
                     ? "text-[#37B4B4]"
                     : "text-white/70 hover:text-white"
@@ -182,13 +182,13 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-3 border-l border-white/10 pl-5 ml-2 h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center border border-[#37B4B4]/40 text-[#37B4B4] hover:bg-[#37B4B4]/10 hover:border-[#37B4B4] bg-transparent rounded-xl text-base font-semibold px-5 h-12 transition-colors"
+              className="inline-flex items-center justify-center border border-[#37B4B4]/40 text-[#37B4B4] hover:bg-[#37B4B4]/10 hover:border-[#37B4B4] bg-transparent rounded-xl text-base font-semibold px-5 h-12 transition-colors whitespace-nowrap shrink-0"
             >
               Get in Touch
             </Link>
             <Button
               onClick={() => setBookingOpen(true)}
-              className="bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-bold px-6 h-12 rounded-xl cta-pulse transition-all duration-200 text-base shadow-lg shadow-[#37B4B4]/20"
+              className="bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-bold px-6 h-12 rounded-xl cta-pulse transition-all duration-200 text-base shadow-lg shadow-[#37B4B4]/20 whitespace-nowrap shrink-0"
             >
               Book Consultation
             </Button>
