@@ -52,30 +52,45 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed z-50 transition-all duration-500 rounded-[2.5rem] left-1/2 -translate-x-1/2 w-[95%] max-w-7xl ${
-          isSolid
-            ? "top-4 bg-white/5 backdrop-blur-2xl shadow-[0_8px_32px_rgba(55,180,180,0.25)] border border-white/10"
-            : "top-6 bg-white/[0.02] backdrop-blur-md shadow-[0_4px_24px_rgba(55,180,180,0.15)] border border-white/5"
-        }`}
-        style={{ height: "84px" }}
+        className="fixed top-4 sm:top-6 left-0 right-0 z-50 pointer-events-none transition-all duration-500"
+        style={{ height: "80px" }}
       >
-        <div className="mx-auto px-6 sm:px-8 lg:px-10 h-full flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group shrink-0">
-            <div className="w-[62px] h-[62px] rounded-full bg-white flex items-center justify-center p-2.5 shadow-lg shadow-[rgba(55,180,180,0.2)] border-2 border-white/10 group-hover:border-white/50 transition-all duration-300">
-              <Image 
-                src="/logo-primary.png" 
-                alt="AK Prime Consulting" 
-                width={200} 
-                height={200} 
-                className="w-full h-full object-contain"
-                priority
-              />
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between relative">
+          
+          {/* Independent Floating Logo */}
+          <Link href="/" className="pointer-events-auto flex items-center group relative z-50 shrink-0">
+            <div 
+              className="w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] rounded-full flex items-center justify-center p-2.5 transition-transform duration-300 group-hover:scale-105"
+              style={{
+                background: "linear-gradient(135deg, rgba(55,180,180,0.15) 0%, rgba(55,180,180,0.4) 100%)",
+                backdropFilter: "blur(20px)",
+                boxShadow: "0 10px 40px rgba(55,180,180,0.4), inset 0 2px 4px rgba(255,255,255,0.4), inset 0 -4px 6px rgba(10,50,50,0.2)",
+                border: "1px solid rgba(255,255,255,0.3)"
+              }}
+            >
+              <div className="w-full h-full bg-white rounded-full flex items-center justify-center p-1.5 shadow-inner">
+                <Image 
+                  src="/logo-primary.png" 
+                  alt="AK Prime Consulting" 
+                  width={200} 
+                  height={200} 
+                  className="w-full h-full object-contain drop-shadow-sm"
+                  priority
+                />
+              </div>
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-0.5 h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
+          {/* Centered Glass Pill (Nav + CTAs) */}
+          <div 
+            className={`pointer-events-auto absolute left-1/2 -translate-x-1/2 rounded-[2.5rem] transition-all duration-500 flex items-center ${
+              isSolid
+                ? "bg-[#082121]/90 backdrop-blur-3xl shadow-[0_12px_40px_rgba(0,0,0,0.5)] border border-white/10 h-[64px] px-6 sm:px-8"
+                : "bg-black/30 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-white/10 h-[64px] px-6 sm:px-8"
+            }`}
+          >
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex items-center gap-1 h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
             
             {/* Services Mega Menu */}
             <div className="h-full flex items-center group/nav">
@@ -92,7 +107,7 @@ export function Navbar() {
               </Link>
 
               {/* Mega Dropdown Panel */}
-              <div className="absolute top-[84px] left-1/2 -translate-x-1/2 w-[800px] bg-[#0E3E3E] border border-white/10 rounded-2xl shadow-2xl p-8 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 translate-y-4 group-hover/nav:translate-y-0 grid grid-cols-2 gap-10 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:bg-transparent">
+              <div className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[800px] bg-[#0E3E3E] border border-white/10 rounded-2xl shadow-2xl p-8 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 translate-y-4 group-hover/nav:translate-y-0 grid grid-cols-2 gap-10 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:bg-transparent">
                 {CATEGORIES.map((category) => (
                   <div key={category}>
                     <h3 className="text-sm font-bold tracking-widest text-[#37B4B4] uppercase mb-4 border-b border-white/10 pb-2">
@@ -131,7 +146,7 @@ export function Navbar() {
               </Link>
 
               {/* Mega Dropdown Panel */}
-              <div className="absolute top-[84px] left-1/2 -translate-x-1/2 w-[800px] bg-[#0E3E3E] border border-white/10 rounded-2xl shadow-2xl p-8 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 translate-y-4 group-hover/nav:translate-y-0 grid grid-cols-2 gap-x-8 gap-y-4 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:bg-transparent">
+              <div className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[800px] bg-[#0E3E3E] border border-white/10 rounded-2xl shadow-2xl p-8 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 translate-y-4 group-hover/nav:translate-y-0 grid grid-cols-2 gap-x-8 gap-y-4 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:bg-transparent">
                 {industriesData.map((industry) => (
                   <Link 
                     key={industry.slug}
@@ -164,7 +179,7 @@ export function Navbar() {
           </nav>
 
           {/* Desktop CTAs */}
-          <div className="hidden lg:flex items-center gap-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
+          <div className="hidden lg:flex items-center gap-3 border-l border-white/10 pl-5 ml-2 h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center border border-[#37B4B4]/40 text-[#37B4B4] hover:bg-[#37B4B4]/10 hover:border-[#37B4B4] bg-transparent rounded-xl text-base font-semibold px-5 h-12 transition-colors"
@@ -313,6 +328,8 @@ export function Navbar() {
               </div>
             </SheetContent>
           </Sheet>
+          
+          </div> {/* End of Centered Glass Pill */}
         </div>
       </header>
 
