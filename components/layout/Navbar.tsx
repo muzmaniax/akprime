@@ -52,14 +52,14 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed z-50 transition-all duration-500 rounded-[2.5rem] left-1/2 -translate-x-1/2 w-[95%] max-w-7xl ${
           isSolid
-            ? "bg-[#0E3E3E]/95 backdrop-blur-xl shadow-lg shadow-black/25 border-b border-white/5"
-            : "bg-transparent"
+            ? "top-4 bg-white/5 backdrop-blur-2xl shadow-[0_8px_32px_rgba(55,180,180,0.25)] border border-white/10"
+            : "top-6 bg-white/[0.02] backdrop-blur-md shadow-[0_4px_24px_rgba(55,180,180,0.15)] border border-white/5"
         }`}
-        style={{ height: "84px" }}
+        style={{ height: "80px" }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        <div className="mx-auto px-6 sm:px-8 lg:px-10 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center group shrink-0">
             <Image 
@@ -73,7 +73,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-0.5 h-full">
+          <nav className="hidden lg:flex items-center gap-0.5 h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
             
             {/* Services Mega Menu */}
             <div className="h-full flex items-center group/nav">
@@ -162,7 +162,7 @@ export function Navbar() {
           </nav>
 
           {/* Desktop CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center border border-[#37B4B4]/40 text-[#37B4B4] hover:bg-[#37B4B4]/10 hover:border-[#37B4B4] bg-transparent rounded-xl text-base font-semibold px-5 h-12 transition-colors"
@@ -179,7 +179,7 @@ export function Navbar() {
 
           {/* Mobile menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger className="lg:hidden p-2 rounded-lg text-white/80 hover:text-[#37B4B4] hover:bg-white/5 transition-colors">
+            <SheetTrigger className="lg:hidden p-2 rounded-full bg-white/5 border border-white/10 text-white/90 hover:text-[#37B4B4] hover:bg-white/10 transition-colors drop-shadow-md">
               <Menu size={22} />
             </SheetTrigger>
             <SheetContent
