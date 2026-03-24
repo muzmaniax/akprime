@@ -12,6 +12,17 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/ui/BookingModal";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { AnimatedBackground } from '@/components/motion-primitives/animated-background';
+import { cn } from "@/lib/utils";
 import { servicesData, ServiceCategory } from "@/data/services";
 import { industriesData } from "@/data/industries";
 
@@ -90,93 +101,98 @@ export function Navbar() {
             }`}
           >
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1 h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
-            
-            {/* Services Mega Menu */}
-            <div className="h-full flex items-center group/nav">
-              <Link
-                href="/services"
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-                  pathname.startsWith("/services")
-                    ? "text-[#37B4B4]"
-                    : "text-white/70 hover:text-white"
-                }`}
-              >
-                Services
-                <ChevronDown size={16} className="opacity-70 group-hover/nav:rotate-180 transition-transform duration-300" />
-              </Link>
-
-              {/* Mega Dropdown Panel */}
-              <div className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[800px] bg-[#0E3E3E] border border-white/10 rounded-2xl shadow-2xl p-8 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 translate-y-4 group-hover/nav:translate-y-0 grid grid-cols-2 gap-10 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:bg-transparent">
-                {CATEGORIES.map((category) => (
-                  <div key={category}>
-                    <h3 className="text-sm font-bold tracking-widest text-[#37B4B4] uppercase mb-4 border-b border-white/10 pb-2">
-                       {category}
-                    </h3>
-                    <ul className="space-y-2">
-                      {servicesData.filter(s => s.category === category).map((service) => (
-                        <li key={service.slug}>
-                          <Link 
-                            href={`/services/${service.slug}`}
-                            className="group/link flex items-center justify-between py-1.5 text-lg text-white/80 hover:text-white transition-colors"
-                          >
-                            <span>{service.name}</span>
-                            <ChevronRight size={16} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#37B4B4]" />
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Industries Mega Menu */}
-            <div className="h-full flex items-center group/nav">
-              <Link
-                href="/industries"
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-                  pathname.startsWith("/industries")
-                    ? "text-[#37B4B4]"
-                    : "text-white/70 hover:text-white"
-                }`}
-              >
-                Industries
-                <ChevronDown size={16} className="opacity-70 group-hover/nav:rotate-180 transition-transform duration-300" />
-              </Link>
-
-              {/* Mega Dropdown Panel */}
-              <div className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[800px] bg-[#0E3E3E] border border-white/10 rounded-2xl shadow-2xl p-8 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 translate-y-4 group-hover/nav:translate-y-0 grid grid-cols-2 gap-x-8 gap-y-4 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:bg-transparent">
-                {industriesData.map((industry) => (
-                  <Link 
-                    key={industry.slug}
-                    href={`/industries/${industry.slug}`}
-                    className="group/link flex flex-col p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/10"
+            <div className="hidden lg:block h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
+              <NavigationMenu className="h-full">
+                <NavigationMenuList className="h-full gap-1">
+                  <AnimatedBackground
+                    defaultValue={pathname}
+                    className="rounded-lg bg-white/10 backdrop-blur-sm"
+                    transition={{
+                      type: 'spring',
+                      bounce: 0.2,
+                      duration: 0.3,
+                    }}
+                    enableHover
                   >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-lg font-bold text-white group-hover/link:text-[#37B4B4] transition-colors">{industry.name}</span>
-                      <ChevronRight size={18} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#37B4B4]" />
-                    </div>
-                    <span className="text-base text-white/60 leading-relaxed line-clamp-1">{industry.shortDescription}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
+                    {/* Services Mega Menu */}
+                    <NavigationMenuItem data-id="services">
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-transparent text-white/70 hover:text-white data-[state=open]:text-[#37B4B4] data-[state=open]:bg-transparent focus:bg-transparent text-base font-semibold px-4 py-2 h-auto gap-1.5 whitespace-nowrap">
+                        Services
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className="p-8 w-[800px] sm:w-[800px] bg-[#0E3E3E]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl">
+                        <div className="grid grid-cols-2 gap-10 min-w-[700px]">
+                          {CATEGORIES.map((category) => (
+                            <div key={category}>
+                              <h3 className="text-sm font-bold tracking-widest text-[#37B4B4] uppercase mb-4 border-b border-white/10 pb-2">
+                                {category}
+                              </h3>
+                              <ul className="space-y-2">
+                                {servicesData.filter(s => s.category === category).map((service) => (
+                                  <li key={service.slug}>
+                                    <Link 
+                                      href={`/services/${service.slug}`}
+                                      legacyBehavior passHref
+                                    >
+                                      <NavigationMenuLink className="group/link flex items-center justify-between py-1.5 text-lg text-white/80 hover:text-white transition-colors w-full">
+                                        <span>{service.name}</span>
+                                        <ChevronRight size={16} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#37B4B4]" />
+                                      </NavigationMenuLink>
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
 
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors whitespace-nowrap ${
-                  pathname.startsWith(link.href)
-                    ? "text-[#37B4B4]"
-                    : "text-white/70 hover:text-white"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+                    {/* Industries Mega Menu */}
+                    <NavigationMenuItem data-id="industries">
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-transparent text-white/70 hover:text-white data-[state=open]:text-[#37B4B4] data-[state=open]:bg-transparent focus:bg-transparent text-base font-semibold px-4 py-2 h-auto gap-1.5 whitespace-nowrap">
+                        Industries
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className="p-8 w-[840px] sm:w-[840px] bg-[#0E3E3E]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl">
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-4 min-w-[750px]">
+                          {industriesData.map((industry) => (
+                            <Link 
+                              key={industry.slug}
+                              href={`/industries/${industry.slug}`}
+                              legacyBehavior passHref
+                            >
+                              <NavigationMenuLink className="group/link flex flex-col p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/10 w-full text-left">
+                                <div className="flex items-center justify-between mb-1.5 w-full">
+                                  <span className="text-lg font-bold text-white group-hover/link:text-[#37B4B4] transition-colors">{industry.name}</span>
+                                  <ChevronRight size={18} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#37B4B4]" />
+                                </div>
+                                <span className="text-base text-white/60 leading-relaxed line-clamp-1">{industry.shortDescription}</span>
+                              </NavigationMenuLink>
+                            </Link>
+                          ))}
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                    {/* Normal Links */}
+                    {navLinks.map((link) => (
+                      <NavigationMenuItem key={link.href} data-id={link.href}>
+                        <Link href={link.href} legacyBehavior passHref>
+                          <NavigationMenuLink 
+                            className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors whitespace-nowrap inline-flex items-center justify-center ${
+                              pathname.startsWith(link.href)
+                                ? "text-[#37B4B4]"
+                                : "text-white/70 hover:text-white"
+                            }`}
+                          >
+                            {link.label}
+                          </NavigationMenuLink>
+                        </Link>
+                      </NavigationMenuItem>
+                    ))}
+                  </AnimatedBackground>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3 border-l border-white/10 pl-5 ml-2 h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">

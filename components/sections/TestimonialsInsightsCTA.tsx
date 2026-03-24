@@ -2,6 +2,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import Spline from "@splinetool/react-spline";
+import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { Sparkles } from "@/components/ui-layouts/sparkles";
+import { BorderTrail } from "@/components/motion-primitives/border-trail";
 
 const testimonials = [
   {
@@ -62,7 +65,7 @@ export function TestimonialsSection() {
           <div className="text-center mb-14">
             <span className="section-label-light mb-4 inline-block">CLIENT OUTCOMES</span>
             <h2 className="text-4xl lg:text-5xl font-bold tracking-tight" style={{ color: "#082121" }}>
-              What Our Clients Say
+              <TextEffect preset="blur" per="word" as="span">What Our Clients Say</TextEffect>
             </h2>
           </div>
         </ScrollReveal>
@@ -70,7 +73,12 @@ export function TestimonialsSection() {
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <ScrollReveal key={t.name} delay={i * 0.1}>
-              <div className="light-card rounded-2xl p-7 h-full flex flex-col">
+              <div className="light-card rounded-2xl p-7 h-full flex flex-col relative overflow-hidden">
+                <BorderTrail
+                    className="bg-gradient-to-r from-[#37B4B4]/50 via-transparent to-[#29E0C8]/50"
+                    size={40}
+                    transition={{ duration: 5, repeat: Infinity, ease: "linear", delay: i * 1.2 }}
+                  />
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-4">
                   {Array.from({ length: 5 }).map((_, k) => (
@@ -115,7 +123,7 @@ export function InsightsSection() {
             <div>
               <span className="section-label-light mb-3 inline-block">INSIGHTS</span>
               <h2 className="text-4xl font-bold tracking-tight" style={{ color: "#082121" }}>
-                Thought Leadership
+                <TextEffect preset="blur" per="word" as="span">Thought Leadership</TextEffect>
               </h2>
             </div>
             <Link
@@ -177,7 +185,9 @@ export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
         <ScrollReveal>
           <span className="section-label mb-6 inline-block glass-badge px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md">START THE CONVERSATION</span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
-            Ready to transform your operations?
+            <Sparkles color="#29E0C8" count={10}>
+              Ready to transform your operations?
+            </Sparkles>
           </h2>
           <p className="text-white/55 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
             Schedule a strategy consultation. No hard sell — just an honest assessment.

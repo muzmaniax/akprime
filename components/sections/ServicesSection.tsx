@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { TiltCard } from "@/components/ui/TiltCard";
+import { BorderTrail } from "@/components/motion-primitives/border-trail";
+import { TextEffect } from "@/components/motion-primitives/text-effect";
 import {
   Database, Brain, FolderKanban, LineChart, Shield, BookOpen,
   Monitor, TrendingUp, DollarSign, RefreshCcw, Megaphone,
@@ -147,7 +149,7 @@ export function ServicesSection() {
           <div className="text-center mb-14">
             <span className="section-label mb-4 inline-block">WHAT WE DO</span>
             <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
-              16 Integrated Service Lines
+              <TextEffect preset="blur" per="word" as="span">16 Integrated Service Lines</TextEffect>
             </h2>
             <p className="text-white/55 text-lg max-w-2xl mx-auto">
               From day-one bookkeeping to enterprise AI — every service delivers measurable ROI.
@@ -161,9 +163,14 @@ export function ServicesSection() {
               <TiltCard className="h-full">
                 <Link href={s.href}>
                   <div
-                    className="glass-card rounded-2xl p-5 h-full flex flex-col gap-3 cursor-pointer group hover:border-[#37B4B4]/30 transition-all duration-300"
+                    className="glass-card rounded-2xl p-5 h-full flex flex-col gap-3 cursor-pointer group hover:border-[#37B4B4]/30 transition-all duration-300 relative overflow-hidden"
                     style={{ minHeight: "168px" }}
                   >
+                    <BorderTrail
+                      className="bg-gradient-to-r from-[#37B4B4] via-transparent to-[#29E0C8] opacity-0 group-hover:opacity-100 transition-opacity"
+                      size={50}
+                      transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
+                    />
                     {/* Icon + badge row */}
                     <div className="flex items-center justify-between">
                       <div className="w-9 h-9 rounded-lg bg-[#37B4B4]/15 flex items-center justify-center text-[#37B4B4] group-hover:bg-[#37B4B4]/25 transition-colors">

@@ -1,5 +1,6 @@
 "use client";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TextEffect } from "@/components/motion-primitives/text-effect";
 
 const steps = [
   { num: "01", emoji: "🔎", title: "Assess",
@@ -25,7 +26,7 @@ export function ProcessSection() {
           <div className="text-center mb-14">
             <span className="section-label-light mb-4 inline-block">HOW WE WORK</span>
             <h2 className="text-4xl lg:text-5xl font-bold tracking-tight" style={{ color: "#082121" }}>
-              A Proven Delivery Framework
+              <TextEffect preset="blur" per="word" as="span">A Proven Delivery Framework</TextEffect>
             </h2>
           </div>
         </ScrollReveal>
@@ -62,7 +63,7 @@ export function IndustriesSection() {
           <div className="text-center mb-14">
             <span className="section-label-light mb-4 inline-block">SECTORS WE SERVE</span>
             <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-4" style={{ color: "#082121" }}>
-              Solutions Built For Your Industry
+              <TextEffect preset="blur" per="word" as="span">Solutions Built For Your Industry</TextEffect>
             </h2>
           </div>
         </ScrollReveal>

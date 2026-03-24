@@ -3,6 +3,7 @@ import { IBM_Plex_Sans_Condensed } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { PageLoader } from "@/components/layout/PageLoader";
 import { Toaster } from "sonner";
 
 const ibmPlex = IBM_Plex_Sans_Condensed({
@@ -64,6 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={ibmPlex.variable}>
       <body className="antialiased min-h-screen bg-[#082121] text-white overflow-x-hidden">
+        <PageLoader />
         <Navbar />
         <main>{children}</main>
         <Footer />

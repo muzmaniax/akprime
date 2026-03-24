@@ -6,6 +6,9 @@ import { TrendingUp, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import Link from "next/link";
+import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { BorderTrail } from "@/components/motion-primitives/border-trail";
+import { Sparkles } from "@/components/ui-layouts/sparkles";
 
 const stats = [
   { target: 120, suffix: "+", label: "Engagements" },
@@ -73,8 +76,12 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
               className="text-4xl sm:text-5xl xl:text-6xl font-bold text-white leading-[1.08] tracking-[-0.02em] mb-6"
             >
               Modernise Your<br />
-              <span className="text-[#37B4B4]">Business Operations</span><br />
-              With AI, ERP &amp;<br />Strategic Advisory
+              <Sparkles color="#29E0C8" count={6}>
+                <span className="text-[#37B4B4]">Business Operations</span>
+              </Sparkles><br />
+              <TextEffect as="span" preset="fade" per="word" className="inline">
+                With AI, ERP &amp; Strategic Advisory
+              </TextEffect>
             </motion.h1>
 
             <motion.p
@@ -132,7 +139,12 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
               className="relative w-full max-w-sm mx-auto lg:max-w-[360px]"
             >
               {/* Main dashboard card */}
-              <div className="dashboard-float">
+              <div className="dashboard-float relative">
+                <BorderTrail
+                  className="bg-gradient-to-r from-[#37B4B4] via-[#29E0C8] to-transparent opacity-70"
+                  size={80}
+                  transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                />
                 <div
                   className="rounded-2xl p-6 relative"
                   style={{
