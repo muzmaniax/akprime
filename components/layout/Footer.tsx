@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const serviceLinks = [
   { label: "ERP Implementation",        href: "/services#erp" },
@@ -38,13 +39,14 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-[#37B4B4] flex items-center justify-center">
-                <span className="text-[#082121] font-bold text-sm">AK</span>
-              </div>
-              <span className="font-bold text-white text-base">
-                AK Prime <span className="text-[#37B4B4]">Consulting</span>
-              </span>
+            <Link href="/" className="flex items-center group mb-4">
+              <Image 
+                src="/logo-primary.png" 
+                alt="AK Prime Consulting" 
+                width={160} 
+                height={35} 
+                className="h-9 w-auto object-contain"
+              />
             </Link>
             <p className="text-white/45 text-sm leading-relaxed mb-5">
               Modernise Your Business Operations With AI, ERP &amp; Strategic Advisory. Headquartered in Nairobi, Kenya — delivering across Africa.

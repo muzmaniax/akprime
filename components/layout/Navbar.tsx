@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, ChevronDown, ChevronRight } from "lucide-react";
 import {
@@ -60,13 +61,15 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-10 h-10 rounded-lg bg-[#37B4B4] flex items-center justify-center shadow-lg shadow-[#37B4B4]/30">
-              <span className="text-[#082121] font-bold text-base tracking-tight">AK</span>
-            </div>
-            <span className="font-bold text-white text-lg tracking-tight hidden sm:block">
-              AK Prime <span className="text-[#37B4B4]">Consulting</span>
-            </span>
+          <Link href="/" className="flex items-center group shrink-0">
+            <Image 
+              src="/logo-primary.png" 
+              alt="AK Prime Consulting" 
+              width={180} 
+              height={40} 
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -187,13 +190,16 @@ export function Navbar() {
                 <div className="flex items-center justify-between p-6 border-b border-white/8">
                   <Link
                     href="/"
-                    className="flex items-center gap-2"
+                    className="flex shrink-0"
                     onClick={() => setMobileOpen(false)}
                   >
-                    <div className="w-8 h-8 rounded-md bg-[#37B4B4] flex items-center justify-center">
-                      <span className="text-[#082121] font-bold text-xs">AK</span>
-                    </div>
-                    <span className="font-bold text-white text-sm">AK Prime</span>
+                    <Image 
+                      src="/logo-primary.png" 
+                      alt="AK Prime Consulting" 
+                      width={140} 
+                      height={32} 
+                      className="h-8 w-auto object-contain"
+                    />
                   </Link>
                 </div>
                 <nav className="flex-1 overflow-y-auto px-4 py-6 space-y-1">
