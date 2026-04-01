@@ -35,23 +35,24 @@ export function Footer() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center group mb-4">
-              <div className="w-[64px] h-[64px] rounded-full bg-white flex items-center justify-center p-2.5 shadow-lg shadow-[#37B4B4]/10 border border-white/10 group-hover:scale-105 transition-transform duration-300">
-                <Image 
-                  src="/logo-primary.png" 
-                  alt="AK Prime Consulting" 
-                  width={200} 
-                  height={200} 
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            <Link href="/" className="flex items-center gap-2 group mb-5">
+              <Image 
+                src="/logo-primary.png" 
+                alt="AK Prime Consulting" 
+                width={100} 
+                height={32} 
+                className="h-8 w-auto object-contain transition-opacity group-hover:opacity-80"
+              />
+              <span className="text-white font-bold text-sm tracking-tight leading-tight">
+                AK<span className="text-[#37B4B4]"> Prime</span>
+              </span>
             </Link>
-            <p className="text-white/45 text-sm leading-relaxed mb-5">
-              Modernise Your Business Operations With AI, ERP &amp; Strategic Advisory. Headquartered in Nairobi, Kenya — delivering across Africa.
+            <p className="text-white/45 text-[0.9375rem] leading-relaxed mb-5">
+              Modernise Your Business Operations With AI, ERP &amp; Strategic Advisory. Headquartered in Nairobi, Kenya — with a branch in Mombasa.
             </p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -61,11 +62,11 @@ export function Footer() {
 
           {/* Services links */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Services</h4>
+            <h4 className="text-white font-semibold text-[0.75rem] mb-4 uppercase tracking-wider">Services</h4>
             <ul className="space-y-2.5">
               {serviceLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-white/45 text-sm hover:text-[#37B4B4] transition-colors">
+                  <Link href={l.href} className="text-white/45 text-[0.9375rem] hover:text-[#37B4B4] transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -75,11 +76,11 @@ export function Footer() {
 
           {/* Company links */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Company</h4>
+            <h4 className="text-white font-semibold text-[0.75rem] mb-4 uppercase tracking-wider">Company</h4>
             <ul className="space-y-2.5">
               {companyLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-white/45 text-sm hover:text-[#37B4B4] transition-colors">
+                  <Link href={l.href} className="text-white/45 text-[0.9375rem] hover:text-[#37B4B4] transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -89,7 +90,7 @@ export function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Connect</h4>
+            <h4 className="text-white font-semibold text-[0.75rem] mb-4 uppercase tracking-wider">Connect</h4>
             <ul className="space-y-3">
               <li>
                 <a href="mailto:hello@akprimeconsulting.com" className="text-white/45 text-sm hover:text-[#37B4B4] transition-colors break-all">
@@ -102,8 +103,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="text-white/45 text-sm">
-                Nairobi, Kenya<br />
-                <span className="text-white/30 text-xs">Pan-Africa Delivery</span>
+                Nairobi · Mombasa · Middle East
               </li>
             </ul>
 

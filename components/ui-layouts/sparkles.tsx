@@ -37,7 +37,7 @@ export function Sparkles({
   const sparkles = React.useMemo(() => generateSparkle(count), [count]);
 
   return (
-    <span className={`relative inline-block ${className ?? ""}`}>
+    <span className={`relative inline-block max-w-full whitespace-normal text-wrap break-words ${className ?? ""}`}>
       {sparkles.map((s) => (
         <motion.span
           key={s.id}

@@ -1,120 +1,71 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
-const metrics = [
-  { value: "40%",  label: "Faster Month-End Close" },
-  { value: "60%",  label: "Process Automation" },
-  { value: "3x",   label: "Warehouse Visibility" },
-  { value: "94%",  label: "User Adoption at 60 Days" },
-];
-
-const bars = [
-  { label: "Month-End Speed",    pct: 72 },
-  { label: "Process Automation", pct: 60 },
-  { label: "User Adoption",      pct: 94 },
-  { label: "Reporting Speed",    pct: 85 },
-];
-
-export function CaseStudiesSection({ onBooking }: { onBooking: () => void }) {
-  const barsRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.3 }
-    );
-    if (barsRef.current) observer.observe(barsRef.current);
-    return () => observer.disconnect();
-  }, []);
-
+export function CaseStudiesSection() {
   return (
-    <section className="py-24 section-dark">
+    <section className="py-24 lg:py-40 bg-[#f0f4f8] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="text-center mb-14">
-            <span className="section-label mb-4 inline-block">CASE STUDY</span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight">
-              From Chaos to Clarity in 6 Months
+          <div className="text-center mb-20 lg:mb-32">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20 mb-8">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#37B4B4] animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#37B4B4] font-mono">
+                CASE STUDIES
+              </span>
+            </div>
+            
+            <h2 className="text-5xl lg:text-8xl font-medium text-[#082121] tracking-tight leading-[1.1] font-serif italic">
+              Proven <span className="text-[#37B4B4] not-italic font-bold">Results</span> Across Industries
             </h2>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="glass-card rounded-2xl overflow-hidden">
-            <div className="grid lg:grid-cols-2">
-              {/* Left — photo with overlay */}
-              <div className="relative min-h-[320px] lg:min-h-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=80"
-                  alt="Manufacturing ERP case study"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to right, rgba(8,33,33,.7), rgba(8,33,33,.3))" }}
-                />
-                <div className="absolute bottom-4 left-4">
-                  <span className="text-xs font-bold px-3 py-1 rounded-full text-[#082121]"
-                    style={{ background: "#37B4B4" }}>
-                    Manufacturing · Nairobi · Odoo ERP
-                  </span>
-                </div>
+          <Link 
+            href="/case-studies/manufacturing-erp"
+            className="group relative block aspect-[16/10] lg:aspect-[21/9] rounded-[48px] overflow-hidden shadow-[0_32px_64px_-16px_rgba(8,33,33,0.15)] transition-all duration-700 hover:shadow-[0_48px_80px_-16px_rgba(8,33,33,0.2)]"
+          >
+            {/* Background Image */}
+            <img 
+              src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80"
+              alt="Featured Case Study"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/80 via-[#082121]/20 to-transparent" />
+            
+            {/* Float Labels */}
+            <div className="absolute top-10 left-10 flex gap-4">
+              <span className="px-6 py-2.5 rounded-full bg-[#37B4B4] text-white text-[10px] font-black uppercase tracking-[0.2em]">
+                Business Strategy
+              </span>
+              <span className="px-6 py-2.5 rounded-full bg-white text-[#082121] text-[10px] font-black uppercase tracking-[0.2em]">
+                Construction Group
+              </span>
+            </div>
+
+            {/* Content Floor */}
+            <div className="absolute bottom-10 left-10 right-10 flex items-end justify-between gap-12">
+              <div className="max-w-2xl p-10 lg:p-14 bg-white/10 backdrop-blur-2xl rounded-[40px] border border-white/20 shadow-2xl">
+                <h3 className="text-3xl lg:text-6xl font-bold text-white tracking-tighter leading-[0.95] mb-6">
+                  Helped a construction firm grow revenue 65% in 12 months.
+                </h3>
+                <p className="text-white/80 text-sm lg:text-lg font-medium leading-relaxed max-w-xl">
+                  We helped a fast-growing construction company refine its go-to-market strategy, resulting in a 65% revenue increase in just 12 months.
+                </p>
               </div>
 
-              {/* Right — content */}
-              <div className="p-8 lg:p-10">
-                <span className="section-label mb-4 inline-block text-[10px]">ERP Implementation · Odoo · 6 Months</span>
-                <p className="text-white/60 text-sm leading-relaxed mb-6">
-                  A mid-size manufacturer was running finance on spreadsheets and production on paper. Month-end took 12 days. Inventory was invisible. AK Prime deployed Odoo ERP across finance, production and warehousing — in 6 months, on budget.
-                </p>
-
-                {/* 2×2 metric tiles */}
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  {metrics.map((m) => (
-                    <div key={m.label} className="rounded-xl p-4 text-center"
-                      style={{ background: "rgba(55,180,180,.08)", border: "1px solid rgba(55,180,180,.15)" }}>
-                      <div className="text-2xl font-bold text-[#37B4B4]">{m.value}</div>
-                      <div className="text-white/50 text-xs mt-1">{m.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Animated bar chart */}
-                <div ref={barsRef} className="space-y-3 mb-6">
-                  {bars.map((b) => (
-                    <div key={b.label}>
-                      <div className="flex justify-between text-xs mb-1">
-                        <span className="text-white/55">{b.label}</span>
-                        <span className="text-[#37B4B4] font-semibold">{b.pct}%</span>
-                      </div>
-                      <div className="h-2 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,.06)" }}>
-                        <div
-                          className="h-full rounded-full transition-all duration-1000 ease-out"
-                          style={{
-                            width: visible ? `${b.pct}%` : "0%",
-                            background: "linear-gradient(90deg,#37B4B4,#29E0C8)",
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <button
-                  onClick={onBooking}
-                  className="bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-semibold px-6 py-3 rounded-xl text-sm transition-colors cta-pulse"
-                >
-                  Start Your ERP Assessment →
-                </button>
+              <div className="hidden lg:flex items-center gap-4 bg-white rounded-full px-10 py-5 shadow-2xl shadow-black/20 transition-all duration-500 hover:scale-105 hover:bg-[#37B4B4] hover:text-white">
+                 <span className="text-[12px] font-black uppercase tracking-[0.2em] text-[#082121] group-hover:text-white transition-colors">View Case Study</span>
+                 <div className="w-12 h-12 rounded-full bg-[#082121] flex items-center justify-center text-white">
+                   <ArrowUpRight size={20} />
+                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         </ScrollReveal>
       </div>
     </section>
   );
 }
-

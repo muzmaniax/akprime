@@ -47,16 +47,16 @@ export default function ResourcesPage() {
   return (
     <div className="min-h-screen bg-[#082121] pt-24">
       {/* Hero */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-14 relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-25 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <ScrollReveal>
             <span className="section-label mb-6 inline-block">Free Resources</span>
-            <h1 className="text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-5">
               Tools to Help You<br />
               <span className="text-[#37B4B4]">Make Better Decisions</span>
             </h1>
-            <p className="text-white/55 text-lg max-w-2xl mx-auto">
+            <p className="text-white/55 text-base max-w-2xl mx-auto">
               Free guides, assessments, and checklists from our consulting team — practical resources you can use immediately.
             </p>
           </ScrollReveal>
@@ -69,7 +69,7 @@ export default function ResourcesPage() {
           <div className="grid md:grid-cols-2 gap-6">
             {resources.map((resource, i) => (
               <ScrollReveal key={resource.title} delay={0.1 * i}>
-                <div className="glass-card rounded-2xl p-8 h-full flex flex-col gap-5">
+                <div className="glass-card rounded-xl p-6 h-full flex flex-col gap-4">
                   <div className="flex items-start justify-between">
                     <div className="w-12 h-12 rounded-xl bg-[#37B4B4]/15 border border-[#37B4B4]/20 flex items-center justify-center text-[#37B4B4]">
                       {resource.icon}
@@ -77,8 +77,8 @@ export default function ResourcesPage() {
                     <span className="section-label">{resource.tag}</span>
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-white font-bold text-xl mb-3">{resource.title}</h2>
-                    <p className="text-white/55 text-sm leading-relaxed">{resource.desc}</p>
+                    <h2 className="text-white font-bold text-lg mb-2">{resource.title}</h2>
+                    <p className="text-white/55 text-[13px] leading-relaxed">{resource.desc}</p>
                   </div>
                   <div className="flex items-center justify-between pt-4 border-t border-white/8">
                     <span className="text-white/35 text-sm">{resource.format}</span>

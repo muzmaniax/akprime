@@ -16,7 +16,7 @@ export const industriesData: Industry[] = [
     name: "Manufacturing",
     shortDescription: "ERP, supply chain visibility, production analytics",
     heroHeadline: "Optimise Production Lines & Secure Your Supply Chain.",
-    photo: "https://images.unsplash.com/photo-1565793979648-ad4e5db4c79d?w=1200&q=80",
+    photo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80",
     challenges: [
       "Siloed demand forecasting leading to inventory stockouts or costly overstock.",
       "Lack of real-time visibility into machine downtime and OEE (Overall Equipment Effectiveness).",

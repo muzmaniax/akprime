@@ -34,13 +34,13 @@ export default async function ServicePage({ params }: Props) {
     <div className="bg-[#FFFFFF] min-h-screen">
       
       {/* 1. Hero Section (The Hook) - Glassmorphism Edit */}
-      <section className="relative pt-32 pb-28 md:pt-48 md:pb-40 bg-[#0E3E3E] text-white overflow-hidden">
+      <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 bg-[#0E3E3E] text-white overflow-hidden">
         {/* Glow Effects */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#37B4B4]/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#29E0C8]/5 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
         <div className="absolute inset-0 bg-[#082121]/60 mix-blend-multiply pointer-events-none z-0" />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <Link href="/services" className="inline-flex items-center gap-2 text-[#37B4B4] hover:text-[#29E0C8] font-semibold text-sm mb-8 transition-colors backdrop-blur-md bg-white/5 px-4 py-2 rounded-lg border border-white/10">
               <ArrowLeft size={16} />
@@ -51,10 +51,10 @@ export default async function ServicePage({ params }: Props) {
               <span className="w-1.5 h-1.5 rounded-full bg-white/20"></span>
               <span className="text-white font-bold">{service.name}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
               {service.heroHeadline}
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 leading-relaxed font-light mb-10 max-w-xl">
+            <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light mb-8 max-w-xl">
               {service.shortDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -80,12 +80,12 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* 2. Problem vs Solution (Bento Grid Version) */}
-      <section className="py-24 md:py-32 bg-[#F4FAFA]">
+      <section className="py-16 md:py-20 bg-[#F4FAFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="mb-16">
-            <h2 className="text-sm font-bold tracking-widest text-[#37B4B4] uppercase mb-4">The Challenge</h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-[#082121] leading-tight max-w-3xl">
+          <div className="mb-12">
+            <h2 className="text-xs font-bold tracking-widest text-[#37B4B4] uppercase mb-4">The Challenge</h2>
+            <h3 className="text-2xl md:text-4xl font-bold text-[#082121] leading-tight max-w-3xl">
               Why organizations struggle with {service.name}.
             </h3>
           </div>
@@ -94,12 +94,12 @@ export default async function ServicePage({ params }: Props) {
             {service.painPoints.map((pain, idx) => (
               <div 
                 key={idx} 
-                className={`bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${idx === 2 ? 'md:col-span-1' : ''}`}
+                className={`bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${idx === 2 ? 'md:col-span-1' : ''}`}
               >
-                <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center mb-6">
-                  <span className="text-red-500 font-bold text-xl">✕</span>
+                <div className="w-10 h-10 rounded-[12px] bg-red-50 flex items-center justify-center mb-5">
+                  <span className="text-red-500 font-bold text-lg">✕</span>
                 </div>
-                <p className="text-lg text-[#3a5a5a] leading-relaxed font-medium">{pain}</p>
+                <p className="text-base text-[#3a5a5a] leading-relaxed font-medium">{pain}</p>
               </div>
             ))}
           </div>
@@ -111,24 +111,24 @@ export default async function ServicePage({ params }: Props) {
             
             <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-sm font-bold tracking-widest text-[#37B4B4] uppercase mb-4">The AK Prime Solution</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
+                <h2 className="text-xs font-bold tracking-widest text-[#37B4B4] uppercase mb-3">The AK Prime Solution</h2>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight">
                   How we fix it permanently.
                 </h3>
-                <p className="text-xl text-white/80 leading-relaxed font-light">
+                <p className="text-lg text-white/80 leading-relaxed font-light">
                   {service.solution}
                 </p>
               </div>
 
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl">
-                 <h4 className="font-bold text-white text-lg mb-6">Tangible Outcomes Expected:</h4>
-                 <div className="space-y-5">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-7 rounded-2xl">
+                 <h4 className="font-bold text-white text-base mb-5">Tangible Outcomes Expected:</h4>
+                 <div className="space-y-4">
                    {service.outcomes.map((outcome, idx) => (
-                    <div key={idx} className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-[#37B4B4]/20 flex items-center justify-center shrink-0 mt-0.5">
-                        <CheckCircle2 className="text-[#37B4B4] w-5 h-5" />
+                    <div key={idx} className="flex items-start gap-3">
+                      <div className="w-7 h-7 rounded-full bg-[#37B4B4]/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <CheckCircle2 className="text-[#37B4B4] w-4 h-4" />
                       </div>
-                      <span className="text-white/90 font-medium text-lg leading-snug">{outcome}</span>
+                      <span className="text-white/90 font-medium text-base leading-snug">{outcome}</span>
                     </div>
                    ))}
                  </div>
@@ -140,14 +140,14 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* 3. Implementation Process */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-             <h2 className="text-sm font-bold tracking-widest text-[#37B4B4] uppercase mb-4">Our Approach</h2>
-             <h3 className="text-3xl md:text-5xl font-bold text-[#082121] leading-tight mb-6">
+           <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+             <h2 className="text-xs font-bold tracking-widest text-[#37B4B4] uppercase mb-4">Our Approach</h2>
+             <h3 className="text-2xl md:text-4xl font-bold text-[#082121] leading-tight mb-5">
                How we deliver {service.name}.
              </h3>
-             <p className="text-xl text-[#3a5a5a] leading-relaxed">
+             <p className="text-lg text-[#3a5a5a] leading-relaxed">
                We utilize a rigorous, structured methodology to ensure your engagement is delivered on time, securely, and with zero business disruption.
              </p>
            </div>
@@ -166,8 +166,8 @@ export default async function ServicePage({ params }: Props) {
                        </span>
                     </div>
                     <div className="text-center lg:text-left">
-                      <h4 className="text-xl md:text-2xl font-bold text-[#082121] mb-3 group-hover:text-[#37B4B4] transition-colors">{step.title}</h4>
-                      <p className="text-lg text-[#3a5a5a] leading-relaxed">{step.desc}</p>
+                      <h4 className="text-lg md:text-xl font-bold text-[#082121] mb-2 group-hover:text-[#37B4B4] transition-colors">{step.title}</h4>
+                      <p className="text-base text-[#3a5a5a] leading-relaxed">{step.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -186,7 +186,7 @@ export default async function ServicePage({ params }: Props) {
             Ready to transform your {service.name}?
           </h2>
           <p className="text-xl text-white/70 mb-10 font-light">
-            Deploy tools built for pan-African enterprise scale: {service.tools}
+            Deploy tools built for enterprise scale: {service.tools}
           </p>
           <Link href="/contact" className="inline-flex items-center justify-center bg-[#37B4B4] text-[#082121] hover:bg-[#29E0C8] px-10 h-16 rounded-xl font-bold text-lg transition-colors cta-pulse shadow-xl shadow-[#37B4B4]/20">
             {service.cta}

@@ -1,17 +1,9 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Sans_Condensed } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageLoader } from "@/components/layout/PageLoader";
 import { Toaster } from "sonner";
-
-const ibmPlex = IBM_Plex_Sans_Condensed({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-sans",
-  display: "swap",
-});
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
@@ -26,9 +18,9 @@ export const metadata: Metadata = {
     "AI integration consulting",
     "digital transformation",
     "financial advisory Nairobi",
-    "business consulting East Africa",
+    "business consulting Africa & Middle East",
     "Odoo implementation",
-    "SAP Business One Africa",
+    "SAP Business One Africa & Middle East",
   ],
   openGraph: {
     type: "website",
@@ -57,28 +49,22 @@ export const viewport = {
   maximumScale: 5,
 };
 
+import { ClientProviders } from "@/components/layout/ClientProviders";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={ibmPlex.variable}>
-      <body className="antialiased min-h-screen bg-[#082121] text-white overflow-x-hidden">
-        <PageLoader />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            style: {
-              background: "#0E3E3E",
-              border: "1px solid rgba(55,180,180,0.35)",
-              color: "#fff",
-            },
-          }}
-        />
+    <html lang="en">
+      <body className="antialiased font-sans min-h-screen bg-[#082121] text-white overflow-x-hidden">
+        <ClientProviders>
+          <PageLoader />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </ClientProviders>
       </body>
     </html>
   );

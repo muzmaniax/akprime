@@ -37,7 +37,7 @@ export const servicesData: ServiceData[] = [
       "Inventory is tracked on disparate, error-prone spreadsheets.",
       "Leadership lacks real-time visibility into cashflow and operational metrics.",
     ],
-    solution: "We implement modern ERP systems tailored for Pan-African enterprises. By replacing siloed software with a single, unified platform, we automate your core processes and deliver a single source of truth for your entire organisation.",
+    solution: "We implement modern ERP systems tailored for growing enterprises. By replacing siloed software with a single, unified platform, we automate your core processes and deliver a single source of truth for your entire organisation.",
     outcomes: [
       "40–60% reduction in month-end close time",
       "Real-time finance and operations visibility",

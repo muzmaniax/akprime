@@ -10,10 +10,10 @@ const articles = [
     tag: "AI",
     readTime: "6 min read",
     date: "March 2026",
-    title: "How AI Is Transforming Finance Operations in East Africa",
+    title: "How AI Is Transforming Finance Operations in Africa & Middle East",
     excerpt: "From automated reconciliation to predictive cash forecasting.",
     content: `
-      <p>Artificial Intelligence is no longer just a buzzword in East African boardrooms; it’s rapidly becoming the foundational layer for high-performing finance operations. From Nairobi to Kigali, CFOs are moving beyond traditional ERP implementations and exploring how autonomous systems can drastically reduce month-end close times and improve cash forecasting accuracy.</p>
+      <p>Artificial Intelligence is no longer just a buzzword in boardrooms; it's rapidly becoming the foundational layer for high-performing finance operations. CFOs are moving beyond traditional ERP implementations and exploring how autonomous systems can drastically reduce month-end close times and improve cash forecasting accuracy.</p>
       
       <h3>The Shift from Rearview to Predictive</h3>
       <p>Historically, finance teams spent the majority of their time looking backward—reconciling bank transactions, verifying invoices, and running historical reports. AI-driven financial platforms handle these transactional tasks with near-zero error rates. For example, machine learning models can now reconcile complex, high-volume transactions across multiple currencies and payment gateways (like M-Pesa and traditional banking systems) in seconds.</p>
@@ -65,7 +65,7 @@ const articles = [
     title: "Cashflow Optimisation Strategies for Fast-Growing Businesses",
     excerpt: "Three working capital levers that unlock 30–60 days of cash.",
     content: `
-      <p>Growth consumes cash. For expanding businesses across Pan-Africa, rapidly scaling operations often masks underlying liquidity challenges. Revenue might be doubling year-on-year, but if cash conversion cycles are widening, the organisation risks running out of working capital just as it needs it most. Here are three strategies to optimise your cashflow and fund sustainable growth.</p>
+      <p>Growth consumes cash. For expanding businesses, rapidly scaling operations often masks underlying liquidity challenges. Revenue might be doubling year-on-year, but if cash conversion cycles are widening, the organisation risks running out of working capital just as it needs it most. Here are three strategies to optimise your cashflow and fund sustainable growth.</p>
 
       <h3>1. Accelerate Accounts Receivable (AR)</h3>
       <p>The simplest way to improve cashflow is to collect money you are already owed faster. Start by segmenting your customer base and enforcing stricter credit policies for chronic late payers. Implement automated invoicing directly from your ERP System to ensure invoices are dispatched the moment a service is delivered. Consider offering early payment discounts (e.g., 2/10 Net 30) for large enterprise clients to incentivise rapid settlement.</p>
@@ -154,7 +154,7 @@ export default async function InsightArticlePage({ params }: Props) {
           </div>
           <div>
             <h4 className="font-bold text-lg mb-2 text-[#082121]">Written by AK Prime Leadership</h4>
-            <p className="text-[#3a5a5a] text-sm mb-4 leading-relaxed">Our insights are drawn from decades of on-the-ground experience implementing technical systems and operational strategies across Pan-Africa.</p>
+            <p className="text-[#3a5a5a] text-sm mb-4 leading-relaxed">Our insights are drawn from decades of on-the-ground experience implementing technical systems and operational strategies across diverse industries.</p>
             <Link href="/contact" className="text-[#37B4B4] font-semibold hover:underline text-sm border-b border-[#37B4B4]/30 pb-0.5">
               Discuss this topic with an expert →
             </Link>

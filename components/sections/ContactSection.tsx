@@ -58,25 +58,25 @@ export function ContactSection() {
   };
 
   return (
-    <section className="py-24 section-light" id="contact">
+    <section className="py-16 lg:py-24 section-light" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-14 items-start">
 
           {/* Left — contact info */}
           <div>
             <span className="section-label-light mb-5 inline-block">GET IN TOUCH</span>
-            <h2 className="text-4xl font-bold mb-4" style={{ color: "#082121" }}>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: "#082121" }}>
               We'd love to hear about your challenge.
             </h2>
-            <p className="text-lg leading-relaxed mb-8" style={{ color: "#3a5a5a" }}>
-              Every conversation starts with listening. Tell us where you are, and we'll show you where you could be.
+            <p className="text-base leading-relaxed mb-6" style={{ color: "#3a5a5a" }}>
+              Whether you're in Nairobi, Mombasa or the Middle East — every conversation starts with listening. Tell us where you are, and we'll show you where you could be.
             </p>
 
             <div className="space-y-4 mb-8">
               {[
                 { icon: "📧", label: "Email", value: "hello@akprimeconsulting.com", href: "mailto:hello@akprimeconsulting.com" },
                 { icon: "📞", label: "Phone / WhatsApp", value: "+254 700 000 000", href: "tel:+254700000000" },
-                { icon: "📍", label: "Location", value: "Nairobi, Kenya · Pan-Africa Delivery" },
+                { icon: "📍", label: "Location", value: "Nairobi & Mombasa, Kenya · Middle East Coming Soon" },
                 { icon: "🕐", label: "Response Time", value: "Within 1 business day" },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
