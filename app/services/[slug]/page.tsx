@@ -34,7 +34,7 @@ export default async function ServicePage({ params }: Props) {
     <div className="bg-[#FFFFFF] min-h-screen">
       
       {/* 1. Hero Section (The Hook) - Glassmorphism Edit */}
-      <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 bg-[#0E3E3E] text-white overflow-hidden">
+      <section className="relative pt-14 pb-20 md:pt-20 md:pb-28 bg-[#0E3E3E] text-white overflow-hidden">
         {/* Glow Effects */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#37B4B4]/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#29E0C8]/5 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
@@ -46,21 +46,28 @@ export default async function ServicePage({ params }: Props) {
               <ArrowLeft size={16} />
               Back to Services Directory
             </Link>
-            <div className="flex flex-wrap items-center gap-3 text-xs md:text-sm font-medium mb-6 text-white/70">
-              <span className="px-3 py-1 rounded-full bg-[#37B4B4]/20 text-[#37B4B4] uppercase tracking-wider">{service.category}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-              <span className="text-white font-bold">{service.name}</span>
+            <div className="flex flex-wrap items-center gap-2 mb-6 text-xs md:text-sm font-medium">
+              <Link href="/services" className="pill-a inline-flex">
+                {service.category.split(" & ")[0]}
+              </Link>
+              <span className="pill-a inline-flex">
+                {service.name}
+              </span>
             </div>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 leading-[1.1]">
               {service.heroHeadline}
             </h1>
             <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light mb-8 max-w-xl">
               {service.shortDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="inline-flex items-center justify-center bg-[#37B4B4] text-[#082121] hover:bg-[#29E0C8] px-8 h-14 rounded-xl font-bold text-lg transition-colors cta-pulse shadow-lg shadow-[#37B4B4]/20">
-                {service.cta}
-                <ChevronRight size={20} className="ml-2" />
+              <Link href="/contact" className="pill-e cta-pulse shadow-lg shadow-[#37B4B4]/20">
+                <div className="pill-e-group">
+                  {service.cta}
+                  <div className="pill-e-icon">
+                    <ChevronRight size={16} />
+                  </div>
+                </div>
               </Link>
             </div>
           </div>
@@ -84,8 +91,8 @@ export default async function ServicePage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-12">
-            <h2 className="text-xs font-bold tracking-widest text-[#37B4B4] uppercase mb-4">The Challenge</h2>
-            <h3 className="text-2xl md:text-4xl font-bold text-[#082121] leading-tight max-w-3xl">
+            <h2 className="section-overline mb-4">The challenge</h2>
+            <h3 className="text-2xl md:text-4xl font-medium text-[#082121] leading-tight max-w-3xl">
               Why organizations struggle with {service.name}.
             </h3>
           </div>
@@ -111,17 +118,25 @@ export default async function ServicePage({ params }: Props) {
             
             <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-xs font-bold tracking-widest text-[#37B4B4] uppercase mb-3">The AK Prime Solution</h2>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight">
+                <h2 className="section-overline mb-3">The AK Prime solution</h2>
+                <h3 className="text-2xl md:text-3xl font-medium text-white mb-6 leading-tight">
                   How we fix it permanently.
                 </h3>
                 <p className="text-lg text-white/80 leading-relaxed font-light">
-                  {service.solution}
+                  {(() => {
+                    const keywords = ["automated", "efficiency", "security", "real-time", "modernise", "compliance", "visibility", "ROI", "impact"];
+                    return service.solution.split(" ").map((word, i) => {
+                      const isKeyword = keywords.some(k => word.toLowerCase().includes(k.toLowerCase()));
+                      return (
+                        <span key={i} className={isKeyword ? "text-[#37B4B4] font-medium" : ""}>{word}{" "}</span>
+                      );
+                    });
+                  })()}
                 </p>
               </div>
 
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-7 rounded-2xl">
-                 <h4 className="font-bold text-white text-base mb-5">Tangible Outcomes Expected:</h4>
+                 <h4 className="font-medium text-white text-base mb-5">Tangible outcomes expected:</h4>
                  <div className="space-y-4">
                    {service.outcomes.map((outcome, idx) => (
                     <div key={idx} className="flex items-start gap-3">
@@ -143,8 +158,8 @@ export default async function ServicePage({ params }: Props) {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
-             <h2 className="text-xs font-bold tracking-widest text-[#37B4B4] uppercase mb-4">Our Approach</h2>
-             <h3 className="text-2xl md:text-4xl font-bold text-[#082121] leading-tight mb-5">
+             <h2 className="section-overline mb-4">Our approach</h2>
+             <h3 className="text-2xl md:text-4xl font-medium text-[#082121] leading-tight mb-5">
                How we deliver {service.name}.
              </h3>
              <p className="text-lg text-[#3a5a5a] leading-relaxed">
@@ -153,21 +168,29 @@ export default async function ServicePage({ params }: Props) {
            </div>
 
            <div className="relative">
-              {/* Connector line for desktop */}
-              <div className="hidden lg:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-[#37B4B4]/20" />
               
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
                 {service.process.map((step, idx) => (
                   <div key={idx} className="relative z-10 group">
-                    <div className="w-16 h-16 bg-white border-4 border-[#F4FAFA] group-hover:border-[#37B4B4]/30 rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-6 shadow-xl shadow-[#37B4B4]/5 transition-all duration-300 relative">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-6 bg-[#37B4B4]/15 border border-[#37B4B4]/30 text-[#37B4B4] font-semibold text-base transition-all duration-300 group-hover:bg-[#37B4B4]/30 relative shadow-xl shadow-[#37B4B4]/5">
                        <div className="absolute inset-2 bg-[#37B4B4]/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
-                       <span className="text-[#082121] group-hover:text-[#37B4B4] font-bold text-xl relative z-10 transition-colors">
+                       <span className="relative z-10">
                          {idx + 1}
                        </span>
                     </div>
                     <div className="text-center lg:text-left">
-                      <h4 className="text-lg md:text-xl font-bold text-[#082121] mb-2 group-hover:text-[#37B4B4] transition-colors">{step.title}</h4>
-                      <p className="text-base text-[#3a5a5a] leading-relaxed">{step.desc}</p>
+                      <h4 className="text-lg md:text-xl font-medium text-[#082121] mb-2 group-hover:text-[#37B4B4] transition-colors">{step.title}</h4>
+                      <p className="text-base text-[#3a5a5a] leading-relaxed">
+                        {(() => {
+                          const keywords = ["rigorous", "structured", "zero disruption", "securely", "on time", "adoption", "transition"];
+                          return step.desc.split(" ").map((word, i) => {
+                            const isKeyword = keywords.some(k => word.toLowerCase().includes(k.toLowerCase()));
+                            return (
+                              <span key={i} className={isKeyword ? "text-[#082121] font-medium" : ""}>{word}{" "}</span>
+                            );
+                          });
+                        })()}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -182,14 +205,22 @@ export default async function ServicePage({ params }: Props) {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#37B4B4]/20 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-3xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-medium text-white mb-6 leading-tight">
             Ready to transform your {service.name}?
           </h2>
-          <p className="text-xl text-white/70 mb-10 font-light">
-            Deploy tools built for enterprise scale: {service.tools}
-          </p>
-          <Link href="/contact" className="inline-flex items-center justify-center bg-[#37B4B4] text-[#082121] hover:bg-[#29E0C8] px-10 h-16 rounded-xl font-bold text-lg transition-colors cta-pulse shadow-xl shadow-[#37B4B4]/20">
-            {service.cta}
+          <div className="flex flex-col items-center gap-3 mb-10">
+            <p className="text-white/50 text-sm">Deploy tools built for enterprise scale</p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {service.tools.split('·').map(t => <span key={t} className="pill-g">{t.trim()}</span>)}
+            </div>
+          </div>
+          <Link href="/contact" className="pill-e cta-pulse shadow-xl shadow-[#37B4B4]/20">
+            <div className="pill-e-group">
+              {service.cta}
+              <div className="pill-e-icon">
+                <ChevronRight size={16} />
+              </div>
+            </div>
           </Link>
         </div>
       </section>

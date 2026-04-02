@@ -2,26 +2,26 @@ import Link from "next/link";
 import Image from "next/image";
 
 const serviceLinks = [
-  { label: "ERP Implementation",        href: "/services#erp" },
-  { label: "AI Integration",            href: "/services#ai" },
-  { label: "Financial Management",      href: "/services#finance" },
-  { label: "Business Analysis",         href: "/services#ba" },
-  { label: "Audit Services",            href: "/services#audit" },
-  { label: "Bookkeeping",               href: "/services#bookkeeping" },
-  { label: "Risk & Compliance",         href: "/services#risk" },
-  { label: "Project Management",        href: "/services#pm" },
-  { label: "Digital Marketing",         href: "/services#marketing" },
-  { label: "Training Services",         href: "/services#training" },
+  { label: "ERP Implementation", href: "/services#erp" },
+  { label: "AI Integration", href: "/services#ai" },
+  { label: "Financial Management", href: "/services#finance" },
+  { label: "Business Analysis", href: "/services#ba" },
+  { label: "Audit Services", href: "/services#audit" },
+  { label: "Bookkeeping", href: "/services#bookkeeping" },
+  { label: "Risk & Compliance", href: "/services#risk" },
+  { label: "Project Management", href: "/services#pm" },
+  { label: "Digital Marketing", href: "/services#marketing" },
+  { label: "Training Services", href: "/services#training" },
 ];
 
 const companyLinks = [
-  { label: "About Us",        href: "/about" },
-  { label: "Case Studies",    href: "/case-studies" },
-  { label: "Industries",      href: "/industries" },
-  { label: "Insights",        href: "/insights" },
-  { label: "Contact",         href: "/contact" },
-  { label: "Privacy Policy",  href: "/privacy" },
-  { label: "Terms of Service",href: "/terms" },
+  { label: "About Us", href: "/about" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Industries", href: "/industries" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
 ];
 
 export function Footer() {
@@ -40,11 +40,11 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 group mb-5">
-              <Image 
-                src="/logo-primary.png" 
-                alt="AK Prime Consulting" 
-                width={100} 
-                height={32} 
+              <Image
+                src="/logo-primary.png"
+                alt="AK Prime Consulting"
+                width={100}
+                height={32}
                 className="h-8 w-auto object-contain transition-opacity group-hover:opacity-80"
               />
               <span className="text-white font-bold text-sm tracking-tight leading-tight">
@@ -62,7 +62,7 @@ export function Footer() {
 
           {/* Services links */}
           <div>
-            <h4 className="text-white font-semibold text-[0.75rem] mb-4 uppercase tracking-wider">Services</h4>
+            <h4 className="text-white font-semibold text-[0.85rem] mb-5">Services</h4>
             <ul className="space-y-2.5">
               {serviceLinks.map((l) => (
                 <li key={l.href}>
@@ -76,7 +76,7 @@ export function Footer() {
 
           {/* Company links */}
           <div>
-            <h4 className="text-white font-semibold text-[0.75rem] mb-4 uppercase tracking-wider">Company</h4>
+            <h4 className="text-white font-semibold text-[0.85rem] mb-5">Company</h4>
             <ul className="space-y-2.5">
               {companyLinks.map((l) => (
                 <li key={l.href}>
@@ -90,16 +90,16 @@ export function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="text-white font-semibold text-[0.75rem] mb-4 uppercase tracking-wider">Connect</h4>
+            <h4 className="text-white font-semibold text-[0.85rem] mb-5">Connect</h4>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:hello@akprimeconsulting.com" className="text-white/45 text-sm hover:text-[#37B4B4] transition-colors break-all">
-                  hello@akprimeconsulting.com
+                <a href="mailto:info@akprime.co.ke" className="text-white/45 text-sm hover:text-[#37B4B4] transition-colors break-all">
+                  info@akprime.co.ke
                 </a>
               </li>
               <li>
-                <a href="tel:+254700000000" className="text-white/45 text-sm hover:text-[#37B4B4] transition-colors">
-                  +254 700 000 000
+                <a href="tel:0118001001" className="text-white/45 text-sm hover:text-[#37B4B4] transition-colors">
+                  0118001001
                 </a>
               </li>
               <li className="text-white/45 text-sm">
@@ -108,7 +108,7 @@ export function Footer() {
             </ul>
 
             <div className="mt-6">
-              <p className="text-white/30 text-xs mb-3 uppercase tracking-wider">Free Resources</p>
+              <p className="text-white/30 text-xs mb-3 font-medium">Free resources</p>
               <Link
                 href="/resources"
                 className="inline-block text-xs px-4 py-2 rounded-lg border border-[#37B4B4]/30 text-[#37B4B4] hover:bg-[#37B4B4]/10 transition-colors"
@@ -126,7 +126,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="text-white/30 text-xs hover:text-white/60 transition-colors">Privacy Policy</Link>
-            <Link href="/terms"   className="text-white/30 text-xs hover:text-white/60 transition-colors">Terms of Service</Link>
+            <Link href="/terms" className="text-white/30 text-xs hover:text-white/60 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

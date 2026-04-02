@@ -11,21 +11,31 @@ import Image from "next/image";
 
 // ── Process steps ─────────────────────────────────────────────────────────────
 const steps = [
-  { num: "01", Icon: Lightbulb, title: "Understand",
-    desc: "We immerse ourselves in your business to uncover challenges and opportunities.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" },
-  { num: "02", Icon: Map, title: "Design",
-    desc: "Build the transformation roadmap — requirements, architecture, vendor selection.",
-    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop" },
-  { num: "03", Icon: Settings, title: "Implement",
-    desc: "Configure, migrate and deploy with formal change control and milestone gates.",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop" },
-  { num: "04", Icon: GraduationCap, title: "Train",
-    desc: "Role-based training, SOPs and knowledge transfer for full team adoption.",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?q=80&w=2070&auto=format&fit=crop" },
-  { num: "05", Icon: TrendingUp, title: "Scale",
-    desc: "30/60/90-day reviews, hypercare support and continuous optimisation.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" },
+  {
+    num: "01", Icon: Lightbulb, title: "Understand",
+    desc: <>We immerse ourselves in your business to uncover <span className="text-white font-medium">challenges and opportunities</span>.</>,
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    num: "02", Icon: Map, title: "Design",
+    desc: <>Build the <span className="text-white font-medium">transformation roadmap</span> — requirements, architecture, vendor selection.</>,
+    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    num: "03", Icon: Settings, title: "Implement",
+    desc: <><span className="text-white font-medium">Configure, migrate and deploy</span> with formal change control and milestone gates.</>,
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    num: "04", Icon: GraduationCap, title: "Train",
+    desc: <>Role-based training, SOPs and <span className="text-white font-medium">knowledge transfer</span> for full team adoption.</>,
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    num: "05", Icon: TrendingUp, title: "Scale",
+    desc: <>30/60/90-day reviews, hypercare support and <span className="text-white font-medium">continuous optimisation</span>.</>,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+  },
 ];
 
 // ── Map industries data to IndustryCardProps ──────────────────────────────────
@@ -43,17 +53,14 @@ export function IndustriesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <span className="section-label-light mb-4 inline-block">SECTORS WE SERVE</span>
+            <span className="section-overline mb-4 inline-block">Sectors we serve</span>
             <h2
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3"
-              style={{ color: "#082121", letterSpacing: "-0.02em" }}
+              className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] mb-3 text-[#082121]"
             >
-              <TextEffect preset="blur" per="word" as="span">
-                Solutions Built For Your Industry
-              </TextEffect>
+              Solutions built for your industry
             </h2>
             <p className="text-sm md:text-base max-w-xl mx-auto" style={{ color: "#5a7a7a" }}>
-              Deep expertise across eight sectors — from manufacturing and finance to healthcare and government.
+              Deep expertise across <span className="text-[#37B4B4] font-medium">eight sectors</span> — from <span className="text-[#082121] font-medium">manufacturing</span> and <span className="text-[#082121] font-medium">finance</span> to <span className="text-[#082121] font-medium">healthcare</span> and <span className="text-[#082121] font-medium">government</span>.
             </p>
           </div>
         </ScrollReveal>
@@ -73,11 +80,11 @@ export function IndustriesSection() {
   );
 }
 
-function GradientBorderCard({ 
-  step, 
-  className = "" 
-}: { 
-  step: { num: string; title: string; desc: string; Icon: any; image?: string };
+function GradientBorderCard({
+  step,
+  className = ""
+}: {
+  step: { num: string; title: string; desc: React.ReactNode; Icon: any; image?: string };
   className?: string;
 }) {
   return (
@@ -87,33 +94,33 @@ function GradientBorderCard({
           <div className="w-10 h-10 rounded-[10px] bg-[#37B4B4]/10 flex items-center justify-center text-[#37B4B4] group-hover:bg-[#37B4B4] group-hover:text-white transition-all duration-300">
             <step.Icon size={18} />
           </div>
-          <span className="text-xl font-black text-white/10 group-hover:text-[#37B4B4]/20 transition-colors">
+          <span className="text-xl font-medium text-white/10 group-hover:text-[#37B4B4]/20 transition-colors">
             {step.num}
           </span>
         </div>
 
         <div className="flex-1">
-          <h3 className="text-sm font-bold text-white mb-1.5 group-hover:text-[#37B4B4] transition-colors uppercase tracking-tight">
+          <h3 className="text-[30px] font-medium text-white mb-2 group-hover:text-[#37B4B4] transition-colors tracking-tight leading-[1.2]">
             {step.title}
           </h3>
-          <p className="text-[13px] text-white/60 group-hover:text-white/80 transition-colors leading-relaxed">
+          <p className="text-[16.5px] text-white/60 group-hover:text-white/80 transition-colors leading-relaxed">
             {step.desc}
           </p>
         </div>
 
         {/* Optional abstract image look */}
-        <div className="mt-3 transition-all duration-700">
-           <div className="h-28 w-full rounded-[10px] bg-[#0E3E3E] border border-white/5 relative overflow-hidden">
-             {step.image && (
-                <Image
-                  src={step.image}
-                  alt={step.title}
-                  fill
-                  className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                />
-             )}
-             <div className="absolute top-0 left-0 w-full h-full grid-bg opacity-15 group-hover:opacity-10 transition-opacity" />
-           </div>
+        <div className="mt-4 transition-all duration-700">
+          <div className="h-32 sm:h-36 w-full rounded-[10px] bg-[#0E3E3E] border border-white/5 relative overflow-hidden">
+            {step.image && (
+              <Image
+                src={step.image}
+                alt={step.title}
+                fill
+                className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+              />
+            )}
+            <div className="absolute top-0 left-0 w-full h-full grid-bg opacity-15 group-hover:opacity-10 transition-opacity" />
+          </div>
         </div>
       </div>
     </div>
@@ -127,11 +134,11 @@ export function ProcessSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-12">
-            <span className="section-label mb-4 inline-block">HOW WE WORK</span>
+            <span className="section-overline mb-4 inline-block">How we work</span>
             <h2
-              className="text-3xl sm:text-4xl font-black tracking-tight text-white uppercase leading-none"
+              className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] text-white mb-4"
             >
-              <TextEffect preset="blur" per="word" as="span">A Proven Delivery Framework</TextEffect>
+              A proven delivery framework
             </h2>
           </div>
         </ScrollReveal>
@@ -142,7 +149,7 @@ export function ProcessSection() {
           <ScrollReveal delay={0.1} className="md:col-span-3 lg:col-span-8">
             <GradientBorderCard step={steps[0]} />
           </ScrollReveal>
-          
+
           {/* Step 2: Normal */}
           <ScrollReveal delay={0.2} className="md:col-span-3 lg:col-span-4">
             <GradientBorderCard step={steps[1]} />
@@ -152,7 +159,7 @@ export function ProcessSection() {
           <ScrollReveal delay={0.3} className="md:col-span-3 lg:col-span-4">
             <GradientBorderCard step={steps[2]} />
           </ScrollReveal>
-          
+
           {/* Step 4: Normal */}
           <ScrollReveal delay={0.4} className="md:col-span-3 lg:col-span-4">
             <GradientBorderCard step={steps[3]} />

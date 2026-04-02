@@ -76,7 +76,7 @@ const CenterImage = ({ sectionHeight }: { sectionHeight: number }) => {
             <motion.span 
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-[#37B4B4] font-bold tracking-[0.3em] uppercase mb-4"
+                className="section-overline mb-4 block text-white/90"
             >
                 About AK Prime
             </motion.span>
@@ -84,9 +84,9 @@ const CenterImage = ({ sectionHeight }: { sectionHeight: number }) => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase leading-[0.9]"
+                className="text-4xl md:text-6xl lg:text-7xl font-medium text-white leading-[0.9]"
             >
-                Legacy of <br /> <span className="text-transparent border-t border-b border-white/20 px-2">Clarity</span>
+                Legacy of <br /> clarity
             </motion.h1>
         </div>
     </motion.div>
@@ -171,9 +171,9 @@ const OurJourney = () => {
         transition={{ ease: "easeInOut", duration: 0.75 }}
         className="mb-14"
       >
-        <span className="text-[#37B4B4] font-bold tracking-[0.2em] uppercase mb-4 block">Timeline</span>
-        <h2 className="text-3xl md:text-5xl font-black uppercase text-white leading-none">
-          Our Journey
+        <span className="section-overline block mb-4">Timeline</span>
+        <h2 className="text-3xl md:text-5xl font-medium text-white leading-none">
+          Our journey
         </h2>
       </motion.div>
       <JourneyItem title="Foundation" date="Nairobi, 2018" location="Headquarters" />
@@ -195,7 +195,7 @@ const JourneyItem = ({ title, date, location }: { title: string, date: string, l
       className="mb-9 flex items-center justify-between border-b border-white/10 px-3 pb-9 group hover:border-[#37B4B4]/50 transition-colors"
     >
       <div>
-        <p className="mb-1 text-xl md:text-3xl font-bold text-white group-hover:text-[#37B4B4] transition-colors">{title}</p>
+        <p className="mb-1 text-xl md:text-3xl font-medium text-white group-hover:text-[#37B4B4] transition-colors">{title}</p>
         <p className="text-xs uppercase text-white/40">{date}</p>
       </div>
       <div className="flex items-center gap-1.5 text-end text-sm uppercase text-white/40">

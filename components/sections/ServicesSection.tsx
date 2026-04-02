@@ -14,7 +14,7 @@ const services = [
   {
     icon: <Server size={28} strokeWidth={1.4} />,
     title: "ERP Implementation",
-    desc: "Unify finance, ops and data in one real-time system.",
+    desc: <>Unify <span className="text-white/80 font-medium">finance, ops and data</span> in one real-time system.</>,
     tools: ["Odoo", "SAP B1", "Dynamics 365"],
     href: "/services/erp-implementation",
     badge: { text: "Popular", bg: "#37B4B4" },
@@ -23,7 +23,7 @@ const services = [
   {
     icon: <Sparkles size={28} strokeWidth={1.4} />,
     title: "AI Integration & Automation",
-    desc: "Automate workflows and unlock predictive business intelligence.",
+    desc: <>Automate <span className="text-white/80 font-medium">workflows</span> and unlock predictive business <span className="text-white/80 font-medium">intelligence</span>.</>,
     tools: ["OpenAI", "Azure AI", "LangChain"],
     href: "/services/ai-integration-automation",
     badge: { text: "New", bg: "#29E0C8" },
@@ -32,7 +32,7 @@ const services = [
   {
     icon: <LayoutGrid size={28} strokeWidth={1.4} />,
     title: "Project Management",
-    desc: "On scope, on time, on budget — every engagement.",
+    desc: <><span className="text-white/80 font-medium">On scope, on time, on budget</span> — every engagement.</>,
     tools: ["MS Project", "Asana", "Jira"],
     href: "/services/project-management",
     badge: null,
@@ -41,7 +41,7 @@ const services = [
   {
     icon: <Activity size={28} strokeWidth={1.4} />,
     title: "Business Analysis",
-    desc: "Clear requirements that eliminate costly rework.",
+    desc: <>Clear <span className="text-white/80 font-medium">requirements</span> that eliminate costly rework.</>,
     tools: ["BPMN", "Jira", "Lucidchart"],
     href: "/services/business-analysis",
     badge: null,
@@ -50,7 +50,7 @@ const services = [
   {
     icon: <ShieldCheck size={28} strokeWidth={1.4} />,
     title: "Audit Services",
-    desc: "Independent assurance that reduces risk and builds trust.",
+    desc: <><span className="text-white/80 font-medium">Independent assurance</span> that reduces risk and builds trust.</>,
     tools: ["CaseWare", "ACL", "IDEA"],
     href: "/services/audit-assurance",
     badge: null,
@@ -59,7 +59,7 @@ const services = [
   {
     icon: <Receipt size={28} strokeWidth={1.4} />,
     title: "Bookkeeping",
-    desc: "Accurate, timely books that keep you tax-ready always.",
+    desc: <>Accurate, timely books that keep you <span className="text-white/80 font-medium">tax-ready</span> always.</>,
     tools: ["QuickBooks", "Xero", "Sage"],
     href: "/services/cloud-accounting",
     badge: null,
@@ -68,7 +68,7 @@ const services = [
   {
     icon: <ScanLine size={28} strokeWidth={1.4} />,
     title: "System & IT Audits",
-    desc: "Find ERP and security gaps before they find you.",
+    desc: <>Find <span className="text-white/80 font-medium">ERP and security gaps</span> before they find you.</>,
     tools: ["ERP Security", "Nessus", "Controls"],
     href: "/services/it-systems-audit",
     badge: null,
@@ -77,7 +77,7 @@ const services = [
   {
     icon: <PieChart size={28} strokeWidth={1.4} />,
     title: "Financial Management",
-    desc: "FP&A, forecasting and interim CFO support.",
+    desc: <><span className="text-white/80 font-medium">FP&A</span>, forecasting and interim <span className="text-white/80 font-medium">CFO support</span>.</>,
     tools: ["Power BI", "Excel", "Adaptive"],
     href: "/services/financial-management",
     badge: null,
@@ -86,7 +86,7 @@ const services = [
   {
     icon: <Banknote size={28} strokeWidth={1.4} />,
     title: "Cashflow Optimisation",
-    desc: "Improve liquidity without taking on new debt.",
+    desc: <>Improve <span className="text-white/80 font-medium">liquidity</span> without taking on new <span className="text-white/80 font-medium">debt</span>.</>,
     tools: ["Cash Forecasting", "Collections"],
     href: "/services/cashflow-optimisation",
     badge: null,
@@ -95,7 +95,7 @@ const services = [
   {
     icon: <GitMerge size={28} strokeWidth={1.4} />,
     title: "Company Restructuring",
-    desc: "Reorganise for efficiency, compliance and growth.",
+    desc: <>Reorganise for <span className="text-white/80 font-medium">efficiency, compliance and growth</span>.</>,
     tools: ["Org Design", "Tax", "Legal"],
     href: "/services/company-restructuring",
     badge: null,
@@ -103,12 +103,12 @@ const services = [
   },
   {
     icon: <Zap size={28} strokeWidth={1.4} />,
-    title: "Digital Marketing",
-    desc: "Drive leads and brand authority across digital channels.",
-    tools: ["Google Ads", "Meta", "HubSpot"],
-    href: "/services/digital-marketing",
+    title: "Financial Modelling",
+    desc: <><span className="text-white/80 font-medium">Decision-ready models</span> for fundraising and scale.</>,
+    tools: ["Excel", "Python", "Valuation"],
+    href: "/services/financial-modelling",
     badge: null,
-    color: "#29E0C8",
+    color: "#37B4B4",
   },
   {
     icon: <GraduationCap size={28} strokeWidth={1.4} />,
@@ -163,9 +163,9 @@ export function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <span className="section-label mb-3 inline-block">WHAT WE DO</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3" style={{ letterSpacing: "-0.02em" }}>
-              <TextEffect preset="blur" per="word" as="span">16 Integrated Service Lines</TextEffect>
+            <span className="section-overline mb-4 inline-block">What we do</span>
+            <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] text-white mb-3">
+              16 integrated service lines
             </h2>
             <p className="text-white/55 text-sm md:text-base max-w-xl mx-auto">
               From day-one bookkeeping to enterprise AI — every service delivers measurable ROI.
@@ -204,8 +204,8 @@ export function ServicesSection() {
                       </div>
                       {s.badge && (
                         <span
-                          className="text-[11px] font-bold px-3 py-1 rounded-full mt-1"
-                          style={{ background: s.badge.bg, color: "#082121" }}
+                          className="pill-a mt-1"
+                          style={{ background: s.badge.bg, color: "#082121", border: "none" }}
                         >
                           {s.badge.text}
                         </span>
@@ -231,8 +231,7 @@ export function ServicesSection() {
                       {s.tools.map((t) => (
                         <span
                           key={t}
-                          className="text-[#37B4B4] border border-[#37B4B4]/25 rounded-full px-2.5 py-1"
-                          style={{ fontSize: "0.7rem", fontWeight: 500 }}
+                          className="pill-g"
                         >
                           {t}
                         </span>

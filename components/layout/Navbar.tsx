@@ -106,15 +106,18 @@ export function Navbar() {
                   >
                     {/* Home */}
                     <NavigationMenuItem data-id="/">
-                      <Link href="/" legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={`px-4 py-2 rounded-lg text-[0.9375rem] font-medium transition-colors inline-flex items-center gap-1.5 ${pathname === "/" ? "text-[#37B4B4]" : "text-white/70 hover:text-white"
-                            }`}
-                        >
-                          <Home size={14} />
-                          Home
-                        </NavigationMenuLink>
-                      </Link>
+                      <NavigationMenuLink
+                        render={
+                          <Link
+                            href="/"
+                            className={`px-4 py-2 rounded-lg text-[0.9375rem] font-medium transition-colors inline-flex items-center gap-1.5 ${pathname === "/" ? "text-[#37B4B4]" : "text-white/70 hover:text-white"
+                              }`}
+                          />
+                        }
+                      >
+                        <Home size={14} />
+                        Home
+                      </NavigationMenuLink>
                     </NavigationMenuItem>
 
                     {/* Services Mega Menu */}
@@ -126,23 +129,25 @@ export function Navbar() {
                         <div className="grid grid-cols-2 gap-x-8 gap-y-6">
                           {CATEGORIES.map((category) => (
                             <div key={category}>
-                              <h3 className="text-sm font-bold tracking-widest text-[#37B4B4] uppercase mb-4 border-b border-white/10 pb-2">
+                              <h3 className="text-sm font-semibold text-[#37B4B4] mb-3 border-b border-white/10 pb-2">
                                 {category}
                               </h3>
                               <ul className="space-y-2">
-                                {servicesData.filter(s => s.category === category).map((service) => (
-                                  <li key={service.slug}>
-                                    <Link
-                                      href={`/services/${service.slug}`}
-                                      legacyBehavior passHref
-                                    >
-                                      <NavigationMenuLink className="group/link flex items-center justify-between py-1 text-base text-white/80 hover:text-white transition-colors w-full">
+                                  {servicesData.filter(s => s.category === category).map((service) => (
+                                    <li key={service.slug}>
+                                      <NavigationMenuLink
+                                        render={
+                                          <Link
+                                            href={`/services/${service.slug}`}
+                                            className="group/link flex items-center justify-between py-1 text-base text-white/80 hover:text-white transition-colors w-full"
+                                          />
+                                        }
+                                      >
                                         <span>{service.name}</span>
                                         <ChevronRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#37B4B4]" />
                                       </NavigationMenuLink>
-                                    </Link>
-                                  </li>
-                                ))}
+                                    </li>
+                                  ))}
                               </ul>
                             </div>
                           ))}
@@ -168,19 +173,21 @@ export function Navbar() {
                       <NavigationMenuContent className="p-6 min-w-[650px] w-[740px] max-w-[calc(100vw-2rem)] bg-[#0E3E3E]/95 backdrop-blur-xl border border-white/10 rounded-[18px] shadow-2xl">
                         <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                           {industriesData.map((industry) => (
-                            <Link
+                            <NavigationMenuLink
                               key={industry.slug}
-                              href={`/industries/${industry.slug}`}
-                              legacyBehavior passHref
+                              render={
+                                <Link
+                                  href={`/industries/${industry.slug}`}
+                                  className="group/link flex flex-col p-3.5 rounded-[12px] hover:bg-white/5 transition-colors border border-transparent hover:border-white/10 w-full text-left"
+                                />
+                              }
                             >
-                              <NavigationMenuLink className="group/link flex flex-col p-3.5 rounded-[12px] hover:bg-white/5 transition-colors border border-transparent hover:border-white/10 w-full text-left">
-                                <div className="flex items-center justify-between mb-1 w-full">
-                                  <span className="text-base font-bold text-white group-hover/link:text-[#37B4B4] transition-colors">{industry.name}</span>
-                                  <ChevronRight size={16} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#37B4B4]" />
-                                </div>
-                                <span className="text-sm text-white/60 leading-relaxed line-clamp-1">{industry.shortDescription}</span>
-                              </NavigationMenuLink>
-                            </Link>
+                              <div className="flex items-center justify-between mb-1 w-full">
+                                <span className="text-base font-bold text-white group-hover/link:text-[#37B4B4] transition-colors">{industry.name}</span>
+                                <ChevronRight size={16} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#37B4B4]" />
+                              </div>
+                              <span className="text-sm text-white/60 leading-relaxed line-clamp-1">{industry.shortDescription}</span>
+                            </NavigationMenuLink>
                           ))}
                         </div>
                         {/* View All Industries link */}
@@ -199,16 +206,19 @@ export function Navbar() {
                     {/* Normal Links */}
                     {navLinks.map((link) => (
                       <NavigationMenuItem key={link.href} data-id={link.href}>
-                        <Link href={link.href} legacyBehavior passHref>
-                          <NavigationMenuLink
-                            className={`px-4 py-2 rounded-lg text-[0.9375rem] font-medium transition-colors whitespace-nowrap inline-flex items-center justify-center ${pathname.startsWith(link.href)
-                                ? "text-[#37B4B4]"
-                                : "text-white/70 hover:text-white"
-                              }`}
-                          >
-                            {link.label}
-                          </NavigationMenuLink>
-                        </Link>
+                        <NavigationMenuLink
+                          render={
+                            <Link
+                              href={link.href}
+                              className={`px-4 py-2 rounded-lg text-[0.9375rem] font-medium transition-colors whitespace-nowrap inline-flex items-center justify-center ${pathname.startsWith(link.href)
+                                  ? "text-[#37B4B4]"
+                                  : "text-white/70 hover:text-white"
+                                }`}
+                            />
+                          }
+                        >
+                          {link.label}
+                        </NavigationMenuLink>
                       </NavigationMenuItem>
                     ))}
                   </AnimatedBackground>
@@ -288,7 +298,7 @@ export function Navbar() {
                       <div className="pl-5 pr-2 space-y-6 border-l border-white/10 ml-5 py-2">
                         {CATEGORIES.map((cat) => (
                           <div key={cat}>
-                            <div className="text-xs font-bold tracking-widest uppercase text-[#37B4B4] mb-3">{cat}</div>
+                            <div className="text-xs font-semibold text-[#37B4B4] mb-3">{cat}</div>
                             <ul className="space-y-2">
                               {servicesData.filter(s => s.category === cat).map((service) => (
                                 <li key={service.slug}>

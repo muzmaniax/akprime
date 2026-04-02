@@ -154,7 +154,7 @@ export const industriesData: Industry[] = [
     name: "Education",
     shortDescription: "Student information systems, finance automation",
     heroHeadline: "Scale Academic Excellence with Automated Administration.",
-    photo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80",
+    photo: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=80",
     challenges: [
       "Disconnect between student enrollment systems and fee collection ledgers.",
       "Manual alumni tracking and engagement limiting fundraising potential.",

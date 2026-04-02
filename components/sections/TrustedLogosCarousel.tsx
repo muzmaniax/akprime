@@ -11,8 +11,8 @@ export function TrustedLogosCarousel() {
   return (
     <section className="py-8 bg-[#ffffff] border-b border-gray-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
-        <p className="text-sm font-semibold tracking-widest uppercase text-[#3a5a5a]">
-          Trusted by Industry Leaders
+        <p className="text-sm font-medium text-[#3a5a5a]">
+          Trusted by leading organisations
         </p>
       </div>
 

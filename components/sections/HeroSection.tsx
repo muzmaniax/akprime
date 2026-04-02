@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { TrendingUp, CheckCircle2 } from "lucide-react";
+import { TrendingUp, CheckCircle2, Globe2, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import Link from "next/link";
@@ -80,51 +80,57 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
           {/* ── Left text col (Constrained) ── */}
           <div className="lg:col-span-8 xl:col-span-8 relative z-20">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-              <span className="section-label mb-3 inline-block">🌍 Global Business Consulting — Africa & Middle East</span>
+              <span className="section-overline mb-5 inline-flex items-center gap-2">
+                <Globe2 size={14} /> 
+                Global business consulting — Africa & Middle East
+              </span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
-              className="text-[2.75rem] sm:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.08] tracking-[-0.03em] mb-3 whitespace-normal lg:whitespace-nowrap"
+              className="text-3xl sm:text-5xl lg:text-[4rem] font-medium text-white leading-[1.05] tracking-tighter mb-4 whitespace-normal"
             >
-              Modernise Your<br />
+              Modernise your<br />
               <Sparkles color="#29E0C8" count={6}>
-                <span className="text-[#37B4B4]">Business Operations</span>
+                <span className="text-[#37B4B4]">business operations</span>
               </Sparkles><br />
               <TextEffect as="span" preset="fade" per="word" className="inline">
-                With AI, ERP &amp; Strategic Advisory
+                with AI, ERP &amp; strategic advisory
               </TextEffect>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.22 }}
-              className="text-white/60 text-base md:text-lg leading-relaxed max-w-[500px] mb-4 font-light"
+              initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.2 }}
+              className="text-lg lg:text-xl text-white/60 leading-relaxed max-w-xl mb-10"
             >
-              AK Prime Consulting helps organisations across Africa and the Middle East replace fragmented systems, automate workflows, and build data-driven operations through ERP implementation, AI integration, and financial transformation.
+              Headquartered in <span className="text-[#37B4B4] font-medium">Nairobi</span> with a branch in <span className="text-[#37B4B4] font-medium">Mombasa</span>, we provide world-class tech advisory across <span className="text-white font-medium">Africa</span> and the <span className="text-white font-medium">Middle East</span>.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.32 }}
-              className="flex flex-row items-center gap-4 mb-4"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-6"
             >
-              <Button
+              <button
                 onClick={onBooking}
-                className="bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-semibold px-7 py-3 rounded-[12px] text-base cta-pulse transition-all h-12"
+                className="pill-e cta-pulse"
               >
-                Book a Strategy Consultation →
-              </Button>
+                <div className="pill-e-group">
+                  Book strategy consultation
+                  <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
+                </div>
+              </button>
               <a
                 href="#services"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="inline-flex items-center justify-center border border-[#37B4B4]/40 text-white hover:bg-[#37B4B4]/10 hover:border-[#37B4B4] px-7 py-3 rounded-[12px] text-base bg-transparent transition-colors h-12 cursor-pointer"
+                className="pill-f"
               >
-                Explore Services
+                Explore services
               </a>
             </motion.div>
 
@@ -176,7 +182,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
                     <div>
                       <div className="flex items-center gap-1.5 mb-1">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                        <span className="text-white/50 text-xs uppercase tracking-wider">Live Data</span>
+                        <span className="pill-d !text-[10px] !h-6 !px-3 font-semibold !text-white/40 border-white/10">Live data</span>
                       </div>
                       <p className="text-white font-semibold text-sm">Operations Dashboard</p>
                     </div>
@@ -245,8 +251,8 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
                 }}
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-base">📈</span>
-                  <span className="text-white text-xs font-semibold whitespace-nowrap">ERP Go-Live On Track</span>
+                  <TrendingUp size={16} className="text-[#37B4B4]" />
+                  <span className="text-white text-xs font-semibold whitespace-nowrap">ERP go-live on track</span>
                 </div>
               </motion.div>
 
@@ -262,7 +268,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
                 }}
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-base">🤖</span>
+                  <Bot size={16} className="text-[#37B4B4]" />
                   <span className="text-white text-xs font-semibold whitespace-nowrap">AI workflows active: 24</span>
                 </div>
               </motion.div>

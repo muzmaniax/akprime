@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const schema = z.object({
   firstName:   z.string().min(1, "Required"),
@@ -27,8 +28,8 @@ const serviceOptions = [
 
 const budgetOptions = ["Under $10k","$10k–$50k","$50k–$200k","$200k+"];
 
-const inputCls = "w-full px-3 py-2.5 rounded-xl border text-sm outline-none transition-colors focus:border-[#37B4B4] focus:ring-2 focus:ring-[#37B4B4]/20 bg-[#F4FAFA]";
-const labelCls = "block text-xs font-semibold uppercase tracking-wider mb-1.5";
+const inputCls = "w-full min-h-[44px] px-3 py-2.5 rounded-xl border text-sm outline-none transition-colors focus:border-[#37B4B4] focus:ring-2 focus:ring-[#37B4B4]/20 bg-[#F4FAFA]";
+const labelCls = "block text-[13px] font-medium mb-2";
 
 export function ContactSection() {
   const [loading, setLoading] = useState(false);
@@ -64,34 +65,34 @@ export function ContactSection() {
 
           {/* Left — contact info */}
           <div>
-            <span className="section-label-light mb-5 inline-block">GET IN TOUCH</span>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: "#082121" }}>
+            <span className="section-overline mb-5 inline-block">Get in touch</span>
+            <h2 className="text-2xl sm:text-3xl font-medium mb-3" style={{ color: "#082121" }}>
               We'd love to hear about your challenge.
             </h2>
             <p className="text-base leading-relaxed mb-6" style={{ color: "#3a5a5a" }}>
-              Whether you're in Nairobi, Mombasa or the Middle East — every conversation starts with listening. Tell us where you are, and we'll show you where you could be.
+              Whether you're in <span className="text-[#37B4B4] font-medium">Nairobi</span>, <span className="text-[#37B4B4] font-medium">Mombasa</span> or the <span className="text-[#37B4B4] font-medium">Middle East</span> — every conversation starts with <span className="text-[#082121] font-medium">listening</span>. Tell us where you are, and we'll show you where you could be.
             </p>
 
             <div className="space-y-4 mb-8">
               {[
-                { icon: "📧", label: "Email", value: "hello@akprimeconsulting.com", href: "mailto:hello@akprimeconsulting.com" },
-                { icon: "📞", label: "Phone / WhatsApp", value: "+254 700 000 000", href: "tel:+254700000000" },
-                { icon: "📍", label: "Location", value: "Nairobi & Mombasa, Kenya · Middle East Coming Soon" },
-                { icon: "🕐", label: "Response Time", value: "Within 1 business day" },
+                { icon: Mail, label: "Email", value: "info@akprime.co.ke", href: "mailto:info@akprime.co.ke" },
+                { icon: Phone, label: "Phone / WhatsApp", value: "0118001001", href: "tel:0118001001" },
+                { icon: MapPin, label: "Location", value: "Nairobi & Mombasa, Kenya · Middle East Coming Soon" },
+                { icon: Clock, label: "Response Time", value: "Within 1 business day" },
               ].map((item) => (
-                <div key={item.label} className="flex items-start gap-4">
+                <div key={item.label} className="flex items-start gap-5">
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
-                    style={{ background: "rgba(55,180,180,.08)", border: "1px solid rgba(55,180,180,.2)" }}
+                    className="w-11 h-11 rounded-2xl flex items-center justify-center text-[#37B4B4] shrink-0"
+                    style={{ background: "rgba(55,180,180,.1)", border: "1px solid rgba(55,180,180,.2)" }}
                   >
-                    {item.icon}
+                    <item.icon size={22} strokeWidth={1.5} />
                   </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: "#37B4B4" }}>{item.label}</p>
+                  <div className="flex flex-col items-start gap-2 pt-0.5">
+                    <span className="pill-a">{item.label}</span>
                     {item.href ? (
-                      <a href={item.href} className="text-sm hover:text-[#37B4B4] transition-colors" style={{ color: "#082121" }}>{item.value}</a>
+                      <a href={item.href} className="text-[15px] font-medium hover:text-[#37B4B4] transition-colors" style={{ color: "#082121" }}>{item.value}</a>
                     ) : (
-                      <p className="text-sm" style={{ color: "#082121" }}>{item.value}</p>
+                      <p className="text-[15px] font-medium" style={{ color: "#082121" }}>{item.value}</p>
                     )}
                   </div>
                 </div>
@@ -107,8 +108,7 @@ export function ContactSection() {
               <p className="text-sm mb-4" style={{ color: "#3a5a5a" }}>ERP Checklist · AI Strategy Guide · Cashflow Playbook</p>
               <a
                 href="/resources"
-                className="inline-block text-sm font-semibold px-5 py-2 rounded-xl border transition-colors"
-                style={{ border: "1px solid rgba(55,180,180,.4)", color: "#37B4B4" }}
+                className="pill-a !h-10 !px-6 !text-sm hover:bg-[#37B4B4] hover:text-white transition-colors duration-300"
               >
                 Download Free Guides →
               </a>
@@ -187,10 +187,16 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3.5 rounded-xl text-sm font-semibold transition-colors cta-pulse disabled:opacity-60"
-                style={{ background: "#37B4B4", color: "#082121" }}
+                className="pill-e cta-pulse disabled:opacity-60 w-full"
               >
-                {loading ? "Sending…" : "Send Message →"}
+                <div className="pill-e-group w-full justify-center">
+                  {loading ? "Sending…" : "Send message"}
+                  {loading ? null : (
+                    <div className="pill-e-icon">
+                      <span>→</span>
+                    </div>
+                  )}
+                </div>
               </button>
             </form>
           </div>

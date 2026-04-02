@@ -1,8 +1,8 @@
 "use client";
 
-import { use, useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Zap } from "lucide-react";
+import { use, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, Zap, Quote } from "lucide-react";
 import Link from "next/link";
 import { caseStudies } from "@/data/case-studies";
 import { BookingModal } from "@/components/ui/BookingModal";
@@ -18,46 +18,43 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
 
   return (
     <main className="bg-[#F4FAFA] min-h-screen font-sans selection:bg-[#37B4B4]/30 selection:text-[#37B4B4] pb-24 overflow-x-hidden">
-      {/* Back Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#082121]/5 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <Link 
-            href="/case-studies" 
-            className="group inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-[#082121]/40 hover:text-[#37B4B4] transition-all"
-          >
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-            Back to Case Studies
-          </Link>
-          <div className="hidden sm:flex items-center gap-4">
-               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#37B4B4] font-mono">{study.industry}</span>
-               <span className="w-1 h-1 rounded-full bg-[#082121]/10" />
-               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#082121]/40 font-mono">{study.solution}</span>
-          </div>
-        </div>
-      </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 border-b border-[#082121]/5">
+      {/* Back Link */}
+      <div className="pt-10 lg:pt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link
+          href="/case-studies"
+          className="group inline-flex items-center gap-2 text-sm font-medium text-[#082121]/50 hover:text-[#37B4B4] transition-all"
+        >
+          <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
+          Back to case studies
+        </Link>
+      </div>
+
+      {/* Hero */}
+      <section className="pt-6 pb-14 lg:pt-8 lg:pb-20 border-b border-[#082121]/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="max-w-4xl">
-              <h1 className="text-4xl lg:text-7xl font-black text-[#082121] uppercase tracking-tighter leading-[0.95] mb-10">
+              {/* Category pill */}
+              <span className="section-overline mb-6">{study.industry}</span>
+              <h1 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium text-[#082121] tracking-tighter leading-[1.05] mt-6 mb-8">
                 {study.title}
               </h1>
-              <div className="flex flex-wrap gap-8 text-[11px] uppercase font-bold tracking-[0.2em] text-[#082121]/40 font-mono">
-                <div className="space-y-1">
-                  <div className="text-[#37B4B4]">Client</div>
-                  <div className="text-[#082121]">{study.client}</div>
+              {/* Meta row */}
+              <div className="flex flex-wrap gap-6 text-sm text-[#082121]/50">
+                <div>
+                  <span className="text-[#37B4B4] font-medium">Client</span>&nbsp;&nbsp;
+                  <span className="font-medium text-[#082121]">{study.client}</span>
                 </div>
-                <div className="w-px h-8 bg-[#082121]/10 hidden sm:block" />
-                <div className="space-y-1">
-                  <div className="text-[#37B4B4]">Industry</div>
-                  <div className="text-[#082121]">{study.industry}</div>
+                <div className="w-px h-4 bg-[#082121]/15 self-center hidden sm:block" />
+                <div>
+                  <span className="text-[#37B4B4] font-medium">Region</span>&nbsp;&nbsp;
+                  <span className="font-medium text-[#082121]">{study.location}</span>
                 </div>
-                <div className="w-px h-8 bg-[#082121]/10 hidden sm:block" />
-                <div className="space-y-1">
-                  <div className="text-[#37B4B4]">Region</div>
-                  <div className="text-[#082121]">{study.location}</div>
+                <div className="w-px h-4 bg-[#082121]/15 self-center hidden sm:block" />
+                <div>
+                  <span className="text-[#37B4B4] font-medium">Duration</span>&nbsp;&nbsp;
+                  <span className="font-medium text-[#082121]">{study.duration}</span>
                 </div>
               </div>
             </div>
@@ -65,108 +62,128 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
         </div>
       </section>
 
-      {/* Main Content Layout */}
-      <div className="pt-16 lg:pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[360px_1fr] gap-12 lg:gap-24">
-          
-          {/* Sidebar */}
-          <aside className="space-y-10">
-            <div className="p-8 lg:p-10 bg-white rounded-3xl border border-[#082121]/5 shadow-sm space-y-10 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-[#37B4B4]/20" />
-              <div className="space-y-2">
-                <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#082121]/30 font-mono">Service:</h5>
-                <p className="text-lg font-black text-[#082121] uppercase tracking-tight leading-tight">{study.solution}</p>
-              </div>
-              <div className="space-y-2">
-                <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#082121]/30 font-mono">Client:</h5>
-                <p className="text-lg font-black text-[#082121] uppercase tracking-tight leading-tight">{study.client}</p>
-              </div>
-              <div className="space-y-2">
-                <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#082121]/30 font-mono">Duration:</h5>
-                <p className="text-lg font-black text-[#082121] uppercase tracking-tight leading-tight">{study.duration}</p>
-              </div>
-              <div className="space-y-2">
-                <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#082121]/30 font-mono">Completion:</h5>
-                <p className="text-lg font-black text-[#082121] uppercase tracking-tight leading-tight">{study.date}</p>
+      {/* Two-column body */}
+      <div className="pt-14 lg:pt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[340px_1fr] gap-10 lg:gap-20">
+
+          {/* ── Sidebar ── */}
+          <aside className="space-y-8 order-2 lg:order-1 lg:sticky lg:top-28 self-start">
+
+            {/* Info card */}
+            <div className="rounded-2xl bg-white border border-[#082121]/8 shadow-sm overflow-hidden">
+              <div className="h-1 bg-gradient-to-r from-[#37B4B4] to-[#29E0C8]" />
+              <div className="p-6 space-y-5">
+                {[
+                  { label: "Service", value: study.solution },
+                  { label: "Client", value: study.client },
+                  { label: "Duration", value: study.duration },
+                  { label: "Completed", value: study.date },
+                ].map(({ label, value }) => (
+                  <div key={label} className="flex justify-between items-start gap-4 text-sm">
+                    <span className="text-[#082121]/40 font-medium shrink-0">{label}</span>
+                    <span className="font-medium text-[#082121] text-right">{value}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-xl border border-white/80 group">
-              <img 
-                src={study.testimonial.image} 
+            {/* Testimonial portrait card */}
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-md border border-white/80">
+              <img
+                src={study.testimonial.image}
                 alt={study.testimonial.name}
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-80" 
+                className="absolute inset-0 w-full h-full object-cover brightness-75"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/90 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 p-8 bg-white/10 backdrop-blur-3xl rounded-[24px] border border-white/20 shadow-2xl">
-                 <div className="flex items-center justify-between gap-4 mb-4">
-                    <div>
-                      <h6 className="text-[13px] font-black text-white tracking-tight uppercase leading-none mb-1">{study.testimonial.name}</h6>
-                      <p className="text-[9px] font-bold text-[#37B4B4] uppercase tracking-widest font-mono">{study.testimonial.role}</p>
-                    </div>
-                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#082121]">
-                      <ArrowUpRight size={14} />
-                    </div>
-                 </div>
-                 <p className="text-white/80 text-[12px] font-bold leading-relaxed tracking-tight line-clamp-3">
-                   "{study.testimonial.quote}"
-                 </p>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/90 via-[#082121]/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 backdrop-blur-sm bg-white/8 border-t border-white/10">
+                <Quote size={18} className="text-[#37B4B4] mb-3" />
+                <p className="text-white/85 text-sm leading-relaxed italic mb-4 line-clamp-3">
+                  "{study.testimonial.quote}"
+                </p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-white text-sm font-medium">{study.testimonial.name}</p>
+                    <p className="text-[#37B4B4] text-xs">{study.testimonial.role}</p>
+                  </div>
+                  <div className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center text-white">
+                    <ArrowUpRight size={13} />
+                  </div>
+                </div>
               </div>
             </div>
 
-            <button onClick={() => setBookingOpen(true)} className="w-full bg-[#082121] text-white py-5 rounded-2xl font-black text-[11px] uppercase tracking-[0.3em] overflow-hidden relative group">
-              <div className="absolute inset-0 bg-[#37B4B4] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-              <span className="relative z-10 group-hover:text-[#082121] transition-colors">Start Assessment</span>
+            {/* CTA */}
+            <button onClick={() => setBookingOpen(true)} className="pill-e w-full">
+              <div className="pill-e-group">
+                Start your assessment
+                <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
+              </div>
             </button>
           </aside>
 
-          {/* Body */}
-          <div className="space-y-20 lg:space-y-32">
+          {/* ── Main body ── */}
+          <div className="space-y-16 lg:space-y-24 order-1 lg:order-2">
+
+            {/* The challenge */}
             <ScrollReveal>
-              <section className="space-y-10">
-                <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
-                  <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#37B4B4] font-mono">THE CHALLENGE</span>
-                </div>
-                <h2 className="text-3xl lg:text-5xl font-black text-[#082121] uppercase tracking-tighter leading-[0.95] max-w-3xl">
-                  Disrupting Inefficiency with Unified Systems.
+              <section className="space-y-5">
+                <span className="section-overline">The challenge</span>
+                <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-medium text-[#082121] tracking-tighter leading-[1.1] max-w-2xl mt-4">
+                  {study.title}
                 </h2>
-                <p className="text-lg lg:text-xl text-[#082121]/60 leading-relaxed font-medium max-w-2xl">
-                  {study.narrative.problem}
+                <p className="text-base lg:text-lg text-[#082121]/65 leading-relaxed max-w-2xl">
+                  {(() => {
+                    const keywords = ["manual", "fragmented", "reconciliation", "visibility", "inefficiency", "siloed", "risk", "errors"];
+                    return study.narrative.problem.split(" ").map((word, i) => {
+                      const isKeyword = keywords.some(k => word.toLowerCase().includes(k.toLowerCase()));
+                      return (
+                        <span key={i} className={isKeyword ? "text-[#082121] font-medium" : ""}>{word}{" "}</span>
+                      );
+                    });
+                  })()}
                 </p>
               </section>
             </ScrollReveal>
 
+            {/* The approach */}
             <ScrollReveal delay={0.1}>
-              <section className="space-y-20">
-                <div className="flex items-center gap-6">
-                  <div className="w-12 h-px bg-[#37B4B4]" />
-                  <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#37B4B4] font-mono">The Approach</span>
-                </div>
-                <div className="space-y-10 lg:space-y-12">
-                   {study.narrative.approach.map((step, idx) => (
-                      <div key={idx} className="space-y-4">
-                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#082121]/5 border border-[#082121]/10">
-                           <div className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
-                           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#082121]/40 font-mono leading-none pt-[1px]">
-                             0{idx + 1} // {step.title}
-                           </span>
-                         </div>
-                         <div className="space-y-4">
-                            <p className="text-2xl lg:text-4xl text-[#082121] font-black uppercase tracking-tighter leading-[0.9] max-w-2xl">
-                              {step.description}
-                            </p>
-                            <ul className="space-y-2">
-                               {step.points.map((p, pIdx) => (
-                                 <li key={pIdx} className="flex gap-4 items-start text-sm lg:text-base font-bold text-[#082121]/60 leading-relaxed max-w-2xl">
-                                    <div className="mt-2 w-1 h-1 rounded-full bg-[#37B4B4] shrink-0" />
-                                    {p}
-                                 </li>
-                               ))}
-                            </ul>
-                         </div>
+              <section className="space-y-10">
+                <span className="section-overline">The approach</span>
+                <div className="space-y-10 mt-4">
+                  {study.narrative.approach.map((step, idx) => (
+                    <div key={idx} className="flex gap-5">
+                      {/* Step number */}
+                      <div className="shrink-0 w-8 h-8 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20 flex items-center justify-center text-[#37B4B4] text-sm font-medium">
+                        {String(idx + 1).padStart(2, "0")}
                       </div>
-                   ))}
+                      <div className="space-y-3 pt-1">
+                        <h3 className="text-lg font-medium text-[#082121] leading-snug">
+                          {step.title}
+                        </h3>
+                        <p className="text-base text-[#082121]/60 leading-relaxed">
+                          {(() => {
+                            const keywords = ["automated", "streamlined", "integrated", "unified", "cleansing", "real-time", "visibility", "compliance"];
+                            return step.description.split(" ").map((word, i) => {
+                              const isKeyword = keywords.some(k => word.toLowerCase().includes(k.toLowerCase()));
+                              return (
+                                <span key={i} className={isKeyword ? "text-[#082121] font-medium" : ""}>{word}{" "}</span>
+                              );
+                            });
+                          })()}
+                        </p>
+                        {step.points?.length > 0 && (
+                          <ul className="space-y-2 mt-2">
+                            {step.points.map((p, pIdx) => (
+                              <li key={pIdx} className="flex gap-3 items-start text-sm text-[#082121]/65 leading-relaxed">
+                                <CheckCircle2 size={15} className="text-[#37B4B4] shrink-0 mt-0.5" />
+                                {p}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </section>
             </ScrollReveal>
@@ -174,76 +191,77 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
         </div>
       </div>
 
-      {/* Results Section - Redone & Wider */}
-      <section className="mt-32 lg:mt-56 relative border-y border-[#082121]/5 overflow-hidden">
-         <div className="bg-[#082121] py-32 lg:py-48 px-4 sm:px-6 lg:px-8 relative">
-            {/* Background Texture/Accent */}
-            <div className="absolute top-0 right-0 p-32 text-[#37B4B4]/5 pointer-events-none">
-              <CheckCircle2 size={500} strokeWidth={0.2} />
-            </div>
+      {/* Results section */}
+      <section className="mt-24 lg:mt-36 bg-[#082121] py-20 lg:py-32 relative overflow-hidden">
+        {/* Subtle background accent */}
+        <div className="absolute top-0 right-0 p-24 text-[#37B4B4]/5 pointer-events-none">
+          <CheckCircle2 size={400} strokeWidth={0.3} />
+        </div>
 
-            <div className="max-w-7xl mx-auto mb-24 relative z-10">
-               <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20 mb-12">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
-                  <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#37B4B4] font-mono">THE QUANTIFIED OUTCOME</span>
-               </div>
-               <h2 className="text-4xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9] max-w-4xl">
-                 {study.narrative.outcome}
-               </h2>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <ScrollReveal>
+            <span className="section-overline mb-8">Quantified outcome</span>
+            <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium text-white tracking-tighter leading-[1.05] max-w-4xl mt-6 mb-14">
+              {(() => {
+                const keywords = ["Revenue", "Growth", "Impact", "Efficiency", "Automated", "65%", "40%", "Results:"];
+                return study.narrative.outcome.split(" ").map((word, i) => {
+                  const isKeyword = keywords.some(k => word.includes(k));
+                  return (
+                    <span key={i} className={isKeyword ? "text-[#37B4B4]" : ""}>{word}{" "}</span>
+                  );
+                });
+              })()}
+            </h2>
+          </ScrollReveal>
 
-            {/* Stats Ticker / Wide Row */}
-            <div className="relative -mx-4 sm:-mx-6 lg:-mx-[calc((100vw-min(1280px,100%))/2)] w-screen overflow-hidden py-12 border-t border-b border-white/10 group">
-               <div className="flex gap-20 lg:gap-32 px-20">
-                  <div className="flex gap-20 lg:gap-40 animate-ticker grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700">
-                    {/* Double mapping for seamless scroll if needed, but here we just showcase it as a list first */}
-                    {[...study.metrics, ...study.metrics].map((m, idx) => (
-                      <div key={idx} className="shrink-0 space-y-4">
-                        <motion.div 
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.6, delay: (idx % study.metrics.length) * 0.1 }}
-                          className="text-6xl lg:text-[160px] font-black text-[#37B4B4] tracking-tighter leading-none"
-                        >
-                          {m.value}
-                        </motion.div>
-                        <div className="text-[12px] font-black uppercase tracking-[0.4em] text-white/30 font-mono pl-2">{m.label}</div>
-                      </div>
-                    ))}
-                  </div>
-               </div>
-            </div>
+          {/* Metrics */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 lg:gap-20 py-14 border-t border-b border-white/10 mb-16">
+            {study.metrics.map((m, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="space-y-2"
+              >
+                <div className="text-5xl lg:text-7xl font-medium text-[#37B4B4] tracking-tighter leading-none">
+                  {m.value}
+                </div>
+                <div className="text-sm text-white/45 font-medium">{m.label}</div>
+              </motion.div>
+            ))}
+          </div>
 
-            <div className="max-w-7xl mx-auto mt-24 flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
-               <div className="flex items-center gap-10">
-                  <div className="w-16 h-16 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20 flex items-center justify-center text-[#37B4B4]">
-                    <Zap size={32} />
-                  </div>
-                  <div className="space-y-1">
-                    <h6 className="text-white font-black uppercase text-sm tracking-widest">Drive similar impact</h6>
-                    <p className="text-white/40 text-[12px] font-bold tracking-tight uppercase leading-relaxed max-w-sm">
-                      Our transformation frameworks are sector-agnostic and outcome-driven.
-                    </p>
-                  </div>
-               </div>
-               <button onClick={() => setBookingOpen(true)} className="w-full md:w-auto bg-[#37B4B4] text-[#082121] px-14 py-6 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white transition-all shadow-2xl shadow-[#37B4B4]/20">
-                 Book Discovery Session
-               </button>
+          {/* Bottom CTA row */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div className="flex items-center gap-5">
+              <div className="w-12 h-12 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20 flex items-center justify-center text-[#37B4B4]">
+                <Zap size={22} />
+              </div>
+              <div>
+                <p className="text-white font-medium text-sm">Drive similar impact</p>
+                <p className="text-white/40 text-sm leading-relaxed max-w-sm">
+                  Our frameworks are sector-agnostic and outcome-driven.
+                </p>
+              </div>
             </div>
-         </div>
+            <div className="flex gap-4">
+              <button onClick={() => setBookingOpen(true)} className="pill-e">
+                <div className="pill-e-group">
+                  Book discovery session
+                  <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
+                </div>
+              </button>
+              <Link href="/case-studies" className="pill-f">
+                View all cases
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
-
-      <style jsx global>{`
-        @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-ticker {
-          animation: ticker 40s linear infinite;
-        }
-      `}</style>
     </main>
   );
 }

@@ -145,7 +145,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "3 Days", label: "Month-End Close" },
       { value: "100%", label: "Audit Readiness" }
     ],
-    image: "https://images.unsplash.com/photo-1454165833767-021901996220?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
     category: "Finance"
   }
 ];

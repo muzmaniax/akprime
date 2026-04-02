@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useId, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import React, { useState, useEffect } from "react";
+import { motion } from "motion/react";
 
 interface Sparkle {
   id: string;
@@ -10,9 +10,10 @@ interface Sparkle {
   size: number;
   delay: number;
   duration: number;
+  repeatDelay: number;
 }
 
-function generateSparkle(count = 6): Sparkle[] {
+function generateSparkles(count = 6): Sparkle[] {
   return Array.from({ length: count }, (_, i) => ({
     id: `sparkle-${i}`,
     x: `${Math.random() * 100}%`,
@@ -20,6 +21,7 @@ function generateSparkle(count = 6): Sparkle[] {
     size: Math.floor(Math.random() * 12) + 6,
     delay: Math.random() * 2,
     duration: Math.random() * 1.5 + 1,
+    repeatDelay: Math.random() * 2 + 1,
   }));
 }
 
@@ -34,7 +36,11 @@ export function Sparkles({
   color?: string;
   count?: number;
 }) {
-  const sparkles = React.useMemo(() => generateSparkle(count), [count]);
+  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+
+  useEffect(() => {
+    setSparkles(generateSparkles(count));
+  }, [count]);
 
   return (
     <span className={`relative inline-block max-w-full whitespace-normal text-wrap break-words ${className ?? ""}`}>
@@ -53,7 +59,7 @@ export function Sparkles({
             duration: s.duration,
             delay: s.delay,
             repeat: Infinity,
-            repeatDelay: Math.random() * 2 + 1,
+            repeatDelay: s.repeatDelay,
           }}
         >
           <svg

@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Sparkles } from "@/components/ui-layouts/sparkles";
 import { BorderTrail } from "@/components/motion-primitives/border-trail";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    body: "AK Prime reduced our month-end close from 12 days to 3. The ERP implementation was smooth and the training meant our team actually adopted the system — not just learned it.",
+    body: <>The ERP implementation was <span className="text-[#37B4B4] font-medium">seamless</span>. We finally have a single source of truth for our entire operation.</>,
     name: "James M.",
     role: "CFO, Manufacturing Firm — Nairobi",
     initials: "JM",
@@ -34,7 +34,8 @@ const insights = [
     tag: "AI",
     readTime: "6 min read",
     date: "March 2026",
-    title: "How AI Is Transforming Finance Operations in Africa & Middle East",
+    quote: <>Working with AK Prime was a <span className="text-[#37B4B4] font-medium">complete transformation</span> for our logistics. Their technical depth and strategic advisory are world-class.</>,
+    title: "How AI is transforming finance operations in Africa & Middle East",
     excerpt: "From automated reconciliation to predictive cash forecasting.",
     href: "/insights/ai-finance-east-africa",
     featured: true,
@@ -44,7 +45,7 @@ const insights = [
     tag: "ERP",
     readTime: "8 min read",
     date: "February 2026",
-    title: "ERP Implementation: The 5 Mistakes Most Companies Make",
+    title: "ERP implementation: The 5 mistakes most companies make",
     excerpt: "Data migration failures. Scope creep. Low adoption. Here's what to avoid.",
     href: "/insights/erp-implementation-mistakes",
     featured: false,
@@ -54,7 +55,7 @@ const insights = [
     tag: "Finance",
     readTime: "5 min read",
     date: "January 2026",
-    title: "Cashflow Optimisation Strategies for Fast-Growing Businesses",
+    title: "Cashflow optimisation strategies for fast-growing businesses",
     excerpt: "Three working capital levers that unlock 30–60 days of cash.",
     href: "/insights/cashflow-optimisation",
     featured: false,
@@ -67,9 +68,9 @@ export function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-12">
-            <span className="section-label mb-4 inline-block">CLIENT OUTCOMES</span>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white uppercase leading-none">
-              <TextEffect preset="blur" per="word" as="span">What Our Clients Say</TextEffect>
+            <span className="section-overline mb-4 inline-block">Client outcomes</span>
+            <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] text-white">
+              What our clients say
             </h2>
           </div>
         </ScrollReveal>
@@ -84,9 +85,9 @@ export function TestimonialsSection() {
                     transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: i * 1.5 }}
                   />
                 {/* Stars */}
-                <div className="flex gap-0.5 mb-4">
+                <div className="flex gap-1 mb-4">
                   {Array.from({ length: 5 }).map((_, k) => (
-                    <span key={k} className="text-[#37B4B4] text-sm">★</span>
+                    <Star key={k} size={14} className="text-[#37B4B4] fill-[#37B4B4]" />
                   ))}
                 </div>
 
@@ -105,8 +106,8 @@ export function TestimonialsSection() {
                     {t.initials}
                   </div>
                   <div>
-                    <p className="font-bold text-sm text-white group-hover:text-[#37B4B4] transition-colors uppercase">{t.name}</p>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">{t.role}</p>
+                    <p className="font-semibold text-sm text-white group-hover:text-[#37B4B4] transition-colors">{t.name}</p>
+                    <p className="text-[11px] font-medium text-white/40">{t.role}</p>
                   </div>
                 </div>
               </div>
@@ -119,7 +120,7 @@ export function TestimonialsSection() {
 }
 
 // ── Figma Card/12-style Insight Card ─────────────────────────────────────────
-function InsightCard({ a, delay }: { a: typeof insights[0]; delay: number }) {
+function InsightCard({ a, delay }: { a: any; delay: number }) {
   return (
     <ScrollReveal delay={delay}>
       <Link href={a.href} className="block h-full">
@@ -153,8 +154,7 @@ function InsightCard({ a, delay }: { a: typeof insights[0]; delay: number }) {
             {/* Featured badge */}
             {a.featured && (
               <span
-                className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-3"
-                style={{ background: "#2563EB", color: "#fff", letterSpacing: "0.02em" }}
+                className="pill-b mb-3"
               >
                 Featured
               </span>
@@ -163,18 +163,16 @@ function InsightCard({ a, delay }: { a: typeof insights[0]; delay: number }) {
             {/* Meta row */}
             {!a.featured && (
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-0.5 rounded-full"
-                  style={{ background: "rgba(55,180,180,0.22)", color: "#29E0C8", border: "1px solid rgba(41,224,200,0.3)" }}
-                >
+                <span className="pill-a">
                   {a.tag}
                 </span>
-                <span className="text-white/50 text-[10px]">{a.readTime}</span>
+                <span className="pill-d">{a.readTime}</span>
               </div>
             )}
 
-            {/* Title — large bold white (matches Figma) */}
+            {/* Title */}
             <h3
-              className="text-white font-extrabold leading-tight group-hover:text-[#29E0C8] transition-colors duration-300"
+              className="text-white font-medium leading-tight group-hover:text-[#29E0C8] transition-colors duration-300"
               style={{ fontSize: a.featured ? "1.85rem" : "1.3rem", lineHeight: 1.15, letterSpacing: "-0.025em" }}
             >
               {a.title}
@@ -218,9 +216,9 @@ export function InsightsSection() {
         <ScrollReveal>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
             <div>
-              <span className="section-label-light mb-3 inline-block">INSIGHTS</span>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight" style={{ color: "#082121" }}>
-                <TextEffect preset="blur" per="word" as="span">Thought Leadership</TextEffect>
+              <span className="section-overline mb-3 inline-block">Insights</span>
+              <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] mb-2" style={{ color: "#082121" }}>
+                Thought leadership
               </h2>
             </div>
             <Link
@@ -326,8 +324,8 @@ export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
 
       <div className="relative z-20 max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <ScrollReveal>
-          <span className="section-label mb-6 inline-block glass-badge px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[#37B4B4] font-bold tracking-[0.2em] text-xs">START THE CONVERSATION</span>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
+          <span className="section-overline mb-6 inline-block">Start the conversation</span>
+          <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] text-white mb-6">
             <Sparkles color="#29E0C8" count={10}>
               Ready to transform your operations?
             </Sparkles>
@@ -338,15 +336,18 @@ export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={onBooking}
-              className="bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-semibold px-8 py-4 rounded-[12px] text-base cta-pulse transition-all"
+              className="pill-e cta-pulse"
             >
-              Book a Strategy Consultation →
+              <div className="pill-e-group">
+                Book strategy consultation
+                <div className="pill-e-icon">→</div>
+              </div>
             </button>
             <Link
               href="/contact"
-              className="border border-white/20 text-white hover:bg-white/5 px-8 py-4 rounded-[12px] text-base transition-colors"
+              className="pill-f"
             >
-              Send an Enquiry
+              Send an enquiry
             </Link>
           </div>
         </ScrollReveal>

@@ -51,9 +51,9 @@ export function TickerBand() {
 
 export function PhotoStrip() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 h-[180px] overflow-hidden">
+    <div className="grid grid-cols-2 md:grid-cols-4 h-auto md:h-[180px] overflow-hidden">
       {photos.map((src, i) => (
-        <div key={i} className="relative overflow-hidden group">
+        <div key={i} className="relative overflow-hidden group aspect-[4/3] md:aspect-auto">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}
@@ -75,7 +75,7 @@ export function PhotoStrip() {
 
 export function ProblemSection({ onBooking }: { onBooking: () => void }) {
   return (
-    <section className="py-12 lg:py-20 relative overflow-hidden section-tint">
+    <section className="py-20 lg:py-40 relative overflow-hidden section-tint">
       {/* Background architectural texture for scale */}
       <div 
         className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"
@@ -87,139 +87,154 @@ export function ProblemSection({ onBooking }: { onBooking: () => void }) {
       />
       <div className="absolute top-0 right-0 w-1/3 h-full bg-[#37B4B4]/[0.02] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
           {/* Left text */}
           <ScrollReveal>
-            <span className="section-label-light mb-4 inline-block">THE CHALLENGE</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "#082121", lineHeight: 1.15 }}>
+            <span className="section-overline mb-6 inline-block">The challenge</span>
+            <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] mb-8 text-[#082121]">
               Most organisations run on systems that no longer scale.
             </h2>
-            <p className="text-sm md:text-base leading-relaxed mb-6" style={{ color: "#3a5a5a" }}>
+            <p className="text-lg lg:text-xl leading-relaxed mb-10 font-medium" style={{ color: "#3a5a5a" }}>
               Disconnected software, manual spreadsheets, and fragmented processes make it impossible to see the full picture of your business.
             </p>
 
             {/* Pain list */}
-            <ul className="space-y-2 mb-6">
+            <ul className="space-y-4 mb-10">
               {[
                 "Financial reports take weeks — not hours",
                 "Operations run on outdated, siloed tools",
                 "Teams work in isolation instead of shared data",
                 "Decisions are based on guesswork, not intelligence",
               ].map((pain) => (
-                <li key={pain} className="flex items-start gap-3 text-sm md:text-base" style={{ color: "#3a5a5a" }}>
+                <li key={pain} className="flex items-start gap-4 text-base lg:text-lg font-semibold" style={{ color: "#3a5a5a" }}>
                   <span className="shrink-0 mt-0.5 font-bold" style={{ color: "#d9534f" }}>✗</span>
                   {pain}
                 </li>
               ))}
             </ul>
 
-            {/* Resolution callout */}
-            <div
-              className="rounded-[10px] p-4 mb-6 border-l-[3px]"
-              style={{
-                borderColor: "#37B4B4",
-                background: "rgba(55,180,180,.08)",
-              }}
-            >
-              <p className="text-sm md:text-base font-medium leading-relaxed" style={{ color: "#082121" }}>
-                AK Prime Consulting replaces that complexity with clarity — and delivers measurable results from day one.
-              </p>
-            </div>
-
             <button
               onClick={onBooking}
-              className="inline-block bg-[#082121] hover:bg-[#0E3E3E] text-white font-bold px-6 py-3 rounded-[10px] text-sm transition-all shadow-lg shadow-black/10 group"
+              className="pill-e shadow-2xl shadow-black/20"
             >
-              Start a Free Assessment <span className="inline-block group-hover:translate-x-1 transition-transform ml-1">→</span>
+              <div className="pill-e-group">
+                Start free assessment
+                <div className="pill-e-icon">→</div>
+              </div>
             </button>
           </ScrollReveal>
 
-          {/* Right Before/After Comparison */}
+          {/* Right Comparison Cards */}
           <ScrollReveal delay={0.15}>
-            <div className="relative space-y-8">
-              {/* Transition Indicator Line */}
-              <div className="absolute left-[2.4rem] top-24 bottom-24 w-1 bg-gradient-to-b from-red-500/10 via-[#37B4B4]/20 to-[#37B4B4]/10 hidden sm:block" />
-
-              {/* Status Quo Card */}
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
+              {/* Card 1: The status quo */}
               <div 
-                className="relative rounded-[16px] p-5 sm:p-7 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/5 group" 
-                style={{ background: "#FFFDFD", border: "1px solid rgba(217,83,79,.15)" }}
+                className="group relative w-full max-w-[560px] rounded-[20px] overflow-hidden flex flex-col transition-transform duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default hover:-translate-y-1"
               >
-                <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-[10px] bg-red-50 flex items-center justify-center shrink-0 border border-red-100 group-hover:bg-red-100 transition-colors">
-                    <AlertTriangle className="text-red-500" size={18} />
+                {/* Photo Area Scale: Desktop 260px, Tablet 220px, Mobile 230px */}
+                <div className="relative h-[230px] sm:h-[220px] lg:h-[260px] w-full overflow-hidden flex-shrink-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070"
+                    alt="Office chaos spreadsheets"
+                    className="w-full h-full object-cover object-top transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.06]"
+                  />
+                  {/* Progressive blur fade at bottom - 50% height */}
+                  <div 
+                    className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to bottom, transparent 0%, #4a0a0a 100%)"
+                    }}
+                  />
+                </div>
+
+                {/* Content Area */}
+                <div className="flex-1 bg-[#4a0a0a] px-6 pb-8 pt-0 flex flex-col justify-start">
+                  <div className="-mt-[18px] mb-4 relative z-10 self-start">
+                    <span 
+                      className="inline-flex items-center justify-center h-7 px-4 rounded-full text-[11px] font-semibold tracking-[0.06em] uppercase backdrop-blur-[6px]"
+                      style={{ 
+                        background: "rgba(255,255,255,0.12)", 
+                        color: "#fca5a5", 
+                        border: "1px solid rgba(255,150,150,0.28)" 
+                      }}
+                    >
+                      The status quo
+                    </span>
                   </div>
-                  <div className="flex-1">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-4 text-red-500/60">THE STATUS QUO (CHAOS)</p>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-3">
-                          <XCircle className="text-red-400 shrink-0" size={16} />
-                          <span className="text-sm sm:text-base font-bold text-[#4a6a6a]">12-Day Closures</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <XCircle className="text-red-400 shrink-0" size={16} />
-                          <span className="text-sm sm:text-base font-bold text-[#4a6a6a]">Manual Data Entry</span>
-                        </div>
+                  <h4 className="text-[19px] sm:text-[17px] lg:text-[19px] font-medium text-white m-0 leading-[1.25] mb-3">
+                    Where most businesses are stuck
+                  </h4>
+                  <p className="text-[13px] text-white/60 leading-relaxed mb-4">
+                    Fragmented systems create invisible costs every single day.
+                  </p>
+                  <div className="flex flex-wrap gap-y-[7px]">
+                    {[
+                      "12-day closures",
+                      "Siloed software",
+                      "Manual entry",
+                      "Revenue leakage",
+                    ].map((item) => (
+                      <div key={item} className="w-1/2 flex items-center gap-[7px] whitespace-nowrap pr-[8px]">
+                        <div className="w-[6px] h-[6px] rounded-full bg-[#fca5a5] shrink-0" />
+                        <span className="text-[12px] font-medium text-white/80">{item}</span>
                       </div>
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-3">
-                          <XCircle className="text-red-400 shrink-0" size={16} />
-                          <span className="text-sm sm:text-base font-bold text-[#4a6a6a]">Siloed Software</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <XCircle className="text-red-400 shrink-0" size={16} />
-                          <span className="text-sm sm:text-base font-bold text-[#4a6a6a]">Revenue Leakage</span>
-                        </div>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* Central Transformation Badge */}
-              <div className="flex justify-center -my-4 relative z-30">
-                <div className="bg-[#37B4B4] text-white px-6 py-2 rounded-full font-black text-xs tracking-widest shadow-xl shadow-[#37B4B4]/40 border-2 border-white transform hover:scale-105 transition-transform cursor-default">
-                  AK PRIME TRANSFORMATION
-                </div>
-              </div>
-
-              {/* AK Prime Edge Card */}
+              {/* Card 2: The AK Prime edge */}
               <div 
-                className="relative rounded-[16px] p-5 sm:p-7 transition-all duration-500 hover:shadow-xl hover:shadow-[#37B4B4]/20 group overflow-hidden" 
-                style={{ background: "#F2FCFC", border: "2px solid #37B4B4" }}
+                className="group relative w-full max-w-[560px] rounded-[20px] overflow-hidden flex flex-col transition-transform duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default hover:-translate-y-1"
               >
-                {/* Visual Accent */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-[#37B4B4]/5 rounded-bl-[60px] pointer-events-none" />
-                
-                <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-[10px] bg-[#37B4B4] flex items-center justify-center shrink-0 shadow-md shadow-[#37B4B4]/30 group-hover:scale-110 transition-transform">
-                    <Rocket className="text-white" size={18} />
+                {/* Photo Area Scale: Desktop 260px, Tablet 220px, Mobile 230px */}
+                <div className="relative h-[230px] sm:h-[220px] lg:h-[260px] w-full overflow-hidden flex-shrink-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070"
+                    alt="Modern data dashboard"
+                    className="w-full h-full object-cover object-top transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.06]"
+                  />
+                  {/* Progressive blur fade at bottom - 50% height */}
+                  <div 
+                    className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to bottom, transparent 0%, #082121 100%)"
+                    }}
+                  />
+                </div>
+
+                {/* Content Area */}
+                <div className="flex-1 bg-[#082121] px-6 pb-8 pt-0 flex flex-col justify-start">
+                  <div className="-mt-[18px] mb-4 relative z-10 self-start">
+                    <span 
+                      className="inline-flex items-center justify-center h-7 px-4 rounded-full text-[11px] font-semibold tracking-[0.06em] uppercase backdrop-blur-[6px]"
+                      style={{ 
+                        background: "rgba(55,180,180,0.18)", 
+                        color: "#29E0C8", 
+                        border: "1px solid rgba(55,180,180,0.32)" 
+                      }}
+                    >
+                      The AK Prime edge
+                    </span>
                   </div>
-                  <div className="flex-1 text-left">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-4 text-[#37B4B4]">THE AK PRIME EDGE (CLARITY)</p>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-3">
-                          <CheckCircle2 className="text-[#37B4B4] shrink-0" size={16} />
-                          <span className="text-sm sm:text-base font-extrabold text-[#082121]">3-Day Month End</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <Cpu className="text-[#37B4B4] shrink-0" size={16} />
-                          <span className="text-sm sm:text-base font-extrabold text-[#082121]">60% Automation</span>
-                        </div>
+                  <h4 className="text-[19px] sm:text-[17px] lg:text-[19px] font-medium text-white m-0 leading-[1.25] mb-3">
+                    Where we take you
+                  </h4>
+                  <p className="text-[13px] text-white/60 leading-relaxed mb-4">
+                    A unified platform with real-time visibility across all operations.
+                  </p>
+                  <div className="flex flex-wrap gap-y-[7px]">
+                    {[
+                      "3-day close",
+                      "Unified platform",
+                      "60% automation",
+                      "Live dashboards",
+                    ].map((item) => (
+                      <div key={item} className="w-1/2 flex items-center gap-[7px] whitespace-nowrap pr-[8px]">
+                        <div className="w-[6px] h-[6px] rounded-full bg-[#29E0C8] shrink-0" />
+                        <span className="text-[12px] font-medium text-white/80">{item}</span>
                       </div>
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-3">
-                          <Database className="text-[#37B4B4] shrink-0" size={16} />
-                          <span className="text-sm sm:text-base font-extrabold text-[#082121]">Unified Platform</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <TrendingUp className="text-[#37B4B4] shrink-0" size={16} />
-                          <span className="text-sm sm:text-base font-extrabold text-[#082121]">Live Dashboards</span>
-                        </div>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
