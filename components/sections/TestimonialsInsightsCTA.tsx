@@ -64,12 +64,12 @@ const insights = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-14 lg:py-20 section-dark">
+    <section className="py-10 lg:py-14 section-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="text-center mb-12">
-            <span className="section-overline mb-4 inline-block">Client outcomes</span>
-            <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] text-white">
+          <div className="text-center mb-8">
+            <span className="section-overline mb-2 inline-block">Client outcomes</span>
+            <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white">
               What our clients say
             </h2>
           </div>
@@ -211,13 +211,13 @@ function InsightCard({ a, delay }: { a: any; delay: number }) {
 
 export function InsightsSection() {
   return (
-    <section className="py-16 lg:py-24 section-light">
+    <section className="py-10 lg:py-14 section-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
             <div>
-              <span className="section-overline mb-3 inline-block">Insights</span>
-              <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] mb-2" style={{ color: "#082121" }}>
+              <span className="section-overline mb-2 inline-block">Insights</span>
+              <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] mb-1" style={{ color: "#082121" }}>
                 Thought leadership
               </h2>
             </div>
@@ -316,7 +316,7 @@ function ContactBackground() {
 
 export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
   return (
-    <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-[#082121] py-20">
+    <section className="relative min-h-[500px] flex items-center justify-center overflow-hidden bg-[#082121] py-12">
       <ContactBackground />
 
       {/* Final dark blend to keep text visible */}
@@ -324,13 +324,13 @@ export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
 
       <div className="relative z-20 max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <ScrollReveal>
-          <span className="section-overline mb-6 inline-block">Start the conversation</span>
-          <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] text-white mb-6">
+          <span className="section-overline mb-4 inline-block">Start the conversation</span>
+          <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white mb-4">
             <Sparkles color="#29E0C8" count={10}>
               Ready to transform your operations?
             </Sparkles>
           </h2>
-          <p className="text-white/55 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+          <p className="text-white/55 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
             Schedule a strategy consultation. No hard sell — just an honest assessment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

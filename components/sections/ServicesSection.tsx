@@ -159,12 +159,12 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-12 lg:py-18 section-dark">
+    <section id="services" className="py-10 lg:py-14 section-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <span className="section-overline mb-4 inline-block">What we do</span>
-            <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] text-white mb-3">
+            <span className="section-overline mb-3 inline-block">What we do</span>
+            <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white mb-3">
               16 integrated service lines
             </h2>
             <p className="text-white/55 text-sm md:text-base max-w-xl mx-auto">

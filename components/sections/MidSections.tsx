@@ -75,38 +75,28 @@ export function PhotoStrip() {
 
 export function ProblemSection({ onBooking }: { onBooking: () => void }) {
   return (
-    <section className="py-20 lg:py-40 relative overflow-hidden section-tint">
-      {/* Background architectural texture for scale */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#37B4B4]/[0.02] pointer-events-none" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-          {/* Left text */}
+    <section className="py-12 lg:py-16 relative overflow-hidden bg-white">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-start">
+          {/* Left Content */}
           <ScrollReveal>
-            <span className="section-overline mb-6 inline-block">The challenge</span>
-            <h2 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] mb-8 text-[#082121]">
+            <span className="section-overline mb-4 inline-block">The challenge</span>
+            <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] mb-4 text-[#082121]">
               Most organisations run on systems that no longer scale.
             </h2>
-            <p className="text-lg lg:text-xl leading-relaxed mb-10 font-medium" style={{ color: "#3a5a5a" }}>
+            <p className="text-base lg:text-lg leading-relaxed mb-6 font-medium" style={{ color: "#3a5a5a" }}>
               Disconnected software, manual spreadsheets, and fragmented processes make it impossible to see the full picture of your business.
             </p>
 
             {/* Pain list */}
-            <ul className="space-y-4 mb-10">
+            <ul className="space-y-3 mb-6">
               {[
                 "Financial reports take weeks — not hours",
                 "Operations run on outdated, siloed tools",
                 "Teams work in isolation instead of shared data",
                 "Decisions are based on guesswork, not intelligence",
               ].map((pain) => (
-                <li key={pain} className="flex items-start gap-4 text-base lg:text-lg font-semibold" style={{ color: "#3a5a5a" }}>
+                <li key={pain} className="flex items-start gap-3 text-sm lg:text-base font-semibold" style={{ color: "#3a5a5a" }}>
                   <span className="shrink-0 mt-0.5 font-bold" style={{ color: "#d9534f" }}>✗</span>
                   {pain}
                 </li>
@@ -126,13 +116,13 @@ export function ProblemSection({ onBooking }: { onBooking: () => void }) {
 
           {/* Right Comparison Cards */}
           <ScrollReveal delay={0.15}>
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
+            <div className="grid sm:grid-cols-2 gap-6 lg:gap-10 items-stretch">
               {/* Card 1: The status quo */}
               <div 
-                className="group relative w-full max-w-[560px] rounded-[20px] overflow-hidden flex flex-col transition-transform duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default hover:-translate-y-1"
+                className="group relative w-full lg:max-w-[620px] rounded-[20px] overflow-hidden flex flex-col transition-transform duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default hover:-translate-y-1 h-full"
               >
-                {/* Photo Area Scale: Desktop 260px, Tablet 220px, Mobile 230px */}
-                <div className="relative h-[230px] sm:h-[220px] lg:h-[260px] w-full overflow-hidden flex-shrink-0">
+                {/* Photo Area Scale: Desktop 180px, Tablet 180px, Mobile 180px */}
+                <div className="relative h-[180px] sm:h-[180px] lg:h-[180px] w-full overflow-hidden flex-shrink-0">
                   <img
                     src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070"
                     alt="Office chaos spreadsheets"
@@ -185,10 +175,10 @@ export function ProblemSection({ onBooking }: { onBooking: () => void }) {
 
               {/* Card 2: The AK Prime edge */}
               <div 
-                className="group relative w-full max-w-[560px] rounded-[20px] overflow-hidden flex flex-col transition-transform duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default hover:-translate-y-1"
+                className="group relative w-full lg:max-w-[620px] rounded-[20px] overflow-hidden flex flex-col transition-transform duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default hover:-translate-y-1 h-full"
               >
-                {/* Photo Area Scale: Desktop 260px, Tablet 220px, Mobile 230px */}
-                <div className="relative h-[230px] sm:h-[220px] lg:h-[260px] w-full overflow-hidden flex-shrink-0">
+                {/* Photo Area Scale: Desktop 180px, Tablet 180px, Mobile 180px */}
+                <div className="relative h-[180px] sm:h-[180px] lg:h-[180px] w-full overflow-hidden flex-shrink-0">
                   <img
                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070"
                     alt="Modern data dashboard"

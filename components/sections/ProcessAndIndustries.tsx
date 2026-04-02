@@ -49,13 +49,13 @@ const industryCards: IndustryCardProps[] = industriesData.map((ind) => ({
 // ── Industries Section — Animated Ticker Carousel ────────────────────────────
 export function IndustriesSection() {
   return (
-    <section className="py-12 lg:py-16 section-light overflow-hidden">
+    <section className="py-8 lg:py-12 section-light overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="text-center mb-10">
-            <span className="section-overline mb-4 inline-block">Sectors we serve</span>
+          <div className="text-center mb-6">
+            <span className="section-overline mb-2 inline-block">Sectors we serve</span>
             <h2
-              className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] mb-3 text-[#082121]"
+              className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] mb-2 text-[#082121]"
             >
               Solutions built for your industry
             </h2>
@@ -130,13 +130,13 @@ function GradientBorderCard({
 // ── Process Section ──────────────────────────────────────────────────────────
 export function ProcessSection() {
   return (
-    <section className="py-14 lg:py-20 section-dark">
+    <section className="py-10 lg:py-14 section-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="text-center mb-12">
-            <span className="section-overline mb-4 inline-block">How we work</span>
+          <div className="text-center mb-10">
+            <span className="section-overline mb-2 inline-block">How we work</span>
             <h2
-              className="text-3xl sm:text-5xl lg:text-[4rem] font-medium tracking-tighter leading-[1.05] text-white mb-4"
+              className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white mb-2"
             >
               A proven delivery framework
             </h2>

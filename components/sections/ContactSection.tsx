@@ -59,40 +59,40 @@ export function ContactSection() {
   };
 
   return (
-    <section className="py-16 lg:py-24 section-light" id="contact">
+    <section className="py-10 lg:py-14 section-light" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-14 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
 
           {/* Left — contact info */}
           <div>
-            <span className="section-overline mb-5 inline-block">Get in touch</span>
-            <h2 className="text-2xl sm:text-3xl font-medium mb-3" style={{ color: "#082121" }}>
+            <span className="section-overline mb-3 inline-block">Get in touch</span>
+            <h2 className="text-2xl sm:text-3xl font-medium mb-2" style={{ color: "#082121" }}>
               We'd love to hear about your challenge.
             </h2>
-            <p className="text-base leading-relaxed mb-6" style={{ color: "#3a5a5a" }}>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#3a5a5a" }}>
               Whether you're in <span className="text-[#37B4B4] font-medium">Nairobi</span>, <span className="text-[#37B4B4] font-medium">Mombasa</span> or the <span className="text-[#37B4B4] font-medium">Middle East</span> — every conversation starts with <span className="text-[#082121] font-medium">listening</span>. Tell us where you are, and we'll show you where you could be.
             </p>
 
-            <div className="space-y-4 mb-8">
+            <div className="space-y-4 mb-4">
               {[
                 { icon: Mail, label: "Email", value: "info@akprime.co.ke", href: "mailto:info@akprime.co.ke" },
                 { icon: Phone, label: "Phone / WhatsApp", value: "0118001001", href: "tel:0118001001" },
                 { icon: MapPin, label: "Location", value: "Nairobi & Mombasa, Kenya · Middle East Coming Soon" },
                 { icon: Clock, label: "Response Time", value: "Within 1 business day" },
               ].map((item) => (
-                <div key={item.label} className="flex items-start gap-5">
+                <div key={item.label} className="flex items-start gap-4">
                   <div
-                    className="w-11 h-11 rounded-2xl flex items-center justify-center text-[#37B4B4] shrink-0"
+                    className="w-10 h-10 rounded-2xl flex items-center justify-center text-[#37B4B4] shrink-0"
                     style={{ background: "rgba(55,180,180,.1)", border: "1px solid rgba(55,180,180,.2)" }}
                   >
-                    <item.icon size={22} strokeWidth={1.5} />
+                    <item.icon size={20} strokeWidth={1.5} />
                   </div>
-                  <div className="flex flex-col items-start gap-2 pt-0.5">
-                    <span className="pill-a">{item.label}</span>
+                  <div className="flex flex-col items-start gap-1 pt-0.5">
+                    <span className="pill-a !h-5 !px-3 font-semibold !text-[10px]">{item.label}</span>
                     {item.href ? (
-                      <a href={item.href} className="text-[15px] font-medium hover:text-[#37B4B4] transition-colors" style={{ color: "#082121" }}>{item.value}</a>
+                      <a href={item.href} className="text-sm font-medium hover:text-[#37B4B4] transition-colors" style={{ color: "#082121" }}>{item.value}</a>
                     ) : (
-                      <p className="text-[15px] font-medium" style={{ color: "#082121" }}>{item.value}</p>
+                      <p className="text-sm font-medium" style={{ color: "#082121" }}>{item.value}</p>
                     )}
                   </div>
                 </div>
@@ -117,12 +117,12 @@ export function ContactSection() {
 
           {/* Right — form card */}
           <div
-            className="rounded-2xl p-8"
+            className="rounded-2xl p-6 sm:p-8"
             style={{ background: "#fff", border: "1.5px solid rgba(55,180,180,.25)", boxShadow: "0 4px 40px rgba(8,33,33,.08)" }}
           >
-            <h3 className="text-xl font-bold mb-6" style={{ color: "#082121" }}>Send Us a Message</h3>
+            <h3 className="text-lg font-bold mb-4" style={{ color: "#082121" }}>Send Us a Message</h3>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
               {/* Name row */}
               <div className="grid gap-3 sm:grid-cols-2">
                 <div>

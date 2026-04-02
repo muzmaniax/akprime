@@ -67,19 +67,19 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
       </div>
 
       {/* Bottom content */}
-      <div className="absolute bottom-6 left-6 right-6 lg:bottom-8 lg:left-8 lg:right-8 flex flex-col sm:flex-row sm:items-end justify-between gap-5">
+      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 flex flex-col sm:flex-row sm:items-end justify-between gap-5">
         <div className="max-w-2xl">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-medium text-white tracking-tight leading-[1.1] mb-3">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl font-medium text-white tracking-tight leading-[1.1] mb-2 sm:mb-3">
             {study.tagline || study.title}
           </h2>
-          <p className="text-white/60 text-sm leading-relaxed max-w-lg">
+          <p className="text-white/60 text-[13px] sm:text-sm leading-relaxed max-w-lg line-clamp-2 sm:line-clamp-none">
             {study.summary}
           </p>
         </div>
-        <div className="flex items-center gap-3 bg-[#37B4B4] text-[#082121] rounded-full px-6 py-3 shadow-xl shrink-0 group-hover:bg-white transition-colors duration-300">
-          <span className="text-xs font-medium whitespace-nowrap">View results</span>
-          <div className="w-6 h-6 rounded-full bg-[#082121] flex items-center justify-center text-white">
-            <ArrowUpRight size={13} />
+        <div className="flex items-center gap-2.5 sm:gap-3 bg-[#37B4B4] text-[#082121] rounded-full px-5 py-2 sm:px-6 sm:py-3 shadow-xl shrink-0 group-hover:bg-white transition-colors duration-300 self-start sm:self-auto">
+          <span className="text-[13px] font-medium whitespace-nowrap">View results</span>
+          <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#082121] flex items-center justify-center text-white">
+            <ArrowUpRight size={11} />
           </div>
         </div>
       </div>

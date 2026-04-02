@@ -87,26 +87,26 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
               </div>
             </div>
 
-            {/* Testimonial portrait card */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-md border border-white/80">
+            {/* Testimonial portrait card - hidden on mobile in favor of a simpler treatment if needed, but keeping for now with smaller scale */}
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] sm:aspect-square lg:aspect-[4/5] shadow-md border border-white/80">
               <img
                 src={study.testimonial.image}
                 alt={study.testimonial.name}
-                className="absolute inset-0 w-full h-full object-cover brightness-75"
+                className="absolute inset-0 w-full h-full object-cover brightness-75 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/90 via-[#082121]/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 backdrop-blur-sm bg-white/8 border-t border-white/10">
-                <Quote size={18} className="text-[#37B4B4] mb-3" />
-                <p className="text-white/85 text-sm leading-relaxed italic mb-4 line-clamp-3">
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 backdrop-blur-sm bg-white/10 border-t border-white/10">
+                <Quote size={16} className="text-[#37B4B4] mb-2 sm:mb-3" />
+                <p className="text-white/90 text-[13px] sm:text-sm leading-relaxed italic mb-3 sm:mb-4 line-clamp-3 sm:line-clamp-none">
                   "{study.testimonial.quote}"
                 </p>
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-white text-sm font-medium">{study.testimonial.name}</p>
-                    <p className="text-[#37B4B4] text-xs">{study.testimonial.role}</p>
+                  <div className="min-w-0 pr-2">
+                    <p className="text-white text-[13px] sm:text-sm font-medium truncate">{study.testimonial.name}</p>
+                    <p className="text-[#37B4B4] text-[11px] sm:text-xs truncate">{study.testimonial.role}</p>
                   </div>
-                  <div className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center text-white">
-                    <ArrowUpRight size={13} />
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/20 flex items-center justify-center text-white shrink-0">
+                    <ArrowUpRight size={12} />
                   </div>
                 </div>
               </div>
@@ -246,14 +246,14 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
                 </p>
               </div>
             </div>
-            <div className="flex gap-4">
-              <button onClick={() => setBookingOpen(true)} className="pill-e">
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-6">
+              <button onClick={() => setBookingOpen(true)} className="pill-e w-full sm:w-auto">
                 <div className="pill-e-group">
                   Book discovery session
                   <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
                 </div>
               </button>
-              <Link href="/case-studies" className="pill-f">
+              <Link href="/case-studies" className="pill-f w-full sm:w-auto text-center py-4">
                 View all cases
               </Link>
             </div>
