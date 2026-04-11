@@ -9,10 +9,10 @@ import {
   TrendingUp, 
   Cpu, 
   Database, 
-  Database, 
   LayoutPanelTop,
   ArrowRight
 } from "lucide-react";
+
 
 const photos = [
   "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
