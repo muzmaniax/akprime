@@ -490,14 +490,13 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  background: linear-gradient(145deg, #0e3e3e, #082121); /* Metallic dark teal gradient */
+  background: linear-gradient(145deg, #0e3e3e, #082121);
   border: 1px solid rgba(55, 180, 180, 0.4);
   border-radius: 50%;
   flex-shrink: 0;
-  line-height: normal;
   overflow: hidden;
-  box-shadow: 
-    0 0 12px rgba(55, 180, 180, 0.3), /* Teal glow */
+  box-shadow:
+    0 0 12px rgba(55, 180, 180, 0.3),
     inset 0 1px 1px rgba(255,255,255,0.1);
   transition: all 0.3s ease;
 }
@@ -536,16 +535,19 @@
 }
 
 .pill-e-icon span {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
+  line-height: 1;
+  color: #29E0C8;
+  text-shadow: 0 0 5px rgba(41, 224, 200, 0.6);
+  /* Prevent font metrics from causing sub-pixel offsets */
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
-  padding-bottom: 2px; /* Visual nudging for the arrow character */
-  color: #29E0C8; /* Vibrant teal arrow for the glow effect */
-  text-shadow: 0 0 5px rgba(41, 224, 200, 0.6);
 }
 
 /* SVG icons (e.g. ChevronRight) inside pill-e-icon */
