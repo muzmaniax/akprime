@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ArrowRight } from "lucide-react";
 import { servicesData } from "@/data/services";
 
 type Props = {
@@ -65,7 +65,7 @@ export default async function ServicePage({ params }: Props) {
                 <div className="pill-e-group">
                   {service.cta}
                   <div className="pill-e-icon">
-                    <ChevronRight size={16} />
+                    <ArrowRight />
                   </div>
                 </div>
               </Link>
@@ -218,7 +218,7 @@ export default async function ServicePage({ params }: Props) {
             <div className="pill-e-group">
               {service.cta}
               <div className="pill-e-icon">
-                <ChevronRight size={16} />
+                <ArrowRight />
               </div>
             </div>
           </Link>

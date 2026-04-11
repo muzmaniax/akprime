@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, ArrowRight } from "lucide-react";
 
 const schema = z.object({
   firstName:   z.string().min(1, "First name is required"),
@@ -119,9 +119,9 @@ export function ContactSection() {
               <p className="text-sm mb-4" style={{ color: "#3a5a5a" }}>ERP Checklist · AI Strategy Guide · Cashflow Playbook</p>
               <a
                 href="/resources"
-                className="pill-a !h-10 !px-6 !text-sm hover:bg-[#37B4B4] hover:text-white transition-colors duration-300"
+                className="pill-a !h-10 !px-6 !text-sm hover:bg-[#37B4B4] hover:text-white transition-colors duration-300 flex items-center gap-2"
               >
-                Download Free Guides →
+                Download Free Guides <ArrowRight size={14} />
               </a>
             </div>
           </div>
@@ -224,7 +224,7 @@ export function ContactSection() {
                   {loading ? "Sending…" : "Send message"}
                   {loading ? null : (
                     <div className="pill-e-icon">
-                      <span>→</span>
+                      <ArrowRight />
                     </div>
                   )}
                 </div>

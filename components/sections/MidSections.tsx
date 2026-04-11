@@ -9,7 +9,9 @@ import {
   TrendingUp, 
   Cpu, 
   Database, 
-  LayoutPanelTop 
+  Database, 
+  LayoutPanelTop,
+  ArrowRight
 } from "lucide-react";
 
 const photos = [
@@ -109,7 +111,7 @@ export function ProblemSection({ onBooking }: { onBooking: () => void }) {
             >
               <div className="pill-e-group">
                 Start free assessment
-                <div className="pill-e-icon"><span>→</span></div>
+                <div className="pill-e-icon"><ArrowRight /></div>
               </div>
             </button>
           </ScrollReveal>

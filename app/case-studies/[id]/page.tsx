@@ -2,7 +2,7 @@
 
 import { use, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Zap, Quote } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, Zap, Quote, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { caseStudies } from "@/data/case-studies";
 import { BookingModal } from "@/components/ui/BookingModal";
@@ -116,7 +116,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
             <button onClick={() => setBookingOpen(true)} className="pill-e w-full">
               <div className="pill-e-group">
                 Start your assessment
-                <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
+                <div className="pill-e-icon"><ArrowRight /></div>
               </div>
             </button>
           </aside>
@@ -250,7 +250,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
               <button onClick={() => setBookingOpen(true)} className="pill-e w-full sm:w-auto">
                 <div className="pill-e-group">
                   Book discovery session
-                  <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
+                <div className="pill-e-icon"><ArrowRight /></div>
                 </div>
               </button>
               <Link href="/case-studies" className="pill-f w-full sm:w-auto text-center py-4">

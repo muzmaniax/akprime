@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Sparkles } from "@/components/ui-layouts/sparkles";
 import { BorderTrail } from "@/components/motion-primitives/border-trail";
-import { Star } from "lucide-react";
+import { Star, ArrowRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -193,8 +193,8 @@ function InsightCard({ a, delay }: { a: any; delay: number }) {
               >
                 {a.readTime} · {a.date}
               </span>
-              <span className="ml-auto text-xs font-semibold text-white/0 group-hover:text-white transition-all duration-300">
-                Read →
+              <span className="ml-auto flex items-center gap-1 text-xs font-semibold text-white/0 group-hover:text-white transition-all duration-300">
+                Read <ArrowRight size={12} />
               </span>
             </div>
           </div>
@@ -223,10 +223,10 @@ export function InsightsSection() {
             </div>
             <Link
               href="/insights"
-              className="text-sm font-semibold transition-colors whitespace-nowrap"
+              className="text-sm font-semibold transition-colors whitespace-nowrap flex items-center gap-1.5"
               style={{ color: "#37B4B4" }}
             >
-              View All Articles →
+              View All Articles <ArrowRight size={14} />
             </Link>
           </div>
         </ScrollReveal>
@@ -340,7 +340,7 @@ export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
             >
               <div className="pill-e-group">
                 Book strategy consultation
-                <div className="pill-e-icon"><span>→</span></div>
+                <div className="pill-e-icon"><ArrowRight /></div>
               </div>
             </button>
             <Link

@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { TrendingUp, CheckCircle2, Globe2, Bot } from "lucide-react";
+import { TrendingUp, CheckCircle2, Globe2, Bot, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import Link from "next/link";
@@ -119,7 +119,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
               >
                 <div className="pill-e-group">
                   Book strategy consultation
-                  <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
+                  <div className="pill-e-icon"><ArrowRight /></div>
                 </div>
               </button>
               <a

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export interface IndustryCardProps {
   image: string;
@@ -70,29 +71,12 @@ export function IndustryCard({ image, title, description, href = "#", onClick }:
             }}
             transition={{ duration: 0.38, ease: SMOOTH }}
           >
-            <motion.svg
-              width="18"
-              height="18"
-              viewBox="0 0 19.9904 19.9904"
-              fill="none"
-              animate={{ rotate: isHovered ? -45 : 0 }}
-              transition={{ duration: 0.38, ease: SMOOTH }}
-            >
-              <path
-                d="M4.16467 9.99522H15.8258"
-                stroke={isHovered ? "#ffffff" : "#111827"}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.66587"
-              />
-              <path
-                d="M9.99522 4.16467L15.8258 9.99522L9.99522 15.8258"
-                stroke={isHovered ? "#ffffff" : "#111827"}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.66587"
-              />
-            </motion.svg>
+            <ArrowRight
+              size={18}
+              strokeWidth={2.5}
+              color={isHovered ? "#37B4B4" : "#111827"}
+              className={`transition-all duration-300 ${isHovered ? "-rotate-45" : ""}`}
+            />
           </motion.div>
         </div>
 

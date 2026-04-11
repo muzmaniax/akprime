@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ArrowRight } from "lucide-react";
 import { industriesData } from "@/data/industries";
 
 type Props = {
@@ -60,7 +60,7 @@ export default async function IndustryPage({ params }: Props) {
               <div className="pill-e-group">
                 <span>{industry.cta}</span>
                 <div className="pill-e-icon">
-                  <ChevronRight size={16} />
+                  <ArrowRight />
                 </div>
               </div>
             </Link>
@@ -154,7 +154,7 @@ export default async function IndustryPage({ params }: Props) {
             <div className="pill-e-group">
               <span>{industry.cta}</span>
               <div className="pill-e-icon">
-                <ChevronRight size={16} />
+                <ArrowRight />
               </div>
             </div>
           </Link>
