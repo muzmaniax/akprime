@@ -62,7 +62,7 @@ export default function RootLayout({
         <ClientProviders>
           <PageLoader />
           <Navbar />
-          <main>{children}</main>
+          <main className="pb-16 lg:pb-0">{children}</main>
           <Footer />
         </ClientProviders>
       </body>

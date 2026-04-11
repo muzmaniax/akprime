@@ -56,9 +56,13 @@ export default async function IndustryPage({ params }: Props) {
             {industry.shortDescription}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact" className="inline-flex items-center justify-center bg-[#37B4B4] text-[#082121] hover:bg-[#29E0C8] px-10 h-16 rounded-xl font-bold text-lg transition-colors shadow-2xl shadow-[#37B4B4]/20 cta-pulse">
-              {industry.cta}
-              <ChevronRight size={20} className="ml-2" />
+            <Link href="/contact" className="pill-e cta-pulse shadow-lg shadow-[#37B4B4]/20">
+              <div className="pill-e-group">
+                <span>{industry.cta}</span>
+                <div className="pill-e-icon">
+                  <ChevronRight size={16} />
+                </div>
+              </div>
             </Link>
           </div>
         </div>
@@ -146,8 +150,13 @@ export default async function IndustryPage({ params }: Props) {
           <p className="text-lg text-white/70 mb-8 font-light">
             Partner with analysts and engineers who understand your specialized operational workflows.
           </p>
-          <Link href="/contact" className="inline-flex items-center justify-center bg-[#37B4B4] text-[#082121] hover:bg-[#29E0C8] px-10 h-16 rounded-xl font-bold text-lg transition-colors cta-pulse">
-            {industry.cta}
+          <Link href="/contact" className="pill-e cta-pulse">
+            <div className="pill-e-group">
+              <span>{industry.cta}</span>
+              <div className="pill-e-icon">
+                <ChevronRight size={16} />
+              </div>
+            </div>
           </Link>
         </div>
       </section>

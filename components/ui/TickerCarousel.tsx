@@ -1,9 +1,10 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, useAnimationControls, useMotionValue } from "framer-motion";
 import { IndustryCard, IndustryCardProps } from "./IndustryCard";
 
-const SCROLL_SPEED = 50; // px per second
+const SCROLL_SPEED_NORMAL = 40; // px per second (auto-scroll)
+const SCROLL_SPEED_HOVER  = 14; // px per second (slowed on hover)
 
 function getCardDimensions(width: number) {
   if (width < 640) return { cardWidth: 300, cardGap: 16 };
@@ -16,95 +17,84 @@ export interface TickerCarouselProps {
 }
 
 export function TickerCarousel({ cards }: TickerCarouselProps) {
-  const [dims, setDims] = useState(() =>
-    getCardDimensions(typeof window !== "undefined" ? window.innerWidth : 1280)
-  );
-  
-  const containerRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const controls = useAnimationControls();
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
+  const [dims, setDims] = useState(() => getCardDimensions(1280));
+
+  const containerRef  = useRef<HTMLDivElement>(null);
+  const x             = useMotionValue(0);
+  const controls      = useAnimationControls();
+  const isHoveredRef  = useRef(false); // ref — does NOT trigger re-renders
+  const isDraggingRef = useRef(false);
+  const animFrameRef  = useRef<number | null>(null);
+  const lastTsRef     = useRef<number | null>(null);
 
   useEffect(() => {
+    setDims(getCardDimensions(window.innerWidth));
     const handleResize = () => setDims(getCardDimensions(window.innerWidth));
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const { cardWidth, cardGap } = dims;
-  // We double the cards for a seamless loop
-  const totalCards = cards.length;
+  const totalCards    = cards.length;
   const singleSetWidth = (cardWidth + cardGap) * totalCards;
-  const duplicatedCards = [...cards, ...cards, ...cards]; 
+  const duplicatedCards = [...cards, ...cards, ...cards];
 
-  // Auto-scroll effect
+  // rAF-based auto-scroll — hover state is read from a ref, never causes restarts
+  const tick = useCallback((ts: number) => {
+    if (isDraggingRef.current) {
+      lastTsRef.current = null;
+      animFrameRef.current = requestAnimationFrame(tick);
+      return;
+    }
+
+    if (lastTsRef.current === null) lastTsRef.current = ts;
+    const elapsed = (ts - lastTsRef.current) / 1000; // seconds
+    lastTsRef.current = ts;
+
+    const speed = isHoveredRef.current ? SCROLL_SPEED_HOVER : SCROLL_SPEED_NORMAL;
+    let next = x.get() - speed * elapsed;
+
+    // seamless loop: when we've scrolled one full set, jump back
+    if (next <= -singleSetWidth) next += singleSetWidth;
+
+    x.set(next);
+    animFrameRef.current = requestAnimationFrame(tick);
+  }, [x, singleSetWidth]);
+
   useEffect(() => {
-    if (isDragging) return;
-
-    const startAutoScroll = () => {
-      const currentX = x.get();
-      if (currentX <= -singleSetWidth) {
-        x.set(currentX + singleSetWidth);
-      }
-
-      const remainingDistance = singleSetWidth + x.get();
-      const duration = remainingDistance / SCROLL_SPEED;
-
-      controls.start({
-        x: -singleSetWidth,
-        transition: {
-          duration: isHovered ? duration * 3 : duration,
-          ease: "linear",
-        }
-      }).then(() => {
-        // When one loop finishes, reset and start again
-        x.set(0);
-        startAutoScroll();
-      });
+    animFrameRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (animFrameRef.current !== null) cancelAnimationFrame(animFrameRef.current);
     };
+  }, [tick]);
 
-    startAutoScroll();
-    return () => controls.stop();
-  }, [controls, singleSetWidth, isDragging, isHovered, x]);
-
+  // Manual prev/next — stop rAF briefly, animate, then restart
   const handlePrev = () => {
-    controls.stop();
-    const currentX = x.get();
-    const targetX = currentX + (cardWidth + cardGap);
-    
-    controls.start({
-      x: targetX,
-      transition: { duration: 0.5, ease: "circOut" }
-    }).then(() => {
-      if (targetX >= 0) x.set(targetX - singleSetWidth);
-    });
+    isDraggingRef.current = true;
+    let target = x.get() + (cardWidth + cardGap);
+    if (target > 0) target -= singleSetWidth;
+    controls.start({ x: target, transition: { duration: 0.45, ease: "circOut" } })
+      .then(() => { x.set(target); isDraggingRef.current = false; lastTsRef.current = null; });
   };
 
   const handleNext = () => {
-    controls.stop();
-    const currentX = x.get();
-    const targetX = currentX - (cardWidth + cardGap);
-    
-    controls.start({
-      x: targetX,
-      transition: { duration: 0.5, ease: "circOut" }
-    }).then(() => {
-      if (targetX <= -singleSetWidth) x.set(targetX + singleSetWidth);
-    });
+    isDraggingRef.current = true;
+    let target = x.get() - (cardWidth + cardGap);
+    if (target <= -singleSetWidth) target += singleSetWidth;
+    controls.start({ x: target, transition: { duration: 0.45, ease: "circOut" } })
+      .then(() => { x.set(target); isDraggingRef.current = false; lastTsRef.current = null; });
   };
 
   return (
     <div
       ref={containerRef}
       className="w-full overflow-hidden py-10"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => { isHoveredRef.current = true; }}
+      onMouseLeave={() => { isHoveredRef.current = false; }}
     >
       <motion.div
         className="flex"
         style={{ x, gap: `${cardGap}px` }}
-        animate={controls}
       >
         {duplicatedCards.map((card, index) => (
           <div key={index} style={{ width: `${cardWidth}px`, flexShrink: 0 }}>

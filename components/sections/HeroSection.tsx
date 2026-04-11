@@ -50,7 +50,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
   return (
     <section
       ref={heroRef}
-      className={`relative min-h-[calc(100vh-68px)] flex flex-col overflow-hidden py-4 lg:py-6`}
+      className={`relative min-h-[calc(100vh-68px)] flex flex-col overflow-hidden py-4 pb-16 lg:py-6 lg:pb-6`}
       style={{ background: "#082121" }}
     >
       {/* Video Background Layer with Teal Overlay */}
@@ -80,9 +80,9 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
           {/* ── Left text col (Constrained) ── */}
           <div className="lg:col-span-8 xl:col-span-8 relative z-20">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-              <span className="section-overline mb-5 inline-flex items-center gap-2">
-                <Globe2 size={14} /> 
-                Global business consulting — Africa & Middle East
+              <span className="section-overline mb-5 inline-flex items-center gap-2 text-[11px] sm:text-[13px] tracking-wide px-3 py-1.5 sm:px-4 sm:py-2">
+                <Globe2 size={12} className="sm:size-3.5" /> 
+                Strategy • Middle East &amp; Africa
               </span>
             </motion.div>
 
@@ -155,7 +155,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
           </div>
 
           {/* ── Right dashboard col (Hover Widget) ── */}
-          <div className="lg:col-start-9 lg:col-span-4 xl:col-start-9 xl:col-span-4 flex items-center justify-end mt-12 lg:mt-0 relative z-20">
+          <div className="lg:col-start-9 lg:col-span-4 xl:col-start-9 xl:col-span-4 flex items-center justify-end mt-12 mb-10 lg:mt-0 lg:mb-0 relative z-20">
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}

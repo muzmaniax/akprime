@@ -2,7 +2,14 @@
 
 import React from "react";
 
-const partnerLogos = Array.from({ length: 12 }, (_, i) => `Logo ${i + 1}`);
+const partnerLogos = [
+  "/partners/partner-1.png",
+  "/partners/partner-2.png",
+  "/partners/partner-3.png",
+  "/partners/partner-4.png",
+  "/partners/partner-5.png",
+  "/partners/partner-6.png",
+];
 
 export function TrustedLogosCarousel() {
   // Duplicate array so it can loop seamlessly
@@ -25,12 +32,14 @@ export function TrustedLogosCarousel() {
           {doubledLogos.map((logo, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 w-[120px] md:w-[140px] aspect-[2.5/1] rounded-lg flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-              style={{ background: "#F4FAFA", border: "1px solid rgba(0,0,0,0.05)" }}
+              className="flex-shrink-0 w-[110px] sm:w-[130px] md:w-[140px] aspect-[2.5/1] rounded-lg flex items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              style={{ background: "transparent" }}
             >
-              <span className="text-[#3a5a5a] font-bold tracking-wider text-sm">
-                {logo}
-              </span>
+              <img
+                src={logo}
+                alt={`Partner Logo ${idx + 1}`}
+                className="max-w-[80%] max-h-[70%] object-contain"
+              />
             </div>
           ))}
         </div>

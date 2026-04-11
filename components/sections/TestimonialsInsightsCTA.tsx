@@ -333,14 +333,14 @@ export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
           <p className="text-white/55 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
             Schedule a strategy consultation. No hard sell — just an honest assessment.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
             <button
               onClick={onBooking}
               className="pill-e cta-pulse"
             >
               <div className="pill-e-group">
                 Book strategy consultation
-                <div className="pill-e-icon">→</div>
+                <div className="pill-e-icon"><span>→</span></div>
               </div>
             </button>
             <Link

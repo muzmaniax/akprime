@@ -77,6 +77,10 @@
    AK Prime Brand Tokens — global CSS vars
 ────────────────────────────────────────── */
 :root {
+  /* ── Layout geometry ───────────────────────────────────────────────────── */
+  --navbar-h:   60px;                            /* mobile navbar height     */
+  --section-h:  calc(100dvh - var(--navbar-h));  /* usable viewport height   */
+
   /* page / section bg */
   --dark:       #082121;
   --surface:    #0E3E3E;
@@ -142,6 +146,10 @@
   --sidebar-ring: oklch(0.675 0.12 186);
 }
 
+@media (min-width: 1024px) {
+  :root { --navbar-h: 68px; }
+}
+
 .dark {
   --background: oklch(0.128 0.03 175);
   --foreground: oklch(1 0 0);
@@ -202,6 +210,22 @@
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─────────────────────────────────────────────
+   Liquid Glass (Premium backdrop effect)
+   Used for high-end overlays and bottom navs
+───────────────────────────────────────────── */
+.liquid-glass {
+  background: rgba(8, 33, 33, 0.7);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.2);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* ─────────────────────────────────────────────
@@ -313,15 +337,26 @@
   display: inline-flex !important;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 8px 16px; /* Reduced from 10px 20px */
   border-radius: 9999px;
-  font-size: 14px;
+  font-size: 13px; /* Reduced from 14px */
   font-weight: 400;
   letter-spacing: 0.02em;
   color: #37B4B4;
   background: rgba(55, 180, 180, 0.1);
   border: 1px solid rgba(55, 180, 180, 0.2);
   text-transform: none;
+  width: fit-content;
+  max-width: 320px; /* Ensure it doesn't exceed title's typical mobile width */
+  white-space: normal;
+  text-align: center;
+}
+
+/* On desktop, keep it nowrap if possible, but fit-content is key */
+@media (min-width: 768px) {
+  .section-overline {
+    white-space: nowrap;
+  }
 }
 .section-overline::before, .section-label::before, .section-label-light::before {
   content: none;
@@ -357,6 +392,10 @@
 
 /* Variant B — ACTIVE FILTER PILL */
 .pill-b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   height: 34px;
   padding: 0 18px;
   border-radius: 17px;
@@ -414,13 +453,13 @@
 
 /* Variant E — CTA BUTTON PILL */
 .pill-e {
-  display: inline-flex !important;
+  display: inline-flex !important; /* Changed from flex for compact feel */
   align-items: center;
-  justify-content: center;
-  height: 48px;
-  padding: 0 24px;
+  justify-content: center; /* Changed from space-between */
+  height: 42px; /* Reduced from 48px */
+  padding: 0 6px 0 20px; /* Adjusted padding */
   border-radius: 9999px;
-  font-size: 15px;
+  font-size: 14px; /* Reduced from 15px */
   font-weight: 600;
   background: #37B4B4;
   color: #082121;
@@ -428,21 +467,99 @@
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: none;
-}
-.pill-e-group {
-  display: inline-flex;
+  width: fit-content; /* More compact on mobile */
   gap: 12px;
-  align-items: center;
 }
+
+@media (min-width: 640px) {
+  .pill-e {
+    min-width: 200px;
+  }
+}
+
+.pill-e-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Controlled gap */
+}
+
 .pill-e-icon {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: rgba(0,0,0,0.2);
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(145deg, #0e3e3e, #082121); /* Metallic dark teal gradient */
+  border: 1px solid rgba(55, 180, 180, 0.4);
   border-radius: 50%;
   flex-shrink: 0;
+  line-height: normal;
+  overflow: hidden;
+  box-shadow: 
+    0 0 12px rgba(55, 180, 180, 0.3), /* Teal glow */
+    inset 0 1px 1px rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+/* Glare effect pseudo-element */
+.pill-e-icon::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(165, 243, 252, 0.15), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pill-e:hover .pill-e-icon {
+  box-shadow: 
+    0 0 18px rgba(55, 180, 180, 0.6), 
+    inset 0 1px 2px rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+
+.pill-e:hover .pill-e-icon::before {
+  opacity: 1;
+  animation: glare-sweep 2s infinite ease-in-out;
+}
+
+@keyframes glare-sweep {
+  0% { transform: translate(-20%, -20%) scale(1); }
+  50% { transform: translate(10%, 10%) scale(1.1); }
+  100% { transform: translate(-20%, -20%) scale(1); }
+}
+
+.pill-e-icon span {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 2px; /* Visual nudging for the arrow character */
+  color: #29E0C8; /* Vibrant teal arrow for the glow effect */
+  text-shadow: 0 0 5px rgba(41, 224, 200, 0.6);
+}
+
+/* SVG icons (e.g. ChevronRight) inside pill-e-icon */
+.pill-e-icon svg {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  filter: drop-shadow(0 0 4px rgba(41, 224, 200, 0.7));
+  flex-shrink: 0;
+}
+
+.pill-e:hover .pill-e-icon svg {
+  color: #29E0C8;
+  filter: drop-shadow(0 0 6px rgba(41, 224, 200, 0.9));
 }
 
 /* Variant F — GHOST BUTTON PILL */
@@ -450,10 +567,10 @@
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  height: 48px;
-  padding: 0 24px;
+  height: 42px; /* Reduced from 48px */
+  padding: 0 20px;
   border-radius: 9999px;
-  font-size: 15px;
+  font-size: 14px; /* Reduced from 15px */
   font-weight: 500;
   background: transparent;
   color: white;
@@ -461,6 +578,7 @@
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: none;
+  width: fit-content;
 }
 .pill-f:hover {
   border-color: #37B4B4;
@@ -510,9 +628,14 @@
 /* ─────────────────────────────────────────────
    Scrollbar
 ───────────────────────────────────────────── */
-::-webkit-scrollbar       { width: 6px; }
-::-webkit-scrollbar-track { background: #082121; }
-::-webkit-scrollbar-thumb { background: #37B4B4; border-radius: 3px; }
+/* vertical scrollbar */
+::-webkit-scrollbar       { width: 6px; height: 3px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.08); }
+::-webkit-scrollbar-thumb { background: #37B4B4; border-radius: 999px; }
+
+/* horizontal-only override — even thinner track */
+::-webkit-scrollbar:horizontal       { height: 3px; }
+::-webkit-scrollbar-track:horizontal { background: rgba(0,0,0,0.08); }
 
 /* ─────────────────────────────────────────────
    Carousel track — hide horizontal scrollbar

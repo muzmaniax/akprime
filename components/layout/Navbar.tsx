@@ -26,6 +26,7 @@ import { cn } from "@/lib/utils";
 import { servicesData, ServiceCategory } from "@/data/services";
 import { industriesData } from "@/data/industries";
 
+
 const navLinks = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "Insights", href: "/insights" },
@@ -63,16 +64,17 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 h-[60px] lg:h-[68px] ${
+        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isSolid
             ? "bg-[#082121]/97 backdrop-blur-xl shadow-[0_1px_0_rgba(55,180,180,0.15)] border-b border-white/[0.06]"
             : "bg-[#082121]/80 backdrop-blur-md border-b border-transparent"
         }`}
+        style={{ height: "var(--navbar-h)" }}
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-6">
 
           {/* Logo — bare image, no circle */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 group" aria-label="AK Prime Home">
             <div className="h-8 w-auto flex items-center transition-opacity group-hover:opacity-80">
               <Image
                 src="/logo-primary.png"
@@ -246,7 +248,10 @@ export function Navbar() {
 
           {/* Mobile menu — left aligned via flex-row-reverse */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger className="lg:hidden pointer-events-auto p-2 text-white/90 hover:text-[#37B4B4] transition-colors flex items-center justify-center">
+            <SheetTrigger 
+              className="lg:hidden pointer-events-auto p-2 text-white/90 hover:text-[#37B4B4] transition-colors flex items-center justify-center"
+              aria-label="Open navigation menu"
+            >
               <Menu size={28} />
             </SheetTrigger>
             <SheetContent

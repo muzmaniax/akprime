@@ -76,9 +76,9 @@ export function MobileCarousel({ cards }: MobileCarouselProps) {
             aria-label={`Go to card ${index + 1}`}
             className="transition-all duration-300 rounded-full focus:outline-none"
             style={{
-              width: index === currentIndex ? "20px" : "8px",
-              height: "8px",
-              backgroundColor: index === currentIndex ? "#37B4B4" : "rgba(255,255,255,0.35)",
+              width:  index === currentIndex ? "10px" : "7px",
+              height: index === currentIndex ? "10px" : "7px",
+              backgroundColor: index === currentIndex ? "#37B4B4" : "rgba(0,0,0,0.18)",
               flexShrink: 0,
             }}
           />

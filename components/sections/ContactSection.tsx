@@ -7,13 +7,24 @@ import { toast } from "sonner";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const schema = z.object({
-  firstName:   z.string().min(1, "Required"),
-  lastName:    z.string().min(1, "Required"),
-  company:     z.string().min(1, "Required"),
-  email:       z.string().email("Invalid email"),
-  phone:       z.string().optional(),
+  firstName:   z.string().min(1, "First name is required"),
+  lastName:    z.string().min(1, "Last name is required"),
+  company:     z.string().min(1, "Company name is required"),
+  email:       z
+    .string()
+    .min(1, "Email is required")
+    .regex(
+      /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/,
+      "Enter a valid email address (e.g. name@company.com)"
+    ),
+  phone:       z
+    .string()
+    .min(1, "Phone number is required")
+    .regex(
+      /^\+?[0-9]{7,12}$/,
+      "Enter a valid phone number with country code, digits only (e.g. +254700000000)"
+    ),
   service:     z.string().min(1, "Please select a service"),
-  budget:      z.string().min(1, "Please select a budget"),
   message:     z.string().min(10, "Please tell us more (min 10 chars)"),
 });
 type FormData = z.infer<typeof schema>;
@@ -26,7 +37,7 @@ const serviceOptions = [
   "Other / Multiple",
 ];
 
-const budgetOptions = ["Under $10k","$10k–$50k","$50k–$200k","$200k+"];
+
 
 const inputCls = "w-full min-h-[44px] px-3 py-2.5 rounded-xl border text-sm outline-none transition-colors focus:border-[#37B4B4] focus:ring-2 focus:ring-[#37B4B4]/20 bg-[#F4FAFA]";
 const labelCls = "block text-[13px] font-medium mb-2";
@@ -127,31 +138,58 @@ export function ContactSection() {
               <div className="grid gap-3 sm:grid-cols-2">
                 <div>
                   <label className={labelCls} style={{ color: "#37B4B4" }}>First Name</label>
-                  <input {...register("firstName")} className={inputCls} style={{ borderColor: errors.firstName ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }} placeholder="James" />
+                  <input {...register("firstName")} className={inputCls} style={{ borderColor: errors.firstName ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }} placeholder="First name" autoComplete="given-name" />
                   {errors.firstName && <p className="text-[11px] mt-1" style={{ color: "#d9534f" }}>{errors.firstName.message}</p>}
                 </div>
                 <div>
                   <label className={labelCls} style={{ color: "#37B4B4" }}>Last Name</label>
-                  <input {...register("lastName")} className={inputCls} style={{ borderColor: errors.lastName ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }} placeholder="Mwangi" />
+                  <input {...register("lastName")} className={inputCls} style={{ borderColor: errors.lastName ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }} placeholder="Last name" autoComplete="family-name" />
                   {errors.lastName && <p className="text-[11px] mt-1" style={{ color: "#d9534f" }}>{errors.lastName.message}</p>}
                 </div>
               </div>
 
               <div>
                 <label className={labelCls} style={{ color: "#37B4B4" }}>Company / Organisation</label>
-                <input {...register("company")} className={inputCls} style={{ borderColor: errors.company ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }} placeholder="Acme Corp Ltd" />
+                <input {...register("company")} className={inputCls} style={{ borderColor: errors.company ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }} placeholder="Company or organisation name" autoComplete="organization" />
                 {errors.company && <p className="text-[11px] mt-1" style={{ color: "#d9534f" }}>{errors.company.message}</p>}
               </div>
 
               <div>
                 <label className={labelCls} style={{ color: "#37B4B4" }}>Work Email</label>
-                <input {...register("email")} type="email" className={inputCls} style={{ borderColor: errors.email ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }} placeholder="james@company.com" />
+                <input
+                  {...register("email")}
+                  type="email"
+                  inputMode="email"
+                  autoComplete="email"
+                  className={inputCls}
+                  style={{ borderColor: errors.email ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }}
+                  placeholder="your@email.com"
+                />
                 {errors.email && <p className="text-[11px] mt-1" style={{ color: "#d9534f" }}>{errors.email.message}</p>}
               </div>
 
               <div>
                 <label className={labelCls} style={{ color: "#37B4B4" }}>Phone / WhatsApp</label>
-                <input {...register("phone")} className={inputCls} style={{ borderColor: "rgba(55,180,180,.2)", color: "#082121" }} placeholder="+254 700 000 000" />
+                <input
+                  {...register("phone")}
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  maxLength={13}
+                  className={inputCls}
+                  style={{ borderColor: errors.phone ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }}
+                  placeholder="+254 700 000 000"
+                  onKeyDown={(e) => {
+                    // Allow: Backspace, Delete, Tab, Escape, Enter, Arrow keys, Home, End
+                    const allowed = ["Backspace","Delete","Tab","Escape","Enter","ArrowLeft","ArrowRight","Home","End"];
+                    if (allowed.includes(e.key)) return;
+                    // Allow + only as the very first character
+                    if (e.key === "+" && (e.currentTarget as HTMLInputElement).selectionStart === 0) return;
+                    // Block anything that is not a digit
+                    if (!/^[0-9]$/.test(e.key)) e.preventDefault();
+                  }}
+                />
+                {errors.phone && <p className="text-[11px] mt-1" style={{ color: "#d9534f" }}>{errors.phone.message}</p>}
               </div>
 
               <div>
@@ -163,14 +201,7 @@ export function ContactSection() {
                 {errors.service && <p className="text-[11px] mt-1" style={{ color: "#d9534f" }}>{errors.service.message}</p>}
               </div>
 
-              <div>
-                <label className={labelCls} style={{ color: "#37B4B4" }}>Approximate Budget</label>
-                <select {...register("budget")} className={inputCls} style={{ borderColor: errors.budget ? "#d9534f" : "rgba(55,180,180,.2)", color: "#082121" }}>
-                  <option value="">Select budget range…</option>
-                  {budgetOptions.map((b) => <option key={b} value={b}>{b}</option>)}
-                </select>
-                {errors.budget && <p className="text-[11px] mt-1" style={{ color: "#d9534f" }}>{errors.budget.message}</p>}
-              </div>
+
 
               <div>
                 <label className={labelCls} style={{ color: "#37B4B4" }}>Tell Us About Your Challenge</label>

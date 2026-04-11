@@ -24,7 +24,7 @@ export function CaseStudiesSection() {
         <ScrollReveal delay={0.1}>
           <Link 
             href="/case-studies/manufacturing-erp"
-            className="group relative block aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/9] rounded-[32px] lg:rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700 p-3 sm:p-5 lg:p-6"
+            className="group relative block min-h-[340px] aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/9] rounded-[32px] lg:rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700"
           >
             {/* Background Image */}
             <img 
@@ -34,8 +34,8 @@ export function CaseStudiesSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/90 via-[#082121]/30 to-[#082121]/10 opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
             
-            {/* Context Labels */}
-            <div className="relative z-10 flex flex-wrap gap-3 absolute top-6 left-6 lg:top-10 lg:left-10">
+            {/* Context Labels — top-left, absolutely positioned */}
+            <div className="absolute top-5 left-5 lg:top-8 lg:left-8 flex flex-wrap gap-3 z-10">
               <span className="px-5 py-2.5 rounded-full bg-[#37B4B4] text-[#082121] text-[14px] font-normal tracking-wide shadow-xl">
                 Business strategy
               </span>
@@ -44,8 +44,8 @@ export function CaseStudiesSection() {
               </span>
             </div>
 
-            {/* Content Overlay */}
-            <div className="absolute inset-x-3 bottom-3 sm:inset-x-5 sm:bottom-5 lg:inset-x-6 lg:bottom-6 flex flex-col md:flex-row md:items-end justify-between gap-6 z-10">
+            {/* Content Overlay — bottom, absolutely positioned */}
+            <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6 flex flex-col md:flex-row md:items-end justify-between gap-6 z-10">
               <div className="max-w-2xl p-5 sm:p-7 lg:p-8 bg-[#082121]/30 backdrop-blur-2xl rounded-[24px] lg:rounded-[32px] border border-white/10 shadow-2xl">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium text-white tracking-tighter leading-[1.05] mb-3">
                   Revenue Growth 65% in 12 months.

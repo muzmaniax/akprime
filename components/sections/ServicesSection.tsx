@@ -175,15 +175,15 @@ export function ServicesSection() {
 
         <div
           className="grid gap-5"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}
+          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))" }}
         >
           {services.map((s, i) => (
             <ScrollReveal key={s.title} delay={i * 0.04}>
               <TiltCard className="h-full">
-                <Link href={s.href} className="block h-full">
+                <Link href={s.href} className="block h-full active:scale-[0.98] transition-transform">
                   <div
-                    className="glass-card rounded-[18px] p-[10px] h-full flex flex-col gap-3 cursor-pointer group hover:border-[#37B4B4]/40 transition-all duration-300 relative overflow-hidden"
-                    style={{ minHeight: "180px" }}
+                    className="glass-card rounded-[18px] p-[16px] h-full flex flex-col gap-3 cursor-pointer group hover:border-[#37B4B4]/40 transition-all duration-300 relative overflow-hidden"
+                    style={{ minHeight: "200px" }}
                   >
                     <BorderTrail
                       className="bg-gradient-to-r from-[#37B4B4] via-transparent to-[#29E0C8] opacity-0 group-hover:opacity-100 transition-opacity"

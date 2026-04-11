@@ -144,29 +144,29 @@ export function ProcessSection() {
         </ScrollReveal>
 
         {/* Bento Grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-3 auto-rows-[minmax(220px,auto)]">
-          {/* Step 1: Wide */}
-          <ScrollReveal delay={0.1} className="md:col-span-3 lg:col-span-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-3 auto-rows-[minmax(260px,auto)]">
+          {/* Step 1: Feature card — 7/12 wide on desktop, 3/6 on tablet */}
+          <ScrollReveal delay={0.1} className="md:col-span-3 lg:col-span-7">
             <GradientBorderCard step={steps[0]} />
           </ScrollReveal>
 
-          {/* Step 2: Normal */}
-          <ScrollReveal delay={0.2} className="md:col-span-3 lg:col-span-4">
+          {/* Step 2: Normal — 5/12 on desktop, 3/6 on tablet */}
+          <ScrollReveal delay={0.2} className="md:col-span-3 lg:col-span-5">
             <GradientBorderCard step={steps[1]} />
           </ScrollReveal>
 
-          {/* Step 3: Tall */}
-          <ScrollReveal delay={0.3} className="md:col-span-3 lg:col-span-4">
+          {/* Step 3: Equal thirds on desktop, 2/6 on tablet */}
+          <ScrollReveal delay={0.3} className="md:col-span-2 lg:col-span-4">
             <GradientBorderCard step={steps[2]} />
           </ScrollReveal>
 
-          {/* Step 4: Normal */}
-          <ScrollReveal delay={0.4} className="md:col-span-3 lg:col-span-4">
+          {/* Step 4: Equal thirds on desktop, 2/6 on tablet */}
+          <ScrollReveal delay={0.4} className="md:col-span-2 lg:col-span-4">
             <GradientBorderCard step={steps[3]} />
           </ScrollReveal>
 
-          {/* Step 5: Wide again */}
-          <ScrollReveal delay={0.5} className="md:col-span-6 lg:col-span-4">
+          {/* Step 5: Equal thirds on desktop, 2/6 on tablet */}
+          <ScrollReveal delay={0.5} className="md:col-span-2 lg:col-span-4">
             <GradientBorderCard step={steps[4]} />
           </ScrollReveal>
         </div>
