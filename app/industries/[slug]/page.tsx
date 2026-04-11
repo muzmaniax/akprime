@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, ArrowRight } from "lucide-react";
+import { SystemButton } from "@/components/ui/SystemButton";
 import { industriesData } from "@/data/industries";
 
 type Props = {
@@ -56,14 +57,14 @@ export default async function IndustryPage({ params }: Props) {
             {industry.shortDescription}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact" className="pill-e cta-pulse shadow-lg shadow-[#37B4B4]/20">
-              <div className="pill-e-group">
-                <span>{industry.cta}</span>
-                <div className="pill-e-icon">
-                  <ArrowRight />
-                </div>
-              </div>
-            </Link>
+            <SystemButton
+              href="/contact"
+              variant="primary"
+              className="cta-pulse"
+              icon={<ArrowRight />}
+            >
+              {industry.cta}
+            </SystemButton>
           </div>
         </div>
       </section>
@@ -150,14 +151,14 @@ export default async function IndustryPage({ params }: Props) {
           <p className="text-lg text-white/70 mb-8 font-light">
             Partner with analysts and engineers who understand your specialized operational workflows.
           </p>
-          <Link href="/contact" className="pill-e cta-pulse">
-            <div className="pill-e-group">
-              <span>{industry.cta}</span>
-              <div className="pill-e-icon">
-                <ArrowRight />
-              </div>
-            </div>
-          </Link>
+          <SystemButton
+            href="/contact"
+            variant="primary"
+            className="cta-pulse"
+            icon={<ArrowRight />}
+          >
+            {industry.cta}
+          </SystemButton>
         </div>
       </section>
 

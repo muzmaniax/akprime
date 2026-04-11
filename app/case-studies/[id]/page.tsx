@@ -4,6 +4,7 @@ import { use, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, Zap, Quote, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { SystemButton } from "@/components/ui/SystemButton";
 import { caseStudies } from "@/data/case-studies";
 import { BookingModal } from "@/components/ui/BookingModal";
 import { notFound } from "next/navigation";
@@ -113,12 +114,14 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
             </div>
 
             {/* CTA */}
-            <button onClick={() => setBookingOpen(true)} className="pill-e w-full">
-              <div className="pill-e-group">
-                Start your assessment
-                <div className="pill-e-icon"><ArrowRight /></div>
-              </div>
-            </button>
+            <SystemButton
+              variant="primary"
+              fullWidth
+              onClick={() => setBookingOpen(true)}
+              icon={<ArrowRight />}
+            >
+              Start your assessment
+            </SystemButton>
           </aside>
 
           {/* ── Main body ── */}
@@ -247,15 +250,21 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-6">
-              <button onClick={() => setBookingOpen(true)} className="pill-e w-full sm:w-auto">
-                <div className="pill-e-group">
-                  Book discovery session
-                <div className="pill-e-icon"><ArrowRight /></div>
-                </div>
-              </button>
-              <Link href="/case-studies" className="pill-f w-full sm:w-auto text-center py-4">
+              <SystemButton 
+                variant="primary" 
+                onClick={() => setBookingOpen(true)} 
+                icon={<ArrowRight />}
+                className="w-full sm:w-auto"
+              >
+                Book discovery session
+              </SystemButton>
+              <SystemButton 
+                variant="secondary" 
+                href="/case-studies"
+                className="w-full sm:w-auto text-center"
+              >
                 View all cases
-              </Link>
+              </SystemButton>
             </div>
           </div>
         </div>
