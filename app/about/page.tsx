@@ -69,7 +69,7 @@ export default function AboutPage() {
             ].map((v) => (
               <div
                 key={v.title}
-                className="rounded-[18px] p-8 text-left hover:bg-[#F4FAFA] transition-all duration-300 border border-transparent hover:border-[#37B4B4]/20 group"
+                className="rounded-[24px] p-8 text-left transition-all duration-300 bg-[#f9fdfd] border border-[#37B4B4]/15 shadow-sm sm:bg-transparent sm:border-transparent sm:shadow-none sm:hover:bg-[#F4FAFA] sm:hover:border-[#37B4B4]/20 sm:hover:shadow-md group"
               >
                 <div className="mb-4 text-[#37B4B4]/50 group-hover:text-[#37B4B4] transition-colors"><v.icon size={32} /></div>
                 <h3 className="font-medium text-xl mb-3" style={{ color: "#082121" }}>{v.title}</h3>
