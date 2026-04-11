@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, ArrowRight } from "lucide-react";
-import { SystemButton } from "@/components/ui/SystemButton";
 import { servicesData } from "@/data/services";
 
 type Props = {
@@ -48,10 +47,10 @@ export default async function ServicePage({ params }: Props) {
               Back to Services Directory
             </Link>
             <div className="flex flex-wrap items-center gap-2 mb-6 text-xs md:text-sm font-medium">
-              <Link href="/services" className="tag tag-primary inline-flex">
+              <Link href="/services" className="pill-a inline-flex">
                 {service.category.split(" & ")[0]}
               </Link>
-              <span className="tag tag-primary inline-flex">
+              <span className="pill-a inline-flex">
                 {service.name}
               </span>
             </div>
@@ -62,14 +61,14 @@ export default async function ServicePage({ params }: Props) {
               {service.shortDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <SystemButton
-                href="/contact"
-                variant="primary"
-                icon={<ArrowRight />}
-                className="cta-pulse"
-              >
-                {service.cta}
-              </SystemButton>
+              <Link href="/contact" className="pill-e cta-pulse shadow-lg shadow-[#37B4B4]/20">
+                <div className="pill-e-group">
+                  {service.cta}
+                  <div className="pill-e-icon">
+                    <ArrowRight />
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
           
@@ -212,17 +211,17 @@ export default async function ServicePage({ params }: Props) {
           <div className="flex flex-col items-center gap-3 mb-10">
             <p className="text-white/50 text-sm">Deploy tools built for enterprise scale</p>
             <div className="flex flex-wrap gap-2 justify-center">
-              {service.tools.split('·').map(t => <span key={t} className="tag tag-muted">{t.trim()}</span>)}
+              {service.tools.split('·').map(t => <span key={t} className="pill-g">{t.trim()}</span>)}
             </div>
           </div>
-          <SystemButton
-            href="/contact"
-            variant="primary"
-            icon={<ArrowRight />}
-            className="cta-pulse"
-          >
-            {service.cta}
-          </SystemButton>
+          <Link href="/contact" className="pill-e cta-pulse shadow-xl shadow-[#37B4B4]/20">
+            <div className="pill-e-group">
+              {service.cta}
+              <div className="pill-e-icon">
+                <ArrowRight />
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 

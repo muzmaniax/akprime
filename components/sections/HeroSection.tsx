@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { TrendingUp, CheckCircle2, Globe2, Bot, ArrowRight } from "lucide-react";
-import { SystemButton } from "@/components/ui/SystemButton";
+import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import Link from "next/link";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
@@ -113,25 +113,25 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
               transition={{ duration: 0.6, delay: 0.32 }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4"
             >
-              <SystemButton 
-                variant="primary" 
-                onClick={onBooking} 
-                icon={<ArrowRight />} 
-                className="cta-pulse w-full sm:w-auto"
+              <button
+                onClick={onBooking}
+                className="pill-e cta-pulse"
               >
-                Book Strategy Consultation
-              </SystemButton>
-              <SystemButton
-                variant="secondary"
+                <div className="pill-e-group">
+                  Book strategy consultation
+                  <div className="pill-e-icon"><ArrowRight /></div>
+                </div>
+              </button>
+              <a
                 href="#services"
-                onClick={(e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+                onClick={(e) => {
                   e.preventDefault();
                   document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full sm:w-auto mt-3 sm:mt-0"
+                className="pill-f"
               >
-                Explore Services
-              </SystemButton>
+                Explore services
+              </a>
             </motion.div>
 
             <motion.p

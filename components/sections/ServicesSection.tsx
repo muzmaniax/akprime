@@ -204,7 +204,7 @@ export function ServicesSection() {
                       </div>
                       {s.badge && (
                         <span
-                          className="tag mt-1"
+                          className="pill-a mt-1"
                           style={{ background: s.badge.bg, color: "#082121", border: "none" }}
                         >
                           {s.badge.text}
@@ -231,7 +231,7 @@ export function ServicesSection() {
                       {s.tools.map((t) => (
                         <span
                           key={t}
-                          className="tag bg-white/5 border-white/10 text-white/70"
+                          className="pill-g"
                         >
                           {t}
                         </span>

@@ -110,7 +110,7 @@ export default function ServicesPage() {
                          <div className="w-12 h-12 rounded-xl bg-[#37B4B4]/10 flex items-center justify-center text-[#37B4B4] group-hover:bg-[#37B4B4] group-hover:text-[#082121] transition-colors duration-500">
                            <Icon size={24} strokeWidth={2} />
                          </div>
-                         <div className="tag tag-primary">
+                         <div className="pill-a">
                            {service.category.split(" & ")[0]}
                          </div>
                        </div>

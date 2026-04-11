@@ -10,7 +10,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { SystemButton } from "@/components/ui/SystemButton";
+import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/ui/BookingModal";
 import {
   NavigationMenu,
@@ -230,18 +230,18 @@ export function Navbar() {
 
             {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center gap-2.5 border-l border-white/10 pl-5 ml-1">
-              <SystemButton
-                variant="ghost"
+              <Link
                 href="/contact"
+                className="inline-flex items-center justify-center border border-[#37B4B4]/40 text-[#37B4B4] hover:bg-[#37B4B4]/10 hover:border-[#37B4B4] bg-transparent rounded-[10px] text-sm font-semibold px-4 h-9 transition-colors whitespace-nowrap shrink-0"
               >
                 Get in Touch
-              </SystemButton>
-              <SystemButton
-                variant="primary"
+              </Link>
+              <Button
                 onClick={() => setBookingOpen(true)}
+                className="bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-bold px-5 h-9 rounded-[10px] transition-all duration-200 text-sm shadow-md shadow-[#37B4B4]/20 whitespace-nowrap shrink-0"
               >
                 Book Consultation
-              </SystemButton>
+              </Button>
             </div>
 
           </div>
@@ -372,24 +372,22 @@ export function Navbar() {
                   </Link>
                 </nav>
                 <div className="p-6 border-t border-white/8 space-y-3 bg-[#082121]">
-                  <SystemButton
-                    variant="ghost"
+                  <Link
                     href="/contact"
-                    fullWidth
                     onClick={() => setMobileOpen(false)}
+                    className="inline-flex items-center justify-center w-full border border-[#37B4B4]/40 text-[#37B4B4] hover:bg-[#37B4B4]/10 bg-transparent rounded-[12px] h-12 text-base font-semibold transition-colors"
                   >
                     Get in Touch
-                  </SystemButton>
-                  <SystemButton
-                    variant="primary"
-                    fullWidth
+                  </Link>
+                  <Button
+                    className="w-full bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-bold rounded-[12px] h-12 text-base"
                     onClick={() => {
                       setMobileOpen(false);
                       setBookingOpen(true);
                     }}
                   >
                     Book Consultation
-                  </SystemButton>
+                  </Button>
                 </div>
               </div>
             </SheetContent>

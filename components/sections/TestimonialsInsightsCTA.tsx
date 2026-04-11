@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Sparkles } from "@/components/ui-layouts/sparkles";
 import { BorderTrail } from "@/components/motion-primitives/border-trail";
-import { SystemButton } from "@/components/ui/SystemButton";
 import { Star, ArrowRight } from "lucide-react";
 
 const testimonials = [
@@ -155,7 +154,7 @@ function InsightCard({ a, delay }: { a: any; delay: number }) {
             {/* Featured badge */}
             {a.featured && (
               <span
-                className="tag tag-primary mb-3"
+                className="pill-b mb-3"
               >
                 Featured
               </span>
@@ -164,10 +163,10 @@ function InsightCard({ a, delay }: { a: any; delay: number }) {
             {/* Meta row */}
             {!a.featured && (
               <div className="flex items-center gap-2 mb-2">
-                <span className="tag tag-primary">
+                <span className="pill-a">
                   {a.tag}
                 </span>
-                <span className="tag tag-muted">{a.readTime}</span>
+                <span className="pill-d">{a.readTime}</span>
               </div>
             )}
 
@@ -335,20 +334,21 @@ export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
             Schedule a strategy consultation. No hard sell — just an honest assessment.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
-            <SystemButton
-              variant="primary"
+            <button
               onClick={onBooking}
-              icon={<ArrowRight />}
-              className="cta-pulse"
+              className="pill-e cta-pulse"
             >
-              Book strategy consultation
-            </SystemButton>
-            <SystemButton
-              variant="secondary"
+              <div className="pill-e-group">
+                Book strategy consultation
+                <div className="pill-e-icon"><ArrowRight /></div>
+              </div>
+            </button>
+            <Link
               href="/contact"
+              className="pill-f"
             >
               Send an enquiry
-            </SystemButton>
+            </Link>
           </div>
         </ScrollReveal>
       </div>

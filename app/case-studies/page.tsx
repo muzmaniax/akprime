@@ -58,10 +58,10 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
 
       {/* Category pills (top-left) */}
       <div className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2">
-        <span className="tag tag-primary">
+        <span className="pill-a">
           {study.solution}
         </span>
-        <span className="tag tag-muted">
+        <span className="pill-d">
           {study.industry}
         </span>
       </div>

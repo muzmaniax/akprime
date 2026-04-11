@@ -12,7 +12,6 @@ import {
   LayoutPanelTop,
   ArrowRight
 } from "lucide-react";
-import { SystemButton } from "@/components/ui/SystemButton";
 
 
 const photos = [
@@ -106,13 +105,15 @@ export function ProblemSection({ onBooking }: { onBooking: () => void }) {
               ))}
             </ul>
 
-            <SystemButton
-              variant="primary"
+            <button
               onClick={onBooking}
-              icon={<ArrowRight />}
+              className="pill-e shadow-2xl shadow-black/20"
             >
-              Start free assessment
-            </SystemButton>
+              <div className="pill-e-group">
+                Start free assessment
+                <div className="pill-e-icon"><ArrowRight /></div>
+              </div>
+            </button>
           </ScrollReveal>
 
           {/* Right Comparison Cards */}

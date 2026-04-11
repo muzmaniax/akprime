@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Clock, ArrowRight } from "lucide-react";
-import { SystemButton } from "@/components/ui/SystemButton";
 
 const schema = z.object({
   firstName:   z.string().min(1, "First name is required"),
@@ -100,7 +99,7 @@ export function ContactSection() {
                     <item.icon size={20} strokeWidth={1.5} />
                   </div>
                   <div className="flex flex-col items-start gap-1 pt-0.5">
-                    <span className="tag tag-primary !h-5 !px-3 font-semibold !text-[10px]">{item.label}</span>
+                    <span className="pill-a !h-5 !px-3 font-semibold !text-[10px]">{item.label}</span>
                     {item.href ? (
                       <a href={item.href} className="text-sm font-medium hover:text-[#37B4B4] transition-colors" style={{ color: "#082121" }}>{item.value}</a>
                     ) : (
@@ -120,7 +119,7 @@ export function ContactSection() {
               <p className="text-sm mb-4" style={{ color: "#3a5a5a" }}>ERP Checklist · AI Strategy Guide · Cashflow Playbook</p>
               <a
                 href="/resources"
-                className="tag tag-primary !h-10 !px-6 !text-sm hover:bg-[#37B4B4] hover:text-white transition-colors duration-300 flex items-center gap-2"
+                className="pill-a !h-10 !px-6 !text-sm hover:bg-[#37B4B4] hover:text-white transition-colors duration-300 flex items-center gap-2"
               >
                 Download Free Guides <ArrowRight size={14} />
               </a>
@@ -216,16 +215,20 @@ export function ContactSection() {
                 {errors.message && <p className="text-[11px] mt-1" style={{ color: "#d9534f" }}>{errors.message.message}</p>}
               </div>
 
-              <SystemButton
+              <button
                 type="submit"
                 disabled={loading}
-                variant="primary"
-                fullWidth
-                icon={!loading ? <ArrowRight /> : undefined}
-                className={loading ? "opacity-60" : ""}
+                className="pill-e cta-pulse disabled:opacity-60 w-full"
               >
-                {loading ? "Sending…" : "Send message"}
-              </SystemButton>
+                <div className="pill-e-group w-full justify-center">
+                  {loading ? "Sending…" : "Send message"}
+                  {loading ? null : (
+                    <div className="pill-e-icon">
+                      <ArrowRight />
+                    </div>
+                  )}
+                </div>
+              </button>
             </form>
           </div>
         </div>
