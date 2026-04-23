@@ -94,7 +94,7 @@ export function IndustryCard({ image, title, description, href = "#", onClick }:
   return (
     <motion.div
       className="flex-shrink-0 cursor-pointer w-full"
-      style={{ height: "460px", fontFamily: "inherit" }}
+      style={{ height: "380px", fontFamily: "inherit" }}
       animate={{ scale: isHovered ? 1.02 : 1 }}
       transition={{ duration: 0.38, ease: SMOOTH }}
       onMouseEnter={() => setIsHovered(true)}

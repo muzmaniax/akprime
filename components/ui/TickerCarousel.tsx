@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, useAnimationControls, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, animate } from "framer-motion";
 import { IndustryCard, IndustryCardProps } from "./IndustryCard";
 
 const SCROLL_SPEED_NORMAL = 40; // px per second (auto-scroll)
@@ -21,7 +21,6 @@ export function TickerCarousel({ cards }: TickerCarouselProps) {
 
   const containerRef  = useRef<HTMLDivElement>(null);
   const x             = useMotionValue(0);
-  const controls      = useAnimationControls();
   const isHoveredRef  = useRef(false); // ref — does NOT trigger re-renders
   const isDraggingRef = useRef(false);
   const animFrameRef  = useRef<number | null>(null);
@@ -73,16 +72,30 @@ export function TickerCarousel({ cards }: TickerCarouselProps) {
     isDraggingRef.current = true;
     let target = x.get() + (cardWidth + cardGap);
     if (target > 0) target -= singleSetWidth;
-    controls.start({ x: target, transition: { duration: 0.45, ease: "circOut" } })
-      .then(() => { x.set(target); isDraggingRef.current = false; lastTsRef.current = null; });
+    
+    animate(x, target, {
+      duration: 0.45,
+      ease: "circOut",
+      onComplete: () => {
+        isDraggingRef.current = false;
+        lastTsRef.current = null;
+      }
+    });
   };
 
   const handleNext = () => {
     isDraggingRef.current = true;
     let target = x.get() - (cardWidth + cardGap);
     if (target <= -singleSetWidth) target += singleSetWidth;
-    controls.start({ x: target, transition: { duration: 0.45, ease: "circOut" } })
-      .then(() => { x.set(target); isDraggingRef.current = false; lastTsRef.current = null; });
+    
+    animate(x, target, {
+      duration: 0.45,
+      ease: "circOut",
+      onComplete: () => {
+        isDraggingRef.current = false;
+        lastTsRef.current = null;
+      }
+    });
   };
 
   return (
