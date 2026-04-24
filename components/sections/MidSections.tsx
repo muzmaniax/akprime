@@ -32,7 +32,7 @@ export function TickerBand() {
   const items = [...serviceNames, ...serviceNames]; // doubled for seamless loop
   return (
     <div
-      className="relative overflow-hidden py-3"
+      className="relative overflow-hidden py-1.5"
       style={{
         background: "rgba(55,180,180,.06)",
         borderTop: "1px solid rgba(55,180,180,.1)",

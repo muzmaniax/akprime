@@ -53,12 +53,12 @@ export function AnimatedCounter({
 
   return (
     <div ref={ref} className="text-center">
-      <div className="counter-number text-3xl sm:text-4xl font-bold text-white tabular-nums">
+      <div className="counter-number text-3xl sm:text-4xl font-medium tracking-tighter text-white tabular-nums">
         {prefix}
         {current.toLocaleString()}
         {suffix}
       </div>
-      <p className="text-white/55 text-sm mt-1 font-medium">{label}</p>
+      <p className="text-white/55 text-[13px] tracking-tight mt-1 font-normal">{label}</p>
     </div>
   );
 }

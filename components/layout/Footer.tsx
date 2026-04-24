@@ -41,15 +41,12 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 group mb-5">
               <Image
-                src="/logo-primary.png"
+                src="/ak-logo.png"
                 alt="AK Prime Consulting"
-                width={100}
-                height={32}
-                className="h-8 w-auto object-contain transition-opacity group-hover:opacity-80"
+                width={150}
+                height={40}
+                className="h-10 w-auto object-contain pb-[5px] transition-opacity group-hover:opacity-80"
               />
-              <span className="text-white font-bold text-sm tracking-tight leading-tight">
-                AK<span className="text-[#37B4B4]"> Prime</span>
-              </span>
             </Link>
             <p className="text-white/45 text-[0.9375rem] leading-relaxed mb-5">
               Modernise Your Business Operations With AI, ERP &amp; Strategic Advisory. Headquartered in Nairobi, Kenya — with a branch in Mombasa.

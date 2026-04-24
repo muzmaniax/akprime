@@ -17,7 +17,7 @@ export function ScrollReveal({
   once = true,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once, margin: "-60px" });
+  const inView = useInView(ref, { once, margin: "0px" });
 
   return (
     <motion.div

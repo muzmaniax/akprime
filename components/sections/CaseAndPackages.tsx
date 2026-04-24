@@ -1,33 +1,29 @@
 "use client";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 export function CaseStudiesSection() {
   return (
-    <section className="py-12 lg:py-16 section-tint overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20 mb-4">
-              <span className="text-[14px] font-normal tracking-wide text-[#37B4B4]">
-                 Case studies
-              </span>
-            </div>
+    <section className="min-h-[var(--section-h)] flex flex-col justify-center py-6 lg:py-8 section-tint overflow-hidden">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6 lg:gap-8">
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20 mb-4">
+            <span className="text-[14px] font-normal tracking-wide text-[#37B4B4]">
+               Case studies
+            </span>
+          </div>
             
             <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium text-[#082121] tracking-tighter leading-[1.05]">
               Proven <span className="text-[#37B4B4]">Results</span> <br className="hidden lg:block" />Across Industries
             </h2>
           </div>
-        </ScrollReveal>
 
-        <ScrollReveal delay={0.1}>
-          <Link 
-            href="/case-studies/manufacturing-erp"
-            className="group relative block min-h-[460px] sm:min-h-[400px] lg:min-h-[450px] rounded-[32px] lg:rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700"
-          >
-            {/* Background Image */}
-            <img 
+        <Link 
+          href="/case-studies/manufacturing-erp"
+          className="group relative block w-full min-h-[500px] lg:min-h-[550px] rounded-[32px] lg:rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700"
+        >
+          {/* Background Image */}
+          <img
               src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80"
               alt="Featured Case Study"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -62,8 +58,7 @@ export function CaseStudiesSection() {
                  </div>
               </div>
             </div>
-          </Link>
-        </ScrollReveal>
+        </Link>
       </div>
     </section>
   );

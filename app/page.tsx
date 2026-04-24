@@ -22,7 +22,6 @@ export default function HomePage() {
       
       {/* 1b. Brand Strips — Revealed on Scroll */}
       <div className="relative z-10 bg-[#082121]">
-        <TickerBand />
         <PhotoStrip />
       </div>
 

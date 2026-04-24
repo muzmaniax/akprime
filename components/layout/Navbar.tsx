@@ -75,19 +75,16 @@ export function Navbar() {
 
           {/* Logo — bare image, no circle */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group" aria-label="AK Prime Home">
-            <div className="h-8 w-auto flex items-center transition-opacity group-hover:opacity-80">
+            <div className="h-12 w-auto flex items-center transition-opacity group-hover:opacity-80">
               <Image
-                src="/logo-primary.png"
+                src="/ak-logo.png"
                 alt="AK Prime Consulting"
-                width={120}
-                height={40}
-                className="h-8 w-auto object-contain"
+                width={180}
+                height={48}
+                className="h-12 w-auto object-contain pb-[5px]"
                 priority
               />
             </div>
-            <span className="hidden sm:block text-white font-bold text-sm tracking-tight leading-tight">
-              AK<span className="text-[#37B4B4]"> Prime</span>
-            </span>
           </Link>
 
           {/* Desktop Nav — inline, not absolutely positioned */}
@@ -266,11 +263,11 @@ export function Navbar() {
                     onClick={() => setMobileOpen(false)}
                   >
                     <Image
-                      src="/logo-primary.png"
+                      src="/ak-logo.png"
                       alt="AK Prime Consulting"
-                      width={100}
-                      height={32}
-                      className="h-8 w-auto object-contain"
+                      width={150}
+                      height={40}
+                      className="h-10 w-auto object-contain pb-[5px]"
                     />
                   </Link>
                 </div>

@@ -12,11 +12,13 @@ import { Sparkles } from "@/components/ui-layouts/sparkles";
 import { TickerBand, PhotoStrip } from "@/components/sections/MidSections";
 
 const stats = [
-  { target: 120, suffix: "+", label: "Engagements" },
-  { target: 16, suffix: "", label: "Service Lines" },
-  { target: 98, suffix: "%", label: "Satisfaction" },
-  { target: 8, suffix: "+", label: "Countries · Africa & Middle East" },
+  { target: 99.9, suffix: "%", label: "System Uptime" },
+  { target: 40, suffix: "%", label: "OpEx Reduction" },
+  { target: 3, suffix: "x", label: "Faster Financial Close" },
+  { target: 100, suffix: "%", label: "Visibility on ROI" },
 ];
+
+const TICKER_H = "44px"; // Matches the TickerBand compact height for balance
 
 const kpis = [
   { label: "Automation", value: 62, suffix: "%" },
@@ -50,7 +52,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
   return (
     <section
       ref={heroRef}
-      className={`relative min-h-[calc(100vh-68px)] flex flex-col overflow-hidden py-4 pb-16 lg:py-6 lg:pb-6`}
+      className={`relative min-h-[var(--section-h)] flex flex-col overflow-hidden`}
       style={{ background: "#082121" }}
     >
       {/* Video Background Layer with Teal Overlay */}
@@ -74,13 +76,18 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
       <div className="orb w-[380px] h-[380px] bg-[#29E0C8] opacity-[0.07] bottom-0 -left-20 pointer-events-none" style={{ animationDelay: "3s" }} />
       <div className="orb w-[260px] h-[260px] bg-[#37B4B4] opacity-[0.09] top-1/2 left-1/3 pointer-events-none" style={{ animationDelay: "5.5s" }} />
 
-      <div className="relative max-w-[1300px] mx-auto px-6 sm:px-8 lg:px-12 py-2 lg:py-4 w-full my-auto z-10">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      {/* Content wrapper centered between navbar and ticker */}
+      <div 
+        className="relative flex-1 flex flex-col justify-center w-full z-10"
+        style={{ paddingTop: "30px" }} // Adjusted to shift content down 2px, reducing bottom gap
+      >
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 lg:py-10">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
           {/* ── Left text col (Constrained) ── */}
-          <div className="lg:col-span-8 xl:col-span-8 relative z-20">
+          <div className="lg:col-span-7 xl:col-span-7 relative z-20">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-              <span className="section-overline mb-5 inline-flex items-center gap-2 text-[11px] sm:text-[13px] tracking-wide px-3 py-1.5 sm:px-4 sm:py-2">
+              <span className="section-overline mb-5 inline-flex items-center gap-2 text-[10px] sm:text-[11px] tracking-wide px-3 py-1.5 sm:px-4 sm:py-2">
                 <Globe2 size={12} className="sm:size-3.5" /> 
                 Strategy • Middle East &amp; Africa
               </span>
@@ -89,7 +96,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
             <motion.h1
               initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
-              className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium text-white leading-[1.05] tracking-tighter mb-2 whitespace-normal"
+              className="text-[1.4rem] sm:text-[2.2rem] lg:text-[2.35rem] font-medium text-white leading-[1.1] md:leading-[1.05] tracking-tighter mb-4 whitespace-normal"
             >
               Modernise your<br />
               <Sparkles color="#29E0C8" count={6}>
@@ -103,7 +110,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
             <motion.p
               initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2 }}
-              className="text-base lg:text-lg text-white/60 leading-relaxed max-w-xl mb-6"
+              className="text-[15px] lg:text-[16px] text-white/80 leading-[1.7] tracking-wide max-w-xl mb-8"
             >
               Headquartered in <span className="text-[#37B4B4] font-medium">Nairobi</span> with a branch in <span className="text-[#37B4B4] font-medium">Mombasa</span>, we provide world-class tech advisory across <span className="text-white font-medium">Africa</span> and the <span className="text-white font-medium">Middle East</span>.
             </motion.p>
@@ -111,7 +118,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
             <motion.div
               initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.32 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-5"
             >
               <button
                 onClick={onBooking}
@@ -137,7 +144,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
             <motion.p
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.46 }}
-              className="text-white/32 text-sm"
+              className="text-white/50 text-[13px] lg:text-[13px] leading-relaxed tracking-wide max-w-lg"
             >
               Trusted by organisations across finance, logistics, healthcare, education and the public sector — in Africa and the Middle East.
             </motion.p>
@@ -146,7 +153,7 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
             <motion.div
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.58 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 pt-4 border-t border-white/8"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/8"
             >
               {stats.map((s) => (
                 <AnimatedCounter key={s.label} target={s.target} suffix={s.suffix} label={s.label} />
@@ -279,6 +286,15 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
             </motion.div>
           </div>
         </div>
+      </div>
+      </div>
+      
+      {/* Structural Bottom TickerBand inside the Hero flow */}
+      <div 
+        className="relative z-20 w-full overflow-hidden bg-[#082121]"
+        style={{ height: TICKER_H }}
+      >
+        <TickerBand />
       </div>
     </section>
   );

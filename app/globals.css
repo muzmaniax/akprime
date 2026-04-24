@@ -147,7 +147,13 @@
 }
 
 @media (min-width: 1024px) {
-  :root { --navbar-h: 68px; }
+  :root { 
+    --navbar-h: 68px; 
+    --section-h: calc(111.112vh - var(--navbar-h));
+  }
+  body {
+    zoom: 0.9;
+  }
 }
 
 .dark {
