@@ -1,240 +1,177 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { Sparkles } from "@/components/ui-layouts/sparkles";
-import { BorderTrail } from "@/components/motion-primitives/border-trail";
-import { Star } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Plus } from "lucide-react";
+import { Reveal, Eyebrow, SectionHeader } from "@/components/ui/Primitives";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const testimonials = [
+/* Testimonials — KAVEN-style avatar + quote carousel */
+const TESTIMONIALS = [
   {
-    body: <>The ERP implementation was <span className="text-[#37B4B4] font-medium">seamless</span>. We finally have a single source of truth for our entire operation.</>,
-    name: "James M.",
-    role: "CFO, Manufacturing Firm — Nairobi",
-    initials: "JM",
+    name: "Kevin Wonderman",
+    role: "Chief Executive Officer, Apex Pulse Group",
+    quote:
+      "AK Prime's strategic guidance transformed our vision into actionable plans. The team's expertise and dedication were instrumental in achieving sustainable growth. Highly recommend AK Prime to any business seeking clarity and impactful results.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
   },
   {
-    body: "Their AI pilot saved us 40 hours of manual processing every week. The POC-first approach meant zero risk before full rollout. The team was professional throughout.",
-    name: "Sarah N.",
-    role: "COO, Telecoms Company — Kampala",
-    initials: "SN",
+    name: "Mark Wood",
+    role: "Managing Director, Industrial Manufacturing",
+    quote:
+      "The value was in their judgment, not just the recommendations. They helped us see our business clearly and act with confidence on what mattered most.",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
   },
   {
-    body: "The audit team uncovered three critical control gaps we didn't know existed. Fast, professional, and their remediation plan was actionable from day one.",
-    name: "Amina O.",
-    role: "Board Chair, Regional NGO — Dar es Salaam",
-    initials: "AO",
-  },
-];
-
-const insights = [
-  {
-    photo: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
-    tag: "AI",
-    readTime: "6 min read",
-    date: "March 2026",
-    quote: <>Working with AK Prime was a <span className="text-[#37B4B4] font-medium">complete transformation</span> for our logistics. Their technical depth and strategic advisory are world-class.</>,
-    title: "How AI is transforming finance operations in Africa & Middle East",
-    excerpt: "From automated reconciliation to predictive cash forecasting.",
-    href: "/insights/ai-finance-east-africa",
-    featured: true,
-  },
-  {
-    photo: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80",
-    tag: "ERP",
-    readTime: "8 min read",
-    date: "February 2026",
-    title: "ERP implementation: The 5 mistakes most companies make",
-    excerpt: "Data migration failures. Scope creep. Low adoption. Here's what to avoid.",
-    href: "/insights/erp-implementation-mistakes",
-    featured: false,
-  },
-  {
-    photo: "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=800&q=80",
-    tag: "Finance",
-    readTime: "5 min read",
-    date: "January 2026",
-    title: "Cashflow optimisation strategies for fast-growing businesses",
-    excerpt: "Three working capital levers that unlock 30–60 days of cash.",
-    href: "/insights/cashflow-optimisation",
-    featured: false,
+    name: "Hanry Mandu",
+    role: "Chief Operating Officer, Healthcare Services",
+    quote:
+      "This felt like a thinking partner, not a consulting project. The frameworks they introduced are still guiding decisions a year later.",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80",
   },
 ];
 
 export function TestimonialsSection() {
+  const [i, setI] = useState(0);
+  const t = TESTIMONIALS[i];
+
   return (
-    <section className="py-10 lg:py-14 section-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-8">
-            <span className="section-overline mb-2 inline-block">Client outcomes</span>
-            <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white">
-              What our clients say
-            </h2>
-          </div>
-        </ScrollReveal>
+    <section className="bg-white text-[#082121] section-py border-t border-[#082121]/8">
+      <div className="container-x">
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
+          <Reveal className="lg:col-span-4">
+            <Eyebrow>Testimonials</Eyebrow>
+            <h2 className="mt-4 text-[#082121] text-balance">Stories that inspire</h2>
+            <p className="mt-4 text-[15px] text-[#3a5a5a] leading-relaxed max-w-md">
+              Here's what clients shared about their experience working with us.
+            </p>
+            <div className="mt-8 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setI((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+                className="w-11 h-11 rounded-full border border-[#082121]/15 hover:border-[#37B4B4] hover:text-[#37B4B4] text-[#3a5a5a] inline-flex items-center justify-center transition-colors"
+                aria-label="Previous"
+              >
+                <ArrowLeft size={16} />
+              </button>
+              <button
+                type="button"
+                onClick={() => setI((p) => (p + 1) % TESTIMONIALS.length)}
+                className="w-11 h-11 rounded-full bg-[#37B4B4] text-white hover:bg-[#29E0C8] inline-flex items-center justify-center transition-colors"
+                aria-label="Next"
+              >
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {testimonials.map((t, i) => (
-            <ScrollReveal key={t.name} delay={i * 0.1}>
-              <div className="glass-card rounded-[18px] p-6 h-full flex flex-col relative overflow-hidden group">
-                <BorderTrail
-                    className="bg-gradient-to-r from-[#37B4B4] via-transparent to-[#29E0C8]"
-                    size={60}
-                    transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: i * 1.5 }}
-                  />
-                {/* Stars */}
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: 5 }).map((_, k) => (
-                    <Star key={k} size={14} className="text-[#37B4B4] fill-[#37B4B4]" />
-                  ))}
+          <Reveal delay={120} className="lg:col-span-8">
+            <div className="rounded-3xl bg-[#F4FAFA] border border-[#082121]/8 p-8 lg:p-10">
+              <div className="flex items-start gap-5">
+                <div className="relative w-16 h-16 rounded-full overflow-hidden border border-[#082121]/10 shrink-0">
+                  <Image src={t.image} alt={t.name} fill className="object-cover" sizes="64px" unoptimized />
                 </div>
-
-                {/* Large quote mark */}
-                <div className="text-3xl font-serif leading-none mb-3 text-[#37B4B4]/40 group-hover:text-[#37B4B4] transition-colors">&ldquo;</div>
-
-                <p className="italic text-sm leading-relaxed flex-1 mb-5 text-white/80">
-                  {t.body}
-                </p>
-
-                <div className="flex items-center gap-3 pt-5 border-t border-white/10">
-                  <div
-                    className="w-9 h-9 rounded-[8px] flex items-center justify-center text-xs font-bold shrink-0 text-[#082121]"
-                    style={{ background: "#37B4B4" }}
-                  >
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm text-white group-hover:text-[#37B4B4] transition-colors">{t.name}</p>
-                    <p className="text-[11px] font-medium text-white/40">{t.role}</p>
-                  </div>
+                <div className="flex-1">
+                  <div className="text-[15px] font-medium text-[#082121]">{t.name}</div>
+                  <div className="text-[12px] text-[#3a5a5a] mt-0.5">{t.role}</div>
                 </div>
               </div>
-            </ScrollReveal>
-          ))}
+              <blockquote className="mt-6 text-[18px] lg:text-[22px] text-[#082121] leading-relaxed text-balance">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <div className="mt-8 flex items-center gap-1.5">
+                {TESTIMONIALS.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setI(idx)}
+                    aria-label={`Go to testimonial ${idx + 1}`}
+                    className={`h-1.5 rounded-full transition-all ${idx === i ? "w-8 bg-[#37B4B4]" : "w-1.5 bg-[#082121]/20"}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
   );
 }
 
-// ── Figma Card/12-style Insight Card ─────────────────────────────────────────
-function InsightCard({ a, delay }: { a: any; delay: number }) {
-  return (
-    <ScrollReveal delay={delay}>
-      <Link href={a.href} className="block h-full">
-        <motion.div
-          whileHover={{ y: -6, scale: 1.015 }}
-          transition={{ type: "spring", stiffness: 300, damping: 22 }}
-          className="relative rounded-[22px] overflow-hidden cursor-pointer group"
-          style={{ height: "300px" }}
-        >
-          {/* Background image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={a.photo}
-            alt={a.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.07]"
-          />
-
-          {/* Teal tint overlay at top (matches Figma mint bg) */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(103,196,196,0.38) 0%, rgba(8,33,33,0.0) 35%, rgba(8,33,33,0.72) 65%, rgba(8,33,33,0.97) 100%)",
-            }}
-          />
-
-
-
-          {/* Bottom content layer */}
-          <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
-            {/* Featured badge */}
-            {a.featured && (
-              <span
-                className="pill-b mb-3"
-              >
-                Featured
-              </span>
-            )}
-
-            {/* Meta row */}
-            {!a.featured && (
-              <div className="flex items-center gap-2 mb-2">
-                <span className="pill-a">
-                  {a.tag}
-                </span>
-                <span className="pill-d">{a.readTime}</span>
-              </div>
-            )}
-
-            {/* Title */}
-            <h3
-              className="text-white font-medium leading-tight group-hover:text-[#29E0C8] transition-colors duration-300"
-              style={{ fontSize: a.featured ? "1.85rem" : "1.3rem", lineHeight: 1.15, letterSpacing: "-0.025em" }}
-            >
-              {a.title}
-            </h3>
-
-            {/* Excerpt — appears on hover */}
-            <p className="text-white/0 group-hover:text-white/70 text-sm mt-2 leading-snug transition-all duration-300 line-clamp-2"
-              style={{ maxHeight: 0, overflow: "hidden" }}
-            >
-              {a.excerpt}
-            </p>
-
-            {/* Read more arrow */}
-            <div className="mt-3 flex items-center gap-1.5">
-              <span
-                className="text-xs font-bold tracking-wide"
-                style={{ color: "#29E0C8" }}
-              >
-                {a.readTime} · {a.date}
-              </span>
-              <span className="ml-auto text-xs font-semibold text-white/0 group-hover:text-white transition-all duration-300">
-                Read →
-              </span>
-            </div>
-          </div>
-
-          {/* Hover border glow */}
-          <div
-            className="absolute inset-0 rounded-[22px] border-2 border-transparent group-hover:border-[#29E0C8]/40 transition-all duration-300 pointer-events-none"
-          />
-        </motion.div>
-      </Link>
-    </ScrollReveal>
-  );
-}
+/* Insights — 3-column article cards */
+const ARTICLES = [
+  {
+    slug: "why-most-business-problems-are-misdiagnosed",
+    category: "Strategy",
+    title: "Why most business problems are misdiagnosed",
+    author: "Mark Wood",
+    date: "Jan 20, 2026",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1000&q=80",
+  },
+  {
+    slug: "the-real-cost-of-poor-decision-making",
+    category: "Operations",
+    title: "The real cost of poor decision-making for business",
+    author: "Hanry Mandu",
+    date: "Jan 20, 2026",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&q=80",
+  },
+  {
+    slug: "when-founders-should-seek-external-perspective",
+    category: "Leadership",
+    title: "When founders should seek external perspective",
+    author: "Andy Milan",
+    date: "Jan 20, 2026",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1000&q=80",
+  },
+];
 
 export function InsightsSection() {
   return (
-    <section className="py-10 lg:py-14 section-light">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
-            <div>
-              <span className="section-overline mb-2 inline-block">Insights</span>
-              <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] mb-1" style={{ color: "#082121" }}>
-                Thought leadership
-              </h2>
-            </div>
-            <Link
-              href="/insights"
-              className="text-sm font-semibold transition-colors whitespace-nowrap"
-              style={{ color: "#37B4B4" }}
-            >
-              View All Articles →
+    <section className="bg-[#F4FAFA] text-[#082121] section-py border-t border-[#082121]/8">
+      <div className="container-x">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Our Blog"
+              title="Thinking for business leaders"
+              sub="Articles focused on how leaders think, decide, and operate in complex business environments."
+              light
+            />
+          </Reveal>
+          <Reveal delay={100}>
+            <Link href="/insights" className="text-[#37B4B4] hover:text-[#082121] text-[14px] font-semibold inline-flex items-center gap-1.5">
+              All articles <ArrowUpRight size={14} />
             </Link>
-          </div>
-        </ScrollReveal>
+          </Reveal>
+        </div>
 
-        {/* Figma Card/12 layout: featured card taller on large screens */}
-        <div className="grid md:grid-cols-3 gap-5 items-stretch">
-          {insights.map((a, i) => (
-            <InsightCard key={a.title} a={a} delay={i * 0.1} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {ARTICLES.map((a, i) => (
+            <Reveal key={a.slug} delay={i * 80}>
+              <Link href={`/insights/${a.slug}`} className="group block">
+                <div className="aspect-[16/10] overflow-hidden rounded-2xl ring-1 ring-[#082121]/8">
+                  <div
+                    className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    style={{ backgroundImage: `url(${a.image})` }}
+                  />
+                </div>
+                <div className="mt-5">
+                  <div className="text-[11px] font-semibold tracking-[0.18em] text-[#37B4B4] uppercase">
+                    {a.category}
+                  </div>
+                  <h3 className="mt-2.5 text-[#082121] text-balance group-hover:text-[#37B4B4] transition-colors">
+                    {a.title}
+                  </h3>
+                  <div className="mt-4 flex items-center gap-2 text-[12px] text-[#3a5a5a]">
+                    <div className="w-6 h-6 rounded-full bg-[#082121]/10" />
+                    <span>{a.author}</span>
+                    <span className="text-[#082121]/30">·</span>
+                    <span>{a.date}</span>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -242,115 +179,87 @@ export function InsightsSection() {
   );
 }
 
-function useMousePosition() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-  return mousePosition;
-}
+/* FAQ */
+const FAQ = [
+  { q: "What type of businesses do you work with?", a: "We work with small to mid-sized businesses, growth-stage companies, and established organisations. Our clients are typically founders, executives, and leadership teams facing strategic, operational, or growth-related decisions." },
+  { q: "When should a business consider hiring a consultant?", a: "When a decision carries weight you don't want to get wrong. Typical moments: scaling teams, system migrations, fundraising, restructures, or entering a new market." },
+  { q: "What makes AK Prime different from other consulting firms?", a: "We bring rigour without the overhead — small senior teams, no junior shuffle, and a focus on building lasting capability inside your organisation rather than dependence on us." },
+  { q: "Do you provide ready-made solutions?", a: "No. Every engagement starts with discovery. The cost of getting the diagnosis wrong is too high." },
+  { q: "How does a typical engagement work?", a: "A 2-week diagnostic, then a defined scope of 4–16 weeks depending on the work. We share a clear plan, milestones, and deliverables before the engagement starts." },
+];
 
-function ContactBackground() {
-  const mouse = useMousePosition();
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => setIsClient(true), []);
-
-  if (!isClient) return null;
-
+export function FAQSection() {
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      {/* Dynamic Mouse Glow Spotlight */}
-      <motion.div
-        className="absolute w-[800px] h-[800px] rounded-full opacity-30 select-none pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(55,180,180,0.15) 0%, transparent 60%)",
-        }}
-        animate={{
-          x: mouse.x - 400,
-          y: mouse.y - 400,
-        }}
-        transition={{ type: "spring", damping: 40, stiffness: 200, mass: 0.5 }}
-      />
+    <section className="section-dark section-py border-t border-white/[0.06]">
+      <div className="container-x">
+        <Reveal>
+          <SectionHeader
+            eyebrow="FAQ"
+            title="Common questions, clear answers"
+            align="center"
+          />
+        </Reveal>
 
-      {/* Floating Zooming Abstract Arrows */}
-      <div className="absolute inset-0 z-0 opacity-[0.08]">
-        {Array.from({ length: 15 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-[#37B4B4]"
-            initial={{ 
-              x: (i * 7) + "%", 
-              y: "115%", 
-              scale: 0.8 + Math.random() * 2.5,
-              opacity: 0.1
-            }}
-            animate={{ 
-              y: "-20%",
-              opacity: [0.1, 0.4, 0.1],
-              scale: [0.8 + Math.random(), 1.2 + Math.random()]
-            }}
-            transition={{ 
-              duration: 12 + Math.random() * 25, 
-              repeat: Infinity, 
-              ease: "linear",
-              delay: i * 1.5,
-            }}
-          >
-            {/* Abstract Arrow shape from logo philosophy */}
-            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.div>
-        ))}
+        <Reveal delay={120}>
+          <div className="mt-12 max-w-[760px] mx-auto">
+            <Accordion className="w-full">
+              {FAQ.map((item, i) => (
+                <AccordionItem key={i} value={`item-${i}`} className="border-b border-white/10">
+                  <AccordionTrigger className="text-left py-5 text-[15px] md:text-[16px] font-medium text-white hover:no-underline hover:text-[#37B4B4] [&>svg]:hidden group">
+                    <span className="flex-1 pr-4">{item.q}</span>
+                    <span className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#37B4B4] transition-transform group-data-[state=open]:rotate-45">
+                      <Plus size={14} />
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[14px] text-white/65 leading-relaxed pb-5 pr-12">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </Reveal>
       </div>
-
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(55,180,180,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(55,180,180,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
-    </div>
+    </section>
   );
 }
 
-export function CTABannerSection({ onBooking }: { onBooking: () => void }) {
+/* CTA Banner */
+export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
+  const photos = [
+    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
+    "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+    "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80",
+    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80",
+  ];
+
   return (
-    <section className="relative min-h-[500px] flex items-center justify-center overflow-hidden bg-[#082121] py-12">
-      <ContactBackground />
-
-      {/* Final dark blend to keep text visible */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#082121] via-transparent to-[#082121] z-10 pointer-events-none" />
-
-      <div className="relative z-20 max-w-3xl mx-auto px-4 sm:px-6 text-center">
-        <ScrollReveal>
-          <span className="section-overline mb-4 inline-block">Start the conversation</span>
-          <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white mb-4">
-            <Sparkles color="#29E0C8" count={10}>
-              Ready to transform your operations?
-            </Sparkles>
+    <section className="section-dark section-py border-t border-white/[0.06]">
+      <div className="container-x text-center">
+        <Reveal>
+          <Eyebrow className="justify-center">Get In Touch</Eyebrow>
+          <h2 className="mt-5 text-white text-balance max-w-[18ch] mx-auto">
+            Clarity starts with the right conversation.
           </h2>
-          <p className="text-white/55 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-            Schedule a strategy consultation. No hard sell — just an honest assessment.
+          <p className="mt-5 text-[15px] text-white/60 max-w-xl mx-auto leading-relaxed">
+            Whether you're navigating complexity or preparing to scale, we help leadership teams gain
+            clarity, align decisions, and move forward with confidence.
           </p>
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
-            <button
-              onClick={onBooking}
-              className="pill-e cta-pulse"
-            >
-              <div className="pill-e-group">
-                Book strategy consultation
-                <div className="pill-e-icon"><span>→</span></div>
+          <button type="button" onClick={onBooking} className="btn-cta mt-8">
+            Request a consultation <ArrowUpRight size={16} strokeWidth={2.25} />
+          </button>
+        </Reveal>
+
+        <Reveal delay={180}>
+          <div className="mt-16 grid grid-cols-2 sm:grid-cols-5 gap-3 lg:gap-4">
+            {photos.map((p, i) => (
+              <div key={i} className={`aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 ${i === 0 || i === 4 ? "translate-y-3" : ""} ${i === 2 ? "-translate-y-3" : ""}`}>
+                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${p})` }} />
               </div>
-            </button>
-            <Link
-              href="/contact"
-              className="pill-f"
-            >
-              Send an enquiry
-            </Link>
+            ))}
           </div>
-        </ScrollReveal>
+        </Reveal>
       </div>
     </section>
   );

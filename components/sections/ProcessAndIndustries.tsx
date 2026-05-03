@@ -1,175 +1,122 @@
 "use client";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { motion } from "framer-motion";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
-import { IndustryCardProps } from "@/components/ui/IndustryCard";
-import { TickerCarousel } from "@/components/ui/TickerCarousel";
-import { MobileCarousel } from "@/components/ui/MobileCarousel";
-import { industriesData } from "@/data/industries";
-import { Lightbulb, Map, Settings, GraduationCap, TrendingUp, Search, Briefcase, Users, LayoutDashboard, Globe } from "lucide-react";
-import Image from "next/image";
 
-// ── Process steps ─────────────────────────────────────────────────────────────
-const steps = [
-  {
-    num: "01", Icon: Lightbulb, title: "Understand",
-    desc: <>We immerse ourselves in your business to uncover <span className="text-white font-medium">challenges and opportunities</span>.</>,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    num: "02", Icon: Map, title: "Design",
-    desc: <>Build the <span className="text-white font-medium">transformation roadmap</span> — requirements, architecture, vendor selection.</>,
-    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    num: "03", Icon: Settings, title: "Implement",
-    desc: <><span className="text-white font-medium">Configure, migrate and deploy</span> with formal change control and milestone gates.</>,
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    num: "04", Icon: GraduationCap, title: "Train",
-    desc: <>Role-based training, SOPs and <span className="text-white font-medium">knowledge transfer</span> for full team adoption.</>,
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    num: "05", Icon: TrendingUp, title: "Scale",
-    desc: <>30/60/90-day reviews, hypercare support and <span className="text-white font-medium">continuous optimisation</span>.</>,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
-  },
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { Reveal, SectionHeader } from "@/components/ui/Primitives";
+import { industriesData, type Industry } from "@/data/industries";
+
+/* PROCESS — 5-phase framework, LIGHT background */
+const PROCESS = [
+  { num: "01", title: "Assess", desc: "Structured discovery — interviews, current-state mapping and gap analysis. Understand the business before proposing a solution." },
+  { num: "02", title: "Design", desc: "Solution architecture, requirement specs, risk register and agreed KPIs. Nothing moves to implementation without sign-off." },
+  { num: "03", title: "Implement", desc: "Deploy with formal change control and milestone governance. Payments tied to accepted deliverables." },
+  { num: "04", title: "Train", desc: "Role-based training, SOPs, e-learning modules and competency assessment before go-live." },
+  { num: "05", title: "Scale", desc: "30 / 60 / 90-day hypercare reviews, support log and lessons-learned session. Optimise as the business grows." },
 ];
 
-// ── Map industries data to IndustryCardProps ──────────────────────────────────
-const industryCards: IndustryCardProps[] = industriesData.map((ind) => ({
-  image: ind.photo,
-  title: ind.name,
-  description: ind.shortDescription,
-  href: `/industries/${ind.slug}`,
-}));
-
-// ── Industries Section — Animated Ticker Carousel ────────────────────────────
-export function IndustriesSection() {
+export function ProcessSection() {
   return (
-    <section className="py-8 lg:py-12 section-light overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-6">
-            <span className="section-overline mb-2 inline-block">Sectors we serve</span>
-            <h2
-              className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] mb-2 text-[#082121]"
-            >
-              Solutions built for your industry
-            </h2>
-            <p className="text-sm md:text-base max-w-xl mx-auto" style={{ color: "#5a7a7a" }}>
-              Deep expertise across <span className="text-[#37B4B4] font-medium">eight sectors</span> — from <span className="text-[#082121] font-medium">manufacturing</span> and <span className="text-[#082121] font-medium">finance</span> to <span className="text-[#082121] font-medium">healthcare</span> and <span className="text-[#082121] font-medium">government</span>.
-            </p>
-          </div>
-        </ScrollReveal>
-      </div>
+    <section className="bg-[#F4FAFA] text-[#082121] section-py border-t border-[#082121]/8">
+      <div className="container-x">
+        <Reveal>
+          <SectionHeader
+            eyebrow="How we deliver"
+            title="A proven 5-phase framework"
+            sub="Every engagement. Every service line. Every time."
+            align="center"
+            light
+          />
+        </Reveal>
 
-      {/* ── Full-bleed ticker (no max-w constraint so cards bleed to edges) ── */}
-      {/* Mobile: swipe carousel */}
-      <div className="block md:hidden">
-        <MobileCarousel cards={industryCards} />
-      </div>
-
-      {/* Tablet & Desktop: auto-scrolling ticker */}
-      <div className="hidden md:block">
-        <TickerCarousel cards={industryCards} />
+        <div className="mt-14 grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-4">
+          {PROCESS.map((p, i) => (
+            <Reveal key={p.num} delay={i * 60}>
+              <div className="h-full p-5 lg:p-6 rounded-2xl bg-white border border-[#082121]/8 hover:border-[#37B4B4]/30 transition-colors">
+                <div className="text-[#37B4B4] text-[11px] font-semibold tracking-[0.18em] mb-3">{p.num}</div>
+                <h3 className="text-[#082121] text-[17px] mb-2.5">{p.title}</h3>
+                <p className="text-[12.5px] text-[#3a5a5a] leading-relaxed">{p.desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function GradientBorderCard({
-  step,
-  className = ""
-}: {
-  step: { num: string; title: string; desc: React.ReactNode; Icon: any; image?: string };
-  className?: string;
-}) {
+/* INDUSTRIES — photo cards, DARK background */
+export function IndustriesSection() {
   return (
-    <div className={`group relative w-full h-full [background:linear-gradient(45deg,#082121,#0E3E3E_50%,#082121)_padding-box,conic-gradient(from_var(--border-angle),rgba(55,180,180,0.1)_80%,#37B4B4_86%,#29E0C8_90%,#37B4B4_94%,rgba(55,180,180,0.1))_border-box] rounded-[18px] border border-transparent hover:animate-border transition-all duration-700 overflow-hidden ${className}`}>
-      <div className="relative z-10 p-4 flex flex-col h-full">
-        <div className="flex justify-between items-start mb-3">
-          <div className="w-10 h-10 rounded-[10px] bg-[#37B4B4]/10 flex items-center justify-center text-[#37B4B4] group-hover:bg-[#37B4B4] group-hover:text-white transition-all duration-300">
-            <step.Icon size={18} />
-          </div>
-          <span className="text-xl font-medium text-white/10 group-hover:text-[#37B4B4]/20 transition-colors">
-            {step.num}
-          </span>
+    <section className="section-dark section-py border-t border-white/[0.06]">
+      <div className="container-x">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Sectors we serve"
+              title="Built for your industry"
+              sub="We don't apply generic templates. Every engagement draws on deep sector knowledge built across years of East African delivery."
+            />
+          </Reveal>
+          <Reveal delay={100}>
+            <Link href="/industries" className="inline-flex items-center gap-1.5 text-[#37B4B4] hover:text-[#29E0C8] text-[14px] font-semibold">
+              All industries <ArrowUpRight size={14} />
+            </Link>
+          </Reveal>
         </div>
 
-        <div className="flex-1">
-          <h3 className="text-[30px] font-medium text-white mb-2 group-hover:text-[#37B4B4] transition-colors tracking-tight leading-[1.2]">
-            {step.title}
-          </h3>
-          <p className="text-[16.5px] text-white/60 group-hover:text-white/80 transition-colors leading-relaxed">
-            {step.desc}
-          </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {industriesData.slice(0, 6).map((ind: Industry, i) => (
+            <Reveal key={ind.slug} delay={(i % 3) * 60}>
+              <Link
+                href={`/industries/${ind.slug}`}
+                className="group relative block aspect-[3/4] rounded-3xl overflow-hidden ring-1 ring-white/10 hover:ring-[#37B4B4]/40 transition-all duration-300 shadow-lg shadow-black/25"
+              >
+                <Image
+                  src={ind.photo}
+                  alt={ind.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  style={{ objectPosition: "center 30%" }}
+                  unoptimized
+                />
+                {/* Gradient: strong dark vignette at bottom, subtle at top */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/5" />
+                {/* Top: industry index */}
+                <div className="absolute top-4 left-4">
+                  <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/50">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                {/* Bottom: title + description + arrow */}
+                <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-white text-[21px] font-semibold tracking-tight leading-[1.15]">
+                      {ind.name}
+                    </h3>
+                    <p className="mt-1.5 text-[12.5px] text-white/65 leading-snug line-clamp-2">
+                      {ind.shortDescription}
+                    </p>
+                  </div>
+                  <span className="w-9 h-9 rounded-full bg-[#37B4B4] text-white inline-flex items-center justify-center shrink-0 group-hover:bg-[#29E0C8] transition-colors duration-200 shadow-md">
+                    <ArrowUpRight size={15} strokeWidth={2.5} />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
 
-        {/* Optional abstract image look */}
-        <div className="mt-4 transition-all duration-700">
-          <div className="h-32 sm:h-36 w-full rounded-[10px] bg-[#0E3E3E] border border-white/5 relative overflow-hidden">
-            {step.image && (
-              <Image
-                src={step.image}
-                alt={step.title}
-                fill
-                className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-              />
-            )}
-            <div className="absolute top-0 left-0 w-full h-full grid-bg opacity-15 group-hover:opacity-10 transition-opacity" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ── Process Section ──────────────────────────────────────────────────────────
-export function ProcessSection() {
-  return (
-    <section className="py-10 lg:py-14 section-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-10">
-            <span className="section-overline mb-2 inline-block">How we work</span>
-            <h2
-              className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white mb-2"
-            >
-              A proven delivery framework
-            </h2>
-          </div>
-        </ScrollReveal>
-
-        {/* Bento Grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-3 auto-rows-[minmax(260px,auto)]">
-          {/* Step 1: Feature card — 7/12 wide on desktop, 3/6 on tablet */}
-          <ScrollReveal delay={0.1} className="md:col-span-3 lg:col-span-7">
-            <GradientBorderCard step={steps[0]} />
-          </ScrollReveal>
-
-          {/* Step 2: Normal — 5/12 on desktop, 3/6 on tablet */}
-          <ScrollReveal delay={0.2} className="md:col-span-3 lg:col-span-5">
-            <GradientBorderCard step={steps[1]} />
-          </ScrollReveal>
-
-          {/* Step 3: Equal thirds on desktop, 2/6 on tablet */}
-          <ScrollReveal delay={0.3} className="md:col-span-2 lg:col-span-4">
-            <GradientBorderCard step={steps[2]} />
-          </ScrollReveal>
-
-          {/* Step 4: Equal thirds on desktop, 2/6 on tablet */}
-          <ScrollReveal delay={0.4} className="md:col-span-2 lg:col-span-4">
-            <GradientBorderCard step={steps[3]} />
-          </ScrollReveal>
-
-          {/* Step 5: Equal thirds on desktop, 2/6 on tablet */}
-          <ScrollReveal delay={0.5} className="md:col-span-2 lg:col-span-4">
-            <GradientBorderCard step={steps[4]} />
-          </ScrollReveal>
-        </div>
+        {industriesData.length > 6 && (
+          <Reveal delay={200}>
+            <div className="mt-6 text-center">
+              <Link href="/industries" className="btn-ghost">
+                View all {industriesData.length} industries <ArrowUpRight size={14} />
+              </Link>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

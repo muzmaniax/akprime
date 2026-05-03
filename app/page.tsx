@@ -2,15 +2,20 @@
 
 import { useState } from "react";
 import { BookingModal } from "@/components/ui/BookingModal";
+import { MobileCTABar } from "@/components/layout/MobileCTABar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { TrustedLogosCarousel } from "@/components/sections/TrustedLogosCarousel";
-import { ProblemSection, TickerBand, PhotoStrip } from "@/components/sections/MidSections";
+import { ProblemSection } from "@/components/sections/MidSections";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProcessSection, IndustriesSection } from "@/components/sections/ProcessAndIndustries";
 import { CaseStudiesSection } from "@/components/sections/CaseAndPackages";
-import { TestimonialsSection, InsightsSection, CTABannerSection } from "@/components/sections/TestimonialsInsightsCTA";
+import {
+  TestimonialsSection,
+  InsightsSection,
+  FAQSection,
+  CTABannerSection,
+} from "@/components/sections/TestimonialsInsightsCTA";
 import { ContactSection } from "@/components/sections/ContactSection";
-import { ParallaxSection } from "@/components/ui/ParallaxSection";
 
 export default function HomePage() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -18,61 +23,32 @@ export default function HomePage() {
 
   return (
     <>
+      {/* DARK   — Hero */}
       <HeroSection onBooking={openBooking} />
-      
-      {/* 1b. Brand Strips — Revealed on Scroll */}
-      <div className="relative z-10 bg-[#082121]">
-        <TickerBand />
-        <PhotoStrip />
-      </div>
-
-      {/* 2. Trusted Logos Carousel */}
+      {/* DARK   — Trusted logos */}
       <TrustedLogosCarousel />
-
-      {/* 3. Problem — LIGHT */}
+      {/* LIGHT  — About + stats */}
       <ProblemSection onBooking={openBooking} />
-
-      {/* 5. Services Overview — DARK */}
-      <ParallaxSection offset={50} fadeIn>
-        <ServicesSection />
-      </ParallaxSection>
-
-      {/* 6. Industries — Animated Ticker Carousel */}
-      <ParallaxSection offset={30} fadeIn>
-        <IndustriesSection />
-      </ParallaxSection>
-
-      {/* 7. Process Steps — TINT */}
-      <ParallaxSection offset={45} fadeIn>
-        <ProcessSection />
-      </ParallaxSection>
-
-      {/* 8. Case Studies — DARK */}
-      <ParallaxSection offset={40} fadeIn>
-        <CaseStudiesSection />
-      </ParallaxSection>
-
-      {/* 9. Testimonials — TINT */}
-      <ParallaxSection offset={35} fadeIn scaleFrom={0.97}>
-        <TestimonialsSection />
-      </ParallaxSection>
-
-      {/* 10. Insights — LIGHT */}
-      <ParallaxSection offset={40} fadeIn>
-        <InsightsSection />
-      </ParallaxSection>
-
-      {/* 11. CTA Banner — DARK */}
-      <ParallaxSection offset={30} fadeIn scaleFrom={0.98}>
-        <CTABannerSection onBooking={openBooking} />
-      </ParallaxSection>
-
-      {/* 12. Contact Form — LIGHT */}
-      <ParallaxSection offset={35} fadeIn>
-        <ContactSection />
-      </ParallaxSection>
-
+      {/* LIGHT  — Services practice areas (photo cards) */}
+      <ServicesSection />
+      {/* LIGHT (tint) — 5-phase framework */}
+      <ProcessSection />
+      {/* DARK   — Industries (photo cards) */}
+      <IndustriesSection />
+      {/* DARK   — Featured case study */}
+      <CaseStudiesSection />
+      {/* LIGHT  — Testimonials */}
+      <TestimonialsSection />
+      {/* LIGHT (tint) — Insights */}
+      <InsightsSection />
+      {/* DARK   — FAQ */}
+      <FAQSection />
+      {/* DARK   — CTA banner */}
+      <CTABannerSection onBooking={openBooking} />
+      {/* LIGHT  — Contact form */}
+      <ContactSection />
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
+      <MobileCTABar onBooking={openBooking} />
     </>
   );
 }

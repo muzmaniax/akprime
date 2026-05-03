@@ -1,69 +1,65 @@
 "use client";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { ArrowUpRight } from "lucide-react";
+
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Reveal, SectionHeader } from "@/components/ui/Primitives";
+import { caseStudies } from "@/data/case-studies";
 
 export function CaseStudiesSection() {
+  const top = caseStudies.slice(0, 2);
+
   return (
-    <section className="py-12 lg:py-16 section-tint overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#37B4B4]/10 border border-[#37B4B4]/20 mb-4">
-              <span className="text-[14px] font-normal tracking-wide text-[#37B4B4]">
-                 Case studies
-              </span>
-            </div>
-            
-            <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium text-[#082121] tracking-tighter leading-[1.05]">
-              Proven <span className="text-[#37B4B4]">Results</span> <br className="hidden lg:block" />Across Industries
-            </h2>
-          </div>
-        </ScrollReveal>
+    <section className="section-dark section-py border-t border-white/[0.06]">
+      <div className="container-x">
+        <Reveal>
+          <SectionHeader
+            eyebrow="Case Studies"
+            title="Advisory engagements with business leaders"
+            sub="We help leaders see their business clearly, identify the real problems, and design strategies that can actually be executed."
+          />
+        </Reveal>
 
-        <ScrollReveal delay={0.1}>
-          <Link 
-            href="/case-studies/manufacturing-erp"
-            className="group relative block min-h-[340px] aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/9] rounded-[32px] lg:rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700"
-          >
-            {/* Background Image */}
-            <img 
-              src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80"
-              alt="Featured Case Study"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/90 via-[#082121]/30 to-[#082121]/10 opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
-            
-            {/* Context Labels — top-left, absolutely positioned */}
-            <div className="absolute top-5 left-5 lg:top-8 lg:left-8 flex flex-wrap gap-3 z-10">
-              <span className="px-5 py-2.5 rounded-full bg-[#37B4B4] text-[#082121] text-[14px] font-normal tracking-wide shadow-xl">
-                Business strategy
-              </span>
-              <span className="px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[14px] font-normal tracking-wide">
-                Infrastructure group
-              </span>
-            </div>
-
-            {/* Content Overlay — bottom, absolutely positioned */}
-            <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6 flex flex-col md:flex-row md:items-end justify-between gap-6 z-10">
-              <div className="max-w-2xl p-5 sm:p-7 lg:p-8 bg-[#082121]/30 backdrop-blur-2xl rounded-[24px] lg:rounded-[32px] border border-white/10 shadow-2xl">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium text-white tracking-tighter leading-[1.05] mb-3">
-                  Revenue Growth 65% in 12 months.
-                </h3>
-                <p className="text-white/80 text-[13px] lg:text-sm font-normal leading-relaxed max-w-xl">
-                  We helped a fast-growing construction company refine its go-to-market strategy and logistics, achieving record-breaking expansion.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3 sm:gap-4 bg-[#37B4B4] hover:bg-white text-[#082121] rounded-full px-5 py-2.5 sm:px-8 sm:py-4 shadow-2xl shadow-black/20 transition-all duration-500 hover:scale-105 self-start md:self-auto shrink-0">
-                 <span className="text-[13px] sm:text-[14px] font-normal tracking-wide">View case study</span>
-                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#082121] flex items-center justify-center text-white shrink-0">
-                   <ArrowUpRight size={16} />
-                 </div>
-              </div>
-            </div>
-          </Link>
-        </ScrollReveal>
+        <div className="mt-12 grid lg:grid-cols-2 gap-5">
+          {top.map((cs, i) => (
+            <Reveal key={cs.id} delay={i * 100}>
+              <Link
+                href={`/case-studies/${cs.id}`}
+                className="group block bg-white text-[#082121] rounded-3xl overflow-hidden border border-white/0 hover:border-[#37B4B4]/30 transition-colors"
+              >
+                <div className="grid grid-cols-5 min-h-[260px]">
+                  <div className="col-span-3 p-7 lg:p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="text-[11px] font-semibold tracking-[0.18em] text-[#37B4B4] uppercase">
+                        {cs.sector}
+                      </div>
+                      <h3 className="mt-3 text-[#082121] text-[22px] leading-tight font-medium">
+                        {cs.client}
+                      </h3>
+                      <p className="mt-3 text-[14px] text-[#3a5a5a] leading-relaxed line-clamp-3">
+                        {cs.summary}
+                      </p>
+                    </div>
+                    <div className="flex items-end justify-between mt-6 pt-5 border-t border-[#082121]/10">
+                      <div>
+                        <div className="text-[10px] tracking-[0.16em] uppercase text-[#3a5a5a]/70">Industry</div>
+                        <div className="text-[13px] font-medium text-[#082121] mt-1">{cs.industry}</div>
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all">
+                        View case study <ArrowUpRight size={14} strokeWidth={2.25} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-2 relative bg-[#082121]">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${cs.image})` }}
+                    />
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

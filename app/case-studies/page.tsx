@@ -1,88 +1,77 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { caseStudies, CaseStudy } from "@/data/case-studies";
 import { ArrowUpRight } from "lucide-react";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { caseStudies } from "@/data/case-studies";
+import { Reveal, Eyebrow } from "@/components/ui/Primitives";
+import { CTABannerSection } from "@/components/sections/TestimonialsInsightsCTA";
 
 export default function CaseStudiesPage() {
   return (
-    <main className="bg-[#F4FAFA] min-h-screen font-sans selection:bg-[#37B4B4]/30 selection:text-[#37B4B4] pb-24">
-      {/* Page hero */}
-      <section className="pt-14 pb-14 lg:pt-20 lg:pb-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="max-w-3xl">
-              <span className="section-overline mb-6">Proven outcomes</span>
-              <h1 className="text-3xl sm:text-5xl lg:text-[4rem] font-medium text-[#082121] tracking-tighter leading-[1.05] mt-6 mb-6">
-                Real results across Africa &amp; the Middle East
-              </h1>
-              <p className="text-base lg:text-lg text-[#082121]/60 leading-relaxed max-w-xl">
-                We bridge the gap between <span className="text-[#082121] font-medium">high-level strategy</span> and <span className="text-[#082121] font-medium">technical execution</span>. Explore how we've helped leading organisations <span className="text-[#37B4B4] font-medium">modernise their core operations</span>.
-              </p>
-            </div>
-          </ScrollReveal>
+    <>
+      <section className="section-dark pt-28 lg:pt-36 pb-20 border-b border-white/[0.06]">
+        <div className="container-x">
+          <Reveal><Eyebrow>Case Studies</Eyebrow></Reveal>
+          <Reveal delay={80}>
+            <h1 className="mt-6 text-white text-balance max-w-[22ch]">
+              Advisory engagements with business leaders.
+            </h1>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="mt-6 text-[16px] md:text-[18px] text-white/65 leading-relaxed max-w-2xl">
+              We help leaders see their business clearly, identify the real problems,
+              and design strategies that can actually be executed.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* Case study cards */}
-      <section className="py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-10 lg:gap-14">
-            {caseStudies.map((study, index) => (
-              <ScrollReveal key={study.id} delay={index * 0.05}>
-                <CaseStudyCard study={study} />
-              </ScrollReveal>
+      <section className="section-dark section-py">
+        <div className="container-x">
+          <div className="grid lg:grid-cols-2 gap-5">
+            {caseStudies.map((cs, i) => (
+              <Reveal key={cs.id} delay={(i % 4) * 80}>
+                <Link
+                  href={`/case-studies/${cs.id}`}
+                  className="group block bg-white text-[#082121] rounded-3xl overflow-hidden border border-white/0 hover:border-[#37B4B4]/30 transition-colors"
+                >
+                  <div className="grid grid-cols-5 min-h-[280px]">
+                    <div className="col-span-3 p-7 lg:p-8 flex flex-col justify-between">
+                      <div>
+                        <div className="text-[11px] font-semibold tracking-[0.18em] text-[#37B4B4] uppercase">
+                          {cs.sector}
+                        </div>
+                        <h3 className="mt-3 text-[#082121] text-[22px] leading-tight font-medium">{cs.client}</h3>
+                        <p className="mt-3 text-[14px] text-[#3a5a5a] leading-relaxed line-clamp-3">{cs.summary}</p>
+                      </div>
+                      <div className="flex items-end justify-between mt-6 pt-5 border-t border-[#082121]/10">
+                        <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                          <div>
+                            <div className="text-[10px] tracking-[0.16em] uppercase text-[#3a5a5a]/70">Industry</div>
+                            <div className="text-[12px] font-medium text-[#082121] mt-0.5">{cs.industry}</div>
+                          </div>
+                          <div>
+                            <div className="text-[10px] tracking-[0.16em] uppercase text-[#3a5a5a]/70">Year</div>
+                            <div className="text-[12px] font-medium text-[#082121] mt-0.5">{cs.date.split(",")[1]?.trim() ?? cs.date}</div>
+                          </div>
+                        </div>
+                        <div className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all">
+                          View case study <ArrowUpRight size={14} strokeWidth={2.25} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-span-2 relative bg-[#082121]">
+                      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${cs.image})` }} />
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
-    </main>
-  );
-}
 
-function CaseStudyCard({ study }: { study: CaseStudy }) {
-  return (
-    <Link
-      href={`/case-studies/${study.id}`}
-      className="group relative block aspect-[16/9] lg:aspect-[21/7] rounded-2xl lg:rounded-3xl overflow-hidden border border-[#082121]/5 transition-all duration-700"
-    >
-      <img
-        src={study.image}
-        alt={study.title}
-        className="absolute inset-0 w-full h-full object-cover brightness-75 transition-all duration-1000 group-hover:scale-105 group-hover:brightness-90"
-      />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/95 via-[#082121]/30 to-transparent" />
-
-      {/* Category pills (top-left) */}
-      <div className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2">
-        <span className="pill-a">
-          {study.solution}
-        </span>
-        <span className="pill-d">
-          {study.industry}
-        </span>
-      </div>
-
-      {/* Bottom content */}
-      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 flex flex-col sm:flex-row sm:items-end justify-between gap-5">
-        <div className="max-w-2xl">
-          <h2 className="text-lg sm:text-2xl lg:text-3xl font-medium text-white tracking-tight leading-[1.1] mb-2 sm:mb-3">
-            {study.tagline || study.title}
-          </h2>
-          <p className="text-white/60 text-[13px] sm:text-sm leading-relaxed max-w-lg line-clamp-2 sm:line-clamp-none">
-            {study.summary}
-          </p>
-        </div>
-        <div className="flex items-center gap-2.5 sm:gap-3 bg-[#37B4B4] text-[#082121] rounded-full px-5 py-2 sm:px-6 sm:py-3 shadow-xl shrink-0 group-hover:bg-white transition-colors duration-300 self-start sm:self-auto">
-          <span className="text-[13px] font-medium whitespace-nowrap">View results</span>
-          <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#082121] flex items-center justify-center text-white">
-            <ArrowUpRight size={11} />
-          </div>
-        </div>
-      </div>
-    </Link>
+      <CTABannerSection />
+    </>
   );
 }

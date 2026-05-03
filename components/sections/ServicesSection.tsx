@@ -1,263 +1,211 @@
 "use client";
-import Link from "next/link";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { TiltCard } from "@/components/ui/TiltCard";
-import { BorderTrail } from "@/components/motion-primitives/border-trail";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
-import {
-  Server, Sparkles, LayoutGrid, Activity, ShieldCheck, Receipt,
-  ScanLine, PieChart, Banknote, GitMerge, Zap,
-  GraduationCap, ScrollText, TrendingUp, ShieldAlert, BarChart3,
-} from "lucide-react";
 
-const services = [
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight, Cpu, Shield, BarChart3, Users, TrendingUp } from "lucide-react";
+import { Reveal, SectionHeader } from "@/components/ui/Primitives";
+import { servicesData, type ServiceCategory } from "@/data/services";
+import { cn } from "@/lib/utils";
+
+type BentoItem = {
+  key: ServiceCategory;
+  icon: React.ElementType;
+  blurb: string;
+  photo?: string;
+  photoPosition?: string;
+  variant: "photo" | "dark" | "teal";
+};
+
+const BENTO: BentoItem[] = [
   {
-    icon: <Server size={28} strokeWidth={1.4} />,
-    title: "ERP Implementation",
-    desc: <>Unify <span className="text-white/80 font-medium">finance, ops and data</span> in one real-time system.</>,
-    tools: ["Odoo", "SAP B1", "Dynamics 365"],
-    href: "/services/erp-implementation",
-    badge: { text: "Popular", bg: "#37B4B4" },
-    color: "#37B4B4",
+    key: "Systems & Technology",
+    icon: Cpu,
+    blurb: "ERP, AI tools, IT audits and training that turn fragmented systems into a unified operating core.",
+    photo: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80",
+    photoPosition: "center",
+    variant: "photo",
   },
   {
-    icon: <Sparkles size={28} strokeWidth={1.4} />,
-    title: "AI Integration & Automation",
-    desc: <>Automate <span className="text-white/80 font-medium">workflows</span> and unlock predictive business <span className="text-white/80 font-medium">intelligence</span>.</>,
-    tools: ["OpenAI", "Azure AI", "LangChain"],
-    href: "/services/ai-integration-automation",
-    badge: { text: "New", bg: "#29E0C8" },
-    color: "#29E0C8",
+    key: "Finance & Compliance",
+    icon: Shield,
+    blurb: "Audit, FP&A, cashflow management and compliance frameworks that hold up to scrutiny.",
+    variant: "dark",
   },
   {
-    icon: <LayoutGrid size={28} strokeWidth={1.4} />,
-    title: "Project Management",
-    desc: <><span className="text-white/80 font-medium">On scope, on time, on budget</span> — every engagement.</>,
-    tools: ["MS Project", "Asana", "Jira"],
-    href: "/services/project-management",
-    badge: null,
-    color: "#37B4B4",
+    key: "Strategy & Transformation",
+    icon: BarChart3,
+    blurb: "Project governance, business analysis, restructuring and capital readiness.",
+    variant: "dark",
   },
   {
-    icon: <Activity size={28} strokeWidth={1.4} />,
-    title: "Business Analysis",
-    desc: <>Clear <span className="text-white/80 font-medium">requirements</span> that eliminate costly rework.</>,
-    tools: ["BPMN", "Jira", "Lucidchart"],
-    href: "/services/business-analysis",
-    badge: null,
-    color: "#37B4B4",
+    key: "HR & People Services",
+    icon: Users,
+    blurb: "Org design, payroll, recruitment, performance and L&D — the full people stack.",
+    photo: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=80",
+    photoPosition: "center 35%",
+    variant: "photo",
   },
   {
-    icon: <ShieldCheck size={28} strokeWidth={1.4} />,
-    title: "Audit Services",
-    desc: <><span className="text-white/80 font-medium">Independent assurance</span> that reduces risk and builds trust.</>,
-    tools: ["CaseWare", "ACL", "IDEA"],
-    href: "/services/audit-assurance",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <Receipt size={28} strokeWidth={1.4} />,
-    title: "Bookkeeping",
-    desc: <>Accurate, timely books that keep you <span className="text-white/80 font-medium">tax-ready</span> always.</>,
-    tools: ["QuickBooks", "Xero", "Sage"],
-    href: "/services/cloud-accounting",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <ScanLine size={28} strokeWidth={1.4} />,
-    title: "System & IT Audits",
-    desc: <>Find <span className="text-white/80 font-medium">ERP and security gaps</span> before they find you.</>,
-    tools: ["ERP Security", "Nessus", "Controls"],
-    href: "/services/it-systems-audit",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <PieChart size={28} strokeWidth={1.4} />,
-    title: "Financial Management",
-    desc: <><span className="text-white/80 font-medium">FP&A</span>, forecasting and interim <span className="text-white/80 font-medium">CFO support</span>.</>,
-    tools: ["Power BI", "Excel", "Adaptive"],
-    href: "/services/financial-management",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <Banknote size={28} strokeWidth={1.4} />,
-    title: "Cashflow Optimisation",
-    desc: <>Improve <span className="text-white/80 font-medium">liquidity</span> without taking on new <span className="text-white/80 font-medium">debt</span>.</>,
-    tools: ["Cash Forecasting", "Collections"],
-    href: "/services/cashflow-optimisation",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <GitMerge size={28} strokeWidth={1.4} />,
-    title: "Company Restructuring",
-    desc: <>Reorganise for <span className="text-white/80 font-medium">efficiency, compliance and growth</span>.</>,
-    tools: ["Org Design", "Tax", "Legal"],
-    href: "/services/company-restructuring",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <Zap size={28} strokeWidth={1.4} />,
-    title: "Financial Modelling",
-    desc: <><span className="text-white/80 font-medium">Decision-ready models</span> for fundraising and scale.</>,
-    tools: ["Excel", "Python", "Valuation"],
-    href: "/services/financial-modelling",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <GraduationCap size={28} strokeWidth={1.4} />,
-    title: "Training Services",
-    desc: "ERP and systems training that drives real adoption.",
-    tools: ["Moodle", "TalentLMS", "Zoom"],
-    href: "/services/systems-training",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <ScrollText size={28} strokeWidth={1.4} />,
-    title: "Company Secretarial",
-    desc: "Statutory compliance and governance handled.",
-    tools: ["e-Filing", "Registrars", "Legal"],
-    href: "/services/company-secretarial",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <TrendingUp size={28} strokeWidth={1.4} />,
-    title: "VC Advisory",
-    desc: "Get investment-ready and close your fundraising round.",
-    tools: ["VC Networks", "Pitch Platforms"],
-    href: "/services/vc-fundraising-advisory",
-    badge: null,
-    color: "#29E0C8",
-  },
-  {
-    icon: <ShieldAlert size={28} strokeWidth={1.4} />,
-    title: "Risk & Compliance",
-    desc: "Enterprise risk frameworks that protect and enable.",
-    tools: ["ERM", "AML", "ISO 31000"],
-    href: "/services/risk-compliance",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <BarChart3 size={28} strokeWidth={1.4} />,
-    title: "M&E / Impact Assessment",
-    desc: "Measure outcomes and report impact with confidence.",
-    tools: ["LogFrame", "KOBO", "Power BI"],
-    href: "/services/monitoring-evaluation",
-    badge: null,
-    color: "#37B4B4",
+    key: "Growth & Impact",
+    icon: TrendingUp,
+    blurb: "Brand strategy, performance marketing and impact frameworks that move the metric.",
+    variant: "teal",
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-10 lg:py-14 section-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-10">
-            <span className="section-overline mb-3 inline-block">What we do</span>
-            <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white mb-3">
-              16 integrated service lines
-            </h2>
-            <p className="text-white/55 text-sm md:text-base max-w-xl mx-auto">
-              From day-one bookkeeping to enterprise AI — every service delivers measurable ROI.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <div
-          className="grid gap-5"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))" }}
-        >
-          {services.map((s, i) => (
-            <ScrollReveal key={s.title} delay={i * 0.04}>
-              <TiltCard className="h-full">
-                <Link href={s.href} className="block h-full active:scale-[0.98] transition-transform">
-                  <div
-                    className="glass-card rounded-[18px] p-[16px] h-full flex flex-col gap-3 cursor-pointer group hover:border-[#37B4B4]/40 transition-all duration-300 relative overflow-hidden"
-                    style={{ minHeight: "200px" }}
-                  >
-                    <BorderTrail
-                      className="bg-gradient-to-r from-[#37B4B4] via-transparent to-[#29E0C8] opacity-0 group-hover:opacity-100 transition-opacity"
-                      size={60}
-                      transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
-                    />
-
-                    {/* Icon + badge row */}
-                    <div className="flex items-start justify-between">
-                      <div
-                        className="w-11 h-11 rounded-[10px] flex items-center justify-center transition-colors duration-300 group-hover:scale-110 transition-transform"
-                        style={{
-                          background: `rgba(${s.color === "#29E0C8" ? "41,224,200" : "55,180,180"},0.12)`,
-                          color: s.color,
-                        }}
-                      >
-                        {s.icon}
-                      </div>
-                      {s.badge && (
-                        <span
-                          className="pill-a mt-1"
-                          style={{ background: s.badge.bg, color: "#082121", border: "none" }}
-                        >
-                          {s.badge.text}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Title */}
-                    <div>
-                      <h3
-                        className="text-white font-bold text-base leading-snug mb-1.5 group-hover:text-[#37B4B4] transition-colors"
-                        style={{ letterSpacing: "-0.01em" }}
-                      >
-                        {s.title}
-                      </h3>
-                      {/* One-sentence prop */}
-                      <p className="text-white/55 text-sm leading-relaxed flex-1">
-                        {s.desc}
-                      </p>
-                    </div>
-
-                    {/* Tool badges */}
-                    <div className="flex flex-wrap gap-1.5 mt-auto">
-                      {s.tools.map((t) => (
-                        <span
-                          key={t}
-                          className="pill-g"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Learn more */}
-                    <span className="text-[#37B4B4] text-sm font-semibold group-hover:text-[#29E0C8] transition-colors">
-                      Learn More →
-                    </span>
-                  </div>
-                </Link>
-              </TiltCard>
-            </ScrollReveal>
-          ))}
+    <section className="bg-white text-[#082121] section-py border-t border-[#082121]/8">
+      <div className="container-x">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Our Services"
+              title={<>{servicesData.length} service lines.<br />Five practice areas. One team.</>}
+              sub="End-to-end delivery from discovery to scale — coordinated under one roof."
+              light
+            />
+          </Reveal>
+          <Reveal delay={100}>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1.5 text-[#37B4B4] hover:text-[#082121] text-[14px] font-semibold transition-colors"
+            >
+              View all {servicesData.length} services <ArrowUpRight size={14} />
+            </Link>
+          </Reveal>
         </div>
 
-        <div className="text-center mt-12">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-[#37B4B4] hover:text-[#29E0C8] font-semibold text-sm transition-colors border border-[#37B4B4]/30 px-7 py-3.5 rounded-xl hover:bg-[#37B4B4]/10"
-          >
-            View Full Service Details →
-          </Link>
+        {/* Bento grid — 12-col */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+          {/* Row 1: Large photo card (7) + two stacked dark cards (5) */}
+          <Reveal className="md:col-span-7 md:row-span-2">
+            <BentoCard item={BENTO[0]} className="h-[340px] md:h-full md:min-h-[500px]" />
+          </Reveal>
+          <Reveal delay={60} className="md:col-span-5">
+            <BentoCard item={BENTO[1]} className="h-[240px] md:h-full" />
+          </Reveal>
+          <Reveal delay={90} className="md:col-span-5">
+            <BentoCard item={BENTO[2]} className="h-[240px] md:h-full" />
+          </Reveal>
+
+          {/* Row 2: Photo card (5) + teal accent card (7) */}
+          <Reveal delay={120} className="md:col-span-5">
+            <BentoCard item={BENTO[3]} className="h-[280px] md:h-[260px]" />
+          </Reveal>
+          <Reveal delay={150} className="md:col-span-7">
+            <BentoCard item={BENTO[4]} className="h-[280px] md:h-[260px]" />
+          </Reveal>
         </div>
       </div>
     </section>
+  );
+}
+
+function BentoCard({ item, className }: { item: BentoItem; className?: string }) {
+  const count = servicesData.filter((s) => s.category === item.key).length;
+  const Icon = item.icon;
+
+  if (item.variant === "photo" && item.photo) {
+    return (
+      <Link
+        href="/services"
+        className={cn(
+          "group relative flex flex-col justify-end overflow-hidden rounded-3xl ring-1 ring-[#082121]/8 hover:ring-[#37B4B4]/40 transition-all duration-300 shadow-sm hover:shadow-xl",
+          className
+        )}
+      >
+        <Image
+          src={item.photo}
+          alt={item.key}
+          fill
+          sizes="(max-width: 768px) 100vw, 58vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          style={{ objectPosition: item.photoPosition ?? "center" }}
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/5" />
+        <div className="relative p-6 lg:p-7 flex items-end justify-between gap-4">
+          <div>
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.18em] uppercase text-white/55 mb-2">
+              <span className="w-1 h-1 rounded-full bg-[#37B4B4]" />
+              {count} services
+            </span>
+            <h3 className="text-white text-[22px] lg:text-[26px] font-semibold tracking-tight leading-tight">
+              {item.key}
+            </h3>
+            <p className="mt-1.5 text-[13px] text-white/70 leading-snug max-w-xs">{item.blurb}</p>
+          </div>
+          <span className="w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white inline-flex items-center justify-center shrink-0 group-hover:bg-[#37B4B4] group-hover:border-[#37B4B4] transition-all duration-200">
+            <ArrowUpRight size={16} strokeWidth={2.25} />
+          </span>
+        </div>
+      </Link>
+    );
+  }
+
+  if (item.variant === "teal") {
+    return (
+      <Link
+        href="/services"
+        className={cn(
+          "group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-[#082121] ring-1 ring-white/[0.06] hover:ring-[#37B4B4]/30 transition-all duration-300 p-6 lg:p-7",
+          className
+        )}
+      >
+        {/* Subtle teal glow in corner */}
+        <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-[#37B4B4]/10 blur-3xl pointer-events-none" />
+        <div className="relative">
+          <div className="w-10 h-10 rounded-2xl bg-[#37B4B4]/15 flex items-center justify-center text-[#37B4B4] mb-5">
+            <Icon size={18} strokeWidth={1.75} />
+          </div>
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h3 className="text-white text-[19px] lg:text-[21px] font-semibold tracking-tight leading-tight">
+                {item.key}
+              </h3>
+              <p className="mt-2 text-[13px] text-white/60 leading-relaxed max-w-sm">{item.blurb}</p>
+            </div>
+          </div>
+        </div>
+        <div className="relative flex items-end justify-between gap-3 mt-4">
+          <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#37B4B4]/70">
+            {count} services
+          </span>
+          <span className="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-white/60 inline-flex items-center justify-center group-hover:bg-[#37B4B4] group-hover:border-[#37B4B4] group-hover:text-white transition-all duration-200">
+            <ArrowUpRight size={14} strokeWidth={2.25} />
+          </span>
+        </div>
+      </Link>
+    );
+  }
+
+  // default: dark variant
+  return (
+    <Link
+      href="/services"
+      className={cn(
+        "group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-[#F4FAFA] ring-1 ring-[#082121]/8 hover:ring-[#37B4B4]/40 hover:bg-white transition-all duration-300 p-6 lg:p-7",
+        className
+      )}
+    >
+      <div>
+        <div className="w-10 h-10 rounded-2xl bg-[#082121]/6 flex items-center justify-center text-[#082121] mb-5 group-hover:bg-[#37B4B4]/10 group-hover:text-[#37B4B4] transition-colors duration-200">
+          <Icon size={18} strokeWidth={1.75} />
+        </div>
+        <h3 className="text-[#082121] text-[19px] lg:text-[21px] font-semibold tracking-tight leading-tight">
+          {item.key}
+        </h3>
+        <p className="mt-2 text-[13px] text-[#3a5a5a] leading-relaxed">{item.blurb}</p>
+      </div>
+      <div className="flex items-end justify-between gap-3 mt-4">
+        <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#082121]/40">
+          {count} services
+        </span>
+        <span className="w-9 h-9 rounded-full bg-[#082121]/5 text-[#082121]/40 inline-flex items-center justify-center group-hover:bg-[#37B4B4] group-hover:text-white transition-all duration-200">
+          <ArrowUpRight size={14} strokeWidth={2.25} />
+        </span>
+      </div>
+    </Link>
   );
 }

@@ -2,7 +2,8 @@ export type ServiceCategory =
   | "Systems & Technology"
   | "Finance & Compliance"
   | "Strategy & Transformation"
-  | "Growth & Impact";
+  | "Growth & Impact"
+  | "HR & People Services";
 
 export interface ServiceData {
   id: string;
@@ -479,6 +480,218 @@ export const servicesData: ServiceData[] = [
     tools: "Google Ads · Meta Ads · HubSpot · Mailchimp · GA4",
     cta: "Discuss Your Digital Growth",
   },
+  // --- HR & PEOPLE SERVICES ---
+  {
+    id: "hr-advisory",
+    slug: "hr-advisory-org-design",
+    category: "HR & People Services",
+    name: "HR Advisory & Organisational Design",
+    icon: "users",
+    photo: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80",
+    shortDescription: "Workforce planning, job grading frameworks, org design and restructuring.",
+    heroHeadline: "Build the Organisation Your Strategy Actually Needs.",
+    painPoints: [
+      "Org structure that no longer reflects how the business actually operates.",
+      "Unclear job grades and reporting lines causing internal friction.",
+      "Workforce plans built on instinct rather than data.",
+    ],
+    solution: "We design organisational structures that match strategy — clear job grades, reporting lines, and workforce plans tied to business outcomes rather than headcount inertia.",
+    outcomes: [
+      "Workforce plan aligned to 12–24 month strategy",
+      "Job grading framework with role profiles",
+      "Org chart with clear reporting lines",
+      "Restructuring roadmap with change-management plan",
+    ],
+    process: [
+      { title: "Current-State Diagnostic", desc: "Map existing structure, span of control, and capability gaps." },
+      { title: "Future-State Design", desc: "Build the target org around strategy, not historical accident." },
+      { title: "Role Profiling", desc: "Define each role: purpose, accountabilities, KPIs, grade." },
+      { title: "Transition Plan", desc: "Sequenced change plan with stakeholder communication." }
+    ],
+    tools: "Job Evaluation Frameworks · Org Design Tools · HR Analytics",
+    cta: "Book an HR Advisory Session",
+  },
+  {
+    id: "hr-policy",
+    slug: "hr-policy-compliance",
+    category: "HR & People Services",
+    name: "HR Policy & Compliance",
+    icon: "file-check",
+    photo: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
+    shortDescription: "Employment contracts, HR handbooks, disciplinary procedures and Kenya Labour compliance.",
+    heroHeadline: "Stay Compliant. Protect the Organisation. Treat People Fairly.",
+    painPoints: [
+      "Outdated or missing employment contracts exposing the company to risk.",
+      "Inconsistent disciplinary practice opening the door to wrongful-dismissal claims.",
+      "HR handbook that doesn't reflect current Kenya Labour law.",
+    ],
+    solution: "We draft watertight HR policies and contracts aligned with the Kenya Employment Act, plus a clear handbook and disciplinary framework that's enforceable, fair, and easy for managers to apply.",
+    outcomes: [
+      "Employment contracts compliant with Kenya Labour law",
+      "Comprehensive HR handbook covering policy and conduct",
+      "Disciplinary and grievance procedures with templates",
+      "Manager training on fair-procedure application",
+    ],
+    process: [
+      { title: "Policy Audit", desc: "Review existing contracts, handbooks, and HR practice for gaps and risks." },
+      { title: "Policy Drafting", desc: "Draft contracts, handbook, and disciplinary procedures to current law." },
+      { title: "Manager Enablement", desc: "Train line managers on applying policy fairly and consistently." },
+      { title: "Annual Review", desc: "Refresh policies as legislation and business needs evolve." }
+    ],
+    tools: "Kenya Employment Act · HR Templates · Case Law References",
+    cta: "Request a Policy Review",
+  },
+  {
+    id: "payroll",
+    slug: "payroll-management",
+    category: "HR & People Services",
+    name: "Payroll Management",
+    icon: "wallet",
+    photo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
+    shortDescription: "End-to-end payroll outsourcing, statutory deductions (PAYE, NSSF, NHIF, NITA), payslips, reconciliations and regulatory submissions.",
+    heroHeadline: "Accurate Payroll. On Time. Every Month.",
+    painPoints: [
+      "Statutory submissions (PAYE, NSSF, NHIF, NITA) missed or filed late.",
+      "Payroll errors eroding employee trust and creating reconciliation chaos.",
+      "Internal payroll consuming senior finance time better spent elsewhere.",
+    ],
+    solution: "We run payroll end-to-end — calculations, statutory deductions, payslip distribution, and on-time submissions to KRA, NSSF, NHIF, and NITA. Your team gets a clean monthly report; we handle the rest.",
+    outcomes: [
+      "Monthly payroll processed and paid on agreed dates",
+      "PAYE, NSSF, NHIF and NITA submissions filed on time",
+      "Digital payslips and year-end P9 forms",
+      "Bank reconciliation and management reports",
+    ],
+    process: [
+      { title: "Payroll Setup", desc: "Configure employees, salary structures, statutory codes and bank details." },
+      { title: "Monthly Run", desc: "Calculate gross-to-net, generate payslips, prepare bank file." },
+      { title: "Statutory Filings", desc: "Submit PAYE, NSSF, NHIF, NITA and pay over deductions." },
+      { title: "Reporting", desc: "Deliver monthly payroll report, variance analysis, and reconciliations." }
+    ],
+    tools: "iTax · NSSF / NHIF Portals · Payroll Software · Bank APIs",
+    cta: "Get a Payroll Quote",
+  },
+  {
+    id: "recruitment",
+    slug: "recruitment-talent-acquisition",
+    category: "HR & People Services",
+    name: "Recruitment & Talent Acquisition",
+    icon: "user-plus",
+    photo: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80",
+    shortDescription: "End-to-end hiring: job profiling, advertising, shortlisting, structured interviews, reference checks and onboarding frameworks.",
+    heroHeadline: "Hire the Right People. The First Time.",
+    painPoints: [
+      "Bad hires costing 6–9 months of salary in productivity and disruption.",
+      "Unstructured interviews producing inconsistent and biased decisions.",
+      "Onboarding gaps causing new hires to disengage in their first 90 days.",
+    ],
+    solution: "We run structured, end-to-end hiring — job profiling, sourcing, shortlisting, competency interviews, reference checks, and a 90-day onboarding plan that gets new hires productive fast.",
+    outcomes: [
+      "Job profile and competency framework per role",
+      "Shortlist of 3–5 qualified candidates",
+      "Structured interview scorecards and reference checks",
+      "90-day onboarding plan and new-hire scorecard",
+    ],
+    process: [
+      { title: "Role Definition", desc: "Build a clear profile: outcomes, competencies, success criteria." },
+      { title: "Sourcing & Shortlist", desc: "Advertise, headhunt and screen to a 3–5 person shortlist." },
+      { title: "Structured Interviews", desc: "Competency-based panels with consistent scoring." },
+      { title: "Onboarding", desc: "30 / 60 / 90-day onboarding plan and check-ins." }
+    ],
+    tools: "LinkedIn Recruiter · ATS Platforms · Psychometric Assessments",
+    cta: "Start Your Search",
+  },
+  {
+    id: "performance",
+    slug: "performance-management-systems",
+    category: "HR & People Services",
+    name: "Performance Management Systems",
+    icon: "gauge",
+    photo: "https://images.unsplash.com/photo-1552581234-26160f608093?w=1200&q=80",
+    shortDescription: "Design and implement KPI frameworks, appraisal cycles, performance improvement plans and talent review processes linked to business outcomes.",
+    heroHeadline: "Turn Performance Conversations into Business Outcomes.",
+    painPoints: [
+      "Annual appraisals that nobody takes seriously and nothing changes.",
+      "KPIs disconnected from strategy — measuring activity not impact.",
+      "No structured way to surface, develop, or exit underperformers.",
+    ],
+    solution: "We design KPI frameworks tied to business strategy and run quarterly cycles that drive real conversations — including talent reviews, succession planning, and structured PIPs where needed.",
+    outcomes: [
+      "KPI framework cascading from strategy to roles",
+      "Quarterly appraisal cycle with manager training",
+      "Talent review and 9-box succession framework",
+      "Performance improvement plan templates",
+    ],
+    process: [
+      { title: "KPI Architecture", desc: "Map strategy to team and individual KPIs with clear targets." },
+      { title: "Cycle Design", desc: "Quarterly check-ins, mid-year and annual review structure." },
+      { title: "Manager Training", desc: "Coaching skills, calibration sessions, difficult conversations." },
+      { title: "Talent Review", desc: "9-box mapping, succession planning, and development plans." }
+    ],
+    tools: "OKR Frameworks · Performance Software · Calibration Tools",
+    cta: "Design Your Performance System",
+  },
+  {
+    id: "hrms",
+    slug: "hrms-implementation",
+    category: "HR & People Services",
+    name: "HR Technology / HRMS Implementation",
+    icon: "monitor-cog",
+    photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80",
+    shortDescription: "Selection and configuration of HRMS platforms like Odoo and SAP B1. Training and support provided.",
+    heroHeadline: "Move Off Spreadsheets. Run HR on a Real System.",
+    painPoints: [
+      "HR data scattered across spreadsheets, email, and paper files.",
+      "No employee self-service for leave, payslips or document access.",
+      "Reporting takes days instead of minutes.",
+    ],
+    solution: "We select and implement HRMS platforms — Odoo HR, SAP B1, or specialist HR tools — with full configuration, data migration, training, and post-go-live support so the system actually gets used.",
+    outcomes: [
+      "HRMS selected and fitted to your processes",
+      "Migration of employee, leave, and payroll data",
+      "Self-service portal for employees and managers",
+      "Training and 90-day support package",
+    ],
+    process: [
+      { title: "Vendor Selection", desc: "Shortlist platforms against your requirements and budget." },
+      { title: "Configuration", desc: "Set up modules: core HR, leave, performance, recruitment." },
+      { title: "Data Migration", desc: "Cleanse and migrate employee records and history." },
+      { title: "Training & Go-Live", desc: "User training, go-live support, and 90-day hypercare." }
+    ],
+    tools: "Odoo HR · SAP B1 · BambooHR · HRMS Selection Frameworks",
+    cta: "Book an HRMS Demo",
+  },
+  {
+    id: "learning",
+    slug: "learning-development",
+    category: "HR & People Services",
+    name: "Learning & Development",
+    icon: "book-open",
+    photo: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80",
+    shortDescription: "Analyze training needs, design L&D strategy, develop e-learning and blended programs. Build capability.",
+    heroHeadline: "Build the Capability Your Strategy Demands.",
+    painPoints: [
+      "Training spend that produces certificates but no behaviour change.",
+      "No clear link between L&D investment and business outcomes.",
+      "Fragmented programmes that miss the capabilities the strategy actually needs.",
+    ],
+    solution: "We diagnose capability gaps, design an L&D strategy tied to business outcomes, and deliver blended programmes — classroom, e-learning, and on-the-job — with assessment to prove behaviour change.",
+    outcomes: [
+      "Training needs analysis tied to strategy",
+      "L&D strategy and curriculum roadmap",
+      "Custom e-learning and blended programmes",
+      "Post-training competency and impact assessment",
+    ],
+    process: [
+      { title: "Needs Analysis", desc: "Identify capability gaps using strategy, role profiles, and 360 data." },
+      { title: "Strategy & Curriculum", desc: "Design the L&D portfolio and prioritise programmes." },
+      { title: "Content Development", desc: "Build classroom, e-learning, and blended-learning materials." },
+      { title: "Delivery & Measurement", desc: "Deliver, assess competency, and measure business impact." }
+    ],
+    tools: "Moodle · TalentLMS · Articulate · Kirkpatrick Evaluation",
+    cta: "Plan Your L&D Strategy",
+  },
+
   {
     id: "me",
     slug: "monitoring-evaluation",
