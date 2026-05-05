@@ -13,16 +13,16 @@ export default function IndustriesPage() {
 
   return (
     <>
-      <section className="section-dark pt-28 lg:pt-36 pb-20 border-b border-white/[0.06]">
+      <section className="section-dark border-b border-white/[0.06]" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
         <div className="container-x">
           <Reveal><Eyebrow>Industries</Eyebrow></Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-6 text-white text-balance max-w-[20ch]">
+            <h1 className="mt-3 text-white text-balance max-w-[20ch]" style={{ fontSize: "clamp(1.75rem, 1.2rem + 2vw, 2.6rem)", lineHeight: 1.1 }}>
               Industries we serve.
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-6 text-[16px] md:text-[18px] text-white/65 leading-relaxed max-w-2xl">
+            <p className="mt-3 text-[14px] text-white/65 leading-relaxed max-w-2xl">
               We work across industries where decisions carry real financial, operational,
               and strategic consequences.
             </p>

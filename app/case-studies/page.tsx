@@ -9,16 +9,16 @@ import { CTABannerSection } from "@/components/sections/TestimonialsInsightsCTA"
 export default function CaseStudiesPage() {
   return (
     <>
-      <section className="section-dark pt-28 lg:pt-36 pb-20 border-b border-white/[0.06]">
+      <section className="section-dark border-b border-white/[0.06]" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
         <div className="container-x">
           <Reveal><Eyebrow>Case Studies</Eyebrow></Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-6 text-white text-balance max-w-[22ch]">
+            <h1 className="mt-3 text-white text-balance max-w-[22ch]" style={{ fontSize: "clamp(1.75rem, 1.2rem + 2vw, 2.6rem)", lineHeight: 1.1 }}>
               Advisory engagements with business leaders.
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-6 text-[16px] md:text-[18px] text-white/65 leading-relaxed max-w-2xl">
+            <p className="mt-3 text-[14px] text-white/65 leading-relaxed max-w-2xl">
               We help leaders see their business clearly, identify the real problems,
               and design strategies that can actually be executed.
             </p>

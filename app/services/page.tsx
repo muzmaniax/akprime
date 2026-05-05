@@ -3,46 +3,41 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Cpu, Shield, BarChart3, Users, TrendingUp } from "lucide-react";
 import { Reveal } from "@/components/ui/Primitives";
 import { BookingModal } from "@/components/ui/BookingModal";
 import { servicesData, type ServiceCategory } from "@/data/services";
 
-const CATEGORIES: { key: ServiceCategory; short: string; blurb: string; photo: string; pos?: string }[] = [
+const CATEGORIES: { key: ServiceCategory; short: string; blurb: string; icon: React.ElementType }[] = [
   {
     key: "Systems & Technology",
     short: "Systems",
     blurb: "ERP, AI, audits and training that turn fragmented tools into a unified operating core.",
-    photo: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80",
-    pos: "center",
+    icon: Cpu,
   },
   {
     key: "Finance & Compliance",
     short: "Finance",
     blurb: "Audit, FP&A, cashflow, bookkeeping and compliance that hold up to scrutiny.",
-    photo: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80",
-    pos: "center",
+    icon: Shield,
   },
   {
     key: "Strategy & Transformation",
     short: "Strategy",
     blurb: "Project governance, business analysis, restructuring and capital readiness.",
-    photo: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1400&q=80",
-    pos: "center 30%",
+    icon: BarChart3,
   },
   {
     key: "HR & People Services",
     short: "HR & People",
     blurb: "Org design, payroll, recruitment, performance and L&D — the full people stack.",
-    photo: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=80",
-    pos: "center 35%",
+    icon: Users,
   },
   {
     key: "Growth & Impact",
     short: "Growth",
     blurb: "Brand, performance marketing and impact frameworks that move the metric.",
-    photo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80",
-    pos: "center",
+    icon: TrendingUp,
   },
 ];
 
@@ -75,7 +70,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-white text-[#082121]">
       {/* HERO — Synergos-style soft sky */}
-      <section className="relative hero-light-gradient pt-28 lg:pt-36 pb-20 lg:pb-28 overflow-hidden">
+      <section className="relative hero-light-gradient overflow-hidden" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
         <div className="container-x relative">
           <Reveal>
             <div className="inline-flex items-center gap-2 h-7 px-3 rounded-full bg-white/70 border border-[#37B4B4]/25 text-[#37B4B4] text-[11px] font-semibold tracking-[0.16em] uppercase backdrop-blur">
@@ -84,18 +79,22 @@ export default function ServicesPage() {
             </div>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-6 text-[#082121] text-balance max-w-[20ch]">
-              Modernise your business operations with <span className="text-[#37B4B4]">AI, ERP &amp; strategic advisory</span>.
+            <h1
+              className="mt-3 text-[#082121] text-balance max-w-[24ch]"
+              style={{ fontSize: "clamp(1.75rem, 1.2rem + 2vw, 2.6rem)", lineHeight: 1.1 }}
+            >
+              Modernise your business operations with{" "}
+              <span className="text-[#37B4B4]">AI, ERP &amp; strategic advisory</span>.
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-6 text-[16px] md:text-[18px] text-[#3a5a5a] leading-relaxed max-w-2xl">
-              {servicesData.length} integrated service lines across four practice areas.
+            <p className="mt-3 text-[14px] text-[#3a5a5a] leading-relaxed max-w-xl">
+              {servicesData.length} integrated service lines across five practice areas.
               End-to-end delivery from discovery to scale — coordinated under one roof.
             </p>
           </Reveal>
           <Reveal delay={240}>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-5 flex flex-wrap gap-3">
               <button type="button" onClick={() => setBookingOpen(true)} className="btn-cta">
                 Book a consultation <ArrowUpRight size={16} strokeWidth={2.25} />
               </button>
@@ -105,9 +104,9 @@ export default function ServicesPage() {
             </div>
           </Reveal>
 
-          {/* Stats row — sits in the hero */}
+          {/* Stats row */}
           <Reveal delay={320}>
-            <div className="mt-16 lg:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 pt-10 border-t border-[#082121]/10">
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 pt-7 border-t border-[#082121]/10">
               <Stat value="120+" label="Engagements delivered" />
               <Stat value={`${servicesData.length}`} label="Integrated service lines" />
               <Stat value="98%" label="Client satisfaction" />
@@ -117,8 +116,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* PRACTICE AREAS — 4 photo cards */}
-      <section className="section-py bg-white">
+      {/* PRACTICE AREAS */}
+      <section className="pt-12 pb-10 bg-white">
         <div className="container-x">
           <Reveal>
             <div className="max-w-3xl">
@@ -132,42 +131,52 @@ export default function ServicesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {CATEGORIES.map((c, i) => {
-              const services = grouped.get(c.key) ?? [];
+              const Icon = c.icon;
+              const count = (grouped.get(c.key) ?? []).length;
               return (
-                <Reveal key={c.key} delay={i * 70}>
+                <Reveal key={c.key} delay={i * 60}>
                   <button
                     type="button"
                     onClick={() => {
                       setActiveCat(c.key);
                       document.getElementById("all-services")?.scrollIntoView({ behavior: "smooth", block: "start" });
                     }}
-                    className="group relative w-full aspect-[4/5] rounded-3xl overflow-hidden text-left ring-1 ring-[#082121]/10 hover:ring-[#37B4B4]/50 transition-all shadow-sm hover:shadow-xl"
+                    className={`group w-full text-left flex flex-col p-5 rounded-2xl border transition-all duration-200 ${
+                      activeCat === c.key
+                        ? "bg-[#082121] border-[#082121]"
+                        : "bg-[#F4FAFA] border-[#082121]/8 hover:border-[#37B4B4]/40 hover:bg-white"
+                    }`}
                   >
-                    <Image
-                      src={c.photo}
-                      alt={c.key}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      style={{ objectPosition: c.pos ?? "center" }}
-                      unoptimized
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/55 via-[#082121]/5 to-transparent" />
-                    <div className="absolute inset-0 p-4 flex flex-col justify-between">
-                      <div className="self-start glass-pane-dark px-3 h-7 rounded-full inline-flex items-center text-[10px] font-semibold tracking-[0.16em] uppercase text-white">
-                        {services.length} services
-                      </div>
-                      <div className="glass-pane rounded-2xl p-4">
-                        <div className="flex items-start justify-between gap-3">
-                          <h3 className="text-[#082121] text-[18px] leading-[1.15] font-semibold flex-1">{c.key}</h3>
-                          <span className="w-9 h-9 rounded-full bg-[#37B4B4] text-white inline-flex items-center justify-center shrink-0 group-hover:bg-[#29E0C8] transition-colors shadow-sm">
-                            <ArrowUpRight size={15} strokeWidth={2.75} />
-                          </span>
-                        </div>
-                        <p className="mt-2 text-[12.5px] text-[#082121]/75 leading-snug line-clamp-2">{c.blurb}</p>
-                      </div>
+                    {/* Icon */}
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
+                      activeCat === c.key
+                        ? "bg-[#37B4B4]/20"
+                        : "bg-white border border-[#082121]/8 group-hover:border-[#37B4B4]/30"
+                    }`}>
+                      <Icon size={18} strokeWidth={1.75} className="text-[#37B4B4]" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className={`text-[14px] font-medium leading-snug mb-1.5 transition-colors ${
+                      activeCat === c.key ? "text-white" : "text-[#082121]"
+                    }`}>
+                      {c.key}
+                    </h3>
+
+                    {/* Blurb */}
+                    <p className={`text-[12px] leading-relaxed flex-1 transition-colors ${
+                      activeCat === c.key ? "text-white/60" : "text-[#3a5a5a]"
+                    }`}>
+                      {c.blurb}
+                    </p>
+
+                    {/* Count */}
+                    <div className={`mt-4 pt-3 border-t text-[11px] font-semibold tracking-widest uppercase transition-colors ${
+                      activeCat === c.key ? "border-white/10 text-[#37B4B4]" : "border-[#082121]/8 text-[#3a5a5a]/50"
+                    }`}>
+                      {count} services
                     </div>
                   </button>
                 </Reveal>
@@ -178,22 +187,8 @@ export default function ServicesPage() {
       </section>
 
       {/* ALL SERVICES — tabbed photo card grid */}
-      <section id="all-services" className="section-py bg-[#F4FAFA]/60">
+      <section id="all-services" className="pt-8 pb-[clamp(64px,7vw,112px)] bg-[#F4FAFA]/60">
         <div className="container-x">
-          <Reveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-              <div className="max-w-2xl">
-                <Eyebrow>All Services</Eyebrow>
-                <h2 className="mt-4 text-[#082121] text-balance">
-                  {servicesData.length} service lines, one coordinated team.
-                </h2>
-                <p className="mt-4 text-[15px] md:text-[16px] text-[#3a5a5a] leading-relaxed">
-                  Tap a practice area to focus the list. Every engagement is scoped to the question that needs answering.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
           {/* Sticky filter pills */}
           <div className="mt-8 sticky top-[var(--navbar-h)] z-20 -mx-4 px-4 py-3 bg-[#F4FAFA]/85 backdrop-blur-md border-b border-[#082121]/8">
             <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
@@ -215,33 +210,38 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          {/* Service photo cards with glass overlay */}
-          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Service cards — compact landscape layout */}
+          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {visible.map((s, i) => (
               <Reveal key={s.id} delay={(i % 3) * 60}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group relative block aspect-[4/5] sm:aspect-[3/4] rounded-3xl overflow-hidden ring-1 ring-[#082121]/10 hover:ring-[#37B4B4]/50 transition-all shadow-sm hover:shadow-lg"
+                  className="group flex flex-col rounded-2xl overflow-hidden border border-[#082121]/8 hover:border-[#37B4B4]/40 bg-white hover:shadow-md transition-all duration-200"
                 >
-                  <Image
-                    src={s.photo}
-                    alt={s.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    style={{ objectPosition: "center 40%" }}
-                    unoptimized
-                  />
-                  {/* Stronger gradient for legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/70 via-[#082121]/15 to-transparent" />
-                  <div className="absolute inset-x-3 bottom-3 glass-pane rounded-2xl p-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-[#082121] text-[16px] leading-[1.2] font-semibold flex-1">{s.name}</h3>
-                      <span className="w-8 h-8 rounded-full bg-[#37B4B4] text-white inline-flex items-center justify-center shrink-0 group-hover:bg-[#29E0C8] transition-colors shadow-sm">
-                        <ArrowUpRight size={14} strokeWidth={2.75} />
+                  {/* Photo — fixed height thumbnail */}
+                  <div className="relative h-[140px] overflow-hidden bg-[#F4FAFA]">
+                    <Image
+                      src={s.photo}
+                      alt={s.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      style={{ objectPosition: "center 40%" }}
+                      unoptimized
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-col flex-1 p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="text-[#082121] text-[14px] font-medium leading-snug flex-1">
+                        {s.name}
+                      </h3>
+                      <span className="w-7 h-7 rounded-full border border-[#082121]/10 flex items-center justify-center shrink-0 text-[#3a5a5a]/50 group-hover:border-[#37B4B4] group-hover:text-[#37B4B4] group-hover:bg-[#37B4B4]/8 transition-all mt-0.5">
+                        <ArrowUpRight size={13} strokeWidth={2} />
                       </span>
                     </div>
-                    <p className="mt-2 text-[12px] text-[#082121]/70 leading-snug line-clamp-2">
+                    <p className="mt-2 text-[12px] text-[#3a5a5a] leading-relaxed line-clamp-2">
                       {s.shortDescription}
                     </p>
                   </div>
@@ -253,7 +253,7 @@ export default function ServicesPage() {
       </section>
 
       {/* 5-PHASE FRAMEWORK */}
-      <section className="section-py bg-white">
+      <section className="py-12 bg-white">
         <div className="container-x">
           <Reveal>
             <div className="max-w-3xl mx-auto text-center">
@@ -282,7 +282,7 @@ export default function ServicesPage() {
       </section>
 
       {/* SECTORS */}
-      <section className="section-py bg-[#F4FAFA]/60">
+      <section className="py-12 bg-[#F4FAFA]/60">
         <div className="container-x">
           <Reveal>
             <div className="max-w-3xl mx-auto text-center">
@@ -308,7 +308,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-py bg-white">
+      <section className="py-12 bg-white">
         <div className="container-x">
           <Reveal>
             <div className="rounded-3xl bg-[#082121] text-white p-10 lg:p-14 text-center relative overflow-hidden">

@@ -98,7 +98,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/contact"
-              className="text-[13px] font-medium text-white/75 hover:text-white transition-colors px-2"
+              className="text-[13px] font-normal text-white/75 hover:text-white transition-colors px-2"
             >
               Contact
             </Link>
@@ -188,7 +188,7 @@ export function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 z-40 bg-[#082121] pt-[var(--navbar-h)] overflow-y-auto">
           <div className="container-x py-6">
-            <Link href="/" className="block py-3 text-[20px] font-medium text-white border-b border-white/10">Home</Link>
+            <Link href="/" className="block py-3 text-[20px] font-normal text-white border-b border-white/10">Home</Link>
 
             <MobileAccordion
               label="Services"
@@ -229,11 +229,11 @@ export function Navbar() {
             </MobileAccordion>
 
             {navLinks.map((l) => (
-              <Link key={l.href} href={l.href} className="block py-3 text-[20px] font-medium text-white border-b border-white/10">
+              <Link key={l.href} href={l.href} className="block py-3 text-[20px] font-normal text-white border-b border-white/10">
                 {l.label}
               </Link>
             ))}
-            <Link href="/contact" className="block py-3 text-[20px] font-medium text-white border-b border-white/10">Contact</Link>
+            <Link href="/contact" className="block py-3 text-[20px] font-normal text-white border-b border-white/10">Contact</Link>
 
             <button
               type="button"
@@ -256,7 +256,7 @@ function NavLink({ href, active, children }: { href: string; active?: boolean; c
     <Link
       href={href}
       className={cn(
-        "px-3 py-2 rounded-md text-[14px] font-medium transition-colors",
+        "px-3 py-2 rounded-md text-[14px] font-normal transition-colors",
         active ? "text-[#37B4B4]" : "text-white/75 hover:text-white"
       )}
     >
@@ -274,7 +274,7 @@ function DropdownTrigger({
       onMouseEnter={onOpen}
       onClick={onClose}
       className={cn(
-        "px-3 py-2 rounded-md text-[14px] font-medium transition-colors inline-flex items-center gap-1",
+        "px-3 py-2 rounded-md text-[14px] font-normal transition-colors inline-flex items-center gap-1",
         active || open ? "text-[#37B4B4]" : "text-white/75 hover:text-white"
       )}
     >
@@ -292,7 +292,7 @@ function MobileAccordion({
       <button
         type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-3 text-[20px] font-medium text-white"
+        className="w-full flex items-center justify-between py-3 text-[20px] font-normal text-white"
       >
         {label}
         <ChevronDown size={20} className={cn("transition-transform", open && "rotate-180")} />

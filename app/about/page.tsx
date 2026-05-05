@@ -27,7 +27,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="section-dark pt-28 lg:pt-36 pb-24 border-b border-white/[0.06] relative overflow-hidden">
+      <section className="section-dark border-b border-white/[0.06] relative overflow-hidden" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
         <div className="absolute inset-0 -z-0">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30"
@@ -40,19 +40,19 @@ export default function AboutPage() {
             <Eyebrow>About AK Prime</Eyebrow>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-6 text-white text-balance max-w-[20ch]">
+            <h1 className="mt-3 text-white text-balance max-w-[24ch]" style={{ fontSize: "clamp(1.75rem, 1.2rem + 2vw, 2.6rem)", lineHeight: 1.1 }}>
               We help leadership teams move with clarity and confidence.
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-6 text-[16px] md:text-[18px] text-white/65 leading-relaxed max-w-2xl">
+            <p className="mt-3 text-[14px] text-white/65 leading-relaxed max-w-2xl">
               AK Prime is a strategic consulting firm working with organisations across
               East Africa. We bring rigour, structure, and senior expertise to every
               engagement — from operational diagnostics to ERP transformations.
             </p>
           </Reveal>
           <Reveal delay={240}>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-5 flex flex-wrap gap-3">
               <CtaButton href="/contact">Start the conversation</CtaButton>
               <GhostButton href="/services">Explore services</GhostButton>
             </div>
@@ -61,29 +61,75 @@ export default function AboutPage() {
       </section>
 
       {/* Stat block */}
-      <section className="section-dark section-py">
-        <div className="container-x grid lg:grid-cols-12 gap-10 items-center">
-          <Reveal className="lg:col-span-5">
-            <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/10">
-              <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80')" }} />
-            </div>
-          </Reveal>
-          <div className="lg:col-span-7 space-y-10">
+      <section className="section-dark py-12">
+        <div className="container-x grid lg:grid-cols-12 gap-12">
+          {/* LEFT COLUMN - TEXT AND STATS */}
+          <div className="lg:col-span-6 space-y-10">
             <Reveal>
               <Eyebrow>Why AK Prime</Eyebrow>
               <h2 className="mt-4 text-white text-balance max-w-[22ch]">Built from real enterprise experience.</h2>
-              <p className="mt-5 text-[15px] text-white/65 leading-relaxed max-w-2xl">
+              <p className="mt-5 text-[15px] text-white/65 leading-relaxed">
                 Our team has led technology and finance transformations inside multinationals,
                 growth-stage companies, and public-sector institutions. We bring that calibre of
                 advisory to organisations that don't have it in-house.
               </p>
             </Reveal>
-            <Reveal delay={120}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-6 border-t border-white/10">
-                <StatCell value="20+" label="Engagements delivered" />
-                <StatCell value="23" label="Integrated service lines" />
-                <StatCell value="98%" label="Client satisfaction" />
-                <StatCell value="94%" label="Avg. user adoption" />
+            <Reveal delay={80}>
+              <div>
+                <h3 className="text-white text-[13px] font-semibold tracking-[0.12em] uppercase mb-6">The numbers</h3>
+                <div className="grid grid-cols-2 gap-8">
+                  <StatCell value="20+" label="Engagements delivered" />
+                  <StatCell value="23" label="Integrated service lines" />
+                  <StatCell value="98%" label="Client satisfaction" />
+                  <StatCell value="94%" label="Avg. user adoption" />
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* RIGHT COLUMN - IMAGE TILES */}
+          <div className="hidden lg:grid lg:col-span-6 grid-cols-2 gap-4 auto-rows-max h-fit">
+            {/* Top Left */}
+            <Reveal delay={80}>
+              <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+                  alt="Team collaboration"
+                  className="w-full h-auto aspect-[3/4] object-cover"
+                />
+              </div>
+            </Reveal>
+
+            {/* Top Right - Offset Down */}
+            <Reveal delay={160}>
+              <div className="overflow-hidden rounded-xl ring-1 ring-white/10 mt-6">
+                <img
+                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80"
+                  alt="Enterprise experience"
+                  className="w-full h-auto aspect-[3/4] object-cover"
+                />
+              </div>
+            </Reveal>
+
+            {/* Bottom Left - Offset Up */}
+            <Reveal delay={240}>
+              <div className="overflow-hidden rounded-xl ring-1 ring-white/10 -mt-6">
+                <img
+                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80"
+                  alt="Strategic planning"
+                  className="w-full h-auto aspect-[3/4] object-cover"
+                />
+              </div>
+            </Reveal>
+
+            {/* Bottom Right */}
+            <Reveal delay={320}>
+              <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+                  alt="Advisory team"
+                  className="w-full h-auto aspect-[3/4] object-cover"
+                />
               </div>
             </Reveal>
           </div>
@@ -91,7 +137,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="section-dark section-py border-t border-white/[0.06]">
+      <section className="section-dark py-12 border-t border-white/[0.06]">
         <div className="container-x">
           <Reveal>
             <SectionHeader eyebrow="Our values" title="What we stand for" align="center" />
@@ -110,7 +156,7 @@ export default function AboutPage() {
       </section>
 
       {/* Capabilities */}
-      <section className="section-dark section-py border-t border-white/[0.06]">
+      <section className="section-dark py-12 border-t border-white/[0.06]">
         <div className="container-x">
           <Reveal>
             <SectionHeader eyebrow="What we do" title="Core capabilities & expertise" align="center" />

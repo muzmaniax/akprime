@@ -4,98 +4,74 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow, StatCell } from "@/components/ui/Primitives";
 
-/* About / intro stat block — LIGHT */
+/* ── About / Stats block — Tailwind UI "Split with image" stats pattern ── */
 export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => void }) {
   return (
-    <section className="bg-white text-[#082121] section-py border-t border-[#082121]/8">
-      <div className="container-x grid lg:grid-cols-12 gap-10 items-center">
-        <Reveal className="lg:col-span-5">
-          <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl ring-1 ring-[#082121]/8 bg-gradient-to-br from-[#F4FAFA] to-[#E8F7F7] flex items-center justify-center">
-            <svg viewBox="0 0 300 400" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-              {/* Background grid pattern */}
-              {[0, 1, 2, 3, 4].map((i) =>
-                [0, 1, 2, 3, 4].map((j) => (
-                  <rect key={`${i}-${j}`} x={i * 60} y={j * 80} width="60" height="80" fill="none" stroke="#082121" strokeWidth="0.5" opacity="0.1" />
-                ))
-              )}
+    <section className="bg-white section-py">
+      <div className="container-x">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
 
-              {/* Data visualization - abstract business metrics */}
-              {/* Left column - ascending bars */}
-              {[1, 2, 3, 4, 5].map((i) => (
-                <rect key={`bar-${i}`} x="40" y={360 - i * 55} width="30" height={i * 55} fill="#37B4B4" opacity={0.2 + i * 0.12} />
-              ))}
-
-              {/* Center - network nodes */}
-              <circle cx="150" cy="80" r="12" fill="#37B4B4" opacity="0.3" />
-              <circle cx="150" cy="80" r="8" fill="#37B4B4" />
-              {[0, 1, 2, 3].map((i) => {
-                const angle = (i / 4) * Math.PI * 2;
-                const x = 150 + Math.cos(angle) * 60;
-                const y = 80 + Math.sin(angle) * 60;
-                return (
-                  <g key={`node-${i}`}>
-                    <line x1="150" y1="80" x2={x} y2={y} stroke="#082121" strokeWidth="1" opacity="0.15" />
-                    <circle cx={x} cy={y} r="6" fill="white" stroke="#082121" strokeWidth="1" opacity="0.4" />
-                  </g>
-                );
-              })}
-
-              {/* Right column - growth curve */}
-              <path
-                d="M 220 320 Q 240 260, 250 180 T 270 80"
-                stroke="#37B4B4"
-                strokeWidth="2"
-                fill="none"
-                opacity="0.6"
-              />
-              <path
-                d="M 220 320 L 270 80 L 280 320 Z"
-                fill="#37B4B4"
-                opacity="0.08"
-              />
-
-              {/* Accent circles at bottom */}
-              <circle cx="80" cy="340" r="4" fill="#37B4B4" opacity="0.4" />
-              <circle cx="150" cy="360" r="4" fill="#37B4B4" opacity="0.6" />
-              <circle cx="220" cy="340" r="4" fill="#37B4B4" opacity="0.4" />
-            </svg>
-          </div>
-        </Reveal>
-
-        <div className="lg:col-span-7 space-y-10">
+          {/* LEFT — text + stats */}
           <Reveal>
             <Eyebrow>About AK Prime</Eyebrow>
-            <h2 className="mt-4 text-[#082121] text-balance max-w-[20ch]">
+            <h2 className="mt-4 text-[#082121] text-balance">
               A pan-African consulting firm helping organisations move with clarity.
             </h2>
-            <p className="mt-5 text-[16px] text-[#3a5a5a] leading-relaxed max-w-2xl">
+            <p className="mt-5 text-[15px] text-[#3a5a5a] leading-relaxed">
               AK Prime is a management and technology consulting firm with offices in
               Nairobi and Mombasa. We partner with organisations across East Africa to
               replace fragmented systems, automate critical workflows, and build
               data-driven operations that enable confident, sustainable growth.
             </p>
+            <Link
+              href="/about"
+              className="mt-6 inline-flex items-center gap-2 text-[#37B4B4] hover:text-[#082121] text-[14px] font-semibold transition-colors"
+            >
+              Learn more about us <ArrowUpRight size={14} />
+            </Link>
+
+            {/* Stats row */}
+            <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-[#082121]/10 pt-10">
+              {[
+                { value: "20+",  label: "Engagements delivered" },
+                { value: "23",   label: "Integrated service lines" },
+                { value: "98%",  label: "Client satisfaction" },
+                { value: "94%",  label: "Avg. user adoption" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <dt className="text-[13px] text-[#3a5a5a] leading-tight">{s.label}</dt>
+                  <dd className="mt-1 text-[40px] font-semibold tracking-tight text-[#082121] leading-none">
+                    {s.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
 
+          {/* RIGHT — photo */}
           <Reveal delay={120}>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-6 border-t border-[#082121]/10">
-              <StatCell value="20+" label="Engagements delivered" light />
-              <StatCell value="23" label="Integrated service lines" light />
-              <StatCell value="98%" label="Client satisfaction" light />
-              <StatCell value="94%" label="Avg. user adoption" light />
+            <div className="relative">
+              <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80"
+                  alt="AK Prime consulting team"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Floating stat card */}
+              <div className="absolute -bottom-6 -left-6 hidden sm:block bg-white rounded-2xl shadow-xl border border-[#082121]/8 px-6 py-5">
+                <p className="text-[11px] font-semibold tracking-widest uppercase text-[#37B4B4]">East Africa</p>
+                <p className="mt-1 text-[22px] font-semibold text-[#082121] leading-none">Nairobi & Mombasa</p>
+                <p className="mt-1 text-[12px] text-[#3a5a5a]">Two offices, one team</p>
+              </div>
             </div>
           </Reveal>
 
-          <Reveal delay={200}>
-            <Link href="/about" className="inline-flex items-center gap-2 text-[#37B4B4] hover:text-[#082121] text-[14px] font-semibold">
-              Learn more about us <ArrowUpRight size={14} />
-            </Link>
-          </Reveal>
         </div>
       </div>
     </section>
   );
 }
 
-/* Empty exports for backward compatibility */
 export function TickerBand() { return null; }
 export function PhotoStrip() { return null; }

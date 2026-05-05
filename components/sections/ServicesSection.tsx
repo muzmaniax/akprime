@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight, Cpu, Shield, BarChart3, Users, TrendingUp } from "lucide-react";
-import { Reveal, SectionHeader } from "@/components/ui/Primitives";
+import { Reveal, Eyebrow } from "@/components/ui/Primitives";
 import { servicesData, type ServiceCategory } from "@/data/services";
 
 type ServiceItem = {
@@ -10,140 +10,109 @@ type ServiceItem = {
   icon: React.ElementType;
   headline: string;
   blurb: string;
-  visualType: "integration" | "audit" | "growth" | "workflow" | "impact";
+  href: string;
 };
 
 const SERVICES: ServiceItem[] = [
   {
     key: "Systems & Technology",
     icon: Cpu,
-    headline: "Unified Operating Core",
-    blurb: "See your fragmented systems transform instantly as we integrate ERP, AI, and compliance into one cohesive platform.",
-    visualType: "integration",
+    headline: "Systems & Technology",
+    blurb: "ERP implementation, AI integration, and digital transformation. We replace fragmented tools with unified, scalable operating platforms.",
+    href: "/services",
   },
   {
     key: "Finance & Compliance",
     icon: Shield,
-    headline: "Bulletproof Audit Trail",
-    blurb: "Play with audit frameworks, FP&A models, and compliance policies — all in one auditable, zero-defect system.",
-    visualType: "audit",
+    headline: "Finance & Compliance",
+    blurb: "CFO advisory, FP&A modelling, audit frameworks and regulatory readiness — built for organisations that need rigour without the overhead.",
+    href: "/services",
   },
   {
     key: "Strategy & Transformation",
     icon: BarChart3,
-    headline: "Transformation at Scale",
-    blurb: "Perfect your org structure with governance frameworks, business analysis, and capital readiness strategies for measurable impact.",
-    visualType: "growth",
+    headline: "Strategy & Transformation",
+    blurb: "Governance design, business analysis, and capital readiness strategies that turn complex decisions into executable plans.",
+    href: "/services",
   },
   {
     key: "HR & People Services",
     icon: Users,
-    headline: "People Stack Automation",
-    blurb: "Unleash full HR potential with org design, payroll, recruitment, and L&D all integrated into one unified people platform.",
-    visualType: "workflow",
+    headline: "HR & People Services",
+    blurb: "Organisation design, payroll, recruitment, and L&D — integrated into one people platform that actually works at scale.",
+    href: "/services",
   },
   {
     key: "Growth & Impact",
     icon: TrendingUp,
-    headline: "Stunning Growth Outcomes",
-    blurb: "Kick off with brand strategy, performance marketing, and impact frameworks — then customize for your business model in a breeze.",
-    visualType: "impact",
+    headline: "Growth & Impact",
+    blurb: "Brand strategy, performance marketing, and impact frameworks calibrated to your business model and growth stage.",
+    href: "/services",
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section className="bg-white text-[#082121] section-py border-t border-[#082121]/8">
+    <section className="bg-white section-py border-t border-[#082121]/8">
       <div className="container-x">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-9">
+
+        {/* Header row */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
           <Reveal>
-            <SectionHeader
-              eyebrow="Our Services"
-              title={<>{servicesData.length} service lines.<br />Five practice areas. One team.</>}
-              sub="End-to-end delivery from discovery to scale."
-              light
-            />
+            <Eyebrow>Our Services</Eyebrow>
+            <h2 className="mt-3 text-[#082121] text-balance max-w-[22ch]">
+              {servicesData.length} service lines.<br className="hidden sm:block" /> Five practice areas. One team.
+            </h2>
           </Reveal>
-          <Reveal delay={100}>
+          <Reveal delay={80}>
             <Link
               href="/services"
-              className="inline-flex items-center gap-1.5 text-[#37B4B4] hover:text-[#082121] text-[14px] font-semibold transition-colors"
+              className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#37B4B4] hover:text-[#082121] transition-colors"
             >
               View all {servicesData.length} services <ArrowUpRight size={14} />
             </Link>
           </Reveal>
         </div>
 
-        {/* Bento: 3 cols top + 2 cols bottom */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-12 gap-3">
-          {/* Row 1: 3 equal cards with visual elements */}
-          <Reveal className="sm:col-span-1 lg:col-span-4">
-            <ServiceCard item={SERVICES[0]} />
-          </Reveal>
-          <Reveal delay={60} className="sm:col-span-1 lg:col-span-4">
-            <ServiceCard item={SERVICES[1]} />
-          </Reveal>
-          <Reveal delay={90} className="sm:col-span-1 lg:col-span-4">
-            <ServiceCard item={SERVICES[2]} />
-          </Reveal>
+        {/* Feature grid — 3 top, 2 bottom */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {SERVICES.map((service, i) => {
+            const Icon = service.icon;
+            const count = servicesData.filter((s) => s.category === service.key).length;
+            return (
+              <Reveal key={service.key} delay={i * 60} className={i === 3 ? "lg:col-start-1" : ""}>
+                <Link
+                  href={service.href}
+                  className="group flex flex-col h-full rounded-2xl border border-[#082121]/8 hover:border-[#37B4B4]/40 bg-[#F4FAFA] hover:bg-white transition-all duration-200 p-6 lg:p-7"
+                >
+                  {/* Icon */}
+                  <div className="w-10 h-10 rounded-xl bg-white border border-[#082121]/8 flex items-center justify-center mb-5 group-hover:border-[#37B4B4]/30 transition-colors">
+                    <Icon size={18} strokeWidth={1.75} className="text-[#37B4B4]" />
+                  </div>
 
-          {/* Row 2: 2 wider cards */}
-          <Reveal delay={120} className="sm:col-span-3 lg:col-span-5">
-            <ServiceCard item={SERVICES[3]} />
-          </Reveal>
-          <Reveal delay={150} className="sm:col-span-3 lg:col-span-7">
-            <ServiceCard item={SERVICES[4]} />
-          </Reveal>
+                  {/* Text */}
+                  <h3 className="text-[#082121] text-[17px] font-medium leading-snug mb-2">
+                    {service.headline}
+                  </h3>
+                  <p className="text-[13.5px] text-[#3a5a5a] leading-relaxed flex-1">
+                    {service.blurb}
+                  </p>
+
+                  {/* Footer */}
+                  <div className="flex items-center justify-between mt-6 pt-4 border-t border-[#082121]/8">
+                    <span className="text-[11px] font-semibold tracking-widest uppercase text-[#3a5a5a]/50">
+                      {count} services
+                    </span>
+                    <span className="w-7 h-7 rounded-full border border-[#082121]/10 flex items-center justify-center text-[#3a5a5a]/50 group-hover:border-[#37B4B4] group-hover:text-[#37B4B4] group-hover:bg-[#37B4B4]/8 transition-all">
+                      <ArrowUpRight size={13} strokeWidth={2} />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
-
-function ServiceCard({ item }: { item: ServiceItem }) {
-  const count = servicesData.filter((s) => s.category === item.key).length;
-  const Icon = item.icon;
-
-  return (
-    <Link
-      href="/services"
-      className="group relative flex flex-col h-[320px] sm:h-[340px] rounded-2xl bg-[#F4FAFA] ring-1 ring-[#082121]/8 hover:ring-[#37B4B4]/40 hover:bg-white transition-all duration-300 overflow-hidden p-5 lg:p-6"
-    >
-      {/* Header: Title + blurb */}
-      <div className="mb-5 space-y-2">
-        <h3 className="text-[#082121] text-[18px] lg:text-[19px] font-medium tracking-heading leading-tight">
-          {item.headline}
-        </h3>
-        <p className="text-[13px] lg:text-[14px] text-[#3a5a5a] leading-snug line-clamp-2">
-          {item.blurb}
-        </p>
-      </div>
-
-      {/* Visual element — image placeholder */}
-      <div className="flex-1 flex items-center justify-center min-h-0 mb-4 bg-gradient-to-br from-[#E8F7F7] to-[#DCF3F3] rounded-xl overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="text-center">
-            <div className="text-[#37B4B4] text-sm font-medium opacity-60">
-              {item.visualType === "integration" && "Systems Integration"}
-              {item.visualType === "audit" && "Audit Trail"}
-              {item.visualType === "growth" && "Growth Curve"}
-              {item.visualType === "workflow" && "Workflow Pipeline"}
-              {item.visualType === "impact" && "Impact Reach"}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer: Count + CTA */}
-      <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#082121]/6 mt-auto">
-        <span className="text-[10px] font-semibold tracking-caption uppercase text-[#082121]/40">
-          {count} services
-        </span>
-        <span className="w-8 h-8 rounded-full bg-[#082121]/5 text-[#082121]/40 inline-flex items-center justify-center group-hover:bg-[#37B4B4] group-hover:text-white transition-all duration-200">
-          <ArrowUpRight size={13} strokeWidth={2.25} />
-        </span>
-      </div>
-    </Link>
-  );
-}
-

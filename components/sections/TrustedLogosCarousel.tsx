@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Reveal } from "@/components/ui/Primitives";
 
 const partners = [
   { src: "/partners/partner-1.png", alt: "Partner 1" },
@@ -12,31 +11,27 @@ const partners = [
   { src: "/partners/partner-6.png", alt: "Partner 6" },
 ];
 
+/* Used inside the Hero as an anchored strip */
 export function TrustedLogosCarousel() {
   return (
-    <section className="section-dark py-14 border-t border-white/[0.06]">
-      <div className="container-x">
-        <Reveal>
-          <div className="text-center text-[12px] uppercase tracking-label text-white/45 mb-8">
-            Trusted by teams at
+    <div className="py-5 px-4">
+      <p className="text-center text-[10px] font-semibold tracking-widest uppercase text-white/35 mb-4">
+        Trusted by teams at
+      </p>
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-x-8 gap-y-3 items-center max-w-3xl mx-auto">
+        {partners.map((p) => (
+          <div key={p.src} className="flex items-center justify-center">
+            <Image
+              src={p.src}
+              alt={p.alt}
+              width={100}
+              height={30}
+              className="h-6 w-auto object-contain grayscale brightness-[3] opacity-40 hover:opacity-70 transition-opacity"
+              unoptimized
+            />
           </div>
-        </Reveal>
-        <Reveal delay={80}>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-x-8 gap-y-6 items-center">
-            {partners.map((p) => (
-              <div key={p.src} className="flex items-center justify-center opacity-50 hover:opacity-90 transition-opacity">
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  width={120}
-                  height={36}
-                  className="h-7 w-auto object-contain grayscale brightness-200 invert"
-                />
-              </div>
-            ))}
-          </div>
-        </Reveal>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

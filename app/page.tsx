@@ -4,7 +4,6 @@ import { useState } from "react";
 import { BookingModal } from "@/components/ui/BookingModal";
 import { MobileCTABar } from "@/components/layout/MobileCTABar";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { TrustedLogosCarousel } from "@/components/sections/TrustedLogosCarousel";
 import { ProblemSection } from "@/components/sections/MidSections";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProcessSection, IndustriesSection } from "@/components/sections/ProcessAndIndustries";
@@ -25,8 +24,6 @@ export default function HomePage() {
     <>
       {/* DARK   — Hero */}
       <HeroSection onBooking={openBooking} />
-      {/* DARK   — Trusted logos */}
-      <TrustedLogosCarousel />
       {/* LIGHT  — About + stats */}
       <ProblemSection onBooking={openBooking} />
       {/* LIGHT  — Services practice areas (photo cards) */}

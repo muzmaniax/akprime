@@ -7,20 +7,26 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "AK Prime Consulting | ERP, AI & Strategic Advisory",
+    default: "AK Prime Consulting | ERP, Financial & Strategic Advisory in Kenya",
     template: "%s | AK Prime Consulting",
   },
   description:
-    "AK Prime Consulting helps organisations replace fragmented systems, automate workflows, and build data-driven operations through ERP implementation, AI integration, and financial transformation.",
+    "AK Prime Consulting provides ERP implementation, finance consulting, and digital transformation for growing organisations in Nairobi, Mombasa, and East Africa. Specialising in SAP, Odoo, NetSuite.",
   keywords: [
-    "ERP consulting Africa",
+    "ERP consulting Nairobi",
+    "ERP consulting Mombasa",
     "ERP implementation Kenya",
-    "AI integration consulting",
-    "digital transformation",
-    "financial advisory Nairobi",
-    "business consulting Africa & Middle East",
-    "Odoo implementation",
-    "SAP Business One Africa & Middle East",
+    "finance consulting Nairobi",
+    "finance consulting Mombasa",
+    "SAP implementation Kenya",
+    "Odoo implementation Kenya",
+    "NetSuite implementation Africa",
+    "digital transformation consulting",
+    "AI integration consulting Kenya",
+    "financial transformation services",
+    "business consulting East Africa",
+    "technology consulting Nairobi",
+    "operational excellence consulting",
   ],
   openGraph: {
     type: "website",
