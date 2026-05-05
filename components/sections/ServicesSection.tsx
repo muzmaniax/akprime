@@ -142,21 +142,35 @@ function ServiceCard({ item }: { item: ServiceItem }) {
   );
 }
 
-/* Visual element components — mimicking reference design */
+/* Visual element components — motion graphics with animations */
 
 function BadgesVisual() {
   return (
     <div className="flex items-center justify-center gap-3 flex-wrap">
-      <div className="flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
-        <div className="w-3 h-3 rounded-full bg-red-400" />
+      <style>{`
+        @keyframes badge-pop {
+          0% { transform: scale(0.6); opacity: 0; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes dot-pulse {
+          0%, 100% { box-shadow: 0 0 6px currentColor; }
+          50% { box-shadow: 0 0 12px currentColor; }
+        }
+        .badge-1 { animation: badge-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .badge-2 { animation: badge-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards; }
+        .badge-3 { animation: badge-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards; }
+        .dot-pulse { animation: dot-pulse 2s ease-in-out infinite; }
+      `}</style>
+      <div className="badge-1 flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
+        <div className="w-3 h-3 rounded-full bg-red-500 dot-pulse" />
         <span className="text-[11px] font-medium">ERP</span>
       </div>
-      <div className="flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
-        <div className="w-3 h-3 rounded-full bg-blue-400" />
+      <div className="badge-2 flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
+        <div className="w-3 h-3 rounded-full bg-blue-500 dot-pulse" />
         <span className="text-[11px] font-medium">AI</span>
       </div>
-      <div className="flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
-        <div className="w-3 h-3 rounded-full bg-emerald-400" />
+      <div className="badge-3 flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
+        <div className="w-3 h-3 rounded-full bg-emerald-500 dot-pulse" />
         <span className="text-[11px] font-medium">Audit</span>
       </div>
     </div>
@@ -166,12 +180,27 @@ function BadgesVisual() {
 function StepsVisual() {
   return (
     <div className="flex items-center justify-center gap-2">
+      <style>{`
+        @keyframes step-fill {
+          0% { background: transparent; }
+          100% { background: #37B4B4; }
+        }
+        @keyframes line-grow {
+          0% { transform: scaleX(0); }
+          100% { transform: scaleX(1); }
+        }
+        .step-circle { animation: step-fill 0.8s ease-out forwards; }
+        .step-line { animation: line-grow 0.6s ease-out 0.2s forwards; transform-origin: left; }
+      `}</style>
       {[1, 2, 3, 4].map((i) => (
         <div key={i} className="flex items-center">
-          <div className="w-6 h-6 rounded-full border-2 border-[#37B4B4] bg-[#37B4B4]/10 flex items-center justify-center text-[9px] font-semibold text-[#37B4B4]">
+          <div
+            className="step-circle w-6 h-6 rounded-full border-2 border-[#37B4B4] bg-[#37B4B4]/10 flex items-center justify-center text-[9px] font-semibold text-[#37B4B4]"
+            style={{ animationDelay: `${i * 0.1}s` }}
+          >
             {i}
           </div>
-          {i < 4 && <div className="w-4 h-0.5 bg-[#37B4B4]/20 mx-1.5" />}
+          {i < 4 && <div className="step-line w-4 h-0.5 bg-[#37B4B4] mx-1.5" />}
         </div>
       ))}
     </div>
@@ -181,11 +210,21 @@ function StepsVisual() {
 function MetricsVisual() {
   return (
     <div className="flex items-end justify-center gap-2 h-16">
+      <style>{`
+        @keyframes bar-grow {
+          0% { height: 0; opacity: 0.3; }
+          100% { height: var(--height); opacity: 1; }
+        }
+        .metric-bar { animation: bar-grow 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+      `}</style>
       {[45, 70, 55, 80, 65].map((height, i) => (
         <div
           key={i}
-          className="w-2.5 rounded-t bg-[#37B4B4] transition-colors group-hover:bg-[#37B4B4]"
-          style={{ height: `${(height / 100) * 60}px` }}
+          className="metric-bar w-2.5 rounded-t bg-gradient-to-t from-[#37B4B4] to-[#37B4B4]/60 group-hover:from-[#29E0C8] group-hover:to-[#29E0C8]/60 transition-all duration-500"
+          style={{
+            height: `${(height / 100) * 60}px`,
+            animationDelay: `${i * 0.12}s`
+          }}
         />
       ))}
     </div>
@@ -195,16 +234,34 @@ function MetricsVisual() {
 function FlowVisual() {
   return (
     <div className="flex items-center justify-center gap-3 text-xs">
-      <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
-        Recruit
+      <style>{`
+        @keyframes flow-slide {
+          0% { transform: translateX(-8px); opacity: 0; }
+          100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes zap-pulse {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.1); }
+        }
+        .flow-box { animation: flow-slide 0.6s ease-out forwards; }
+        .flow-zap { animation: zap-pulse 1.5s ease-in-out infinite; }
+      `}</style>
+      <div className="flow-box flex items-center gap-2">
+        <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
+          Recruit
+        </div>
+        <Zap size={12} className="flow-zap text-[#37B4B4]" style={{ animationDelay: "0.1s" }} />
       </div>
-      <Zap size={12} className="text-[#37B4B4]" />
-      <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
-        Onboard
+      <div className="flow-box flex items-center gap-2" style={{ animationDelay: "0.2s" }}>
+        <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
+          Onboard
+        </div>
+        <Zap size={12} className="flow-zap text-[#37B4B4]" style={{ animationDelay: "0.3s" }} />
       </div>
-      <Zap size={12} className="text-[#37B4B4]" />
-      <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
-        Develop
+      <div className="flow-box flex items-center gap-2" style={{ animationDelay: "0.4s" }}>
+        <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
+          Develop
+        </div>
       </div>
     </div>
   );
@@ -213,10 +270,32 @@ function FlowVisual() {
 function ListVisual() {
   return (
     <div className="flex flex-col gap-2">
-      {["Brand Strategy", "Performance Marketing", "Impact Metrics"].map((item) => (
+      <style>{`
+        @keyframes check-pop {
+          0% { transform: scale(0); opacity: 0; }
+          50% { transform: scale(1.2); }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes text-slide {
+          0% { transform: translateX(-8px); opacity: 0; }
+          100% { transform: translateX(0); opacity: 1; }
+        }
+        .check-icon { animation: check-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .list-text { animation: text-slide 0.6s ease-out forwards; }
+      `}</style>
+      {["Brand Strategy", "Performance Marketing", "Impact Metrics"].map((item, idx) => (
         <div key={item} className="flex items-center gap-2 text-[12px]">
-          <CheckCircle2 size={14} className="text-[#37B4B4] shrink-0" />
-          <span className="text-[#082121] font-medium">{item}</span>
+          <CheckCircle2
+            size={14}
+            className="check-icon text-[#37B4B4] shrink-0"
+            style={{ animationDelay: `${idx * 0.15}s` }}
+          />
+          <span
+            className="list-text text-[#082121] font-medium"
+            style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
+          >
+            {item}
+          </span>
         </div>
       ))}
     </div>

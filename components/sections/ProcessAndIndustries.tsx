@@ -70,7 +70,7 @@ export function IndustriesSection() {
             <Reveal key={ind.slug} delay={(i % 3) * 60}>
               <Link
                 href={`/industries/${ind.slug}`}
-                className="group relative block aspect-[3/4] rounded-3xl overflow-hidden ring-1 ring-white/10 hover:ring-[#37B4B4]/40 transition-all duration-300 shadow-lg shadow-black/25"
+                className="group relative block aspect-[4/5] sm:aspect-[7/8] rounded-3xl overflow-hidden ring-1 ring-white/10 hover:ring-[#37B4B4]/40 transition-all duration-300 shadow-lg shadow-black/25"
               >
                 <Image
                   src={ind.photo}
@@ -81,21 +81,21 @@ export function IndustriesSection() {
                   style={{ objectPosition: "center 30%" }}
                   unoptimized
                 />
-                {/* Gradient: strong dark vignette at bottom, subtle at top */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/5" />
+                {/* Gradient: stronger dark vignette at bottom, more opacity */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10" />
                 {/* Top: industry index */}
                 <div className="absolute top-4 left-4">
-                  <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/50">
+                  <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/40">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
                 {/* Bottom: title + description + arrow */}
                 <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-white text-[21px] font-semibold tracking-tight leading-[1.15]">
+                    <h3 className="text-white text-[24px] font-medium tracking-tight leading-[1.15]">
                       {ind.name}
                     </h3>
-                    <p className="mt-1.5 text-[12.5px] text-white/65 leading-snug line-clamp-2">
+                    <p className="mt-2 text-[13.5px] text-white/70 font-regular leading-snug line-clamp-2">
                       {ind.shortDescription}
                     </p>
                   </div>
