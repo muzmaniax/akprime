@@ -33,7 +33,7 @@ export function ProcessSection() {
           {PROCESS.map((p, i) => (
             <Reveal key={p.num} delay={i * 60}>
               <div className="h-full p-5 lg:p-6 rounded-2xl bg-white border border-[#082121]/8 hover:border-[#37B4B4]/30 transition-colors">
-                <div className="text-[#37B4B4] text-[12px] font-semibold tracking-[0.18em] mb-3">{p.num}</div>
+                <div className="text-[#37B4B4] text-[12px] font-semibold tracking-label mb-3">{p.num}</div>
                 <h3 className="text-[#082121] text-[19px] font-medium mb-3">{p.title}</h3>
                 <p className="text-[13.5px] text-[#3a5a5a] leading-relaxed">{p.desc}</p>
               </div>
@@ -85,14 +85,14 @@ export function IndustriesSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10" />
                 {/* Top: industry index */}
                 <div className="absolute top-4 left-4">
-                  <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/40">
+                  <span className="text-[10px] font-semibold tracking-label uppercase text-white/40">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
                 {/* Bottom: title + description + arrow */}
                 <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-white text-[24px] font-medium tracking-tight leading-[1.15]">
+                    <h3 className="text-white text-[24px] font-medium tracking-subheading leading-[1.15]">
                       {ind.name}
                     </h3>
                     <p className="mt-2 text-[15px] text-white/75 font-regular leading-snug line-clamp-2">

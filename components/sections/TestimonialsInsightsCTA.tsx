@@ -130,21 +130,6 @@ export function InsightsSection() {
   return (
     <section className="bg-[#F4FAFA] text-[#082121] section-py border-t border-[#082121]/8">
       <div className="container-x">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-          <Reveal>
-            <SectionHeader
-              eyebrow="Our Blog"
-              title="Thinking for business leaders"
-              sub="Articles focused on how leaders think, decide, and operate in complex business environments."
-              light
-            />
-          </Reveal>
-          <Reveal delay={100}>
-            <Link href="/insights" className="text-[#37B4B4] hover:text-[#082121] text-[14px] font-semibold inline-flex items-center gap-1.5">
-              All articles <ArrowUpRight size={14} />
-            </Link>
-          </Reveal>
-        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {ARTICLES.map((a, i) => (
@@ -157,7 +142,7 @@ export function InsightsSection() {
                   />
                 </div>
                 <div className="mt-5">
-                  <div className="text-[11px] font-semibold tracking-[0.18em] text-[#37B4B4] uppercase">
+                  <div className="text-[11px] font-semibold tracking-label text-[#37B4B4] uppercase">
                     {a.category}
                   </div>
                   <h3 className="mt-2.5 text-[#082121] text-balance group-hover:text-[#37B4B4] transition-colors">

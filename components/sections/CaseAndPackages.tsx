@@ -29,7 +29,7 @@ export function CaseStudiesSection() {
                 <div className="grid grid-cols-5 min-h-[260px]">
                   <div className="col-span-3 p-7 lg:p-8 flex flex-col justify-between">
                     <div>
-                      <div className="text-[11px] font-semibold tracking-[0.18em] text-[#37B4B4] uppercase">
+                      <div className="text-[11px] font-semibold tracking-label text-[#37B4B4] uppercase">
                         {cs.sector}
                       </div>
                       <h3 className="mt-3 text-[#082121] text-[22px] leading-tight font-medium">
@@ -41,7 +41,7 @@ export function CaseStudiesSection() {
                     </div>
                     <div className="flex items-end justify-between mt-6 pt-5 border-t border-[#082121]/10">
                       <div>
-                        <div className="text-[10px] tracking-[0.16em] uppercase text-[#3a5a5a]/70">Industry</div>
+                        <div className="text-[10px] tracking-caption uppercase text-[#3a5a5a]/70">Industry</div>
                         <div className="text-[13px] font-medium text-[#082121] mt-1">{cs.industry}</div>
                       </div>
                       <div className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all">

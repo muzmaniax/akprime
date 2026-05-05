@@ -80,8 +80,8 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={120}>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-6 border-t border-white/10">
-                <StatCell value="120+" label="Engagements delivered" />
-                <StatCell value="16" label="Integrated service lines" />
+                <StatCell value="20+" label="Engagements delivered" />
+                <StatCell value="23" label="Integrated service lines" />
                 <StatCell value="98%" label="Client satisfaction" />
                 <StatCell value="94%" label="Avg. user adoption" />
               </div>

@@ -74,7 +74,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
               <div className="absolute inset-0 bg-gradient-to-br from-[#082121] via-[#082121]/85 to-[#0E3E3E]/80" />
               <div className="relative h-full flex flex-col">
                 <DialogHeader className="text-left space-y-2">
-                  <span className="inline-flex items-center gap-2 self-start text-[11px] font-semibold tracking-[0.18em] uppercase text-[#37B4B4]">
+                  <span className="inline-flex items-center gap-2 self-start text-[11px] font-semibold tracking-label uppercase text-[#37B4B4]">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
                     Strategy Call
                   </span>
@@ -105,7 +105,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
             <div className="md:col-span-7 bg-white p-6 sm:p-8 lg:p-9 overflow-y-auto">
               {/* Mobile header (md hidden uses left panel, mobile shows compact title) */}
               <div className="md:hidden mb-5">
-                <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#37B4B4]">
+                <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-label uppercase text-[#37B4B4]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
                   Strategy Call
                 </span>

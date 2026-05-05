@@ -75,7 +75,7 @@ function ContactTile({ icon, label, value }: { icon: React.ReactNode; label: str
   return (
     <div className="card-light p-4">
       <div className="w-8 h-8 rounded-full bg-[#37B4B4]/10 text-[#37B4B4] flex items-center justify-center">{icon}</div>
-      <div className="text-[10px] tracking-[0.16em] uppercase text-[#3a5a5a]/70 mt-3">{label}</div>
+      <div className="text-[10px] tracking-caption uppercase text-[#3a5a5a]/70 mt-3">{label}</div>
       <div className="text-[13px] font-medium text-[#082121] mt-1">{value}</div>
     </div>
   );

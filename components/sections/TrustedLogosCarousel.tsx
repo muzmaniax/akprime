@@ -17,7 +17,7 @@ export function TrustedLogosCarousel() {
     <section className="section-dark py-14 border-t border-white/[0.06]">
       <div className="container-x">
         <Reveal>
-          <div className="text-center text-[12px] uppercase tracking-[0.18em] text-white/45 mb-8">
+          <div className="text-center text-[12px] uppercase tracking-label text-white/45 mb-8">
             Trusted by teams at
           </div>
         </Reveal>

@@ -111,7 +111,7 @@ function ServiceCard({ item }: { item: ServiceItem }) {
     >
       {/* Header: Title + blurb */}
       <div className="mb-5 space-y-2">
-        <h3 className="text-[#082121] text-[18px] lg:text-[19px] font-medium tracking-tight leading-tight">
+        <h3 className="text-[#082121] text-[18px] lg:text-[19px] font-medium tracking-heading leading-tight">
           {item.headline}
         </h3>
         <p className="text-[13px] lg:text-[14px] text-[#3a5a5a] leading-snug line-clamp-2">
@@ -136,7 +136,7 @@ function ServiceCard({ item }: { item: ServiceItem }) {
 
       {/* Footer: Count + CTA */}
       <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#082121]/6 mt-auto">
-        <span className="text-[10px] font-semibold tracking-[0.16em] uppercase text-[#082121]/40">
+        <span className="text-[10px] font-semibold tracking-caption uppercase text-[#082121]/40">
           {count} services
         </span>
         <span className="w-8 h-8 rounded-full bg-[#082121]/5 text-[#082121]/40 inline-flex items-center justify-center group-hover:bg-[#37B4B4] group-hover:text-white transition-all duration-200">
