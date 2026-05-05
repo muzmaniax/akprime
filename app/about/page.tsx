@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import { Reveal, Eyebrow, StatCell, SectionHeader, CtaButton, GhostButton } from "@/components/ui/Primitives";
 import { CTABannerSection, FAQSection } from "@/components/sections/TestimonialsInsightsCTA";
 
@@ -15,10 +14,13 @@ const VALUES = [
   { title: "Growth with intention", body: "We build capability inside your organisation — not dependence on us." },
 ];
 
-const TEAM = [
-  { name: "Jami Keffer", role: "Chief Innovation Officer", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" },
-  { name: "Kimberly Nazshenwala", role: "Principal Strategist", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" },
-  { name: "Autumn Phillips", role: "Director of Client Success", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80" },
+const CAPABILITIES = [
+  { title: "ERP Systems", description: "SAP, Odoo, NetSuite implementations and migrations" },
+  { title: "Technology", description: "Cloud infrastructure, API integrations, and digital transformation" },
+  { title: "Finance & FP&A", description: "CFO advisory, consolidation, and financial planning models" },
+  { title: "Operations", description: "Process redesign, supply chain, and operational excellence" },
+  { title: "Organization Design", description: "Restructuring, talent strategy, and capability building" },
+  { title: "Compliance & Audit", description: "Risk frameworks, internal controls, and regulatory readiness" },
 ];
 
 export default function AboutPage() {
@@ -107,23 +109,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Capabilities */}
       <section className="section-dark section-py border-t border-white/[0.06]">
         <div className="container-x">
           <Reveal>
-            <SectionHeader eyebrow="Team" title="Meet the experts driving your success" align="center" />
+            <SectionHeader eyebrow="What we do" title="Core capabilities & expertise" align="center" />
           </Reveal>
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {TEAM.map((m, i) => (
-              <Reveal key={m.name} delay={i * 80}>
-                <div className="card-dark overflow-hidden">
-                  <div className="aspect-[4/5] relative">
-                    <Image src={m.image} alt={m.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" unoptimized />
-                  </div>
-                  <div className="p-6">
-                    <div className="text-[15px] font-medium text-white">{m.name}</div>
-                    <div className="text-[12px] text-white/55 mt-1">{m.role}</div>
-                  </div>
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {CAPABILITIES.map((c, i) => (
+              <Reveal key={c.title} delay={i * 60}>
+                <div className="card-dark p-6">
+                  <h3 className="text-white font-medium text-[15px]">{c.title}</h3>
+                  <p className="mt-3 text-[13px] text-white/60 leading-relaxed">{c.description}</p>
                 </div>
               </Reveal>
             ))}

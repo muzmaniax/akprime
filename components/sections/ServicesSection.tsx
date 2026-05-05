@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Cpu, Shield, BarChart3, Users, TrendingUp, CheckCircle2, Zap, Database } from "lucide-react";
+import { ArrowUpRight, Cpu, Shield, BarChart3, Users, TrendingUp } from "lucide-react";
 import { Reveal, SectionHeader } from "@/components/ui/Primitives";
 import { servicesData, type ServiceCategory } from "@/data/services";
-import { cn } from "@/lib/utils";
 
 type ServiceItem = {
   key: ServiceCategory;
   icon: React.ElementType;
   headline: string;
   blurb: string;
-  visualType: "badges" | "flow" | "metrics" | "steps" | "list";
+  visualType: "integration" | "audit" | "growth" | "workflow" | "impact";
 };
 
 const SERVICES: ServiceItem[] = [
@@ -20,35 +19,35 @@ const SERVICES: ServiceItem[] = [
     icon: Cpu,
     headline: "Unified Operating Core",
     blurb: "See your fragmented systems transform instantly as we integrate ERP, AI, and compliance into one cohesive platform.",
-    visualType: "badges",
+    visualType: "integration",
   },
   {
     key: "Finance & Compliance",
     icon: Shield,
     headline: "Bulletproof Audit Trail",
     blurb: "Play with audit frameworks, FP&A models, and compliance policies — all in one auditable, zero-defect system.",
-    visualType: "steps",
+    visualType: "audit",
   },
   {
     key: "Strategy & Transformation",
     icon: BarChart3,
     headline: "Transformation at Scale",
     blurb: "Perfect your org structure with governance frameworks, business analysis, and capital readiness strategies for measurable impact.",
-    visualType: "metrics",
+    visualType: "growth",
   },
   {
     key: "HR & People Services",
     icon: Users,
     headline: "People Stack Automation",
     blurb: "Unleash full HR potential with org design, payroll, recruitment, and L&D all integrated into one unified people platform.",
-    visualType: "flow",
+    visualType: "workflow",
   },
   {
     key: "Growth & Impact",
     icon: TrendingUp,
     headline: "Stunning Growth Outcomes",
     blurb: "Kick off with brand strategy, performance marketing, and impact frameworks — then customize for your business model in a breeze.",
-    visualType: "list",
+    visualType: "impact",
   },
 ];
 
@@ -122,11 +121,11 @@ function ServiceCard({ item }: { item: ServiceItem }) {
 
       {/* Visual element — varies by type */}
       <div className="flex-1 flex items-center justify-center min-h-0 mb-4">
-        {item.visualType === "badges" && <BadgesVisual />}
-        {item.visualType === "steps" && <StepsVisual />}
-        {item.visualType === "metrics" && <MetricsVisual />}
-        {item.visualType === "flow" && <FlowVisual />}
-        {item.visualType === "list" && <ListVisual />}
+        {item.visualType === "integration" && <IntegrationVisual />}
+        {item.visualType === "audit" && <AuditVisual />}
+        {item.visualType === "growth" && <GrowthVisual />}
+        {item.visualType === "workflow" && <WorkflowVisual />}
+        {item.visualType === "impact" && <ImpactVisual />}
       </div>
 
       {/* Footer: Count + CTA */}
@@ -142,162 +141,165 @@ function ServiceCard({ item }: { item: ServiceItem }) {
   );
 }
 
-/* Visual element components — motion graphics with animations */
-
-function BadgesVisual() {
+/* System Integration Diagram - interconnected nodes */
+function IntegrationVisual() {
   return (
-    <div className="flex items-center justify-center gap-3 flex-wrap">
-      <style>{`
-        @keyframes badge-pop {
-          0% { transform: scale(0.6); opacity: 0; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes dot-pulse {
-          0%, 100% { box-shadow: 0 0 6px currentColor; }
-          50% { box-shadow: 0 0 12px currentColor; }
-        }
-        .badge-1 { animation: badge-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-        .badge-2 { animation: badge-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards; }
-        .badge-3 { animation: badge-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards; }
-        .dot-pulse { animation: dot-pulse 2s ease-in-out infinite; }
-      `}</style>
-      <div className="badge-1 flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
-        <div className="w-3 h-3 rounded-full bg-red-500 dot-pulse" />
-        <span className="text-[11px] font-medium">ERP</span>
-      </div>
-      <div className="badge-2 flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
-        <div className="w-3 h-3 rounded-full bg-blue-500 dot-pulse" />
-        <span className="text-[11px] font-medium">AI</span>
-      </div>
-      <div className="badge-3 flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#082121]/10 bg-white text-[#082121]">
-        <div className="w-3 h-3 rounded-full bg-emerald-500 dot-pulse" />
-        <span className="text-[11px] font-medium">Audit</span>
-      </div>
+    <div className="w-full h-full flex items-center justify-center">
+      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[160px]">
+        {/* Central node */}
+        <circle cx="100" cy="70" r="16" fill="#37B4B4" opacity="0.15" stroke="#37B4B4" strokeWidth="1.5" />
+        <circle cx="100" cy="70" r="12" fill="none" stroke="#37B4B4" strokeWidth="2" />
+
+        {/* Connected nodes */}
+        {[0, 1, 2, 3].map((i) => {
+          const angle = (i / 4) * Math.PI * 2 - Math.PI / 2;
+          const x = 100 + Math.cos(angle) * 55;
+          const y = 70 + Math.sin(angle) * 50;
+          return (
+            <g key={i}>
+              <line x1="100" y1="70" x2={x} y2={y} stroke="#082121" strokeWidth="1" opacity="0.3" />
+              <circle cx={x} cy={y} r="8" fill="white" stroke="#082121" strokeWidth="1.5" opacity="0.7" />
+            </g>
+          );
+        })}
+      </svg>
     </div>
   );
 }
 
-function StepsVisual() {
+/* Audit Trail with Checkpoints */
+function AuditVisual() {
   return (
-    <div className="flex items-center justify-center gap-2">
-      <style>{`
-        @keyframes step-fill {
-          0% { background: transparent; }
-          100% { background: #37B4B4; }
-        }
-        @keyframes line-grow {
-          0% { transform: scaleX(0); }
-          100% { transform: scaleX(1); }
-        }
-        .step-circle { animation: step-fill 0.8s ease-out forwards; }
-        .step-line { animation: line-grow 0.6s ease-out 0.2s forwards; transform-origin: left; }
-      `}</style>
-      {[1, 2, 3, 4].map((i) => (
-        <div key={i} className="flex items-center">
-          <div
-            className="step-circle w-6 h-6 rounded-full border-2 border-[#37B4B4] bg-[#37B4B4]/10 flex items-center justify-center text-[9px] font-semibold text-[#37B4B4]"
-            style={{ animationDelay: `${i * 0.1}s` }}
-          >
-            {i}
-          </div>
-          {i < 4 && <div className="step-line w-4 h-0.5 bg-[#37B4B4] mx-1.5" />}
-        </div>
-      ))}
+    <div className="w-full h-full flex items-center justify-center px-4">
+      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[180px]">
+        {/* Vertical audit trail */}
+        {[0, 1, 2, 3].map((i) => {
+          const y = 25 + i * 30;
+          return (
+            <g key={i}>
+              {/* Connecting line */}
+              {i < 3 && <line x1="25" y1={y + 15} x2="25" y2={y + 30} stroke="#082121" strokeWidth="1" opacity="0.2" />}
+              {/* Checkpoint circle */}
+              <circle cx="25" cy={y} r="6" fill={i === 3 ? "#37B4B4" : "#F4FAFA"} stroke={i === 3 ? "#37B4B4" : "#082121"} strokeWidth="1.5" />
+              {/* Checkmark for completed */}
+              {i < 3 && (
+                <g>
+                  <path d={`M ${20} ${y - 2} L ${23} ${y + 1} L ${30} ${y - 5}`} stroke="#37B4B4" strokeWidth="1.5" fill="none" />
+                </g>
+              )}
+              {/* Label bars */}
+              <rect x="40" y={y - 4} width={120} height="8" fill="#F4FAFA" stroke="#082121" strokeWidth="0.5" opacity="0.5" />
+            </g>
+          );
+        })}
+      </svg>
     </div>
   );
 }
 
-function MetricsVisual() {
+/* Growth Trajectory Curve */
+function GrowthVisual() {
   return (
-    <div className="flex items-end justify-center gap-2 h-16">
-      <style>{`
-        @keyframes bar-grow {
-          0% { height: 0; opacity: 0.3; }
-          100% { height: var(--height); opacity: 1; }
-        }
-        .metric-bar { animation: bar-grow 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-      `}</style>
-      {[45, 70, 55, 80, 65].map((height, i) => (
-        <div
-          key={i}
-          className="metric-bar w-2.5 rounded-t bg-gradient-to-t from-[#37B4B4] to-[#37B4B4]/60 group-hover:from-[#29E0C8] group-hover:to-[#29E0C8]/60 transition-all duration-500"
-          style={{
-            height: `${(height / 100) * 60}px`,
-            animationDelay: `${i * 0.12}s`
-          }}
+    <div className="w-full h-full flex items-center justify-center">
+      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[180px]" preserveAspectRatio="xMidYMid meet">
+        {/* Grid lines */}
+        <line x1="20" y1="110" x2="180" y2="110" stroke="#082121" strokeWidth="1" opacity="0.2" />
+        <line x1="20" y1="110" x2="20" y2="20" stroke="#082121" strokeWidth="1" opacity="0.2" />
+
+        {/* Growth curve - cubic bezier */}
+        <path
+          d="M 30 100 Q 70 75, 110 55 T 170 25"
+          stroke="#37B4B4"
+          strokeWidth="2.5"
+          fill="none"
+          strokeLinecap="round"
         />
-      ))}
+
+        {/* Fill under curve */}
+        <path
+          d="M 30 100 Q 70 75, 110 55 T 170 25 L 170 110 L 30 110 Z"
+          fill="#37B4B4"
+          opacity="0.08"
+        />
+
+        {/* Progress points */}
+        {[30, 70, 110, 150].map((x, i) => {
+          const y = 100 - (Math.pow((x - 30) / 140, 0.6) * 75);
+          return (
+            <circle key={i} cx={x} cy={y} r="3.5" fill="#37B4B4" opacity={i === 3 ? 1 : 0.6} />
+          );
+        })}
+      </svg>
     </div>
   );
 }
 
-function FlowVisual() {
+/* Workflow Pipeline */
+function WorkflowVisual() {
   return (
-    <div className="flex items-center justify-center gap-3 text-xs">
-      <style>{`
-        @keyframes flow-slide {
-          0% { transform: translateX(-8px); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes zap-pulse {
-          0%, 100% { opacity: 0.5; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.1); }
-        }
-        .flow-box { animation: flow-slide 0.6s ease-out forwards; }
-        .flow-zap { animation: zap-pulse 1.5s ease-in-out infinite; }
-      `}</style>
-      <div className="flow-box flex items-center gap-2">
-        <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
-          Recruit
-        </div>
-        <Zap size={12} className="flow-zap text-[#37B4B4]" style={{ animationDelay: "0.1s" }} />
-      </div>
-      <div className="flow-box flex items-center gap-2" style={{ animationDelay: "0.2s" }}>
-        <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
-          Onboard
-        </div>
-        <Zap size={12} className="flow-zap text-[#37B4B4]" style={{ animationDelay: "0.3s" }} />
-      </div>
-      <div className="flow-box flex items-center gap-2" style={{ animationDelay: "0.4s" }}>
-        <div className="px-2 py-1.5 rounded border border-[#082121]/15 bg-white text-[#082121] font-medium">
-          Develop
-        </div>
-      </div>
+    <div className="w-full h-full flex items-center justify-center px-2">
+      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[190px]">
+        {/* Three stage boxes with flow */}
+        {["Recruit", "Onboard", "Develop"].map((label, i) => {
+          const x = 20 + i * 60;
+          return (
+            <g key={i}>
+              {/* Connecting arrow */}
+              {i < 2 && (
+                <g>
+                  <line x1={x + 35} y1="70" x2={x + 50} y2="70" stroke="#37B4B4" strokeWidth="1.5" />
+                  <polygon points={`${x + 50},70 ${x + 45},67 ${x + 45},73`} fill="#37B4B4" />
+                </g>
+              )}
+              {/* Box */}
+              <rect x={x} y="50" width="35" height="40" rx="6" fill="white" stroke="#082121" strokeWidth="1" opacity="0.6" />
+              {/* Label */}
+              <text x={x + 17.5} y="75" textAnchor="middle" fontSize="9" fontWeight="500" fill="#082121">
+                {label}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
     </div>
   );
 }
 
-function ListVisual() {
+/* Impact Multiplier Visualization */
+function ImpactVisual() {
   return (
-    <div className="flex flex-col gap-2">
-      <style>{`
-        @keyframes check-pop {
-          0% { transform: scale(0); opacity: 0; }
-          50% { transform: scale(1.2); }
-          100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes text-slide {
-          0% { transform: translateX(-8px); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-        .check-icon { animation: check-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-        .list-text { animation: text-slide 0.6s ease-out forwards; }
-      `}</style>
-      {["Brand Strategy", "Performance Marketing", "Impact Metrics"].map((item, idx) => (
-        <div key={item} className="flex items-center gap-2 text-[12px]">
-          <CheckCircle2
-            size={14}
-            className="check-icon text-[#37B4B4] shrink-0"
-            style={{ animationDelay: `${idx * 0.15}s` }}
+    <div className="w-full h-full flex items-center justify-center">
+      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[180px]">
+        {/* Radiating impact circles */}
+        {[3, 2, 1].map((i) => (
+          <circle
+            key={i}
+            cx="100"
+            cy="70"
+            r={30 + i * 25}
+            fill="none"
+            stroke="#37B4B4"
+            strokeWidth="1"
+            opacity={0.3 - i * 0.08}
           />
-          <span
-            className="list-text text-[#082121] font-medium"
-            style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
-          >
-            {item}
-          </span>
-        </div>
-      ))}
+        ))}
+
+        {/* Central impact point */}
+        <circle cx="100" cy="70" r="10" fill="#37B4B4" opacity="0.2" stroke="#37B4B4" strokeWidth="1.5" />
+        <circle cx="100" cy="70" r="6" fill="#37B4B4" />
+
+        {/* Impact nodes around */}
+        {[0, 1, 2, 3, 4, 5].map((i) => {
+          const angle = (i / 6) * Math.PI * 2;
+          const x = 100 + Math.cos(angle) * 45;
+          const y = 70 + Math.sin(angle) * 45;
+          return (
+            <g key={i}>
+              <circle cx={x} cy={y} r="5" fill="white" stroke="#082121" strokeWidth="1" opacity="0.5" />
+            </g>
+          );
+        })}
+      </svg>
     </div>
   );
 }
