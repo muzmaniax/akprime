@@ -104,7 +104,7 @@ export default async function ServicePage({ params }: Props) {
                 className={`bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${idx === 2 ? 'md:col-span-1' : ''}`}
               >
                 <div className="w-10 h-10 rounded-[12px] bg-red-50 flex items-center justify-center mb-5">
-                  <span className="text-red-500 font-bold text-lg">✕</span>
+                  <span className="text-red-500 font-medium text-lg">✕</span>
                 </div>
                 <p className="text-base text-[#3a5a5a] leading-relaxed font-medium">{pain}</p>
               </div>

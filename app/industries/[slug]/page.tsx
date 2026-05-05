@@ -47,9 +47,9 @@ export default async function IndustryPage({ params }: Props) {
           <div className="flex flex-wrap items-center gap-3 text-[11px] font-medium mb-6 text-white/70">
             <span className="px-3 py-1 rounded-full bg-[#37B4B4]/20 text-[#37B4B4] uppercase tracking-wider">Industry Sector</span>
             <span className="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-            <span className="text-white font-bold">{industry.name}</span>
+            <span className="text-white font-medium">{industry.name}</span>
           </div>
-          <h1 className="text-3xl md:text-[3.5rem] font-bold tracking-tight mb-6 leading-[1.05] max-w-4xl uppercase">
+          <h1 className="text-3xl md:text-[3.5rem] font-medium tracking-tight mb-6 leading-[1.05] max-w-4xl uppercase">
             {industry.heroHeadline}
           </h1>
           <p className="text-base md:text-lg text-white/80 leading-relaxed font-light mb-10 max-w-2xl">
@@ -77,8 +77,8 @@ export default async function IndustryPage({ params }: Props) {
             {/* The Problem (Bento Stack) */}
             <div className="lg:col-span-5">
               <div className="sticky top-32">
-                <h2 className="text-[11px] font-bold tracking-widest text-[#37B4B4] uppercase mb-3">Sector Bottlenecks</h2>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#082121] mb-6 leading-[1.15]">
+                <h2 className="text-[11px] font-medium tracking-widest text-[#37B4B4] uppercase mb-3">Sector Bottlenecks</h2>
+                <h3 className="text-2xl md:text-3xl font-medium text-[#082121] mb-6 leading-[1.15]">
                   What's holding {industry.name} back.
                 </h3>
                 
@@ -86,7 +86,7 @@ export default async function IndustryPage({ params }: Props) {
                   {industry.challenges.map((pain, idx) => (
                     <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
                       <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center mb-3">
-                        <span className="text-red-500 font-bold text-base">✕</span>
+                        <span className="text-red-500 font-medium text-base">✕</span>
                       </div>
                       <p className="text-[15px] md:text-base text-[#3a5a5a] leading-relaxed font-medium">{pain}</p>
                     </div>
@@ -98,8 +98,8 @@ export default async function IndustryPage({ params }: Props) {
             {/* The Solution (Vertical Stepper & ROI) */}
             <div className="lg:col-span-7">
               <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-gray-100">
-                <h2 className="text-[11px] font-bold tracking-widest text-[#37B4B4] uppercase mb-3">Strategic Interventions</h2>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#082121] mb-8 leading-tight">
+                <h2 className="text-[11px] font-medium tracking-widest text-[#37B4B4] uppercase mb-3">Strategic Interventions</h2>
+                <h3 className="text-2xl md:text-3xl font-medium text-[#082121] mb-8 leading-tight">
                   How AK Prime modernises {industry.name}.
                 </h3>
                 
@@ -109,9 +109,9 @@ export default async function IndustryPage({ params }: Props) {
                     <div key={idx} className="relative">
                       {/* Node */}
                       <div className="absolute -left-[2.8rem] w-10 h-10 bg-white border-2 border-[#37B4B4] rounded-full flex items-center justify-center shadow-md shadow-[#37B4B4]/20">
-                        <span className="text-[#082121] font-bold text-sm">{idx + 1}</span>
+                        <span className="text-[#082121] font-medium text-sm">{idx + 1}</span>
                       </div>
-                      <h4 className="text-lg md:text-xl text-[#082121] font-bold mb-2 transition-colors hover:text-[#37B4B4]">Phase {idx + 1} Modernisation</h4>
+                      <h4 className="text-lg md:text-xl text-[#082121] font-medium mb-2 transition-colors hover:text-[#37B4B4]">Phase {idx + 1} Modernisation</h4>
                       <p className="text-[15px] md:text-base text-[#3a5a5a] leading-relaxed">{sol}</p>
                     </div>
                    ))}
@@ -120,7 +120,7 @@ export default async function IndustryPage({ params }: Props) {
                 {/* Dark ROI Outcomes Container */}
                 <div className="bg-[#082121] p-6 md:p-8 rounded-2xl relative overflow-hidden shadow-2xl">
                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#37B4B4]/10 rounded-full blur-[100px] pointer-events-none" />
-                   <h4 className="font-bold text-white text-lg md:text-xl mb-6 relative z-10 flex items-center gap-3">
+                   <h4 className="font-medium text-white text-lg md:text-xl mb-6 relative z-10 flex items-center gap-3">
                      <span className="w-2 h-2 bg-[#37B4B4] rounded-full animate-pulse"></span>
                      Sector Outcomes Expected
                    </h4>
@@ -144,7 +144,7 @@ export default async function IndustryPage({ params }: Props) {
       <section className="py-20 bg-[#082121] text-center px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#37B4B4]/5 mix-blend-screen" />
         <div className="max-w-2xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-medium text-white mb-6 leading-tight">
             Ready to lead the {industry.name} sector?
           </h2>
           <p className="text-lg text-white/70 mb-8 font-light">

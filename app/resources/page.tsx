@@ -52,7 +52,7 @@ export default function ResourcesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <ScrollReveal>
             <span className="section-label mb-6 inline-block">Free Resources</span>
-            <h1 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-5">
+            <h1 className="text-4xl lg:text-5xl font-medium text-white tracking-tight mb-5">
               Tools to Help You<br />
               <span className="text-[#37B4B4]">Make Better Decisions</span>
             </h1>
@@ -77,7 +77,7 @@ export default function ResourcesPage() {
                     <span className="section-label">{resource.tag}</span>
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-white font-bold text-lg mb-2">{resource.title}</h2>
+                    <h2 className="text-white font-medium text-lg mb-2">{resource.title}</h2>
                     <p className="text-white/55 text-[13px] leading-relaxed">{resource.desc}</p>
                   </div>
                   <div className="flex items-center justify-between pt-4 border-t border-white/8">
@@ -108,7 +108,7 @@ export default function ResourcesPage() {
       <section className="py-16 bg-[#0E3E3E]/20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <ScrollReveal>
-            <h2 className="text-3xl font-bold text-white mb-4">Want tailored advice instead?</h2>
+            <h2 className="text-3xl font-medium text-white mb-4">Want tailored advice instead?</h2>
             <p className="text-white/55 mb-8">Book a 30-minute strategy call and get a personalised recommendation for your situation.</p>
             <Link href="/book" className="inline-flex items-center gap-2 bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-semibold px-8 py-4 rounded-xl cta-pulse transition-all">
               Book a Free Call <ArrowRight size={16} />

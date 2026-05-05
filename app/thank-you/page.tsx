@@ -15,7 +15,7 @@ export default function ThankYouPage() {
           <CheckCircle2 size={28} className="text-[#37B4B4]" />
         </div>
 
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-medium text-white mb-4">
           We'll be in touch soon!
         </h1>
         <p className="text-white/55 text-lg leading-relaxed mb-10">

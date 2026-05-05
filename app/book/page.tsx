@@ -23,7 +23,7 @@ export default function BookPage() {
           {/* Left — Info */}
           <ScrollReveal>
             <span className="section-label mb-6 inline-block">Book a Consultation</span>
-            <h1 className="text-5xl font-bold text-white tracking-tight mb-6">
+            <h1 className="text-5xl font-medium text-white tracking-tight mb-6">
               30-Minute Strategy<br />
               <span className="text-[#37B4B4]">Discovery Call</span>
             </h1>

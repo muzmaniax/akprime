@@ -44,7 +44,7 @@ export default function ERPPage() {
                 </div>
                 <span className="section-label">ERP Implementation</span>
               </div>
-              <h1 className="text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
+              <h1 className="text-5xl lg:text-6xl font-medium text-white tracking-tight mb-6">
                 Replace Fragmented Systems With{" "}
                 <span className="text-[#37B4B4]">Unified Operations</span>
               </h1>
@@ -76,16 +76,16 @@ export default function ERPPage() {
           <ScrollReveal>
             <div className="mb-12">
               <span className="section-label mb-4 inline-block">Delivery Process</span>
-              <h2 className="text-3xl font-bold text-white">Our 7-Phase ERP Methodology</h2>
+              <h2 className="text-3xl font-medium text-white">Our 7-Phase ERP Methodology</h2>
             </div>
           </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {deliveryProcess.map((item, i) => (
               <ScrollReveal key={item.step} delay={i * 0.08}>
                 <div className="glass-card rounded-2xl p-5 h-full">
-                  <div className="text-5xl font-bold text-white/5 mb-2 leading-none">{item.step}</div>
+                  <div className="text-5xl font-medium text-white/5 mb-2 leading-none">{item.step}</div>
                   <div className="w-6 h-6 rounded-md bg-[#37B4B4]/20 border border-[#37B4B4]/30 flex items-center justify-center mb-3">
-                    <span className="text-[#37B4B4] text-xs font-bold">{item.step}</span>
+                    <span className="text-[#37B4B4] text-xs font-medium">{item.step}</span>
                   </div>
                   <h3 className="text-white font-semibold mb-2">{item.title}</h3>
                   <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
@@ -103,7 +103,7 @@ export default function ERPPage() {
             <ScrollReveal>
               <div>
                 <span className="section-label mb-4 inline-block">Target KPIs</span>
-                <h2 className="text-3xl font-bold text-white mb-6">Measurable Outcomes</h2>
+                <h2 className="text-3xl font-medium text-white mb-6">Measurable Outcomes</h2>
                 <ul className="space-y-4">
                   {kpis.map((kpi) => (
                     <li key={kpi} className="flex gap-3 items-start">
@@ -118,7 +118,7 @@ export default function ERPPage() {
             <ScrollReveal delay={0.1}>
               <div>
                 <span className="section-label mb-4 inline-block">Tools & Partners</span>
-                <h2 className="text-3xl font-bold text-white mb-6">Technology Stack</h2>
+                <h2 className="text-3xl font-medium text-white mb-6">Technology Stack</h2>
                 <div className="flex flex-wrap gap-3">
                   {tools.map((tool) => (
                     <div key={tool} className="glass-card rounded-xl px-4 py-2.5 border border-white/8">
@@ -142,7 +142,7 @@ export default function ERPPage() {
       <section className="py-16 bg-[#0E3E3E]/30">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <ScrollReveal>
-            <h2 className="text-3xl font-bold text-white mb-4">Ready to start your ERP journey?</h2>
+            <h2 className="text-3xl font-medium text-white mb-4">Ready to start your ERP journey?</h2>
             <p className="text-white/55 mb-8">Book a free 30-minute assessment call. We'll review your current systems and give you an honest recommendation.</p>
             <Link
               href="/contact"

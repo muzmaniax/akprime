@@ -122,7 +122,7 @@ export default async function InsightArticlePage({ params }: Props) {
             <span className="flex items-center">{article.date}</span>
             <span className="flex items-center">{article.readTime}</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 leading-tight">
             {article.title}
           </h1>
           <p className="text-xl text-white/70 leading-relaxed font-light">
@@ -143,17 +143,17 @@ export default async function InsightArticlePage({ params }: Props) {
       {/* Article Body */}
       <article className="max-w-3xl mx-auto px-4 sm:px-6 pb-24 text-[#082121]">
         <div 
-          className="text-lg md:text-xl [&>h3]:font-bold [&>h3]:text-[#082121] [&>h3]:text-2xl [&>h3]:mt-10 [&>h3]:mb-4 [&>p]:text-[#3a5a5a] [&>p]:leading-relaxed [&>p]:mb-6"
+          className="text-lg md:text-xl [&>h3]:font-medium [&>h3]:text-[#082121] [&>h3]:text-2xl [&>h3]:mt-10 [&>h3]:mb-4 [&>p]:text-[#3a5a5a] [&>p]:leading-relaxed [&>p]:mb-6"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
         
         {/* Author Bio / CTA */}
         <div className="mt-16 p-8 bg-[#F4FAFA] rounded-2xl border border-[#37B4B4]/20 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
           <div className="w-16 h-16 rounded-full bg-[#37B4B4] flex items-center justify-center shrink-0">
-             <span className="text-[#082121] font-bold text-xl">AK</span>
+             <span className="text-[#082121] font-medium text-xl">AK</span>
           </div>
           <div>
-            <h4 className="font-bold text-lg mb-2 text-[#082121]">Written by AK Prime Leadership</h4>
+            <h4 className="font-medium text-lg mb-2 text-[#082121]">Written by AK Prime Leadership</h4>
             <p className="text-[#3a5a5a] text-sm mb-4 leading-relaxed">Our insights are drawn from decades of on-the-ground experience implementing technical systems and operational strategies across diverse industries.</p>
             <Link href="/contact" className="text-[#37B4B4] font-semibold hover:underline text-sm border-b border-[#37B4B4]/30 pb-0.5">
               Discuss this topic with an expert →

@@ -35,7 +35,7 @@ export default function AIPage() {
                 </div>
                 <span className="section-label">AI Automation & Intelligence</span>
               </div>
-              <h1 className="text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
+              <h1 className="text-5xl lg:text-6xl font-medium text-white tracking-tight mb-6">
                 Turn Data Into{" "}
                 <span className="text-[#37B4B4]">Intelligent Automation</span>
               </h1>
@@ -61,7 +61,7 @@ export default function AIPage() {
           <ScrollReveal>
             <div className="mb-12">
               <span className="section-label mb-4 inline-block">Capabilities</span>
-              <h2 className="text-3xl font-bold text-white">What We Deliver</h2>
+              <h2 className="text-3xl font-medium text-white">What We Deliver</h2>
             </div>
           </ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -85,7 +85,7 @@ export default function AIPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16">
           <ScrollReveal>
             <span className="section-label mb-4 inline-block">Tools & Platforms</span>
-            <h2 className="text-3xl font-bold text-white mb-6">Technology We Work With</h2>
+            <h2 className="text-3xl font-medium text-white mb-6">Technology We Work With</h2>
             <div className="flex flex-wrap gap-3">
               {tools.map((tool) => (
                 <div key={tool} className="glass-card rounded-xl px-4 py-2.5 border border-white/8">
@@ -97,7 +97,7 @@ export default function AIPage() {
 
           <ScrollReveal delay={0.1}>
             <span className="section-label mb-4 inline-block">Our Approach</span>
-            <h2 className="text-3xl font-bold text-white mb-6">Start Small, Scale Fast</h2>
+            <h2 className="text-3xl font-medium text-white mb-6">Start Small, Scale Fast</h2>
             <ul className="space-y-4">
               {[
                 "Begin with a focused 4-week Proof of Concept",
