@@ -111,21 +111,27 @@ function ServiceCard({ item }: { item: ServiceItem }) {
     >
       {/* Header: Title + blurb */}
       <div className="mb-5 space-y-2">
-        <h3 className="text-[#082121] text-[17px] lg:text-[18px] font-semibold tracking-tight leading-tight">
+        <h3 className="text-[#082121] text-[18px] lg:text-[19px] font-medium tracking-tight leading-tight">
           {item.headline}
         </h3>
-        <p className="text-[12px] lg:text-[13px] text-[#3a5a5a] leading-snug line-clamp-2">
+        <p className="text-[13px] lg:text-[14px] text-[#3a5a5a] leading-snug line-clamp-2">
           {item.blurb}
         </p>
       </div>
 
-      {/* Visual element — varies by type */}
-      <div className="flex-1 flex items-center justify-center min-h-0 mb-4">
-        {item.visualType === "integration" && <IntegrationVisual />}
-        {item.visualType === "audit" && <AuditVisual />}
-        {item.visualType === "growth" && <GrowthVisual />}
-        {item.visualType === "workflow" && <WorkflowVisual />}
-        {item.visualType === "impact" && <ImpactVisual />}
+      {/* Visual element — image placeholder */}
+      <div className="flex-1 flex items-center justify-center min-h-0 mb-4 bg-gradient-to-br from-[#E8F7F7] to-[#DCF3F3] rounded-xl overflow-hidden">
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-[#37B4B4] text-sm font-medium opacity-60">
+              {item.visualType === "integration" && "Systems Integration"}
+              {item.visualType === "audit" && "Audit Trail"}
+              {item.visualType === "growth" && "Growth Curve"}
+              {item.visualType === "workflow" && "Workflow Pipeline"}
+              {item.visualType === "impact" && "Impact Reach"}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Footer: Count + CTA */}
@@ -141,165 +147,3 @@ function ServiceCard({ item }: { item: ServiceItem }) {
   );
 }
 
-/* System Integration Diagram - interconnected nodes */
-function IntegrationVisual() {
-  return (
-    <div className="w-full h-full flex items-center justify-center">
-      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[160px]">
-        {/* Central node */}
-        <circle cx="100" cy="70" r="16" fill="#37B4B4" opacity="0.15" stroke="#37B4B4" strokeWidth="1.5" />
-        <circle cx="100" cy="70" r="12" fill="none" stroke="#37B4B4" strokeWidth="2" />
-
-        {/* Connected nodes */}
-        {[0, 1, 2, 3].map((i) => {
-          const angle = (i / 4) * Math.PI * 2 - Math.PI / 2;
-          const x = 100 + Math.cos(angle) * 55;
-          const y = 70 + Math.sin(angle) * 50;
-          return (
-            <g key={i}>
-              <line x1="100" y1="70" x2={x} y2={y} stroke="#082121" strokeWidth="1" opacity="0.3" />
-              <circle cx={x} cy={y} r="8" fill="white" stroke="#082121" strokeWidth="1.5" opacity="0.7" />
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
-
-/* Audit Trail with Checkpoints */
-function AuditVisual() {
-  return (
-    <div className="w-full h-full flex items-center justify-center px-4">
-      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[180px]">
-        {/* Vertical audit trail */}
-        {[0, 1, 2, 3].map((i) => {
-          const y = 25 + i * 30;
-          return (
-            <g key={i}>
-              {/* Connecting line */}
-              {i < 3 && <line x1="25" y1={y + 15} x2="25" y2={y + 30} stroke="#082121" strokeWidth="1" opacity="0.2" />}
-              {/* Checkpoint circle */}
-              <circle cx="25" cy={y} r="6" fill={i === 3 ? "#37B4B4" : "#F4FAFA"} stroke={i === 3 ? "#37B4B4" : "#082121"} strokeWidth="1.5" />
-              {/* Checkmark for completed */}
-              {i < 3 && (
-                <g>
-                  <path d={`M ${20} ${y - 2} L ${23} ${y + 1} L ${30} ${y - 5}`} stroke="#37B4B4" strokeWidth="1.5" fill="none" />
-                </g>
-              )}
-              {/* Label bars */}
-              <rect x="40" y={y - 4} width={120} height="8" fill="#F4FAFA" stroke="#082121" strokeWidth="0.5" opacity="0.5" />
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
-
-/* Growth Trajectory Curve */
-function GrowthVisual() {
-  return (
-    <div className="w-full h-full flex items-center justify-center">
-      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[180px]" preserveAspectRatio="xMidYMid meet">
-        {/* Grid lines */}
-        <line x1="20" y1="110" x2="180" y2="110" stroke="#082121" strokeWidth="1" opacity="0.2" />
-        <line x1="20" y1="110" x2="20" y2="20" stroke="#082121" strokeWidth="1" opacity="0.2" />
-
-        {/* Growth curve - cubic bezier */}
-        <path
-          d="M 30 100 Q 70 75, 110 55 T 170 25"
-          stroke="#37B4B4"
-          strokeWidth="2.5"
-          fill="none"
-          strokeLinecap="round"
-        />
-
-        {/* Fill under curve */}
-        <path
-          d="M 30 100 Q 70 75, 110 55 T 170 25 L 170 110 L 30 110 Z"
-          fill="#37B4B4"
-          opacity="0.08"
-        />
-
-        {/* Progress points */}
-        {[30, 70, 110, 150].map((x, i) => {
-          const y = 100 - (Math.pow((x - 30) / 140, 0.6) * 75);
-          return (
-            <circle key={i} cx={x} cy={y} r="3.5" fill="#37B4B4" opacity={i === 3 ? 1 : 0.6} />
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
-
-/* Workflow Pipeline */
-function WorkflowVisual() {
-  return (
-    <div className="w-full h-full flex items-center justify-center px-2">
-      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[190px]">
-        {/* Three stage boxes with flow */}
-        {["Recruit", "Onboard", "Develop"].map((label, i) => {
-          const x = 20 + i * 60;
-          return (
-            <g key={i}>
-              {/* Connecting arrow */}
-              {i < 2 && (
-                <g>
-                  <line x1={x + 35} y1="70" x2={x + 50} y2="70" stroke="#37B4B4" strokeWidth="1.5" />
-                  <polygon points={`${x + 50},70 ${x + 45},67 ${x + 45},73`} fill="#37B4B4" />
-                </g>
-              )}
-              {/* Box */}
-              <rect x={x} y="50" width="35" height="40" rx="6" fill="white" stroke="#082121" strokeWidth="1" opacity="0.6" />
-              {/* Label */}
-              <text x={x + 17.5} y="75" textAnchor="middle" fontSize="9" fontWeight="500" fill="#082121">
-                {label}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
-
-/* Impact Multiplier Visualization */
-function ImpactVisual() {
-  return (
-    <div className="w-full h-full flex items-center justify-center">
-      <svg viewBox="0 0 200 140" className="w-full h-full max-w-[180px]">
-        {/* Radiating impact circles */}
-        {[3, 2, 1].map((i) => (
-          <circle
-            key={i}
-            cx="100"
-            cy="70"
-            r={30 + i * 25}
-            fill="none"
-            stroke="#37B4B4"
-            strokeWidth="1"
-            opacity={0.3 - i * 0.08}
-          />
-        ))}
-
-        {/* Central impact point */}
-        <circle cx="100" cy="70" r="10" fill="#37B4B4" opacity="0.2" stroke="#37B4B4" strokeWidth="1.5" />
-        <circle cx="100" cy="70" r="6" fill="#37B4B4" />
-
-        {/* Impact nodes around */}
-        {[0, 1, 2, 3, 4, 5].map((i) => {
-          const angle = (i / 6) * Math.PI * 2;
-          const x = 100 + Math.cos(angle) * 45;
-          const y = 70 + Math.sin(angle) * 45;
-          return (
-            <g key={i}>
-              <circle cx={x} cy={y} r="5" fill="white" stroke="#082121" strokeWidth="1" opacity="0.5" />
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}

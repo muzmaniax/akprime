@@ -33,9 +33,9 @@ export function ProcessSection() {
           {PROCESS.map((p, i) => (
             <Reveal key={p.num} delay={i * 60}>
               <div className="h-full p-5 lg:p-6 rounded-2xl bg-white border border-[#082121]/8 hover:border-[#37B4B4]/30 transition-colors">
-                <div className="text-[#37B4B4] text-[11px] font-semibold tracking-[0.18em] mb-3">{p.num}</div>
-                <h3 className="text-[#082121] text-[17px] mb-2.5">{p.title}</h3>
-                <p className="text-[12.5px] text-[#3a5a5a] leading-relaxed">{p.desc}</p>
+                <div className="text-[#37B4B4] text-[12px] font-semibold tracking-[0.18em] mb-3">{p.num}</div>
+                <h3 className="text-[#082121] text-[19px] font-medium mb-3">{p.title}</h3>
+                <p className="text-[13.5px] text-[#3a5a5a] leading-relaxed">{p.desc}</p>
               </div>
             </Reveal>
           ))}
@@ -95,7 +95,7 @@ export function IndustriesSection() {
                     <h3 className="text-white text-[24px] font-medium tracking-tight leading-[1.15]">
                       {ind.name}
                     </h3>
-                    <p className="mt-2 text-[13.5px] text-white/70 font-regular leading-snug line-clamp-2">
+                    <p className="mt-2 text-[15px] text-white/75 font-regular leading-snug line-clamp-2">
                       {ind.shortDescription}
                     </p>
                   </div>
