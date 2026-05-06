@@ -70,10 +70,11 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
 
         {/* Pill badge */}
         <Reveal>
-          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[rgba(32,190,179,0.13)] border border-[rgba(19,122,122,0.5)] text-[13px]">
-            <span className="text-white/70 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#37B4B4] inline-block shrink-0" />
-              Trusted by leading organisations
+          <div className="inline-flex items-center gap-1.5 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[rgba(32,190,179,0.13)] border border-[rgba(19,122,122,0.5)] text-[12px] sm:text-[13px] whitespace-nowrap">
+            <span className="text-white/70 flex items-center gap-1 sm:gap-2">
+              <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#37B4B4] inline-block shrink-0" />
+              <span className="hidden sm:inline">Trusted by leading organisations</span>
+              <span className="sm:hidden">Trusted by teams</span>
             </span>
             <Link
               href="/case-studies"
@@ -117,17 +118,17 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
 
         {/* CTAs */}
         <Reveal delay={240}>
-          <div className="flex flex-col sm:flex-row items-center gap-3 mt-1">
+          <div className="flex items-center gap-2 sm:gap-3 mt-1 flex-wrap">
             <Link
               href="/contact"
-              className="w-full sm:w-auto h-10 px-6 rounded-lg bg-white/[0.08] border border-white/25 text-white text-[14px] font-medium inline-flex items-center justify-center hover:bg-white/15 transition-colors"
+              className="h-10 px-4 sm:px-6 rounded-lg bg-white/[0.08] border border-white/25 text-white text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center hover:bg-white/15 transition-colors whitespace-nowrap"
             >
               Contact
             </Link>
             <button
               type="button"
               onClick={onBooking}
-              className="w-full sm:w-auto h-10 px-6 rounded-lg bg-[#37B4B4] border border-[#36c0c0] text-[#0a3030] text-[14px] font-medium inline-flex items-center justify-center hover:bg-[#29E0C8] transition-colors"
+              className="h-10 px-4 sm:px-6 rounded-lg bg-[#37B4B4] border border-[#36c0c0] text-[#0a3030] text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center hover:bg-[#29E0C8] transition-colors whitespace-nowrap"
             >
               Book a Call
             </button>
