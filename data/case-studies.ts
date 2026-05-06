@@ -102,72 +102,72 @@ export const caseStudies: CaseStudy[] = [
     category: "Finance"
   },
   {
-    id: "healthlink-clinics-integration",
-    title: "Unifying Patient Care Across Multiple Clinics",
-    client: "HealthLink Clinics Network",
-    industry: "Healthcare",
-    location: "Kampala, Uganda",
-    sector: "Medical Services",
-    solution: "Systems Integration & Digital Infrastructure",
-    summary: "Connected 5 independent clinic locations into a unified patient care system, improving coordination and care quality.",
-    tagline: "Improved patient care coordination across 5 clinics, reducing diagnosis time by 45%.",
-    duration: "6 months",
-    date: "Oct 22, 2024",
+    id: "step-fintech-infrastructure",
+    title: "Building Enterprise Infrastructure for Fintech Growth",
+    client: "Step Innovations Africa",
+    industry: "Financial Technology",
+    location: "Nairobi, Kenya",
+    sector: "Fintech",
+    solution: "Technology Infrastructure & Scaling",
+    summary: "Architected cloud-native infrastructure and backend systems to support 10x user growth while maintaining 99.99% uptime and PCI compliance.",
+    tagline: "Enabled Step to scale from 500K to 5M active users with zero downtime migration and enterprise-grade resilience.",
+    duration: "8 months",
+    date: "Sep 08, 2024",
     narrative: {
-      problem: "HealthLink operated 5 clinic locations with fragmented patient records — each location maintained its own paper-based files and separate digital systems. This fragmentation caused patients to repeat tests, doctors to make decisions without full medical history, and administrative staff to spend 20+ hours per week on manual record transfers. Patient satisfaction suffered as care coordination was poor, and the network was losing repeat patients to competitors with better integrated systems.",
-      turningPoint: "HealthLink's leadership recognized that growth was impossible without unifying their infrastructure. AK Prime was engaged to design and implement a patient data integration platform that would connect all locations while maintaining HIPAA-compliant privacy controls.",
+      problem: "Step's rapid user growth exposed critical infrastructure limitations. Their monolithic architecture couldn't handle peak transaction volumes (100K+ transactions/day), leading to service degradations during high-activity periods. Database bottlenecks caused payment processing delays, compliance teams spent weeks on manual audit preparation, and the technology stack couldn't support new product lines without major rewrites. Each scaling effort required weeks of planning and risked service disruptions affecting millions of users.",
+      turningPoint: "Step's leadership needed enterprise-grade infrastructure to support their expansion roadmap. AK Prime was brought in to architect a cloud-native, microservices-based infrastructure that could scale elastically, maintain regulatory compliance, and reduce time-to-market for new financial products.",
       approach: [
         {
-          title: "Data Audit & Assessment",
-          description: "Mapping the current state across all clinic locations.",
+          title: "Infrastructure Assessment & Design",
+          description: "Evaluating current systems and designing scalable architecture.",
           points: [
-            "Conducted on-site audits at all 5 clinic locations to understand existing workflows.",
-            "Identified 50,000+ patient records requiring digitization and reconciliation.",
-            "Documented critical gaps in data quality and system compatibility."
+            "Audited existing monolithic application for bottlenecks and technical debt.",
+            "Designed event-driven microservices architecture with Kubernetes orchestration.",
+            "Planned zero-downtime migration strategy to minimize customer impact."
           ]
         },
         {
-          title: "Platform Selection & Configuration",
-          description: "Implementing a centralized Electronic Health Record (EHR) system.",
+          title: "Cloud Migration & Automation",
+          description: "Moving to cloud-native infrastructure with CI/CD pipelines.",
           points: [
-            "Selected and configured a HIPAA-compliant, cloud-based EHR platform.",
-            "Designed data migration workflows to consolidate records safely.",
-            "Set up role-based access controls to ensure doctor-patient privacy."
+            "Migrated core services to AWS with multi-region redundancy and auto-scaling.",
+            "Implemented infrastructure-as-code (Terraform) for reproducible deployments.",
+            "Built comprehensive monitoring and alerting with sub-minute incident detection."
           ]
         },
         {
-          title: "Data Migration & Cleansing",
-          description: "Systematically transferring and validating patient records.",
+          title: "Database Optimization & Scaling",
+          description: "Restructuring data layer for performance and compliance.",
           points: [
-            "Migrated 50,000+ patient records with 99.2% data integrity validation.",
-            "Reconciled duplicate records from patients seen across multiple locations.",
-            "Trained clinic staff to verify and validate records during transition."
+            "Sharded transaction database to handle 10x volume increase.",
+            "Implemented real-time data warehousing for compliance reporting.",
+            "Created automated backup and disaster recovery systems with RPO < 1 minute."
           ]
         },
         {
-          title: "Staff Training & Change Management",
-          description: "Enabling clinicians and staff to adopt the new system effectively.",
+          title: "Compliance & Security Hardening",
+          description: "Ensuring PCI-DSS and regulatory requirements at scale.",
           points: [
-            "Conducted hands-on training sessions for doctors, nurses, and admin staff.",
-            "Created digital workflows that reduced paper handling by 90%.",
-            "Established a dedicated support team for the first 3 months post-launch."
+            "Implemented end-to-end encryption for all sensitive data in transit and at rest.",
+            "Automated compliance auditing and regulatory reporting.",
+            "Established secrets management and role-based access control across infrastructure."
           ]
         }
       ],
-      outcome: "Results: Within 6 months, HealthLink achieved a unified patient platform accessible across all 5 locations. Diagnosis time was reduced by 45% as doctors now had immediate access to complete medical histories. Patient repeat visit rates increased by 38%, and staff administrative time dropped to 2 hours per week. The network is now positioned for expansion to 8 additional locations using the proven infrastructure."
+      outcome: "Results: Step scaled from 500K to 5M active users in 6 months with zero critical downtime. Transaction processing latency dropped from 3 seconds to 150ms, enabling new real-time features. Compliance audit time reduced from 6 weeks to 1 day through automated reporting. Infrastructure costs decreased 35% despite 10x capacity increase through efficient resource utilization. Step is now acquiring competitors and entering new markets with confidence in their technology foundation."
     },
     testimonial: {
-      name: "Medical Director",
-      role: "HealthLink Clinics Network",
-      quote: "Before integration, we were essentially 5 separate clinics sharing a name. Now patients can walk into any location and their full history is there. Clinical outcomes improved, staff stress decreased, and our reputation for coordinated care is bringing new patients daily.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=400&fit=crop&q=80"
+      name: "VP, Engineering",
+      role: "Step Innovations Africa",
+      quote: "The infrastructure redesign was transformational. Before, growth meant weeks of engineering effort and downtime risk. Now we auto-scale seamlessly. Our team went from firefighting infrastructure issues to building innovative products. The compliance automation alone has freed up our entire audit team.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop&q=80"
     },
     metrics: [
-      { value: "45%", label: "Faster Diagnosis Time" },
-      { value: "38%", label: "Repeat Visit Increase" },
-      { value: "50K+", label: "Records Unified" }
+      { value: "10x", label: "User Growth" },
+      { value: "150ms", label: "Processing Latency" },
+      { value: "99.99%", label: "Uptime" }
     ],
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
     category: "Systems"
   },
   {
