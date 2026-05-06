@@ -42,29 +42,28 @@ export default function CaseStudiesPage() {
                     </div>
 
                     {/* Text content */}
-                    <div className="col-span-1 md:col-span-3 p-4 sm:p-5 md:p-7 lg:p-8 flex flex-col justify-between">
+                    <div className="col-span-1 md:col-span-3 p-6 md:p-8 flex flex-col justify-between">
                       <div>
-                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] text-[#37B4B4] uppercase">
+                        <div className="text-[11px] font-semibold tracking-[0.2em] text-[#37B4B4] uppercase">
                           {cs.sector}
                         </div>
-                        <h3 className="mt-2 sm:mt-3 text-[#082121] text-[18px] sm:text-[20px] md:text-[22px] leading-tight font-semibold line-clamp-2 sm:line-clamp-3">{cs.client}</h3>
-                        <p className="mt-2 sm:mt-3 text-[13px] sm:text-[14px] text-[#3a5a5a] leading-relaxed line-clamp-3 md:line-clamp-3">{cs.summary}</p>
+                        <h3 className="mt-4 text-[#082121] text-[26px] font-medium leading-[1.2]">{cs.client}</h3>
+                        <p className="mt-3 text-[15px] text-[#5a5a5a] leading-[1.6]">{cs.summary}</p>
                       </div>
-                      <div className="flex flex-col gap-4 mt-4 sm:mt-6 pt-4 sm:pt-5 border-t border-[#082121]/10">
-                        <div className="grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2">
+                      <div className="flex flex-col gap-4 mt-6 pt-6 border-t border-[#082121]/10">
+                        <div className="grid grid-cols-2 gap-x-8">
                           <div>
-                            <div className="text-[9px] sm:text-[10px] tracking-[0.16em] uppercase text-[#3a5a5a]/70 font-medium">Industry</div>
-                            <div className="text-[13px] sm:text-[14px] font-semibold text-[#082121] mt-0.5">{cs.industry}</div>
+                            <div className="text-[10px] tracking-[0.15em] uppercase text-[#3a5a5a] font-medium">Industry</div>
+                            <div className="text-[15px] font-medium text-[#082121] mt-1.5">{cs.industry}</div>
                           </div>
                           <div>
-                            <div className="text-[9px] sm:text-[10px] tracking-[0.16em] uppercase text-[#3a5a5a]/70 font-medium">Year</div>
-                            <div className="text-[13px] sm:text-[14px] font-semibold text-[#082121] mt-0.5">{cs.date.split(",")[1]?.trim() ?? cs.date}</div>
+                            <div className="text-[10px] tracking-[0.15em] uppercase text-[#3a5a5a] font-medium">Year</div>
+                            <div className="text-[15px] font-medium text-[#082121] mt-1.5">{cs.date.split(",")[1]?.trim() ?? cs.date}</div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-1 sm:gap-1.5 text-[12px] sm:text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all">
-                          <span className="hidden sm:inline">View case study</span>
-                          <span className="sm:hidden">View case study</span>
-                          <ArrowUpRight size={14} strokeWidth={2.25} />
+                        <div className="flex items-center gap-2 text-[13px] font-medium text-[#37B4B4] group-hover:gap-3 transition-all">
+                          <span>View case study</span>
+                          <ArrowUpRight size={16} strokeWidth={2} />
                         </div>
                       </div>
                     </div>
