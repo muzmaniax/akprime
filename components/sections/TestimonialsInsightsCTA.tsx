@@ -181,12 +181,7 @@ export function InsightsSection() {
                   <h3 className="text-[#082121] text-[16px] font-medium leading-snug group-hover:text-[#37B4B4] transition-colors">
                     {a.title}
                   </h3>
-                  <div className="mt-4 flex items-center gap-2 text-[12px] text-[#3a5a5a]">
-                    <div className="w-6 h-6 rounded-full bg-[#082121]/10 overflow-hidden">
-                      <div className="w-full h-full bg-gradient-to-br from-[#37B4B4]/30 to-[#082121]/20" />
-                    </div>
-                    <span>{a.author}</span>
-                    <span className="text-[#082121]/25">·</span>
+                  <div className="mt-4 text-[12px] text-[#3a5a5a]">
                     <time>{a.date}</time>
                   </div>
                 </div>

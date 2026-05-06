@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { BookingModal } from "@/components/ui/BookingModal";
-import { MobileCTABar } from "@/components/layout/MobileCTABar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProblemSection } from "@/components/sections/MidSections";
 import { ServicesSection } from "@/components/sections/ServicesSection";
@@ -45,7 +44,6 @@ export default function HomePage() {
       {/* LIGHT  — Contact form */}
       <ContactSection />
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
-      <MobileCTABar onBooking={openBooking} />
     </>
   );
 }

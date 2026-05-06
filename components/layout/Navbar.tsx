@@ -59,10 +59,13 @@ export function Navbar() {
         onMouseLeave={() => setOpenMenu(null)}
       >
         <div className="container-x h-full flex items-center justify-between gap-6">
-          {/* Wordmark */}
-          <Link href="/" className="flex items-center gap-1 shrink-0" aria-label="AK Prime home">
-            <span className="text-white text-[17px] font-semibold tracking-tight">AK</span>
-            <span className="text-[#37B4B4] text-[17px] font-semibold tracking-tight">Prime</span>
+          {/* Logo */}
+          <Link href="/" className="flex items-center shrink-0 h-10" aria-label="AK Prime home">
+            <img
+              src="/ak-logo.png"
+              alt="AK Prime"
+              className="h-full w-auto"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -112,7 +115,7 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Mobile trigger */}
+          {/* Mobile Menu Toggle */}
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
@@ -238,9 +241,9 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => { setMobileOpen(false); setBookingOpen(true); }}
-              className="btn-cta w-full mt-6"
+              className="w-full mt-8 py-3.5 px-4 rounded-lg bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] text-[15px] font-semibold inline-flex items-center justify-center gap-2 transition-colors"
             >
-              Book a call <ArrowUpRight size={16} strokeWidth={2.25} />
+              Book a Strategy Call <ArrowUpRight size={16} strokeWidth={2.25} />
             </button>
           </div>
         </div>
