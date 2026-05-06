@@ -1,29 +1,18 @@
+"use client";
+
+import { use } from "react";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button-cva";
 import { servicesData } from "@/data/services";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const service = servicesData.find((s) => s.slug === resolvedParams.slug);
-  
-  if (!service) {
-    return { title: "Service Not Found | AK Prime Consulting" };
-  }
-
-  return {
-    title: `${service.name} | Services | AK Prime Consulting`,
-    description: service.shortDescription,
-  };
-}
-
-export default async function ServicePage({ params }: Props) {
-  const resolvedParams = await params;
+export default function ServicePage({ params }: Props) {
+  const resolvedParams = use(params);
   const service = servicesData.find((s) => s.slug === resolvedParams.slug);
 
   if (!service) {
@@ -46,13 +35,23 @@ export default async function ServicePage({ params }: Props) {
               <ArrowLeft size={16} />
               Back to Services Directory
             </Link>
-            <div className="flex flex-wrap items-center gap-2 mb-6 text-xs md:text-sm font-medium">
-              <Link href="/services" className="pill-a inline-flex">
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <Button
+                href="/services"
+                variant="secondary"
+                size="sm"
+                className="!rounded-full"
+              >
                 {service.category.split(" & ")[0]}
-              </Link>
-              <span className="pill-a inline-flex">
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                className="!rounded-full"
+                isDisabled
+              >
                 {service.name}
-              </span>
+              </Button>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 leading-[1.1]">
               {service.heroHeadline}
@@ -61,14 +60,16 @@ export default async function ServicePage({ params }: Props) {
               {service.shortDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="pill-e cta-pulse shadow-lg shadow-[#37B4B4]/20">
-                <div className="pill-e-group">
-                  {service.cta}
-                  <div className="pill-e-icon">
-                    <ChevronRight size={16} />
-                  </div>
-                </div>
-              </Link>
+              <Button
+                href="/contact"
+                variant="primary"
+                size="lg"
+                icon={ChevronRight}
+                iconPosition="end"
+                className="shadow-lg shadow-[#37B4B4]/20"
+              >
+                {service.cta}
+              </Button>
             </div>
           </div>
           
@@ -214,14 +215,16 @@ export default async function ServicePage({ params }: Props) {
               {service.tools.split('·').map(t => <span key={t} className="pill-g">{t.trim()}</span>)}
             </div>
           </div>
-          <Link href="/contact" className="pill-e cta-pulse shadow-xl shadow-[#37B4B4]/20">
-            <div className="pill-e-group">
-              {service.cta}
-              <div className="pill-e-icon">
-                <ChevronRight size={16} />
-              </div>
-            </div>
-          </Link>
+          <Button
+            href="/contact"
+            variant="primary"
+            size="lg"
+            icon={ChevronRight}
+            iconPosition="end"
+            className="shadow-xl shadow-[#37B4B4]/20"
+          >
+            {service.cta}
+          </Button>
         </div>
       </section>
 

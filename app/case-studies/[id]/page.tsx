@@ -4,6 +4,7 @@ import { use, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, Zap, Quote } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button-cva";
 import { caseStudies } from "@/data/case-studies";
 import { BookingModal } from "@/components/ui/BookingModal";
 import { notFound } from "next/navigation";
@@ -113,12 +114,14 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
             </div>
 
             {/* CTA */}
-            <button onClick={() => setBookingOpen(true)} className="pill-e w-full">
-              <div className="pill-e-group">
-                Start your assessment
-                <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
-              </div>
-            </button>
+            <Button
+              onClick={() => setBookingOpen(true)}
+              variant="primary"
+              size="md"
+              fullWidth
+            >
+              Start your assessment
+            </Button>
           </aside>
 
           {/* ── Main body ── */}
@@ -247,15 +250,24 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ id: stri
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-6">
-              <button onClick={() => setBookingOpen(true)} className="pill-e w-full sm:w-auto">
-                <div className="pill-e-group">
-                  Book discovery session
-                  <div className="pill-e-icon"><span className="text-white text-[15px]">→</span></div>
-                </div>
-              </button>
-              <Link href="/case-studies" className="pill-f w-full sm:w-auto text-center py-4">
+              <Button
+                onClick={() => setBookingOpen(true)}
+                variant="primary"
+                size="md"
+                fullWidth
+                className="sm:w-auto"
+              >
+                Book discovery session
+              </Button>
+              <Button
+                href="/case-studies"
+                variant="secondary"
+                size="md"
+                fullWidth
+                className="sm:w-auto"
+              >
                 View all cases
-              </Link>
+              </Button>
             </div>
           </div>
         </div>

@@ -3,12 +3,12 @@
 import Image from "next/image";
 
 const partners = [
-  { src: "/partners/partner-1.png", alt: "Partner 1" },
-  { src: "/partners/partner-2.png", alt: "Partner 2" },
-  { src: "/partners/partner-3.png", alt: "Partner 3" },
-  { src: "/partners/partner-4.png", alt: "Partner 4" },
-  { src: "/partners/partner-5.png", alt: "Partner 5" },
-  { src: "/partners/partner-6.png", alt: "Partner 6" },
+  { src: "/partners/partner-1.png", alt: "Coastal Image Tech", name: "Coastal Image Tech" },
+  { src: "/partners/partner-2.png", alt: "Explosify", name: "Explosify" },
+  { src: "/partners/partner-3.png", alt: "Maxfill", name: "Maxfill" },
+  { src: "/partners/partner-4.png", alt: "MO Radio", name: "MO Radio" },
+  { src: "/partners/partner-5.png", alt: "Seven Seas Connection Agency", name: "Seven Seas Connection" },
+  { src: "/partners/partner-6.png", alt: "Step", name: "Step" },
 ];
 
 /* Used inside the Hero as an anchored strip */
@@ -26,7 +26,7 @@ export function TrustedLogosCarousel() {
               alt={p.alt}
               width={100}
               height={30}
-              className="h-6 w-auto object-contain grayscale brightness-[3] opacity-40 hover:opacity-70 transition-opacity"
+              className="h-6 w-auto object-contain grayscale invert brightness-[1.2] opacity-70 hover:opacity-100 transition-opacity"
               unoptimized
             />
           </div>

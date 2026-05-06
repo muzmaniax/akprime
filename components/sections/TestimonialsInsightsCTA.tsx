@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button-cva";
 import { Reveal, Eyebrow, SectionHeader } from "@/components/ui/Primitives";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -150,12 +151,15 @@ export function InsightsSection() {
             <h2 className="mt-3 text-[#082121]">From our practice</h2>
           </Reveal>
           <Reveal delay={80}>
-            <Link
+            <Button
               href="/insights"
-              className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#37B4B4] hover:text-[#082121] transition-colors"
+              variant="link"
+              size="md"
+              icon={ArrowUpRight}
+              iconPosition="end"
             >
-              View all articles <ArrowUpRight size={14} />
-            </Link>
+              View all articles
+            </Button>
           </Reveal>
         </div>
 
@@ -273,12 +277,23 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
                 Whether you're navigating complexity or preparing to scale, we help leadership teams gain clarity, align decisions, and move forward with confidence.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <button type="button" onClick={onBooking} className="btn-cta">
-                  Request a consultation <ArrowUpRight size={16} strokeWidth={2.25} />
-                </button>
-                <Link href="/contact" className="btn-ghost">
+                <Button
+                  type="button"
+                  onClick={onBooking}
+                  variant="primary"
+                  size="lg"
+                  icon={ArrowUpRight}
+                  iconPosition="end"
+                >
+                  Request a consultation
+                </Button>
+                <Button
+                  href="/contact"
+                  variant="secondary"
+                  size="lg"
+                >
                   Contact us
-                </Link>
+                </Button>
               </div>
             </Reveal>
 
