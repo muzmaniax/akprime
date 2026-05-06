@@ -1,0 +1,592 @@
+
+> akprime@0.1.0 dev
+> next dev -H 0.0.0.0
+
+⚠ Port 3000 is in use by process 26764, using available port 3003 instead.
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\Administrator\Documents\Claude\akprime\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\package-lock.json
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3003
+- Network:       http://0.0.0.0:3003
+
+✓ Starting...
+⚠ Turbopack's filesystem cache has been deleted because we previously detected an internal error in Turbopack. Builds or page loads may be slower as a result.
+✓ Ready in 4.1s
+○ Compiling /services ...
+ GET /services 200 in 6.6s (compile: 5.7s, render: 852ms)
+ GET /services/erp-implementation 200 in 3.2s (compile: 2.8s, render: 454ms)
+ GET /case-studies/manufacturing-erp 200 in 2.1s (compile: 1889ms, render: 175ms)
+ GET /industries/financial-services 200 in 2.9s (compile: 2.7s, render: 262ms)
+✓ Compiled in 740ms
+✓ Compiled in 528ms
+✓ Compiled in 419ms
+✓ Compiled in 411ms
+ GET /industries/financial-services 200 in 456ms (compile: 45ms, render: 411ms)
+ GET /case-studies/manufacturing-erp 200 in 401ms (compile: 37ms, render: 364ms)
+ GET /services/erp-implementation 200 in 527ms (compile: 33ms, render: 494ms)
+ GET /case-studies/manufacturing-erp 200 in 286ms (compile: 29ms, render: 257ms)
+ GET /industries/healthcare 200 in 809ms (compile: 43ms, render: 766ms)
+✓ Compiled in 820ms
+✓ Compiled in 437ms
+ GET /industries/healthcare 200 in 1360ms (compile: 545ms, render: 814ms)
+✓ Compiled in 728ms
+ GET /industries/healthcare 200 in 1213ms (compile: 66ms, render: 1146ms)
+✓ Compiled in 1316ms
+ GET /industries/healthcare 200 in 1714ms (compile: 160ms, render: 1554ms)
+✓ Compiled in 621ms
+ GET /industries/healthcare 200 in 1025ms (compile: 60ms, render: 965ms)
+✓ Compiled in 721ms
+ GET /industries/healthcare 200 in 1841ms (compile: 846ms, render: 995ms)
+✓ Compiled in 729ms
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  <... href=... variant="primary" size=... icon={{$$typeof: ..., render: ...}} iconPosition=... className=... children=...>
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  {$$typeof: ..., render: function ChevronRight}
+                          ^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>) {
+  digest: '4084281623'
+}
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  <... href=... variant="primary" size=... icon={{$$typeof: ..., render: ...}} iconPosition=... className=... children=...>
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  {$$typeof: ..., render: function ChevronRight}
+                          ^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>) {
+  digest: '4084281623'
+}
+ GET /industries/healthcare 200 in 8.6s (compile: 522ms, render: 8.1s)
+ GET /industries/healthcare 200 in 4.3s (compile: 737ms, render: 3.5s)
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 1605ms
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  <... href=... variant="primary" size=... icon={{$$typeof: ..., render: ...}} iconPosition=... className=... children=...>
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  {$$typeof: ..., render: function ChevronRight}
+                          ^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>) {
+  digest: '4084281623'
+}
+ GET /industries/healthcare 500 in 3.0s (compile: 56ms, render: 2.9s)
+Persisting failed: Unable to write SST file 00000510.sst
+
+Caused by:
+    The system cannot find the path specified. (os error 3)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+⨯ Error: ENOENT: no such file or directory, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\.next\dev\server\app\industries\[slug]\page\build-manifest.json'
+    at ignore-listed frames {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Administrator\\Documents\\Claude\\akprime\\.claude\\worktrees\\intelligent-banzai-4b2c41\\.next\\dev\\server\\app\\industries\\[slug]\\page\\build-manifest.json'
+}
+
+thread 'tokio-runtime-worker' (8312) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for find_package (TaskId 235392))
+
+Caused by:
+    0: Looking up data for TaskId 235392 from database failed
+    1: Unable to open static sorted file referenced from 00000482.meta
+    2: Unable to open static sorted file 00000477.sst
+    3: The system cannot find the file specified. (os error 2)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'tokio-runtime-worker' (16476) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for WebpackLoaders::new (TaskId 235400))
+
+Caused by:
+    0: Looking up data for TaskId 235400 from database failed
+    1: Unable to open static sorted file referenced from 00000462.meta
+    2: Unable to open static sorted file 00000457.sst
+    3: The system cannot find the file specified. (os error 2)
+○ Compiling /_error ...
+
+thread 'tokio-runtime-worker' (29112) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for EcmascriptExports::split_locals_and_reexports (TaskId 235441))
+
+Caused by:
+    0: Looking up data for TaskId 235441 from database failed
+    1: Unable to open static sorted file referenced from 00000502.meta
+    2: Unable to open static sorted file 00000499.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (22080) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for <EcmascriptModuleAsset as EcmascriptChunkPlaceable>::get_exports (TaskId 235502))
+
+Caused by:
+    0: Looking up data for TaskId 235502 from database failed
+    1: Unable to open static sorted file referenced from 00000472.meta
+    2: Unable to open static sorted file 00000467.sst
+    3: The system cannot find the file specified. (os error 2)
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\ADMINI~1\AppData\Local\Temp\next-panic-8e42a605b61fbb8b045d69902b7bb91e.log.
+
+To help make Turbopack better, report this error by clicking here: https://github.com/vercel/next.js/discussions/new?category=turbopack-error-report&title=Turbopack%20Error%3A%20Failed%20to%20write%20app%20endpoint%20%2Fpage&body=Turbopack%20version%3A%20%6023c46498%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0ATurbopack%20Error%3A%20Failed%20to%20write%20app%20endpoint%20%2Fpage%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+
+thread 'tokio-runtime-worker' (22080) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for ProcessResult::module (TaskId 235627))
+
+Caused by:
+    0: Looking up data for TaskId 235627 from database failed
+    1: Unable to open static sorted file referenced from 00000482.meta
+    2: Unable to open static sorted file 00000477.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (19832) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for <EsmAssetReference as ChunkableModuleReference>::chunking_type (TaskId 235682))
+
+Caused by:
+    0: Looking up data for TaskId 235682 from database failed
+    1: Unable to open static sorted file referenced from 00000482.meta
+    2: Unable to open static sorted file 00000477.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (29112) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for resolve (TaskId 235728))
+
+Caused by:
+    0: Looking up data for TaskId 235728 from database failed
+    1: Unable to open static sorted file referenced from 00000462.meta
+    2: Unable to open static sorted file 00000457.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (16476) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for ResolveOrigin::resolve_options (TaskId 235743))
+
+Caused by:
+    0: Looking up data for TaskId 235743 from database failed
+    1: Unable to open static sorted file referenced from 00000502.meta
+    2: Unable to open static sorted file 00000499.sst
+    3: The system cannot find the file specified. (os error 2)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+
+thread 'tokio-runtime-worker' (20264) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for <Request as ValueToString>::to_string (TaskId 235822))
+
+Caused by:
+    0: Looking up data for TaskId 235822 from database failed
+    1: Unable to open static sorted file referenced from 00000462.meta
+    2: Unable to open static sorted file 00000457.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (23880) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for <ResolvingIssue as Issue>::file_path (TaskId 235825))
+
+Caused by:
+    0: Looking up data for TaskId 235825 from database failed
+    1: Unable to open static sorted file referenced from 00000502.meta
+    2: Unable to open static sorted file 00000499.sst
+    3: The system cannot find the file specified. (os error 2)
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\ADMINI~1\AppData\Local\Temp\next-panic-8e42a605b61fbb8b045d69902b7bb91e.log.
+
+To help make Turbopack better, report this error by clicking here: https://github.com/vercel/next.js/discussions/new?category=turbopack-error-report&title=Turbopack%20Error%3A%20Failed%20to%20restore%20task%20data%20%28corrupted%20database%20or%20bug%29%3A%20Meta%20for%20%3CRequest%20as%20ValueToString%3E%3A%3Ato_string%20%28TaskId%20235822%29%29&body=Turbopack%20version%3A%20%6023c46498%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0ATurbopack%20Error%3A%20Failed%20to%20restore%20task%20data%20%28corrupted%20database%20or%20bug%29%3A%20Meta%20for%20%3CRequest%20as%20ValueToString%3E%3A%3Ato_string%20%28TaskId%20235822%29%29%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+
+thread 'tokio-runtime-worker' (20264) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for resolve (TaskId 235928))
+
+Caused by:
+    0: Looking up data for TaskId 235928 from database failed
+    1: Unable to open static sorted file referenced from 00000482.meta
+    2: Unable to open static sorted file 00000477.sst
+    3: The system cannot find the file specified. (os error 2)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+nresolvable failed
+- Execution of *ResolveResult::with_replaced_request_key_pattern failed
+- Execution of resolve_internal failed
+- Execution of *ResolveResult::is_unresolvable failed
+- Execution of *ResolveResult::with_replaced_request_key failed
+- Execution of resolve_into_package failed
+- Execution of Request::request_pattern failed
+- Failed to restore task data (corrupted database or bug): Meta for Pattern::new_internal (TaskId 268463))
+  
+  Caused by:
+      0: Looking up data for TaskId 268463 from database failed
+      1: Unable to open static sorted file referenced from 00001294.meta
+      2: Unable to open static sorted file 00001290.sst
+      3: The system cannot find the file specified. (os error 2)
+Import map: aliased to module 'next' with subpath '/dist/client/components/builtin/global-error' inside of [project]/.claude/worktrees/intelligent-banzai-4b2c41
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+thread 'tokio-runtime-worker' (29428) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+
+Caused by:
+    0: Looking up data for TaskId 268653 from database failed
+    1: Unable to open static sorted file referenced from 00001300.meta
+    2: Unable to open static sorted file 00001296.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (25892) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for <EmbeddedFileSystem as FileSystem>::raw_read_dir (TaskId 268685))
+
+Caused by:
+    0: Looking up data for TaskId 268685 from database failed
+    1: Unable to open static sorted file referenced from 00001154.meta
+    2: Unable to open static sorted file 00001149.sst
+    3: The system cannot find the file specified. (os error 2)
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\ADMINI~1\AppData\Local\Temp\next-panic-a623f8ed66e3832c62b50eaf643319de.log.
+
+To help make Turbopack better, report this error by clicking here: https://github.com/vercel/next.js/discussions/new?category=turbopack-error-report&title=Turbopack%20Error%3A%20Failed%20to%20restore%20task%20data%20%28corrupted%20database%20or%20bug%29%3A%20Meta%20for%20%3CDiskFileSystem%20as%20FileSystem%3E%3A%3Aread%20%28TaskId%20268653%29%29&body=Turbopack%20version%3A%20%6023c46498%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0ATurbopack%20Error%3A%20Failed%20to%20restore%20task%20data%20%28corrupted%20database%20or%20bug%29%3A%20Meta%20for%20%3CDiskFileSystem%20as%20FileSystem%3E%3A%3Aread%20%28TaskId%20268653%29%29%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+Error [TurbopackInternalError]: Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+
+Debug info:
+- Execution of get_written_endpoint_with_issues_operation failed
+- Execution of PlainIssue::from_issue failed
+- Execution of PlainSource::from_source failed
+- Execution of <FileSource as Asset>::content failed
+- Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+  
+  Caused by:
+      0: Looking up data for TaskId 268653 from database failed
+      1: Unable to open static sorted file referenced from 00001300.meta
+      2: Unable to open static sorted file 00001296.sst
+      3: The system cannot find the file specified. (os error 2)
+    at <unknown> (TurbopackInternalError: Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))) {
+  location: 'C:\\actions-runner\\_work\\next.js\\next.js\\turbopack\\crates\\turbo-tasks-backend\\src\\backend\\operation\\mod.rs:156:17'
+}
+Error [TurbopackInternalError]: Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+
+Debug info:
+- Execution of get_written_endpoint_with_issues_operation failed
+- Execution of PlainIssue::from_issue failed
+- Execution of PlainSource::from_source failed
+- Execution of <FileSource as Asset>::content failed
+- Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+  
+  Caused by:
+      0: Looking up data for TaskId 268653 from database failed
+      1: Unable to open static sorted file referenced from 00001300.meta
+      2: Unable to open static sorted file 00001296.sst
+      3: The system cannot find the file specified. (os error 2)
+    at <unknown> (TurbopackInternalError: Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))) {
+  location: 'C:\\actions-runner\\_work\\next.js\\next.js\\turbopack\\crates\\turbo-tasks-backend\\src\\backend\\operation\\mod.rs:156:17'
+}
+ GET / 500 in 331ms
+ GET / 500 in 332ms
+ GET / 200 in 356ms (compile: 14ms, render: 342ms)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+✓ Compiled in 561ms
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+✓ Compiled in 524ms
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+✓ Compiled in 416ms
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+
+thread 'tokio-runtime-worker' (18100) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for track_glob_inner (TaskId 268704))
+
+Caused by:
+    0: Looking up data for TaskId 268704 from database failed
+    1: Unable to open static sorted file referenced from 00001300.meta
+    2: Unable to open static sorted file 00001296.sst
+    3: The system cannot find the file specified. (os error 2)
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\ADMINI~1\AppData\Local\Temp\next-panic-a623f8ed66e3832c62b50eaf643319de.log.
+
+To help make Turbopack better, report this error by clicking here: https://github.com/vercel/next.js/discussions/new?category=turbopack-error-report&title=Turbopack%20Error%3A%20%5Bproject%5D%2F.claude%2Fworktrees%2Fintelligent-banzai-4b2c41%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29&body=Turbopack%20version%3A%20%6023c46498%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0ATurbopack%20Error%3A%20%5Bproject%5D%2F.claude%2Fworktrees%2Fintelligent-banzai-4b2c41%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\ADMINI~1\AppData\Local\Temp\next-panic-a623f8ed66e3832c62b50eaf643319de.log.
+
+To help make Turbopack better, report this error by clicking here: https://github.com/vercel/next.js/discussions/new?category=turbopack-error-report&title=Turbopack%20Error%3A%20%5Bproject%5D%2F.claude%2Fworktrees%2Fintelligent-banzai-4b2c41%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29&body=Turbopack%20version%3A%20%6023c46498%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0ATurbopack%20Error%3A%20%5Bproject%5D%2F.claude%2Fworktrees%2Fintelligent-banzai-4b2c41%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+
+thread 'tokio-runtime-worker' (28984) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for Issue::detail (TaskId 268715))
+
+Caused by:
+    0: Looking up data for TaskId 268715 from database failed
+    1: Unable to open static sorted file referenced from 00001282.meta
+    2: Unable to open static sorted file 00001278.sst
+    3: The system cannot find the file specified. (os error 2)
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\ADMINI~1\AppData\Local\Temp\next-panic-a623f8ed66e3832c62b50eaf643319de.log.
+
+To help make Turbopack better, report this error by clicking here: https://github.com/vercel/next.js/discussions/new?category=turbopack-error-report&title=Turbopack%20Error%3A%20Failed%20to%20restore%20task%20data%20%28corrupted%20database%20or%20bug%29%3A%20Meta%20for%20Issue%3A%3Adetail%20%28TaskId%20268715%29%29&body=Turbopack%20version%3A%20%6023c46498%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0ATurbopack%20Error%3A%20Failed%20to%20restore%20task%20data%20%28corrupted%20database%20or%20bug%29%3A%20Meta%20for%20Issue%3A%3Adetail%20%28TaskId%20268715%29%29%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+Error [TurbopackInternalError]: Failed to write app endpoint /page
+
+Caused by:
+- [project]/.claude/worktrees/intelligent-banzai-4b2c41/app/globals.css [app-client] (css)
+- Failed to restore task data (corrupted database or bug): Meta for track_glob_inner (TaskId 268704))
+
+Debug info:
+- Execution of get_written_endpoint_with_issues_operation failed
+- Execution of endpoint_write_to_disk failed
+- Execution of <AppEndpoint as Endpoint>::output failed
+- Failed to write app endpoint /page
+- Execution of AppEndpoint::output failed
+- Execution of AppProject::app_module_graphs failed
+- Execution of *<AppEndpoint as Endpoint>::additional_entries failed
+- Execution of *ModuleGraph::from_graphs failed
+- Execution of SingleModuleGraph::new_with_entries_visited_intern failed
+- [project]/.claude/worktrees/intelligent-banzai-4b2c41/app/globals.css [app-client] (css)
+- Execution of primary_chunkable_referenced_modules failed
+- Execution of <CssModuleAsset as Module>::references failed
+- Execution of parse_css failed
+- Execution of <PostCssTransformedAsset as Asset>::content failed
+- Execution of PostCssTransformedAsset::process failed
+- Execution of evaluate_webpack_loader failed
+- Execution of track_glob failed
+- Execution of track_glob_inner failed
+- Failed to restore task data (corrupted database or bug): Meta for track_glob_inner (TaskId 268704))
+  
+  Caused by:
+      0: Looking up data for TaskId 268704 from database failed
+      1: Unable to open static sorted file referenced from 00001300.meta
+      2: Unable to open static sorted file 00001296.sst
+      3: The system cannot find the file specified. (os error 2)
+    at <unknown> (TurbopackInternalError: Failed to write app endpoint /page) {
+  location: 'C:\\actions-runner\\_work\\next.js\\next.js\\turbopack\\crates\\turbo-tasks-backend\\src\\backend\\operation\\mod.rs:156:17'
+}
+Error [TurbopackInternalError]: Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+
+Debug info:
+- Execution of get_written_endpoint_with_issues_operation failed
+- Execution of PlainIssue::from_issue failed
+- Execution of PlainSource::from_source failed
+- Execution of <FileSource as Asset>::content failed
+- Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+  
+  Caused by:
+      0: Looking up data for TaskId 268653 from database failed
+      1: Unable to open static sorted file referenced from 00001300.meta
+      2: Unable to open static sorted file 00001296.sst
+      3: The system cannot find the file specified. (os error 2)
+    at <unknown> (TurbopackInternalError: Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))) {
+  location: 'C:\\actions-runner\\_work\\next.js\\next.js\\turbopack\\crates\\turbo-tasks-backend\\src\\backend\\operation\\mod.rs:156:17'
+}
+✓ Compiled in 9.4s
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+
+thread 'tokio-runtime-worker' (20816) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for ResolveOrigin::resolve_options (TaskId 268740))
+
+Caused by:
+    0: Looking up data for TaskId 268740 from database failed
+    1: Unable to open static sorted file referenced from 00001270.meta
+    2: Unable to open static sorted file 00001266.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (16628) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for <EcmascriptModuleAsset as Module>::ident (TaskId 268813))
+
+Caused by:
+    0: Looking up data for TaskId 268813 from database failed
+    1: Unable to open static sorted file referenced from 00001288.meta
+    2: Unable to open static sorted file 00001284.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (21532) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for EcmascriptModuleAsset::new (TaskId 268821))
+
+Caused by:
+    0: Looking up data for TaskId 268821 from database failed
+    1: Unable to open static sorted file referenced from 00001300.meta
+    2: Unable to open static sorted file 00001296.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (29428) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for resolve (TaskId 268835))
+
+Caused by:
+    0: Looking up data for TaskId 268835 from database failed
+    1: Unable to open static sorted file referenced from 00001154.meta
+    2: Unable to open static sorted file 00001149.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (20964) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for AssetIdent::from_path (TaskId 268855))
+
+Caused by:
+    0: Looking up data for TaskId 268855 from database failed
+    1: Unable to open static sorted file referenced from 00001264.meta
+    2: Unable to open static sorted file 00001261.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (28984) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for <ResolvingIssue as Issue>::detail (TaskId 268876))
+
+Caused by:
+    0: Looking up data for TaskId 268876 from database failed
+    1: Unable to open static sorted file referenced from 00001154.meta
+    2: Unable to open static sorted file 00001149.sst
+    3: The system cannot find the file specified. (os error 2)
+
+thread 'tokio-runtime-worker' (21532) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for FileContent::lines (TaskId 268888))
+
+Caused by:
+    0: Looking up data for TaskId 268888 from database failed
+    1: Unable to open static sorted file referenced from 00001264.meta
+    2: Unable to open static sorted file 00001261.sst
+    3: The system cannot find the file specified. (os error 2)
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\ADMINI~1\AppData\Local\Temp\next-panic-a623f8ed66e3832c62b50eaf643319de.log.
+
+To help make Turbopack better, report this error by clicking here: https://github.com/vercel/next.js/discussions/new?category=turbopack-error-report&title=Turbopack%20Error%3A%20Failed%20to%20restore%20task%20data%20%28corrupted%20database%20or%20bug%29%3A%20Meta%20for%20FileContent%3A%3Alines%20%28TaskId%20268888%29%29&body=Turbopack%20version%3A%20%6023c46498%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0ATurbopack%20Error%3A%20Failed%20to%20restore%20task%20data%20%28corrupted%20database%20or%20bug%29%3A%20Meta%20for%20FileContent%3A%3Alines%20%28TaskId%20268888%29%29%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+Error [TurbopackInternalError]: Failed to restore task data (corrupted database or bug): Meta for FileContent::lines (TaskId 268888))
+
+Debug info:
+- Execution of get_written_endpoint_with_issues_operation failed
+- Execution of PlainIssue::from_issue failed
+- Execution of AssetContent::lines failed
+- Failed to restore task data (corrupted database or bug): Meta for FileContent::lines (TaskId 268888))
+  
+  Caused by:
+      0: Looking up data for TaskId 268888 from database failed
+      1: Unable to open static sorted file referenced from 00001264.meta
+      2: Unable to open static sorted file 00001261.sst
+      3: The system cannot find the file specified. (os error 2)
+    at <unknown> (TurbopackInternalError: Failed to restore task data (corrupted database or bug): Meta for FileContent::lines (TaskId 268888))) {
+  location: 'C:\\actions-runner\\_work\\next.js\\next.js\\turbopack\\crates\\turbo-tasks-backend\\src\\backend\\operation\\mod.rs:156:17'
+}
+Error [TurbopackInternalError]: Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+
+Debug info:
+- Execution of get_written_endpoint_with_issues_operation failed
+- Execution of PlainIssue::from_issue failed
+- Execution of PlainSource::from_source failed
+- Execution of <FileSource as Asset>::content failed
+- Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))
+  
+  Caused by:
+      0: Looking up data for TaskId 268653 from database failed
+      1: Unable to open static sorted file referenced from 00001300.meta
+      2: Unable to open static sorted file 00001296.sst
+      3: The system cannot find the file specified. (os error 2)
+    at <unknown> (TurbopackInternalError: Failed to restore task data (corrupted database or bug): Meta for <DiskFileSystem as FileSystem>::read (TaskId 268653))) {
+  location: 'C:\\actions-runner\\_work\\next.js\\next.js\\turbopack\\crates\\turbo-tasks-backend\\src\\backend\\operation\\mod.rs:156:17'
+}
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)

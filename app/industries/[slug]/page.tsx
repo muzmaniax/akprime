@@ -1,29 +1,18 @@
+"use client";
+
+import { use } from "react";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button-cva";
 import { industriesData } from "@/data/industries";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const industry = industriesData.find((i) => i.slug === resolvedParams.slug);
-  
-  if (!industry) {
-    return { title: "Industry Not Found | AK Prime Consulting" };
-  }
-
-  return {
-    title: `${industry.name} Industry Solutions | AK Prime Consulting`,
-    description: industry.shortDescription,
-  };
-}
-
-export default async function IndustryPage({ params }: Props) {
-  const resolvedParams = await params;
+export default function IndustryPage({ params }: Props) {
+  const resolvedParams = use(params);
   const industry = industriesData.find((i) => i.slug === resolvedParams.slug);
 
   if (!industry) {
@@ -56,14 +45,16 @@ export default async function IndustryPage({ params }: Props) {
             {industry.shortDescription}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact" className="pill-e cta-pulse shadow-lg shadow-[#37B4B4]/20">
-              <div className="pill-e-group">
-                <span>{industry.cta}</span>
-                <div className="pill-e-icon">
-                  <ChevronRight size={16} />
-                </div>
-              </div>
-            </Link>
+            <Button
+              href="/contact"
+              variant="primary"
+              size="lg"
+              icon={ChevronRight}
+              iconPosition="end"
+              className="shadow-lg shadow-[#37B4B4]/20"
+            >
+              {industry.cta}
+            </Button>
           </div>
         </div>
       </section>
@@ -150,14 +141,15 @@ export default async function IndustryPage({ params }: Props) {
           <p className="text-lg text-white/70 mb-8 font-light">
             Partner with analysts and engineers who understand your specialized operational workflows.
           </p>
-          <Link href="/contact" className="pill-e cta-pulse">
-            <div className="pill-e-group">
-              <span>{industry.cta}</span>
-              <div className="pill-e-icon">
-                <ChevronRight size={16} />
-              </div>
-            </div>
-          </Link>
+          <Button
+            href="/contact"
+            variant="primary"
+            size="lg"
+            icon={ChevronRight}
+            iconPosition="end"
+          >
+            {industry.cta}
+          </Button>
         </div>
       </section>
 

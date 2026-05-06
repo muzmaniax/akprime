@@ -30,9 +30,12 @@ export function Footer() {
         {/* Top row: brand + CTA */}
         <div className="grid lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
           <div className="lg:col-span-5 space-y-5">
-            <div className="flex items-center gap-1">
-              <span className="text-white text-[20px] font-semibold tracking-tight">AK</span>
-              <span className="text-[#37B4B4] text-[20px] font-semibold tracking-tight">Prime</span>
+            <div className="flex items-center h-12">
+              <img
+                src="/ak-logo.png"
+                alt="AK Prime"
+                className="h-full w-auto"
+              />
             </div>
             <p className="text-[15px] text-white/65 max-w-md leading-relaxed">
               Strategic consulting for organisations navigating complexity. We make

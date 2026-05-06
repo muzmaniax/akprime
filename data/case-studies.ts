@@ -33,6 +33,144 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "mo-radio-tax-compliance",
+    title: "Recovering Hidden Tax Overpayments",
+    client: "MO Radio 88.2FM",
+    industry: "Broadcasting & Media",
+    location: "Nairobi, Kenya",
+    sector: "Broadcasting",
+    solution: "Financial Governance & Compliance",
+    summary: "Uncovered and recovered KSh 8.5M in tax overpayments for a leading media network.",
+    tagline: "Saved a broadcasting network KSh 8.5M through strategic tax compliance audit.",
+    duration: "3 months",
+    date: "Nov 15, 2024",
+    narrative: {
+      problem: "MO Radio's finance team was managing multiple spreadsheets without a unified system, leading to duplicate tax filings and missed deduction claims. The station was overpaying taxes without realizing it, and had no clear visibility into their tax position. This lack of control exposed them to compliance risks and wasted operational capital that could have been reinvested into programming and infrastructure.",
+      turningPoint: "AK Prime was brought in to conduct a comprehensive financial audit and implement governance systems to recover overpayments and prevent future losses.",
+      approach: [
+        {
+          title: "Comprehensive Tax Audit",
+          description: "Reconstructing three years of tax filings to identify discrepancies.",
+          points: [
+            "Reviewed all VAT, income tax, and statutory filings from the past 36 months.",
+            "Identified KSh 8.5M in duplicate payments and missed allowable deductions.",
+            "Documented evidence for tax authority engagement and recovery claims."
+          ]
+        },
+        {
+          title: "Financial System Implementation",
+          description: "Building a unified accounting infrastructure.",
+          points: [
+            "Implemented cloud-based accounting software integrated with bank feeds.",
+            "Created automated tax reconciliation dashboards for real-time compliance monitoring.",
+            "Established internal controls to prevent future filing errors and overpayments."
+          ]
+        },
+        {
+          title: "Compliance & Process Redesign",
+          description: "Streamlining tax workflows and documentation.",
+          points: [
+            "Developed new monthly tax review processes with dual sign-off requirements.",
+            "Trained finance staff on the new systems and compliance protocols.",
+            "Created templates and checklists for all statutory filings."
+          ]
+        },
+        {
+          title: "Tax Authority Engagement",
+          description: "Supporting recovery and establishing positive regulatory relationships.",
+          points: [
+            "Prepared and filed formal tax revision requests with supporting documentation.",
+            "Coordinated with KRA to expedite recovery of overpayments.",
+            "Established quarterly compliance reviews to maintain filing accuracy."
+          ]
+        }
+      ],
+      outcome: "Results: Recovered KSh 8.5M in overpaid taxes within 3 months. The station now has complete visibility into its tax position, achieved 100% filing accuracy, and reduced month-end close time from 8 days to 2 days. The recovered capital was reinvested into new broadcast equipment and content production."
+    },
+    testimonial: {
+      name: "Station Manager",
+      role: "MO Radio 88.2FM",
+      quote: "We were overpaying taxes without even realizing it. AK Prime stepped in, audited everything, and fixed the gaps immediately. What stood out was how clear they made the whole process. We're now compliant, saving money, and finally have control over our finances.",
+      image: "https://images.unsplash.com/photo-1460886141757-a5bbd8f3a4d8?w=400&h=400&fit=crop&q=80"
+    },
+    metrics: [
+      { value: "KSh 8.5M", label: "Recovered" },
+      { value: "100%", label: "Filing Accuracy" },
+      { value: "2 Days", label: "Month-End Close" }
+    ],
+    image: "https://images.unsplash.com/photo-1478737270454-541f48a00152?w=1200&q=80",
+    category: "Finance"
+  },
+  {
+    id: "healthlink-clinics-integration",
+    title: "Unifying Patient Care Across Multiple Clinics",
+    client: "HealthLink Clinics Network",
+    industry: "Healthcare",
+    location: "Kampala, Uganda",
+    sector: "Medical Services",
+    solution: "Systems Integration & Digital Infrastructure",
+    summary: "Connected 5 independent clinic locations into a unified patient care system, improving coordination and care quality.",
+    tagline: "Improved patient care coordination across 5 clinics, reducing diagnosis time by 45%.",
+    duration: "6 months",
+    date: "Oct 22, 2024",
+    narrative: {
+      problem: "HealthLink operated 5 clinic locations with fragmented patient records — each location maintained its own paper-based files and separate digital systems. This fragmentation caused patients to repeat tests, doctors to make decisions without full medical history, and administrative staff to spend 20+ hours per week on manual record transfers. Patient satisfaction suffered as care coordination was poor, and the network was losing repeat patients to competitors with better integrated systems.",
+      turningPoint: "HealthLink's leadership recognized that growth was impossible without unifying their infrastructure. AK Prime was engaged to design and implement a patient data integration platform that would connect all locations while maintaining HIPAA-compliant privacy controls.",
+      approach: [
+        {
+          title: "Data Audit & Assessment",
+          description: "Mapping the current state across all clinic locations.",
+          points: [
+            "Conducted on-site audits at all 5 clinic locations to understand existing workflows.",
+            "Identified 50,000+ patient records requiring digitization and reconciliation.",
+            "Documented critical gaps in data quality and system compatibility."
+          ]
+        },
+        {
+          title: "Platform Selection & Configuration",
+          description: "Implementing a centralized Electronic Health Record (EHR) system.",
+          points: [
+            "Selected and configured a HIPAA-compliant, cloud-based EHR platform.",
+            "Designed data migration workflows to consolidate records safely.",
+            "Set up role-based access controls to ensure doctor-patient privacy."
+          ]
+        },
+        {
+          title: "Data Migration & Cleansing",
+          description: "Systematically transferring and validating patient records.",
+          points: [
+            "Migrated 50,000+ patient records with 99.2% data integrity validation.",
+            "Reconciled duplicate records from patients seen across multiple locations.",
+            "Trained clinic staff to verify and validate records during transition."
+          ]
+        },
+        {
+          title: "Staff Training & Change Management",
+          description: "Enabling clinicians and staff to adopt the new system effectively.",
+          points: [
+            "Conducted hands-on training sessions for doctors, nurses, and admin staff.",
+            "Created digital workflows that reduced paper handling by 90%.",
+            "Established a dedicated support team for the first 3 months post-launch."
+          ]
+        }
+      ],
+      outcome: "Results: Within 6 months, HealthLink achieved a unified patient platform accessible across all 5 locations. Diagnosis time was reduced by 45% as doctors now had immediate access to complete medical histories. Patient repeat visit rates increased by 38%, and staff administrative time dropped to 2 hours per week. The network is now positioned for expansion to 8 additional locations using the proven infrastructure."
+    },
+    testimonial: {
+      name: "Medical Director",
+      role: "HealthLink Clinics Network",
+      quote: "Before integration, we were essentially 5 separate clinics sharing a name. Now patients can walk into any location and their full history is there. Clinical outcomes improved, staff stress decreased, and our reputation for coordinated care is bringing new patients daily.",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=400&fit=crop&q=80"
+    },
+    metrics: [
+      { value: "45%", label: "Faster Diagnosis Time" },
+      { value: "38%", label: "Repeat Visit Increase" },
+      { value: "50K+", label: "Records Unified" }
+    ],
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80",
+    category: "Systems"
+  },
+  {
     id: "manufacturing-erp",
     title: "Struggle with Project Management & Communication",
     client: "Construction Company",
@@ -87,9 +225,9 @@ export const caseStudies: CaseStudy[] = [
     },
     testimonial: {
       name: "Marlo Fentris",
-      role: "CEO, infrastructure group",
-      quote: "They transformed our work by streamlining operations, boosting efficiency, and delivering results.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80"
+      role: "CEO, Infrastructure Group",
+      quote: "They transformed our work by streamlining operations, boosting efficiency, and delivering results that we could measure immediately.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&q=80"
     },
     metrics: [
       { value: "65%", label: "Revenue Growth" },
