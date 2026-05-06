@@ -175,8 +175,8 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
                   <textarea
                     {...register("message")}
                     placeholder="Brief overview of what you're working on…"
-                    rows={3}
-                    className={cn(inputCls(false), "resize-none py-2.5 leading-relaxed")}
+                    rows={4}
+                    className={cn(inputCls(false), "resize-none py-3 leading-relaxed")}
                   />
                 </Field>
 
@@ -220,7 +220,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
 
 function inputCls(hasError: boolean) {
   return cn(
-    "w-full h-11 rounded-xl bg-white px-3.5 text-[14px] text-[#082121] placeholder:text-[#082121]/40 focus:outline-none transition-colors border",
+    "w-full h-12 rounded-xl bg-white px-4 text-[14px] text-[#082121] placeholder:text-[#082121]/40 focus:outline-none transition-colors border",
     hasError
       ? "border-red-400 focus:border-red-500"
       : "border-[#082121]/12 focus:border-[#37B4B4] focus:ring-2 focus:ring-[#37B4B4]/15"
