@@ -252,7 +252,7 @@
   background: var(--accent); color: #082121;
   border: 1px solid var(--accent);
   cursor: pointer; transition: all 150ms ease;
-  white-space: nowrap;
+  white-space: nowrap; flex-wrap: nowrap;
 }
 @media (min-width: 640px) {
   .btn-cta {
@@ -275,7 +275,7 @@
   background: transparent; color: #fff;
   border: 1.5px solid rgba(255,255,255,0.3);
   cursor: pointer; transition: all 150ms ease;
-  white-space: nowrap;
+  white-space: nowrap; flex-wrap: nowrap;
 }
 @media (min-width: 640px) {
   .btn-ghost {
@@ -298,7 +298,7 @@
   font-size: 13px; font-weight: 600;
   background: var(--accent); color: #082121;
   border: 1px solid var(--accent);
-  cursor: pointer; transition: all 180ms ease; white-space: nowrap;
+  cursor: pointer; transition: all 180ms ease; white-space: nowrap; flex-wrap: nowrap;
 }
 @media (min-width: 640px) {
   .pill-e {
@@ -312,7 +312,7 @@
   font-size: 13px; font-weight: 500;
   background: transparent; color: #fff;
   border: 1px solid rgba(255,255,255,0.25);
-  cursor: pointer; transition: all 180ms ease; white-space: nowrap;
+  cursor: pointer; transition: all 180ms ease; white-space: nowrap; flex-wrap: nowrap;
 }
 @media (min-width: 640px) {
   .pill-f {
