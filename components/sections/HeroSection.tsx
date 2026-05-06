@@ -117,17 +117,17 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
 
         {/* CTAs */}
         <Reveal delay={240}>
-          <div className="flex items-center gap-3 mt-1">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mt-1">
             <Link
               href="/contact"
-              className="h-10 px-6 rounded-lg bg-white/[0.08] border border-white/25 text-white text-[14px] font-medium inline-flex items-center justify-center hover:bg-white/15 transition-colors"
+              className="w-full sm:w-auto h-10 px-6 rounded-lg bg-white/[0.08] border border-white/25 text-white text-[14px] font-medium inline-flex items-center justify-center hover:bg-white/15 transition-colors"
             >
               Contact
             </Link>
             <button
               type="button"
               onClick={onBooking}
-              className="h-10 px-6 rounded-lg bg-[#37B4B4] border border-[#36c0c0] text-[#0a3030] text-[14px] font-medium inline-flex items-center justify-center hover:bg-[#29E0C8] transition-colors"
+              className="w-full sm:w-auto h-10 px-6 rounded-lg bg-[#37B4B4] border border-[#36c0c0] text-[#0a3030] text-[14px] font-medium inline-flex items-center justify-center hover:bg-[#29E0C8] transition-colors"
             >
               Book a Call
             </button>
