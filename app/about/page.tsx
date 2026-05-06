@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Reveal, Eyebrow, StatCell, SectionHeader, CtaButton, GhostButton } from "@/components/ui/Primitives";
 import { CTABannerSection, FAQSection } from "@/components/sections/TestimonialsInsightsCTA";
+import { Database, Cloud, TrendingUp, Zap, Users, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About | AK Prime Consulting",
@@ -15,12 +16,12 @@ const VALUES = [
 ];
 
 const CAPABILITIES = [
-  { title: "ERP Systems", description: "SAP, Odoo, NetSuite implementations and migrations" },
-  { title: "Technology", description: "Cloud infrastructure, API integrations, and digital transformation" },
-  { title: "Finance & FP&A", description: "CFO advisory, consolidation, and financial planning models" },
-  { title: "Operations", description: "Process redesign, supply chain, and operational excellence" },
-  { title: "Organization Design", description: "Restructuring, talent strategy, and capability building" },
-  { title: "Compliance & Audit", description: "Risk frameworks, internal controls, and regulatory readiness" },
+  { title: "ERP Systems", description: "SAP, Odoo, NetSuite implementations and migrations", icon: Database },
+  { title: "Technology", description: "Cloud infrastructure, API integrations, and digital transformation", icon: Cloud },
+  { title: "Finance & FP&A", description: "CFO advisory, consolidation, and financial planning models", icon: TrendingUp },
+  { title: "Operations", description: "Process redesign, supply chain, and operational excellence", icon: Zap },
+  { title: "Organization Design", description: "Restructuring, talent strategy, and capability building", icon: Users },
+  { title: "Compliance & Audit", description: "Risk frameworks, internal controls, and regulatory readiness", icon: Shield },
 ];
 
 export default function AboutPage() {
@@ -162,14 +163,20 @@ export default function AboutPage() {
             <SectionHeader eyebrow="What we do" title="Core capabilities & expertise" align="center" />
           </Reveal>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {CAPABILITIES.map((c, i) => (
-              <Reveal key={c.title} delay={i * 60}>
-                <div className="card-dark p-6">
-                  <h3 className="text-white font-medium text-[15px]">{c.title}</h3>
-                  <p className="mt-3 text-[13px] text-white/60 leading-relaxed">{c.description}</p>
-                </div>
-              </Reveal>
-            ))}
+            {CAPABILITIES.map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <Reveal key={c.title} delay={i * 60}>
+                  <div className="card-dark p-6">
+                    <div className="w-12 h-12 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10 flex items-center justify-center mb-4">
+                      <Icon size={24} className="text-[#37B4B4]" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-white font-medium text-[15px]">{c.title}</h3>
+                    <p className="mt-3 text-[13px] text-white/60 leading-relaxed">{c.description}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
