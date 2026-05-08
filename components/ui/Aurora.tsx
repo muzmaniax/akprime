@@ -185,9 +185,10 @@ export default function Aurora({
     let animateId = 0;
     const update = (t: number) => {
       animateId = requestAnimationFrame(update);
-      const { speed: currentSpeed = 1.0 } = propsRef.current;
+      const currentSpeed = propsRef.current.speed ?? 1.0;
+      // Time scaling: t is in milliseconds, we scale it down for smooth aurora wave animation
       program.uniforms.uTime.value = t * 0.0001 * currentSpeed;
-      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 0.8;
+      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? amplitude;
       program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
       const stops = propsRef.current.colorStops ?? colorStops;
       program.uniforms.uColorStops.value = stops.map((hex) => {
