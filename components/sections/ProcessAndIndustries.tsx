@@ -119,8 +119,8 @@ export function IndustriesSection() {
 
         {industriesData.length > 6 && (
           <Reveal delay={200}>
-            <div className="mt-8 text-center">
-              <Link href="/industries" className="btn-ghost">
+            <div className="mt-8 flex justify-center">
+              <Link href="/industries" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-[#37B4B4] hover:text-[#29E0C8] text-[13px] sm:text-[14px] font-semibold transition-colors whitespace-nowrap sm:whitespace-normal">
                 View all {industriesData.length} industries <ArrowUpRight size={14} />
               </Link>
             </div>

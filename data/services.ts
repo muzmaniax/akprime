@@ -30,7 +30,7 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "ERP Implementation",
     icon: "database",
-    photo: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1200&q=80",
+    photo: "/images/office-culture.jpg",
     shortDescription: "We manage the full ERP journey — from vendor selection to go-live training. Unify your operations.",
     heroHeadline: "Stop Wrestling with Data. Unify Your Operations with ERP.",
     painPoints: [
@@ -60,7 +60,7 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "AI Integration & Automation",
     icon: "cpu",
-    photo: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80",
+    photo: "/images/remote-work.jpg",
     shortDescription: "Pragmatic AI deployments that automate workflows and predict demand, governed by strict ethics.",
     heroHeadline: "Turn AI from a Buzzword into a Bottom-Line Advantage.",
     painPoints: [
@@ -90,7 +90,7 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "Training Services",
     icon: "graduation-cap",
-    photo: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80",
+    photo: "/images/cloud-computing.jpg",
     shortDescription: "Role-based ERP and systems training that drives real adoption — not just awareness.",
     heroHeadline: "Software Only Works If Your People Know How to Use It.",
     painPoints: [
@@ -122,7 +122,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Project Management",
     icon: "kanban",
-    photo: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+    photo: "/images/hero-workspace-bw.jpg",
     shortDescription: "Structured governance from initiation to close. Deliver on time and on budget.",
     heroHeadline: "Deliver Complex Projects Without the Chaos.",
     painPoints: [
@@ -152,7 +152,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Business Analysis",
     icon: "file-search",
-    photo: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
+    photo: "/images/data-analysis.jpg",
     shortDescription: "Translating stakeholder needs into clear specifications so developers build the right thing.",
     heroHeadline: "Bridge the Gap Between Business Strategy and IT Delivery.",
     painPoints: [
@@ -182,7 +182,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Company Restructuring",
     icon: "network",
-    photo: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80",
+    photo: "/images/professional-headshot.jpg",
     shortDescription: "Reorganise for efficiency, tax optimisation, or post-merger integration readiness.",
     heroHeadline: "Realign Your Organisation for Sustainable Growth.",
     painPoints: [
@@ -212,7 +212,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "VC & Fundraising Advisory",
     icon: "trending-up",
-    photo: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80",
+    photo: "/images/professional-workspace.jpg",
     shortDescription: "Get investment-ready. From pitch deck to financial model and investor matching.",
     heroHeadline: "Secure the Capital to Accelerate Your Vision.",
     painPoints: [
@@ -244,7 +244,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Financial Management (FP&A)",
     icon: "pie-chart",
-    photo: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80",
+    photo: "/images/mentor-coaching.jpg",
     shortDescription: "Actionable financial planning, rolling forecasts, and live dashboards for decision support.",
     heroHeadline: "Navigate Uncertainty with Precision Financial Planning.",
     painPoints: [
@@ -274,7 +274,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Cashflow Optimisation",
     icon: "banknote",
-    photo: "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=1200&q=80",
+    photo: "/images/business-consulting.jpg",
     shortDescription: "Improve working capital, extend supplier terms, and build 13-week cash forecasts.",
     heroHeadline: "Unlock Trapped Cash Working within Your Operations.",
     painPoints: [
@@ -304,7 +304,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Audit Services",
     icon: "shield-check",
-    photo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
+    photo: "/images/financial-analysis.jpg",
     shortDescription: "Independent assurance on financials and internal controls to build stakeholder confidence.",
     heroHeadline: "Protect Value with Rigorous Independent Assurance.",
     painPoints: [
@@ -334,7 +334,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "System & IT Audits",
     icon: "server-crash",
-    photo: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80",
+    photo: "/images/compliance-audit.jpg",
     shortDescription: "Identify structural vulnerabilities, fraud risks, and access violations in your ERP.",
     heroHeadline: "Secure Your Digital Core Against Hidden Threats.",
     painPoints: [
@@ -364,7 +364,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Bookkeeping & Cloud Accounting",
     icon: "calculator",
-    photo: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&q=80",
+    photo: "/images/organization-structure.jpg",
     shortDescription: "Accurate, timely books that keep you tax-ready and management-informed.",
     heroHeadline: "Flawless Financial Records, Fully Outsourced.",
     painPoints: [
@@ -394,7 +394,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Risk & Compliance Advisory",
     icon: "scale",
-    photo: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
+    photo: "/images/financial-planning.jpg",
     shortDescription: "Build practical enterprise risk frameworks covering AML, data privacy, and regulations.",
     heroHeadline: "Turn Compliance from a Burden into a Competitive Advantage.",
     painPoints: [
@@ -424,7 +424,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Company Secretarial",
     icon: "briefcase",
-    photo: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
+    photo: "/images/financial-planning.jpg",
     shortDescription: "Keep your corporate compliance, filings, and board governance in perfect order.",
     heroHeadline: "Seamless Corporate Governance and Statutory Compliance.",
     painPoints: [
@@ -456,7 +456,7 @@ export const servicesData: ServiceData[] = [
     category: "Growth & Impact",
     name: "Digital Marketing",
     icon: "megaphone",
-    photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+    photo: "/images/analytics-dashboard.jpg",
     shortDescription: "Brand identity, SEO, and paid performance campaigns managed by one cohesive team.",
     heroHeadline: "Drive Demand with Cohesive Digital Marketing.",
     painPoints: [
@@ -487,7 +487,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "HR Advisory & Organisational Design",
     icon: "users",
-    photo: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80",
+    photo: "/images/enterprise-solution.jpg",
     shortDescription: "Workforce planning, job grading frameworks, org design and restructuring.",
     heroHeadline: "Build the Organisation Your Strategy Actually Needs.",
     painPoints: [
@@ -517,7 +517,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "HR Policy & Compliance",
     icon: "file-check",
-    photo: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
+    photo: "/images/financial-planning.jpg",
     shortDescription: "Employment contracts, HR handbooks, disciplinary procedures and Kenya Labour compliance.",
     heroHeadline: "Stay Compliant. Protect the Organisation. Treat People Fairly.",
     painPoints: [
@@ -547,7 +547,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "Payroll Management",
     icon: "wallet",
-    photo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
+    photo: "/images/financial-analysis.jpg",
     shortDescription: "End-to-end payroll outsourcing, statutory deductions (PAYE, NSSF, NHIF, NITA), payslips, reconciliations and regulatory submissions.",
     heroHeadline: "Accurate Payroll. On Time. Every Month.",
     painPoints: [
@@ -577,7 +577,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "Recruitment & Talent Acquisition",
     icon: "user-plus",
-    photo: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80",
+    photo: "/images/system-integration.jpg",
     shortDescription: "End-to-end hiring: job profiling, advertising, shortlisting, structured interviews, reference checks and onboarding frameworks.",
     heroHeadline: "Hire the Right People. The First Time.",
     painPoints: [
@@ -607,7 +607,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "Performance Management Systems",
     icon: "gauge",
-    photo: "https://images.unsplash.com/photo-1552581234-26160f608093?w=1200&q=80",
+    photo: "/images/database-management.jpg",
     shortDescription: "Design and implement KPI frameworks, appraisal cycles, performance improvement plans and talent review processes linked to business outcomes.",
     heroHeadline: "Turn Performance Conversations into Business Outcomes.",
     painPoints: [
@@ -637,7 +637,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "HR Technology / HRMS Implementation",
     icon: "monitor-cog",
-    photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80",
+    photo: "/images/software-development.jpg",
     shortDescription: "Selection and configuration of HRMS platforms like Odoo and SAP B1. Training and support provided.",
     heroHeadline: "Move Off Spreadsheets. Run HR on a Real System.",
     painPoints: [
@@ -667,7 +667,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "Learning & Development",
     icon: "book-open",
-    photo: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80",
+    photo: "/images/cloud-computing.jpg",
     shortDescription: "Analyze training needs, design L&D strategy, develop e-learning and blended programs. Build capability.",
     heroHeadline: "Build the Capability Your Strategy Demands.",
     painPoints: [
@@ -698,7 +698,7 @@ export const servicesData: ServiceData[] = [
     category: "Growth & Impact",
     name: "M&E / Impact Assessment",
     icon: "target",
-    photo: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+    photo: "/images/agile-methodology.jpg",
     shortDescription: "Design M&E frameworks that prove impact and satisfy stringent donor requirements.",
     heroHeadline: "Measure and Prove the Real Impact of Your Interventions.",
     painPoints: [

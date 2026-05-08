@@ -18,7 +18,7 @@ const ARTICLES = [
     author: "Mark Wood",
     date: "Jan 20, 2026",
     readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=80",
+    image: "/images/laptop-workspace.jpg",
     featured: true,
   },
   {
@@ -29,7 +29,7 @@ const ARTICLES = [
     author: "Hanry Mandu",
     date: "Jan 20, 2026",
     readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    image: "/images/hero-workspace-bw.jpg",
   },
   {
     slug: "when-founders-should-seek-external-perspective",
@@ -39,7 +39,7 @@ const ARTICLES = [
     author: "Andy Milan",
     date: "Jan 20, 2026",
     readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
+    image: "/images/professional-headshot.jpg",
   },
 ];
 
@@ -106,8 +106,8 @@ export default function InsightsPage() {
                       <span className="text-[#082121]/25">·</span>
                       <time>{featured.date}</time>
                     </div>
-                    <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all">
-                      Read article <ArrowUpRight size={14} />
+                    <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all flex-wrap">
+                      Read article <ArrowUpRight size={14} className="shrink-0" />
                     </span>
                   </div>
                 </div>

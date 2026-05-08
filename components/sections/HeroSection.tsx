@@ -16,7 +16,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           className="absolute inset-0 opacity-40"
           style={{
             backgroundImage:
-              "url('/images/photo-1552664730-d307ca884978')",
+              "url('/images/hero-workspace-bw.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.35) contrast(1.15) grayscale(100%)",

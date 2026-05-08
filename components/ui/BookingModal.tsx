@@ -69,7 +69,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
             <div className="hidden md:block md:col-span-5 relative bg-[#082121] text-white p-8 lg:p-9">
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-25"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400&q=80')" }}
+                style={{ backgroundImage: "url('/images/team-collaboration.jpg')" }}
               />
               <div className="absolute inset-0 bg-gradient-to-br from-[#082121] via-[#082121]/85 to-[#0E3E3E]/80" />
               <div className="relative h-full flex flex-col">

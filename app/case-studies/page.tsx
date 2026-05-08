@@ -61,9 +61,9 @@ export default function CaseStudiesPage() {
                             <div className="text-[15px] font-medium text-[#082121] mt-1.5">{cs.date.split(",")[1]?.trim() ?? cs.date}</div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2 text-[13px] font-medium text-[#37B4B4] group-hover:gap-3 transition-all">
+                        <div className="flex items-center gap-2 text-[13px] font-medium text-[#37B4B4] group-hover:gap-3 transition-all flex-wrap">
                           <span>View case study</span>
-                          <ArrowUpRight size={16} strokeWidth={2} />
+                          <ArrowUpRight size={16} strokeWidth={2} className="shrink-0" />
                         </div>
                       </div>
                     </div>

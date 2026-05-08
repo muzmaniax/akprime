@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 const articles = [
   {
     slug: "why-most-business-problems-are-misdiagnosed",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1400&q=80",
+    image: "/images/laptop-workspace.jpg",
     category: "Strategy",
     readTime: "7 min read",
     date: "January 2026",
@@ -32,7 +32,7 @@ const articles = [
   },
   {
     slug: "the-real-cost-of-poor-decision-making",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=80",
+    image: "/images/hero-workspace-bw.jpg",
     category: "Operations",
     readTime: "6 min read",
     date: "January 2026",
@@ -58,7 +58,7 @@ const articles = [
   },
   {
     slug: "when-founders-should-seek-external-perspective",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1400&q=80",
+    image: "/images/professional-headshot.jpg",
     category: "Leadership",
     readTime: "5 min read",
     date: "January 2026",
@@ -190,9 +190,9 @@ export default async function InsightArticlePage({ params }: Props) {
               </p>
               <Link
                 href="/contact"
-                className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] hover:text-[#082121] transition-colors"
+                className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] hover:text-[#082121] transition-colors flex-wrap"
               >
-                Discuss this topic with our team <ArrowUpRight size={13} />
+                Discuss this topic with our team <ArrowUpRight size={13} className="shrink-0" />
               </Link>
             </div>
           </div>

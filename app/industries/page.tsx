@@ -46,8 +46,8 @@ export default function IndustriesPage() {
                   <div className="p-6">
                     <h3 className="text-white group-hover:text-[#37B4B4] transition-colors">{ind.name}</h3>
                     <p className="mt-2 text-[13px] text-white/55 leading-relaxed line-clamp-2">{ind.shortDescription}</p>
-                    <div className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-[#37B4B4]">
-                      View industry <ArrowUpRight size={13} strokeWidth={2.25} />
+                    <div className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-[#37B4B4] flex-wrap">
+                      View industry <ArrowUpRight size={13} strokeWidth={2.25} className="shrink-0" />
                     </div>
                   </div>
                 </Link>

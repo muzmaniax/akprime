@@ -67,7 +67,7 @@ const CenterImage = ({ sectionHeight }: { sectionHeight: number }) => {
         backgroundSize,
         opacity,
         backgroundImage:
-          "url(https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop)",
+          "url(/images/agile-methodology.jpg",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
@@ -97,28 +97,28 @@ const ParallaxImages = () => {
   return (
     <div className="mx-auto max-w-5xl px-4 pt-[200px] relative z-20">
       <ParallaxImg
-        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+        src="/images/diverse-team.jpg"
         alt="Team collaboration"
         start={-200}
         end={200}
         className="w-1/3 rounded-[22px]"
       />
       <ParallaxImg
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+        src="/images/startup-meeting.jpg"
         alt="Data analysis"
         start={200}
         end={-250}
         className="mx-auto w-2/3 rounded-[22px]"
       />
       <ParallaxImg
-        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2070&auto=format&fit=crop"
+        src="/images/professional-workspace.jpg"
         alt="Modern office"
         start={-200}
         end={200}
         className="ml-auto w-1/3 rounded-[22px]"
       />
       <ParallaxImg
-        src="https://images.unsplash.com/photo-1664575602554-2087b04935a5?q=80&w=2070&auto=format&fit=crop"
+        src="/images/modern-office.jpg"
         alt="Business strategy"
         start={0}
         end={-500}

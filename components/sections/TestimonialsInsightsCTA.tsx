@@ -119,7 +119,7 @@ const ARTICLES = [
     title: "Why most business problems are misdiagnosed",
     author: "Mark Wood",
     date: "Jan 20, 2026",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80",
+    image: "/images/laptop-workspace.jpg",
   },
   {
     slug: "the-real-cost-of-poor-decision-making",
@@ -127,7 +127,7 @@ const ARTICLES = [
     title: "The real cost of poor decision-making for business",
     author: "Hanry Mandu",
     date: "Jan 20, 2026",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    image: "/images/hero-workspace-bw.jpg",
   },
   {
     slug: "when-founders-should-seek-external-perspective",
@@ -135,7 +135,7 @@ const ARTICLES = [
     title: "When founders should seek external perspective",
     author: "Andy Milan",
     date: "Jan 20, 2026",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
+    image: "/images/professional-headshot.jpg",
   },
 ];
 
@@ -262,7 +262,7 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
           {/* Background image */}
           <div
             className="absolute inset-0 bg-cover bg-center opacity-15"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=80')" }}
+            style={{ backgroundImage: "url('/images/team-collaboration.jpg')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#082121]/80 via-[#082121]/40 to-transparent" />
 
@@ -302,7 +302,7 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
               <div className="hidden lg:grid grid-cols-3 gap-3 h-[320px]">
                 <div className="col-span-2 overflow-hidden rounded-xl">
                   <img
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+                    src="/images/hero-workspace-bw.jpg"
                     alt=""
                     className="w-full h-full object-cover"
                   />
@@ -310,14 +310,14 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
                 <div className="grid grid-rows-2 gap-3">
                   <div className="overflow-hidden rounded-xl">
                     <img
-                      src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80"
+                      src="/images/laptop-workspace.jpg"
                       alt=""
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl">
                     <img
-                      src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80"
+                      src="/images/professional-headshot.jpg"
                       alt=""
                       className="w-full h-full object-cover"
                     />

@@ -32,7 +32,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 -z-0">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=2000&q=80')" }}
+            style={{ backgroundImage: "url('/images/team-collaboration.jpg')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#082121]/80 via-[#082121]/90 to-[#082121]" />
         </div>
@@ -94,7 +94,7 @@ export default function AboutPage() {
             <Reveal delay={80}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
                 <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+                  src="/images/hero-workspace-bw.jpg"
                   alt="Team collaboration"
                   className="w-full h-auto aspect-[3/4] object-cover"
                 />
@@ -105,7 +105,7 @@ export default function AboutPage() {
             <Reveal delay={160}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10 mt-6">
                 <img
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80"
+                  src="/images/business-meeting.jpg"
                   alt="Enterprise experience"
                   className="w-full h-auto aspect-[3/4] object-cover"
                 />
@@ -116,7 +116,7 @@ export default function AboutPage() {
             <Reveal delay={240}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10 -mt-6">
                 <img
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80"
+                  src="/images/business-meeting.jpg"
                   alt="Strategic planning"
                   className="w-full h-auto aspect-[3/4] object-cover"
                 />
@@ -127,7 +127,7 @@ export default function AboutPage() {
             <Reveal delay={320}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
                 <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+                  src="/images/hero-workspace-bw.jpg"
                   alt="Advisory team"
                   className="w-full h-auto aspect-[3/4] object-cover"
                 />

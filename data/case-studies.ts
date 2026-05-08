@@ -91,14 +91,14 @@ export const caseStudies: CaseStudy[] = [
       name: "Station Manager",
       role: "MO Radio 88.2FM",
       quote: "We were overpaying taxes without even realizing it. AK Prime stepped in, audited everything, and fixed the gaps immediately. What stood out was how clear they made the whole process. We're now compliant, saving money, and finally have control over our finances.",
-      image: "https://images.unsplash.com/photo-1460886141757-a5bbd8f3a4d8?w=400&h=400&fit=crop&q=80"
+      image: "/images/avatar-professional.jpg"
     },
     metrics: [
       { value: "KSh 8.5M", label: "Recovered" },
       { value: "100%", label: "Filing Accuracy" },
       { value: "2 Days", label: "Month-End Close" }
     ],
-    image: "https://images.unsplash.com/photo-1478737270454-541f48a00152?w=1200&q=80",
+    image: "/images/business-team.jpg",
     category: "Finance"
   },
   {
@@ -160,14 +160,14 @@ export const caseStudies: CaseStudy[] = [
       name: "VP, Engineering",
       role: "Step Innovations Africa",
       quote: "The infrastructure redesign was transformational. Before, growth meant weeks of engineering effort and downtime risk. Now we auto-scale seamlessly. Our team went from firefighting infrastructure issues to building innovative products. The compliance automation alone has freed up our entire audit team.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop&q=80"
+      image: "/images/hero-workspace-bw.jpg"
     },
     metrics: [
       { value: "10x", label: "User Growth" },
       { value: "150ms", label: "Processing Latency" },
       { value: "99.99%", label: "Uptime" }
     ],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    image: "/images/startup-meeting.jpg",
     category: "Systems"
   },
   {
@@ -227,14 +227,14 @@ export const caseStudies: CaseStudy[] = [
       name: "Marlo Fentris",
       role: "CEO, Infrastructure Group",
       quote: "They transformed our work by streamlining operations, boosting efficiency, and delivering results that we could measure immediately.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&q=80"
+      image: "/images/avatar-user.jpg"
     },
     metrics: [
       { value: "65%", label: "Revenue Growth" },
       { value: "40%", label: "Faster Close" },
       { value: "Zero", label: "Project Overruns" }
     ],
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
+    image: "/images/strategy-planning.jpg",
     category: "Strategy"
   },
   {
@@ -276,14 +276,14 @@ export const caseStudies: CaseStudy[] = [
       name: "Sarah Kimani",
       role: "CFO, Manufacturing Co.",
       quote: "The team's deep understanding of local compliance and global best practices saved us millions.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80"
+      image: "/images/avatar-consultant.jpg"
     },
     metrics: [
       { value: "KSh12M", label: "Exposure Resolved" },
       { value: "3 Days", label: "Month-End Close" },
       { value: "100%", label: "Audit Readiness" }
     ],
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
+    image: "/images/financial-analysis.jpg",
     category: "Finance"
   }
 ];

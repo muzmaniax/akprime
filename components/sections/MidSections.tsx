@@ -53,7 +53,7 @@ export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => vo
             <div className="relative">
               <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80"
+                  src="/images/team-collaboration.jpg"
                   alt="AK Prime consulting team"
                   className="w-full h-full object-cover"
                 />
