@@ -37,7 +37,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           <Aurora
             colorStops={["#1a4f4f", "#2dd4bf", "#22d3ee"]}
             amplitude={0.65}
-            blend={2.3}
+            blend={1.4}
             speed={1.6}
           />
         </div>
