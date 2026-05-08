@@ -186,7 +186,7 @@ export default function Aurora({
     const update = (t: number) => {
       animateId = requestAnimationFrame(update);
       const { speed: currentSpeed = 1.0 } = propsRef.current;
-      program.uniforms.uTime.value = (t * 0.001) * currentSpeed * 0.1;
+      program.uniforms.uTime.value = t * 0.0001 * currentSpeed;
       program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 0.8;
       program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
       const stops = propsRef.current.colorStops ?? colorStops;
