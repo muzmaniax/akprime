@@ -11,17 +11,38 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
 
       {/* ── Background ── */}
       <div className="absolute inset-0 -z-0 bg-[#082121]">
-        {/* Aurora effect — primary background */}
-        <div className="absolute inset-0 opacity-80 mix-blend-screen pointer-events-none">
+        {/* Base image with darkening filter */}
+        <div
+          className="absolute inset-0 opacity-35"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=2000&q=80')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "brightness(0.4) contrast(1.1) saturate(0.8)",
+          }}
+        />
+
+        {/* Dark teal overlay for richness */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(8,33,33,0.5) 0%, rgba(4,20,20,0.8) 100%)",
+          }}
+        />
+
+        {/* Aurora effect — layered on top */}
+        <div className="absolute inset-0 opacity-85 mix-blend-screen pointer-events-none">
           <Aurora
-            colorStops={["#082121", "#37B4B4", "#29E0C8"]}
+            colorStops={["#1a4f4f", "#2dd4bf", "#22d3ee"]}
             amplitude={1.0}
             blend={0.4}
             speed={0.9}
           />
         </div>
 
-        {/* Subtle accent gradients */}
+        {/* Accent gradient overlays for depth */}
         <div
           className="absolute pointer-events-none"
           style={{
@@ -30,7 +51,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
             width: "100%",
             height: "100%",
             background:
-              "radial-gradient(ellipse at 50% 0%, rgba(55,180,180,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse at 50% 0%, rgba(45,212,191,0.12) 0%, transparent 70%)",
           }}
         />
 
@@ -42,7 +63,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
             width: "60%",
             height: "60%",
             background:
-              "radial-gradient(ellipse at 100% 100%, rgba(41,224,200,0.06) 0%, transparent 70%)",
+              "radial-gradient(ellipse at 100% 100%, rgba(34,211,238,0.08) 0%, transparent 70%)",
           }}
         />
       </div>
