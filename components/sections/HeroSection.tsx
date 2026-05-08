@@ -16,7 +16,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           className="absolute inset-0 opacity-35"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=2000&q=80')",
+              "url('/images/photo-1552664730-d307ca884978')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "brightness(0.4) contrast(1.1) saturate(0.8)",
@@ -36,9 +36,9 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         <div className="absolute inset-0 opacity-85 mix-blend-screen pointer-events-none">
           <Aurora
             colorStops={["#1a4f4f", "#2dd4bf", "#22d3ee"]}
-            amplitude={1.0}
-            blend={0.4}
-            speed={0.9}
+            amplitude={0.7}
+            blend={1.8}
+            speed={1.2}
           />
         </div>
 
