@@ -13,22 +13,22 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
       <div className="absolute inset-0 -z-0 bg-[#082121]">
         {/* Base image with darkening filter */}
         <div
-          className="absolute inset-0 opacity-35"
+          className="absolute inset-0 opacity-40"
           style={{
             backgroundImage:
               "url('/images/photo-1552664730-d307ca884978')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "brightness(0.4) contrast(1.1) saturate(0.8)",
+            filter: "brightness(0.35) contrast(1.15) grayscale(100%)",
           }}
         />
 
-        {/* Dark teal overlay for richness */}
+        {/* Darker, subtle teal overlay for contrast */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at center, rgba(8,33,33,0.5) 0%, rgba(4,20,20,0.8) 100%)",
+              "radial-gradient(ellipse at center, rgba(4,20,20,0.25) 0%, rgba(2,12,12,0.45) 100%)",
           }}
         />
 
