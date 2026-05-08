@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Primitives";
 import { TrustedLogosCarousel } from "@/components/sections/TrustedLogosCarousel";
+import Aurora from "@/components/ui/Aurora";
 
 export function HeroSection({ onBooking }: { onBooking?: () => void }) {
   return (
@@ -63,6 +64,16 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
             filter: "blur(48px)",
           }}
         />
+
+        {/* Aurora effect overlay */}
+        <div className="absolute inset-0 opacity-60 mix-blend-screen pointer-events-none">
+          <Aurora
+            colorStops={["#082121", "#37B4B4", "#29E0C8"]}
+            amplitude={0.7}
+            blend={0.3}
+            speed={0.8}
+          />
+        </div>
       </div>
 
       {/* ── Main content — vertically centred ── */}
