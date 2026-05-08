@@ -10,70 +10,41 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
     <section className="relative section-dark overflow-hidden flex flex-col" style={{ minHeight: "calc(100vh - var(--navbar-h, 64px))" }}>
 
       {/* ── Background ── */}
-      <div className="absolute inset-0 -z-0">
-        {/* Photo */}
-        <img
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=2000&q=80"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Dark multiply overlay — matches Figma rgba(8,35,35,0.98) multiply */}
-        <div className="absolute inset-0 bg-[#082323] opacity-[0.93] mix-blend-multiply" />
-
-        {/* Diagonal gradient blob — top centre-right (Figma Vector, -15.81deg) */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            top: "10%",
-            left: "30%",
-            width: "55%",
-            height: "45%",
-            background:
-              "linear-gradient(135deg, rgba(55,180,180,0.18) 0%, rgba(14,62,62,0.08) 50%, transparent 100%)",
-            transform: "rotate(-16deg)",
-            filter: "blur(48px)",
-          }}
-        />
-
-        {/* Diagonal gradient blob — bottom left (Figma Vector1, -103.85deg) */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            bottom: "-5%",
-            left: "0%",
-            width: "30%",
-            height: "50%",
-            background:
-              "linear-gradient(200deg, rgba(55,180,180,0.14) 0%, rgba(8,33,33,0.06) 60%, transparent 100%)",
-            transform: "rotate(-104deg)",
-            filter: "blur(56px)",
-          }}
-        />
-
-        {/* Diagonal gradient blob — bottom right (Figma Vector2) */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            bottom: "-15%",
-            right: "-2%",
-            width: "50%",
-            height: "45%",
-            background:
-              "linear-gradient(135deg, rgba(55,180,180,0.12) 0%, transparent 70%)",
-            transform: "rotate(-16deg)",
-            filter: "blur(48px)",
-          }}
-        />
-
-        {/* Aurora effect overlay */}
-        <div className="absolute inset-0 opacity-60 mix-blend-screen pointer-events-none">
+      <div className="absolute inset-0 -z-0 bg-[#082121]">
+        {/* Aurora effect — primary background */}
+        <div className="absolute inset-0 opacity-80 mix-blend-screen pointer-events-none">
           <Aurora
             colorStops={["#082121", "#37B4B4", "#29E0C8"]}
-            amplitude={0.7}
-            blend={0.3}
-            speed={0.8}
+            amplitude={1.0}
+            blend={0.4}
+            speed={0.9}
           />
         </div>
+
+        {/* Subtle accent gradients */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            top: "0%",
+            left: "0%",
+            width: "100%",
+            height: "100%",
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(55,180,180,0.08) 0%, transparent 70%)",
+          }}
+        />
+
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            bottom: "0%",
+            right: "0%",
+            width: "60%",
+            height: "60%",
+            background:
+              "radial-gradient(ellipse at 100% 100%, rgba(41,224,200,0.06) 0%, transparent 70%)",
+          }}
+        />
       </div>
 
       {/* ── Main content — vertically centred ── */}
