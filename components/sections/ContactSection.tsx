@@ -39,17 +39,17 @@ export function ContactSection() {
         </Reveal>
 
         <Reveal delay={120} className="lg:col-span-7">
-          <form onSubmit={onSubmit} className="card-light p-7 lg:p-8 space-y-5">
-            <div className="grid sm:grid-cols-2 gap-5">
+          <form onSubmit={onSubmit} className="card-light p-5 sm:p-7 lg:p-8 space-y-4 sm:space-y-5">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
               <Field label="First name" name="first" placeholder="e.g. John" required />
               <Field label="Last name" name="last" placeholder="e.g. Mwangi" required />
             </div>
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
               <Field label="Email address" name="email" type="email" placeholder="you@company.com" required />
               <Field label="Phone number" name="phone" type="tel" placeholder="+254 700 000 000" />
             </div>
             <div>
-              <label htmlFor="message" className="block text-[13px] font-medium text-[#082121] mb-2">
+              <label htmlFor="message" className="block text-[14px] font-medium text-[#082121] mb-2">
                 How can we help?
               </label>
               <textarea
@@ -88,7 +88,7 @@ function ContactTile({ icon, label, value }: { icon: React.ReactNode; label: str
 function Field({ label, name, type = "text", placeholder, required }: { label: string; name: string; type?: string; placeholder?: string; required?: boolean }) {
   return (
     <div>
-      <label htmlFor={name} className="block text-[13px] font-medium text-[#082121] mb-2">
+      <label htmlFor={name} className="block text-[14px] font-medium text-[#082121] mb-2">
         {label}{required && <span className="text-[#37B4B4] ml-0.5">*</span>}
       </label>
       <input
