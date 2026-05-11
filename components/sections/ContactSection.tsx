@@ -61,8 +61,12 @@ export function ContactSection() {
                 placeholder="Tell us a bit about your situation."
               />
             </div>
-            <button type="submit" disabled={submitting} className="btn-cta">
-              {submitting ? "Submitting..." : <>Submit <ArrowUpRight size={16} strokeWidth={2.25} /></>}
+            <button
+              type="submit"
+              disabled={submitting}
+              className="btn-cta w-full sm:w-auto disabled:opacity-55 disabled:cursor-not-allowed"
+            >
+              {submitting ? "Submitting…" : <>Send message <ArrowUpRight size={15} strokeWidth={2.25} /></>}
             </button>
           </form>
         </Reveal>
