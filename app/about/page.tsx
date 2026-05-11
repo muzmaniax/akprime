@@ -28,7 +28,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="section-dark border-b border-white/[0.06] relative overflow-hidden" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
+      <section className="section-dark border-b border-white/[0.06] relative overflow-hidden" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "clamp(20px, 3vw, 40px)" }}>
         <div className="absolute inset-0 -z-0">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30"
@@ -62,14 +62,14 @@ export default function AboutPage() {
       </section>
 
       {/* Stat block */}
-      <section className="section-dark py-12">
-        <div className="container-x grid lg:grid-cols-12 gap-12">
+      <section className="section-dark py-12 lg:py-8">
+        <div className="container-x grid lg:grid-cols-12 lg:gap-10 gap-12 lg:items-center">
           {/* LEFT COLUMN - TEXT AND STATS */}
-          <div className="lg:col-span-6 space-y-10">
+          <div className="lg:col-span-6 space-y-8 lg:space-y-5">
             <Reveal>
               <Eyebrow>Why AK Prime</Eyebrow>
-              <h2 className="mt-4 text-white text-balance max-w-[22ch]">Built from real enterprise experience.</h2>
-              <p className="mt-5 text-[15px] text-white/65 leading-relaxed">
+              <h2 className="mt-3 lg:mt-2 text-white text-balance max-w-[22ch]">Built from real enterprise experience.</h2>
+              <p className="mt-4 lg:mt-3 text-[15px] text-white/65 leading-relaxed">
                 Our team has led technology and finance transformations inside multinationals,
                 growth-stage companies, and public-sector institutions. We bring that calibre of
                 advisory to organisations that don't have it in-house.
@@ -77,8 +77,8 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={80}>
               <div>
-                <h3 className="text-white text-[13px] font-semibold tracking-[0.12em] uppercase mb-6">The numbers</h3>
-                <div className="grid grid-cols-2 gap-8">
+                <h3 className="text-white text-[13px] font-semibold tracking-[0.12em] uppercase mb-4 lg:mb-3">The numbers</h3>
+                <div className="grid grid-cols-2 gap-6 lg:gap-5">
                   <StatCell value="20+" label="Engagements delivered" />
                   <StatCell value="23" label="Integrated service lines" />
                   <StatCell value="98%" label="Client satisfaction" />
@@ -88,48 +88,23 @@ export default function AboutPage() {
             </Reveal>
           </div>
 
-          {/* RIGHT COLUMN - IMAGE TILES */}
-          <div className="hidden lg:grid lg:col-span-6 grid-cols-2 gap-4 auto-rows-max h-fit">
-            {/* Top Left */}
+          {/* RIGHT COLUMN - IMAGE TILES (desktop only, 2 images side by side) */}
+          <div className="hidden lg:grid lg:col-span-6 grid-cols-2 gap-3 items-start">
             <Reveal delay={80}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
                 <img
                   src="/images/hero-workspace-bw.jpg"
                   alt="Team collaboration"
-                  className="w-full h-auto aspect-[3/4] object-cover"
+                  className="w-full h-auto aspect-[3/4] lg:aspect-[4/5] object-cover"
                 />
               </div>
             </Reveal>
-
-            {/* Top Right - Offset Down */}
             <Reveal delay={160}>
-              <div className="overflow-hidden rounded-xl ring-1 ring-white/10 mt-6">
+              <div className="overflow-hidden rounded-xl ring-1 ring-white/10 lg:mt-8">
                 <img
                   src="/images/business-meeting.jpg"
                   alt="Enterprise experience"
-                  className="w-full h-auto aspect-[3/4] object-cover"
-                />
-              </div>
-            </Reveal>
-
-            {/* Bottom Left - Offset Up */}
-            <Reveal delay={240}>
-              <div className="overflow-hidden rounded-xl ring-1 ring-white/10 -mt-6">
-                <img
-                  src="/images/business-meeting.jpg"
-                  alt="Strategic planning"
-                  className="w-full h-auto aspect-[3/4] object-cover"
-                />
-              </div>
-            </Reveal>
-
-            {/* Bottom Right */}
-            <Reveal delay={320}>
-              <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
-                <img
-                  src="/images/hero-workspace-bw.jpg"
-                  alt="Advisory team"
-                  className="w-full h-auto aspect-[3/4] object-cover"
+                  className="w-full h-auto aspect-[3/4] lg:aspect-[4/5] object-cover"
                 />
               </div>
             </Reveal>
