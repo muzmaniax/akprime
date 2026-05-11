@@ -23,7 +23,7 @@ export default function IndustryPage({ params }: Props) {
       {/* ── 1. Hero ── */}
       <section
         className="relative flex flex-col justify-end overflow-hidden text-white"
-        style={{ minHeight: "min(82vh, 640px)", paddingTop: "var(--navbar-h, 64px)" }}
+        style={{ minHeight: "min(72vh, 560px)" }}
       >
         {/* Photo */}
         <img
@@ -43,7 +43,7 @@ export default function IndustryPage({ params }: Props) {
         />
 
         {/* Content */}
-        <div className="relative z-10 container-x pb-12 pt-10 sm:pb-16">
+        <div className="relative z-10 container-x pb-10 pt-6 sm:pb-14">
 
           {/* Back button */}
           <Link
