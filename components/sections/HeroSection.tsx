@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Primitives";
 import { TrustedLogosCarousel } from "@/components/sections/TrustedLogosCarousel";
-import Aurora from "@/components/ui/Aurora";
+import Waves from "@/components/ui/Waves";
 
 export function HeroSection({ onBooking }: { onBooking?: () => void }) {
   return (
@@ -34,13 +34,20 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           }}
         />
 
-        {/* Aurora — desaturated, slow, atmospheric. NO mix-blend-screen */}
-        <div className="absolute inset-0 opacity-35 pointer-events-none">
-          <Aurora
-            colorStops={["#0b2c2c", "#136f63", "#164e63"]}
-            amplitude={0.38}
-            blend={0.9}
-            speed={0.45}
+        {/* Waves — Perlin-noise field lines in akprime teal, cursor-reactive */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Waves
+            lineColor="rgba(55, 180, 180, 0.13)"
+            backgroundColor="transparent"
+            waveSpeedX={0.014}
+            waveSpeedY={0.006}
+            waveAmpX={38}
+            waveAmpY={18}
+            xGap={14}
+            yGap={40}
+            friction={0.93}
+            tension={0.006}
+            maxCursorMove={110}
           />
         </div>
 
