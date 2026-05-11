@@ -10,60 +10,84 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
     <section className="relative section-dark overflow-hidden flex flex-col" style={{ minHeight: "calc(100vh - var(--navbar-h, 64px))" }}>
 
       {/* ── Background ── */}
-      <div className="absolute inset-0 -z-0 bg-[#082121]">
-        {/* Base image with darkening filter */}
+      <div className="absolute inset-0 -z-0 bg-[#060f0f]">
+
+        {/* Base image — BW, heavily darkened */}
         <div
           className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage:
-              "url('/images/hero-workspace-bw.jpg')",
+            backgroundImage: "url('/images/hero-workspace-bw.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "brightness(0.35) contrast(1.15) grayscale(100%)",
+            filter: "brightness(0.28) contrast(1.2) grayscale(100%)",
           }}
         />
 
-        {/* Darker, subtle teal overlay for contrast */}
+        {/* True black depth overlay — restores typography clarity */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(4,20,20,0.25) 0%, rgba(2,12,12,0.45) 100%)",
+            background: `
+              linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(0,0,0,0.82)),
+              radial-gradient(ellipse at top, rgba(20,80,75,0.18) 0%, transparent 60%)
+            `,
           }}
         />
 
-        {/* Aurora effect — layered on top */}
-        <div className="absolute inset-0 opacity-85 mix-blend-screen pointer-events-none">
+        {/* Aurora — desaturated, slow, atmospheric. NO mix-blend-screen */}
+        <div className="absolute inset-0 opacity-35 pointer-events-none">
           <Aurora
-            colorStops={["#1a4f4f", "#2dd4bf", "#22d3ee"]}
-            amplitude={0.65}
-            blend={1.4}
-            speed={1.6}
+            colorStops={["#0b2c2c", "#136f63", "#164e63"]}
+            amplitude={0.38}
+            blend={0.9}
+            speed={0.45}
           />
         </div>
 
-        {/* Accent gradient overlays for depth */}
+        {/* Asymmetric accent glow — top-right primary source */}
         <div
           className="absolute pointer-events-none"
           style={{
-            top: "0%",
-            left: "0%",
-            width: "100%",
-            height: "100%",
+            top: "-10%",
+            right: "-5%",
+            width: "65%",
+            height: "70%",
             background:
-              "radial-gradient(ellipse at 50% 0%, rgba(45,212,191,0.12) 0%, transparent 70%)",
+              "radial-gradient(ellipse at 85% 10%, rgba(19,111,99,0.22) 0%, transparent 65%)",
           }}
         />
 
+        {/* Secondary glow — bottom-left, much dimmer */}
         <div
           className="absolute pointer-events-none"
           style={{
             bottom: "0%",
-            right: "0%",
-            width: "60%",
-            height: "60%",
+            left: "0%",
+            width: "45%",
+            height: "50%",
             background:
-              "radial-gradient(ellipse at 100% 100%, rgba(34,211,238,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse at 0% 100%, rgba(11,44,44,0.28) 0%, transparent 70%)",
+          }}
+        />
+
+        {/* Bottom fog — grounds logos + CTAs, adds cinematic depth */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 42%)",
+          }}
+        />
+
+        {/* Noise grain — subtle texture, makes gradients feel less flat */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            opacity: 0.028,
+            mixBlendMode: "soft-light",
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "128px 128px",
           }}
         />
       </div>
@@ -71,17 +95,17 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
       {/* ── Main content — vertically centred ── */}
       <div className="relative flex-1 flex flex-col items-center justify-center gap-3 px-5 pt-16 pb-10 text-center">
 
-        {/* Pill badge */}
+        {/* Pill badge — glass dark style */}
         <Reveal>
-          <div className="inline-flex items-center gap-1.5 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[rgba(32,190,179,0.13)] border border-[rgba(19,122,122,0.5)] text-[12px] sm:text-[13px] whitespace-nowrap">
-            <span className="text-white/70 flex items-center gap-1 sm:gap-2">
+          <div className="inline-flex items-center gap-1.5 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-black/30 backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.35)] text-[12px] sm:text-[13px] whitespace-nowrap">
+            <span className="text-white/65 flex items-center gap-1 sm:gap-2">
               <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#37B4B4] inline-block shrink-0" />
               <span className="hidden sm:inline">Trusted by leading organisations</span>
               <span className="sm:hidden">Trusted by teams</span>
             </span>
             <Link
               href="/case-studies"
-              className="text-[#4cf0f0] hover:text-white font-normal transition-colors"
+              className="text-[#7AE7DC] hover:text-white font-normal transition-colors"
             >
               See case studies
             </Link>
@@ -96,7 +120,8 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
               fontSize: "clamp(32px, 3.6vw, 52px)",
               letterSpacing: "-0.04em",
               lineHeight: 1.05,
-              maxWidth: "780px",
+              maxWidth: "700px",
+              textShadow: "0 2px 20px rgba(0,0,0,0.35)",
             }}
           >
             Strategic consulting for businesses ready to scale.
@@ -106,12 +131,12 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         {/* Body */}
         <Reveal delay={160}>
           <p
-            className="text-white/75 font-normal text-center"
+            className="text-white/80 font-normal text-center"
             style={{
               fontSize: "clamp(13px, 1.1vw, 15px)",
               letterSpacing: "-0.01em",
               lineHeight: 1.55,
-              maxWidth: "620px",
+              maxWidth: "580px",
             }}
           >
             We help organisations navigate complexity, make informed decisions, and build
@@ -121,17 +146,17 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
 
         {/* CTAs */}
         <Reveal delay={240}>
-          <div className="flex items-center gap-2 sm:gap-3 mt-1 flex-wrap">
+          <div className="flex items-center gap-2 sm:gap-3 mt-1 flex-wrap justify-center">
             <Link
               href="/contact"
-              className="h-10 px-4 sm:px-6 rounded-lg bg-white/[0.08] border border-white/25 text-white text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center hover:bg-white/15 transition-colors whitespace-nowrap"
+              className="h-10 px-4 sm:px-6 rounded-lg bg-white/[0.05] border border-white/20 text-white text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center hover:bg-white/10 transition-colors whitespace-nowrap"
             >
               Contact
             </Link>
             <button
               type="button"
               onClick={onBooking}
-              className="h-10 px-4 sm:px-6 rounded-lg bg-[#37B4B4] border border-[#36c0c0] text-[#0a3030] text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center hover:bg-[#29E0C8] transition-colors whitespace-nowrap"
+              className="h-10 px-4 sm:px-6 rounded-lg bg-[#37B4B4] border border-[#36c0c0] text-[#0a3030] text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center hover:bg-[#45cfcf] transition-colors whitespace-nowrap shadow-[0_10px_40px_rgba(55,180,180,0.18)]"
             >
               Book a Call
             </button>
@@ -140,7 +165,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
       </div>
 
       {/* ── Client logos — anchored to bottom ── */}
-      <div className="relative w-full border-t border-white/[0.06]">
+      <div className="relative w-full border-t border-white/[0.05]">
         <TrustedLogosCarousel />
       </div>
 
