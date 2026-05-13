@@ -5,10 +5,11 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow, SectionHeader } from "@/components/ui/Primitives";
 import { industriesData, type Industry } from "@/data/industries";
+import { useSiteImages } from "@/lib/use-site-images";
 
 /* ─── PROCESS — Tailwind UI "numbered steps with dividers" ─── */
 const PROCESS = [
-  { num: "01", title: "Assess", desc: "Structured discovery — stakeholder interviews, current-state mapping, and gap analysis before a single recommendation is made." },
+  { num: "01", title: "Assess", desc: "Structured discovery: stakeholder interviews, current-state mapping, and gap analysis before a single recommendation is made." },
   { num: "02", title: "Design", desc: "Solution architecture, requirement specs, risk register and agreed KPIs. Nothing moves to implementation without sign-off." },
   { num: "03", title: "Implement", desc: "Deploy with formal change control and milestone governance. Payments tied to accepted deliverables." },
   { num: "04", title: "Train", desc: "Role-based training, SOPs, and competency assessment completed before go-live. No surprises on day one." },
@@ -19,6 +20,7 @@ export function ProcessSection() {
   return (
     <section className="bg-[#F4FAFA] section-py border-t border-[#082121]/8">
       <div className="container-x">
+        <div className="max-w-[1060px] mx-auto">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
           {/* Left — sticky label */}
@@ -28,7 +30,7 @@ export function ProcessSection() {
               A proven 5-phase framework.
             </h2>
             <p className="mt-5 text-[14px] text-[#3a5a5a] leading-relaxed">
-              Every engagement. Every service line. Every time. No shortcuts, no junior shuffle — just structured delivery from discovery to scale.
+              Every engagement. Every service line. Every time. No shortcuts, no junior shuffle. Just structured delivery from discovery to scale.
             </p>
           </Reveal>
 
@@ -52,6 +54,7 @@ export function ProcessSection() {
           </div>
 
         </div>
+        </div>
       </div>
     </section>
   );
@@ -59,33 +62,37 @@ export function ProcessSection() {
 
 /* ─── INDUSTRIES — photo cards, dark background ─── */
 export function IndustriesSection() {
+  const visibleIndustries = industriesData.slice(0, 6);
+  const cmsImages = useSiteImages(visibleIndustries.map(ind => `industry.${ind.slug}`));
+
   return (
     <section className="section-dark section-py border-t border-white/[0.06]">
       <div className="container-x">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+        <div className="max-w-[1060px] mx-auto">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
           <Reveal>
             <Eyebrow>Sectors we serve</Eyebrow>
-            <h2 className="mt-4 text-white text-balance max-w-[22ch]">Built for your industry.</h2>
-            <p className="mt-4 text-[14px] text-white/60 leading-relaxed max-w-xl">
-              We don't apply generic templates. Every engagement draws on deep sector knowledge built across years of East African delivery.
+            <h2 className="mt-3 text-white text-balance max-w-[22ch]">Built for your industry.</h2>
+            <p className="mt-3 text-[13px] text-white/60 leading-relaxed max-w-xl">
+              We don't apply generic templates. Every engagement draws on deep sector knowledge built across years of cross-market delivery.
             </p>
           </Reveal>
           <Reveal delay={100}>
-            <Link href="/industries" className="inline-flex items-center gap-1.5 text-[#37B4B4] hover:text-[#29E0C8] text-[14px] font-semibold transition-colors">
-              All industries <ArrowUpRight size={14} />
+            <Link href="/industries" className="inline-flex items-center gap-1.5 text-[#37B4B4] hover:text-[#29E0C8] text-[13px] font-semibold transition-colors">
+              All industries <ArrowUpRight size={13} />
             </Link>
           </Reveal>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {industriesData.slice(0, 6).map((ind: Industry, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {visibleIndustries.map((ind: Industry, i) => (
             <Reveal key={ind.slug} delay={(i % 3) * 60}>
               <Link
                 href={`/industries/${ind.slug}`}
-                className="group relative block aspect-[4/5] sm:aspect-[7/8] rounded-2xl overflow-hidden ring-1 ring-white/10 hover:ring-[#37B4B4]/40 transition-all duration-300"
+                className="group relative block aspect-[3/2] sm:aspect-[4/3] lg:aspect-[3/2] rounded-2xl overflow-hidden ring-1 ring-white/10 hover:ring-[#37B4B4]/40 transition-all duration-300"
               >
                 <Image
-                  src={ind.photo}
+                  src={cmsImages[`industry.${ind.slug}`] || ind.photo}
                   alt={ind.name}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -93,23 +100,23 @@ export function IndustriesSection() {
                   style={{ objectPosition: "center 30%" }}
                   unoptimized
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
                 {/* Index */}
-                <div className="absolute top-4 left-4">
-                  <span className="text-[10px] font-semibold tracking-widest uppercase text-white/40">
+                <div className="absolute top-3 left-3">
+                  <span className="text-[9px] font-semibold tracking-widest uppercase text-white/35">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
 
                 {/* Bottom content */}
-                <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
+                <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-3">
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-white text-[22px] font-medium leading-snug">{ind.name}</h3>
-                    <p className="mt-1.5 text-[13px] text-white/70 leading-snug line-clamp-2">{ind.shortDescription}</p>
+                    <h3 className="text-white text-[16px] font-medium leading-snug">{ind.name}</h3>
+                    <p className="mt-1 text-[12px] text-white/65 leading-snug line-clamp-1 lg:line-clamp-1">{ind.shortDescription}</p>
                   </div>
-                  <span className="w-9 h-9 rounded-full bg-[#37B4B4] text-white inline-flex items-center justify-center shrink-0 group-hover:bg-[#29E0C8] transition-colors shadow-md">
-                    <ArrowUpRight size={15} strokeWidth={2.5} />
+                  <span className="w-7 h-7 rounded-full bg-[#37B4B4] text-white inline-flex items-center justify-center shrink-0 group-hover:bg-[#29E0C8] transition-colors shadow-md">
+                    <ArrowUpRight size={12} strokeWidth={2.5} />
                   </span>
                 </div>
               </Link>
@@ -126,6 +133,7 @@ export function IndustriesSection() {
             </div>
           </Reveal>
         )}
+        </div>
       </div>
     </section>
   );

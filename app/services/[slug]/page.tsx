@@ -3,9 +3,11 @@
 import { use } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button-cva";
 import { servicesData } from "@/data/services";
+import { useSiteImage } from "@/lib/use-site-images";
+import Waves from "@/components/ui/Waves";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -15,75 +17,71 @@ export default function ServicePage({ params }: Props) {
   const resolvedParams = use(params);
   const service = servicesData.find((s) => s.slug === resolvedParams.slug);
 
+  // Hook must run before any early return
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const cmsPhoto = useSiteImage(service ? `service.${service.id}` : '')
+
   if (!service) {
     notFound();
   }
 
+  const photo = cmsPhoto || service.photo;
+
   return (
     <div className="bg-[#FFFFFF] min-h-screen">
       
-      {/* 1. Hero Section (The Hook) - Glassmorphism Edit */}
-      <section className="relative pt-14 pb-20 md:pt-20 md:pb-28 bg-[#0E3E3E] text-white overflow-hidden">
-        {/* Glow Effects */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#37B4B4]/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#29E0C8]/5 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
-        <div className="absolute inset-0 bg-[#082121]/60 mix-blend-multiply pointer-events-none z-0" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <Link href="/services" className="inline-flex items-center gap-2 text-[#37B4B4] hover:text-[#29E0C8] font-semibold text-sm mb-8 transition-colors backdrop-blur-md bg-white/5 px-4 py-2 rounded-lg border border-white/10">
-              <ArrowLeft size={16} />
-              Back to Services Directory
-            </Link>
-            <div className="flex flex-wrap items-center gap-2 mb-6">
-              <Button
-                href="/services"
-                variant="secondary"
-                size="sm"
-                className="!rounded-full"
-              >
-                {service.category.split(" & ")[0]}
-              </Button>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="!rounded-full"
-                isDisabled
-              >
-                {service.name}
-              </Button>
-            </div>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 leading-[1.1]">
-              {service.heroHeadline}
-            </h1>
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light mb-8 max-w-xl">
-              {service.shortDescription}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                href="/contact"
-                variant="primary"
-                size="lg"
-                icon={ChevronRight}
-                iconPosition="end"
-                className="shadow-lg shadow-[#37B4B4]/20"
-              >
-                {service.cta}
-              </Button>
-            </div>
+      {/* 1. Hero */}
+      <section
+        className="relative flex flex-col justify-end overflow-hidden text-white"
+        style={{ minHeight: "min(72vh, 560px)" }}
+      >
+        <img
+          src={photo}
+          alt={service.name}
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
+          style={{ filter: "brightness(0.45) saturate(0.7)" }}
+        />
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 50%, rgba(2,8,8,0.90) 100%)",
+          }}
+        />
+        <div className="relative z-10 container-x pb-10 pt-6 sm:pb-14">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-[13px] font-normal transition-colors mb-8"
+          >
+            <ArrowLeft size={14} strokeWidth={2} />
+            Back to Services
+          </Link>
+          <div className="flex flex-wrap items-center gap-2.5 mb-5">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] font-semibold tracking-[0.14em] uppercase text-white/80 backdrop-blur-sm">
+              {service.category}
+            </span>
+            <span className="w-1 h-1 rounded-full bg-white/25" />
+            <span className="text-[13px] text-white/65 font-normal">{service.name}</span>
           </div>
-          
-          <div className="hidden lg:block relative">
-             <div className="absolute inset-0 bg-gradient-to-tr from-[#37B4B4]/30 to-transparent rounded-3xl md:-translate-x-6 md:translate-y-6 blur-md" />
-             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
-               <div className="absolute inset-0 bg-[#37B4B4]/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
-               <img 
-                 src={service.photo} 
-                 alt={service.name} 
-                 className="w-full h-[550px] object-cover rounded-3xl group-hover:scale-105 transition-transform duration-700"
-               />
-             </div>
-          </div>
+          <h1
+            className="text-white font-medium text-balance mb-5 max-w-[22ch]"
+            style={{ fontSize: "clamp(1.75rem, 4.5vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em" }}
+          >
+            {service.heroHeadline}
+          </h1>
+          <p
+            className="text-white/70 font-normal leading-relaxed mb-8 max-w-lg"
+            style={{ fontSize: "clamp(0.875rem, 1.5vw, 1rem)" }}
+          >
+            {service.shortDescription}
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 h-11 px-6 rounded-lg bg-[#37B4B4] text-[#082121] text-[14px] font-semibold hover:bg-[#45cfcf] transition-colors shadow-[0_8px_32px_rgba(55,180,180,0.25)] whitespace-nowrap"
+          >
+            {service.cta}
+            <ArrowUpRight size={15} strokeWidth={2.5} />
+          </Link>
         </div>
       </section>
 
@@ -204,6 +202,22 @@ export default function ServicePage({ params }: Props) {
       <section className="py-24 bg-[#082121] text-center px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#37B4B4]/5 mix-blend-screen" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#37B4B4]/20 rounded-full blur-[120px] pointer-events-none" />
+        {/* Waves — Perlin-noise field lines in akprime teal */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Waves
+            lineColor="rgba(55, 180, 180, 0.14)"
+            backgroundColor="transparent"
+            waveSpeedX={0.014}
+            waveSpeedY={0.006}
+            waveAmpX={38}
+            waveAmpY={18}
+            xGap={14}
+            yGap={40}
+            friction={0.93}
+            tension={0.006}
+            maxCursorMove={110}
+          />
+        </div>
         
         <div className="max-w-3xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-medium text-white mb-6 leading-tight">

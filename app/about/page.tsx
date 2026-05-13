@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { Reveal, Eyebrow, StatCell, SectionHeader, CtaButton, GhostButton } from "@/components/ui/Primitives";
 import { CTABannerSection, FAQSection } from "@/components/sections/TestimonialsInsightsCTA";
 import { Database, Cloud, TrendingUp, Zap, Users, Shield } from "lucide-react";
+import { getSiteImage } from "@/lib/site-images";
+import BorderGlow from "@/components/ui/BorderGlow";
 
 export const metadata: Metadata = {
   title: "About | AK Prime Consulting",
@@ -12,7 +14,7 @@ const VALUES = [
   { title: "Clarity before complexity", body: "Most problems are misdiagnosed. We start by getting the question right." },
   { title: "Strategy with purpose", body: "Recommendations exist to be acted on. We design for execution, not the deck." },
   { title: "Consulting built on trust", body: "Senior teams, no junior shuffle. We're accountable to the work, not the hours." },
-  { title: "Growth with intention", body: "We build capability inside your organisation — not dependence on us." },
+  { title: "Growth with intention", body: "We build capability inside your organisation, not dependence on us." },
 ];
 
 const CAPABILITIES = [
@@ -25,6 +27,10 @@ const CAPABILITIES = [
 ];
 
 export default function AboutPage() {
+  const heroBg = getSiteImage("about.hero_bg");
+  const panel1 = getSiteImage("about.panel_1");
+  const panel2 = getSiteImage("about.panel_2");
+
   return (
     <>
       {/* Hero */}
@@ -32,7 +38,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 -z-0">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('/images/team-collaboration.jpg')" }}
+            style={{ backgroundImage: `url('${heroBg || "/images/team-collaboration.jpg"}')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#082121]/80 via-[#082121]/90 to-[#082121]" />
         </div>
@@ -48,8 +54,8 @@ export default function AboutPage() {
           <Reveal delay={160}>
             <p className="mt-3 text-[14px] text-white/65 leading-relaxed max-w-2xl">
               AK Prime is a strategic consulting firm working with organisations across
-              East Africa. We bring rigour, structure, and senior expertise to every
-              engagement — from operational diagnostics to ERP transformations.
+              Africa and the Middle East. We bring rigour, structure, and senior expertise
+              to every engagement, from operational diagnostics to ERP transformations.
             </p>
           </Reveal>
           <Reveal delay={240}>
@@ -93,7 +99,7 @@ export default function AboutPage() {
             <Reveal delay={80}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
                 <img
-                  src="/images/hero-workspace-bw.jpg"
+                  src={panel1 || "/images/hero-workspace-bw.jpg"}
                   alt="Team collaboration"
                   className="w-full h-auto aspect-[3/4] lg:aspect-[4/5] object-cover"
                 />
@@ -102,7 +108,7 @@ export default function AboutPage() {
             <Reveal delay={160}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10 lg:mt-8">
                 <img
-                  src="/images/business-meeting.jpg"
+                  src={panel2 || "/images/business-meeting.jpg"}
                   alt="Enterprise experience"
                   className="w-full h-auto aspect-[3/4] lg:aspect-[4/5] object-cover"
                 />
@@ -120,11 +126,24 @@ export default function AboutPage() {
           </Reveal>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {VALUES.map((v, i) => (
-              <Reveal key={v.title} delay={i * 80}>
-                <div className="h-full p-7 card-dark">
-                  <h3 className="text-white mb-3">{v.title}</h3>
-                  <p className="text-[14px] text-white/60 leading-relaxed">{v.body}</p>
-                </div>
+              <Reveal key={v.title} delay={i * 80} className="h-full">
+                <BorderGlow
+                  className="h-full"
+                  backgroundColor="#082121"
+                  glowColor="180 51 70"
+                  colors={["#37B4B4", "#29E0C8", "#0a4040"]}
+                  borderRadius={20}
+                  glowRadius={36}
+                  glowIntensity={0.9}
+                  edgeSensitivity={25}
+                  coneSpread={22}
+                  animated={i === 0}
+                >
+                  <div className="p-7">
+                    <h3 className="text-white mb-3">{v.title}</h3>
+                    <p className="text-[14px] text-white/60 leading-relaxed">{v.body}</p>
+                  </div>
+                </BorderGlow>
               </Reveal>
             ))}
           </div>
@@ -141,14 +160,26 @@ export default function AboutPage() {
             {CAPABILITIES.map((c, i) => {
               const Icon = c.icon;
               return (
-                <Reveal key={c.title} delay={i * 60}>
-                  <div className="card-dark p-6">
-                    <div className="w-12 h-12 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10 flex items-center justify-center mb-4">
-                      <Icon size={24} className="text-[#37B4B4]" strokeWidth={1.5} />
+                <Reveal key={c.title} delay={i * 60} className="h-full">
+                  <BorderGlow
+                    className="h-full"
+                    backgroundColor="#082121"
+                    glowColor="180 51 70"
+                    colors={["#37B4B4", "#29E0C8", "#0a4040"]}
+                    borderRadius={20}
+                    glowRadius={36}
+                    glowIntensity={0.9}
+                    edgeSensitivity={25}
+                    coneSpread={22}
+                  >
+                    <div className="p-6">
+                      <div className="w-12 h-12 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10 flex items-center justify-center mb-4">
+                        <Icon size={24} className="text-[#37B4B4]" strokeWidth={1.5} />
+                      </div>
+                      <h3 className="text-white font-medium text-[15px]">{c.title}</h3>
+                      <p className="mt-3 text-[13px] text-white/60 leading-relaxed">{c.description}</p>
                     </div>
-                    <h3 className="text-white font-medium text-[15px]">{c.title}</h3>
-                    <p className="mt-3 text-[13px] text-white/60 leading-relaxed">{c.description}</p>
-                  </div>
+                  </BorderGlow>
                 </Reveal>
               );
             })}

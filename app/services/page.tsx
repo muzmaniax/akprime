@@ -4,9 +4,10 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Cpu, Shield, BarChart3, Users, TrendingUp } from "lucide-react";
-import { Reveal } from "@/components/ui/Primitives";
+import { Reveal, Eyebrow } from "@/components/ui/Primitives";
 import { BookingModal } from "@/components/ui/BookingModal";
-import { servicesData, type ServiceCategory } from "@/data/services";
+import { servicesData, type ServiceCategory, type ServiceData } from "@/data/services";
+import { useSiteImage } from "@/lib/use-site-images";
 
 const CATEGORIES: { key: ServiceCategory; short: string; blurb: string; icon: React.ElementType }[] = [
   {
@@ -30,7 +31,7 @@ const CATEGORIES: { key: ServiceCategory; short: string; blurb: string; icon: Re
   {
     key: "HR & People Services",
     short: "HR & People",
-    blurb: "Org design, payroll, recruitment, performance and L&D — the full people stack.",
+    blurb: "Org design, payroll, recruitment, performance and L&D. The full people stack.",
     icon: Users,
   },
   {
@@ -42,7 +43,7 @@ const CATEGORIES: { key: ServiceCategory; short: string; blurb: string; icon: Re
 ];
 
 const PHASES = [
-  { num: "01", title: "Assess", desc: "Structured discovery — interviews, current-state mapping and gap analysis. We understand the business before proposing a solution." },
+  { num: "01", title: "Assess", desc: "Structured discovery: interviews, current-state mapping and gap analysis. We understand the business before proposing a solution." },
   { num: "02", title: "Design", desc: "Solution architecture, requirement specs, risk register and agreed KPIs. Nothing moves to implementation without sign-off." },
   { num: "03", title: "Implement", desc: "Deploy with formal change control and milestone governance. Payments tied to accepted deliverables." },
   { num: "04", title: "Train", desc: "Role-based training, SOPs, e-learning modules and competency assessment before go-live." },
@@ -69,28 +70,22 @@ export default function ServicesPage() {
 
   return (
     <div className="bg-white text-[#082121]">
-      {/* HERO — Synergos-style soft sky */}
-      <section className="relative hero-light-gradient overflow-hidden" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
-        <div className="container-x relative">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 h-7 px-3 rounded-full bg-white/70 border border-[#37B4B4]/25 text-[#37B4B4] text-[11px] font-semibold tracking-[0.16em] uppercase backdrop-blur">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
-              Our Services
-            </div>
-          </Reveal>
+      {/* HERO */}
+      <section className="section-dark border-b border-white/[0.06]" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
+        <div className="container-x">
+          <Reveal><Eyebrow>Our Services</Eyebrow></Reveal>
           <Reveal delay={80}>
             <h1
-              className="mt-3 text-[#082121] text-balance max-w-[24ch]"
+              className="mt-3 text-white text-balance max-w-[24ch]"
               style={{ fontSize: "clamp(1.75rem, 1.2rem + 2vw, 2.6rem)", lineHeight: 1.1 }}
             >
-              Modernise your business operations with{" "}
-              <span className="text-[#37B4B4]">AI, ERP &amp; strategic advisory</span>.
+              Modernise your business operations with AI, ERP &amp; strategic advisory.
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-3 text-[14px] text-[#3a5a5a] leading-relaxed max-w-xl">
+            <p className="mt-3 text-[14px] text-white/65 leading-relaxed max-w-xl">
               {servicesData.length} integrated service lines across five practice areas.
-              End-to-end delivery from discovery to scale — coordinated under one roof.
+              End-to-end delivery from discovery to scale, coordinated under one roof.
             </p>
           </Reveal>
           <Reveal delay={240}>
@@ -98,19 +93,9 @@ export default function ServicesPage() {
               <button type="button" onClick={() => setBookingOpen(true)} className="btn-cta">
                 Book a consultation <ArrowUpRight size={16} strokeWidth={2.25} />
               </button>
-              <Link href="#all-services" className="btn-ghost btn-ghost-light">
+              <Link href="#all-services" className="btn-ghost">
                 Browse all services
               </Link>
-            </div>
-          </Reveal>
-
-          {/* Stats row */}
-          <Reveal delay={320}>
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 pt-7 border-t border-[#082121]/10">
-              <Stat value="120+" label="Engagements delivered" />
-              <Stat value={`${servicesData.length}`} label="Integrated service lines" />
-              <Stat value="98%" label="Client satisfaction" />
-              <Stat value="94%" label="Avg. user adoption" />
             </div>
           </Reveal>
         </div>
@@ -126,7 +111,7 @@ export default function ServicesPage() {
                 Four practice areas. One team. End-to-end delivery.
               </h2>
               <p className="mt-4 text-[15px] md:text-[16px] text-[#3a5a5a] leading-relaxed">
-                Pick where you need depth. We bring expertise across all four — coordinated when your engagement spans more than one.
+                Pick where you need depth. We bring expertise across all four, coordinated when your engagement spans more than one.
               </p>
             </div>
           </Reveal>
@@ -214,38 +199,7 @@ export default function ServicesPage() {
           <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {visible.map((s, i) => (
               <Reveal key={s.id} delay={(i % 3) * 60}>
-                <Link
-                  href={`/services/${s.slug}`}
-                  className="group flex flex-col rounded-2xl overflow-hidden border border-[#082121]/8 hover:border-[#37B4B4]/40 bg-white hover:shadow-md transition-all duration-200"
-                >
-                  {/* Photo — fixed height thumbnail */}
-                  <div className="relative h-[140px] overflow-hidden bg-[#F4FAFA]">
-                    <Image
-                      src={s.photo}
-                      alt={s.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      style={{ objectPosition: "center 40%" }}
-                      unoptimized
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex flex-col flex-1 p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-[#082121] text-[14px] font-medium leading-snug flex-1">
-                        {s.name}
-                      </h3>
-                      <span className="w-7 h-7 rounded-full border border-[#082121]/10 flex items-center justify-center shrink-0 text-[#3a5a5a]/50 group-hover:border-[#37B4B4] group-hover:text-[#37B4B4] group-hover:bg-[#37B4B4]/8 transition-all mt-0.5">
-                        <ArrowUpRight size={13} strokeWidth={2} />
-                      </span>
-                    </div>
-                    <p className="mt-2 text-[12px] text-[#3a5a5a] leading-relaxed line-clamp-2">
-                      {s.shortDescription}
-                    </p>
-                  </div>
-                </Link>
+                <ServiceCard s={s} />
               </Reveal>
             ))}
           </div>
@@ -291,7 +245,7 @@ export default function ServicesPage() {
                 Built for your industry.
               </h2>
               <p className="mt-4 text-[15px] md:text-[16px] text-[#3a5a5a] leading-relaxed">
-                We don't apply generic templates. Every engagement draws on deep sector knowledge built across years of East African delivery.
+                We don't apply generic templates. Every engagement draws on deep sector knowledge built across years of cross-market delivery.
               </p>
             </div>
           </Reveal>
@@ -319,7 +273,7 @@ export default function ServicesPage() {
                   Contact us for a tailored service scope.
                 </h2>
                 <p className="mt-4 text-[15px] text-white/65 max-w-xl mx-auto">
-                  info@akprime.co.ke &nbsp;·&nbsp; 0118 001 001 &nbsp;·&nbsp; Nairobi &amp; Mombasa
+                  info@akprime.co.ke &nbsp;·&nbsp; 0118 001 001 &nbsp;·&nbsp; Mombasa · Nairobi · Dubai
                 </p>
                 <div className="mt-7 flex flex-wrap justify-center gap-3">
                   <button type="button" onClick={() => setBookingOpen(true)} className="btn-cta">
@@ -340,6 +294,41 @@ export default function ServicesPage() {
   );
 }
 
+function ServiceCard({ s }: { s: ServiceData }) {
+  const cmsPhoto = useSiteImage(`service.${s.id}`);
+  const photo = cmsPhoto || s.photo;
+  return (
+    <Link
+      href={`/services/${s.slug}`}
+      className="group flex flex-col rounded-2xl overflow-hidden border border-[#082121]/8 hover:border-[#37B4B4]/40 bg-white hover:shadow-md transition-all duration-200"
+    >
+      <div className="relative h-[220px] overflow-hidden bg-[#F4FAFA]">
+        <Image
+          src={photo}
+          alt={s.name}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          style={{ objectPosition: "center 40%" }}
+          unoptimized
+        />
+      </div>
+      <div className="flex flex-col flex-1 p-5">
+        <p className="text-[10px] font-semibold tracking-[0.16em] uppercase text-[#37B4B4] mb-2">
+          {s.category.split(" & ")[0]}
+        </p>
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-[#082121] text-[18px] font-medium leading-snug flex-1">{s.name}</h3>
+          <span className="w-8 h-8 rounded-full border border-[#082121]/10 flex items-center justify-center shrink-0 text-[#3a5a5a]/40 group-hover:border-[#37B4B4] group-hover:text-[#37B4B4] group-hover:bg-[#37B4B4]/8 transition-all mt-0.5">
+            <ArrowUpRight size={14} strokeWidth={2} />
+          </span>
+        </div>
+        <p className="mt-2 text-[14px] text-[#3a5a5a] leading-relaxed line-clamp-2">{s.shortDescription}</p>
+      </div>
+    </Link>
+  );
+}
+
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
@@ -351,11 +340,3 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function Eyebrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <span className={`inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#37B4B4] ${className}`}>
-      <span className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
-      {children}
-    </span>
-  );
-}

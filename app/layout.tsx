@@ -7,24 +7,28 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "AK Prime Consulting | ERP, Financial & Strategic Advisory in Kenya",
+    default: "AK Prime Consulting | ERP, Financial & Strategic Advisory",
     template: "%s | AK Prime Consulting",
   },
   description:
-    "AK Prime Consulting provides ERP implementation, finance consulting, and digital transformation for growing organisations in Nairobi, Mombasa, and East Africa. Specialising in SAP, Odoo, NetSuite.",
+    "AK Prime Consulting provides ERP implementation, finance consulting, and digital transformation for organisations in Kenya and the UAE. Headquartered in Mombasa with offices in Nairobi and Dubai. Specialising in SAP, Odoo, NetSuite.",
   keywords: [
     "ERP consulting Nairobi",
     "ERP consulting Mombasa",
+    "ERP consulting Dubai",
     "ERP implementation Kenya",
+    "ERP implementation UAE",
     "finance consulting Nairobi",
     "finance consulting Mombasa",
+    "finance consulting Dubai",
     "SAP implementation Kenya",
     "Odoo implementation Kenya",
     "NetSuite implementation Africa",
     "digital transformation consulting",
     "AI integration consulting Kenya",
     "financial transformation services",
-    "business consulting East Africa",
+    "business consulting Africa",
+    "management consulting UAE",
     "technology consulting Nairobi",
     "operational excellence consulting",
   ],
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AK Prime Consulting | ERP, AI & Strategic Advisory",
     description:
-      "AK Prime Consulting — ERP implementation, AI integration, and financial transformation for growing organisations.",
+      "AK Prime Consulting: ERP implementation, AI integration, and financial transformation for growing organisations.",
   },
   robots: {
     index: true,
@@ -64,7 +68,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased font-sans min-h-screen bg-[#082121] text-white overflow-x-hidden">
+      <body className="antialiased font-sans min-h-screen bg-[#082121] text-white overflow-x-hidden" suppressHydrationWarning>
         <ClientProviders>
           <PageLoader />
           <Navbar />

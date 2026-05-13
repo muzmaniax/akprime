@@ -50,10 +50,10 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 transition-colors duration-200",
+          "sticky top-0 z-50 transition-colors duration-200 border-b border-white/[0.12]",
           (scrolled || forceSolid)
-            ? "bg-[#082121]/95 backdrop-blur-md border-b border-white/[0.07]"
-            : "bg-transparent border-b border-transparent"
+            ? "bg-[#082121]/95 backdrop-blur-md"
+            : "bg-transparent"
         )}
         style={{ height: "var(--navbar-h)" }}
         onMouseLeave={() => setOpenMenu(null)}

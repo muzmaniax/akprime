@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "AI Automation & Intelligence | AI Integration Consulting Africa & Middle East",
-  description: "AK Prime helps organisations deploy AI solutions that automate processes, generate insights, and improve decision making — starting with a low-risk proof of concept.",
+  description: "AK Prime helps organisations deploy AI solutions that automate processes, generate insights, and improve decision making, starting with a low-risk proof of concept.",
 };
 
 const capabilities = [
@@ -40,7 +40,7 @@ export default function AIPage() {
                 <span className="text-[#37B4B4]">Intelligent Automation</span>
               </h1>
               <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-2xl">
-                We help organisations deploy AI solutions that automate processes, generate insights, and improve decision making — starting with a low-risk proof of concept.
+                We help organisations deploy AI solutions that automate processes, generate insights, and improve decision making, starting with a low-risk proof of concept.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -102,7 +102,7 @@ export default function AIPage() {
               {[
                 "Begin with a focused 4-week Proof of Concept",
                 "Demonstrate measurable ROI before full investment",
-                "Build on existing data — no greenfield data strategy required",
+                "Build on existing data. No greenfield data strategy required.",
                 "Train your team to operate and monitor AI independently",
                 "Ongoing monitoring, retraining, and performance optimisation",
               ].map((item) => (

@@ -10,6 +10,7 @@ import {
 import { FiMapPin, FiArrowRight } from "react-icons/fi";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import { useSiteImage } from "@/lib/use-site-images";
 
 export const SmoothScrollHero = () => {
   return (
@@ -94,31 +95,36 @@ const CenterImage = ({ sectionHeight }: { sectionHeight: number }) => {
 };
 
 const ParallaxImages = () => {
+  const col1 = useSiteImage("abouthero.col_1");
+  const col2 = useSiteImage("abouthero.col_2");
+  const col3 = useSiteImage("abouthero.col_3");
+  const col4 = useSiteImage("abouthero.col_4");
+
   return (
     <div className="mx-auto max-w-5xl px-4 pt-[200px] relative z-20">
       <ParallaxImg
-        src="/images/diverse-team.jpg"
+        src={col1 || "/images/diverse-team.jpg"}
         alt="Team collaboration"
         start={-200}
         end={200}
         className="w-1/3 rounded-[22px]"
       />
       <ParallaxImg
-        src="/images/startup-meeting.jpg"
+        src={col2 || "/images/startup-meeting.jpg"}
         alt="Data analysis"
         start={200}
         end={-250}
         className="mx-auto w-2/3 rounded-[22px]"
       />
       <ParallaxImg
-        src="/images/professional-workspace.jpg"
+        src={col3 || "/images/professional-workspace.jpg"}
         alt="Modern office"
         start={-200}
         end={200}
         className="ml-auto w-1/3 rounded-[22px]"
       />
       <ParallaxImg
-        src="/images/modern-office.jpg"
+        src={col4 || "/images/modern-office.jpg"}
         alt="Business strategy"
         start={0}
         end={-500}
@@ -176,9 +182,9 @@ const OurJourney = () => {
           Our journey
         </h2>
       </motion.div>
-      <JourneyItem title="Foundation" date="Nairobi, 2018" location="Headquarters" />
-      <JourneyItem title="Branch Expansion" date="Mombasa, 2020" location="Coast Region" />
-      <JourneyItem title="200+ Projects" date="Regional Impact, 2022" location="East Africa" />
+      <JourneyItem title="Foundation" date="Mombasa, 2018" location="Headquarters" />
+      <JourneyItem title="Nairobi Office" date="2020" location="Kenya Operations" />
+      <JourneyItem title="200+ Projects" date="2022" location="Africa & Middle East" />
       <JourneyItem title="AI Hub Launch" date="Nairobi, 2023" location="Tech Innovation" />
       <JourneyItem title="Global Standards" date="Certification, 2024" location="Compliance" />
       <JourneyItem title="Next Phase" date="Future Ready" location="Strategic Growth" />

@@ -2,12 +2,14 @@ export interface CaseStudy {
   id: string;
   title: string;
   client: string;
+  clientInitials: string;
+  logo?: string;
   industry: string;
   location: string;
   sector: string;
   solution: string;
   summary: string;
-  tagline: string; 
+  tagline: string;
   duration: string;
   date: string;
   narrative: {
@@ -36,6 +38,7 @@ export const caseStudies: CaseStudy[] = [
     id: "mo-radio-tax-compliance",
     title: "Recovering Hidden Tax Overpayments",
     client: "MO Radio 88.2FM",
+    clientInitials: "MR",
     industry: "Broadcasting & Media",
     location: "Nairobi, Kenya",
     sector: "Broadcasting",
@@ -85,7 +88,7 @@ export const caseStudies: CaseStudy[] = [
           ]
         }
       ],
-      outcome: "Results: Recovered KSh 8.5M in overpaid taxes within 3 months. The station now has complete visibility into its tax position, achieved 100% filing accuracy, and reduced month-end close time from 8 days to 2 days. The recovered capital was reinvested into new broadcast equipment and content production."
+      outcome: "Recovered KSh 8.5M in overpaid taxes within 3 months. The station now has complete visibility into its tax position, achieved 100% filing accuracy, and reduced month-end close time from 8 days to 2 days. The recovered capital was reinvested into new broadcast equipment and content production."
     },
     testimonial: {
       name: "Station Manager",
@@ -102,186 +105,81 @@ export const caseStudies: CaseStudy[] = [
     category: "Finance"
   },
   {
-    id: "step-fintech-infrastructure",
-    title: "Building Enterprise Infrastructure for Fintech Growth",
-    client: "Step Innovations Africa",
-    industry: "Financial Technology",
-    location: "Nairobi, Kenya",
-    sector: "Fintech",
-    solution: "Technology Infrastructure & Scaling",
-    summary: "Architected cloud-native infrastructure and backend systems to support 10x user growth while maintaining 99.99% uptime and PCI compliance.",
-    tagline: "Enabled Step to scale from 500K to 5M active users with zero downtime migration and enterprise-grade resilience.",
-    duration: "8 months",
-    date: "Sep 08, 2024",
+    id: "coastal-image-technologies",
+    title: "Five Years of Records. Cleaned, Reconciled, and Migrated in Two Months.",
+    client: "Coastal Image Technologies Limited",
+    clientInitials: "CIT",
+    industry: "Technology Services",
+    location: "Mombasa, Kenya",
+    sector: "Technology",
+    solution: "Financial Remediation & Systems Migration",
+    summary: "Delivered a full-scope financial clean-up, tax reconciliation, and cloud accounting migration for a technology firm operating on manual records since 2020.",
+    tagline: "Transformed five years of manual records into a clean, audit-ready cloud accounting system in just two months.",
+    duration: "2 months",
+    date: "2020–2024",
     narrative: {
-      problem: "Step's rapid user growth exposed critical infrastructure limitations. Their monolithic architecture couldn't handle peak transaction volumes (100K+ transactions/day), leading to service degradations during high-activity periods. Database bottlenecks caused payment processing delays, compliance teams spent weeks on manual audit preparation, and the technology stack couldn't support new product lines without major rewrites. Each scaling effort required weeks of planning and risked service disruptions affecting millions of users.",
-      turningPoint: "Step's leadership needed enterprise-grade infrastructure to support their expansion roadmap. AK Prime was brought in to architect a cloud-native, microservices-based infrastructure that could scale elastically, maintain regulatory compliance, and reduce time-to-market for new financial products.",
+      problem: "Coastal Image Technologies had been operating for five years without a formal accounting system. All financial records were maintained manually, leaving the business with no reliable view of its financial position, unreconciled tax obligations, outstanding debtor and creditor balances, and a growing risk of regulatory exposure. When the client sought to put their house in order, the scope of remediation across five years of transactions was significant.",
+      turningPoint: "AK Prime was engaged to perform a full-scope financial clean-up: capturing, classifying, and reconciling every transaction from 2020 to 2024, resolving compliance gaps with KRA, and migrating the business onto a modern cloud accounting platform.",
       approach: [
         {
-          title: "Infrastructure Assessment & Design",
-          description: "Evaluating current systems and designing scalable architecture.",
+          title: "Tax Reconciliation",
+          description: "Aligning the client's QuickBooks records with KRA iTax to close compliance gaps.",
           points: [
-            "Audited existing monolithic application for bottlenecks and technical debt.",
-            "Designed event-driven microservices architecture with Kubernetes orchestration.",
-            "Planned zero-downtime migration strategy to minimize customer impact."
+            "Conducted a thorough reconciliation between QuickBooks records and the KRA iTax system.",
+            "Identified and resolved all variances to ensure full regulatory compliance.",
+            "Closed outstanding tax obligations and prepared the client for clean future filings."
           ]
         },
         {
-          title: "Cloud Migration & Automation",
-          description: "Moving to cloud-native infrastructure with CI/CD pipelines.",
+          title: "Accounts Receivable & Payable Reconciliation",
+          description: "Restoring accuracy across all debtor and creditor balances.",
           points: [
-            "Migrated core services to AWS with multi-region redundancy and auto-scaling.",
-            "Implemented infrastructure-as-code (Terraform) for reproducible deployments.",
-            "Built comprehensive monitoring and alerting with sub-minute incident detection."
+            "Reconciled all accounts receivable and payable balances across the five-year period.",
+            "Initiated active debtor follow-up to accelerate collections on outstanding invoices.",
+            "Resolved discrepancies in opening balances carried forward from prior periods."
           ]
         },
         {
-          title: "Database Optimization & Scaling",
-          description: "Restructuring data layer for performance and compliance.",
+          title: "Bank Reconciliation & Expense Clean-up",
+          description: "Eliminating errors and duplicates from the historical transaction record.",
           points: [
-            "Sharded transaction database to handle 10x volume increase.",
-            "Implemented real-time data warehousing for compliance reporting.",
-            "Created automated backup and disaster recovery systems with RPO < 1 minute."
+            "Performed a full bank reconciliation across all accounts for the engagement period.",
+            "Identified and reversed duplicated expense entries that had distorted reported costs.",
+            "Produced a clean, verified ledger ready for audit scrutiny."
           ]
         },
         {
-          title: "Compliance & Security Hardening",
-          description: "Ensuring PCI-DSS and regulatory requirements at scale.",
+          title: "Inventory Reconciliation",
+          description: "Grounding inventory records in physical reality.",
           points: [
-            "Implemented end-to-end encryption for all sensitive data in transit and at rest.",
-            "Automated compliance auditing and regulatory reporting.",
-            "Established secrets management and role-based access control across infrastructure."
+            "Conducted a hands-on physical stock take to validate recorded inventory levels.",
+            "Reconciled physical counts against system records and resolved all variances.",
+            "Established a reliable inventory baseline for the incoming accounting system."
+          ]
+        },
+        {
+          title: "Systems Migration: QuickBooks to Zoho Books",
+          description: "Moving the client to a cloud-first accounting platform with full data integrity.",
+          points: [
+            "Managed the end-to-end migration of financial data from QuickBooks to Zoho Books.",
+            "Ensured data integrity throughout the transition with no loss of historical records.",
+            "Configured Zoho Books to match the client's chart of accounts and reporting needs.",
+            "Trained the finance team on the new platform ahead of go-live."
           ]
         }
       ],
-      outcome: "Results: Step scaled from 500K to 5M active users in 6 months with zero critical downtime. Transaction processing latency dropped from 3 seconds to 150ms, enabling new real-time features. Compliance audit time reduced from 6 weeks to 1 day through automated reporting. Infrastructure costs decreased 35% despite 10x capacity increase through efficient resource utilization. Step is now acquiring competitors and entering new markets with confidence in their technology foundation."
+      outcome: "Results: A clean, compliant, and audit-ready set of books delivered in two months, covering five full years of financial history. The client now has an accurate view of their financial position, resolved tax obligations with KRA, and a modern cloud accounting system in Zoho Books to support future growth."
     },
     testimonial: {
-      name: "VP, Engineering",
-      role: "Step Innovations Africa",
-      quote: "The infrastructure redesign was transformational. Before, growth meant weeks of engineering effort and downtime risk. Now we auto-scale seamlessly. Our team went from firefighting infrastructure issues to building innovative products. The compliance automation alone has freed up our entire audit team.",
-      image: "/images/hero-workspace-bw.jpg"
+      name: "Managing Director",
+      role: "Coastal Image Technologies Limited",
+      quote: "Five years of records that had never been properly accounted for. AK Prime came in, made sense of everything, and handed us a clean set of books and a system we can actually use. The turnaround was faster than we thought possible.",
+      image: "/images/avatar-professional.jpg"
     },
     metrics: [
-      { value: "10x", label: "User Growth" },
-      { value: "150ms", label: "Processing Latency" },
-      { value: "99.99%", label: "Uptime" }
-    ],
-    image: "/images/startup-meeting.jpg",
-    category: "Systems"
-  },
-  {
-    id: "manufacturing-erp",
-    title: "Struggle with Project Management & Communication",
-    client: "Construction Company",
-    industry: "Construction",
-    location: "Nairobi, Kenya",
-    sector: "Infrastructure",
-    solution: "Digital Transformation",
-    summary: "Bringing clarity through a digital roadmap for a growing construction firm.",
-    tagline: "Helped a construction firm grow revenue 65% in 12 months.",
-    duration: "5 months",
-    date: "Jan 12, 2024",
-    narrative: {
-      problem: "The client, a mid-sized construction company, struggled with inefficiencies in project management. Delays, miscommunication between field and office teams, and lack of real-time visibility into project progress were costing time and profitability. Manual reporting and disconnected tools created bottlenecks, making it difficult to scale operations or take on larger, more complex projects.",
-      turningPoint: "AK Prime was brought in to overhaul the legacy manual systems and implement a unified digital backbone that connected on-site operations with head-office finance.",
-      approach: [
-        {
-          title: "Digital Audit & Needs Assessment",
-          description: "We started by mapping every current-state process to build a 'blueprint for good'.",
-          points: [
-            "Conducted a full review of existing processes, tools, and workflows.",
-            "Identified critical gaps in project tracking, communication, and data management."
-          ]
-        },
-        {
-          title: "Technology Integration",
-          description: "Implementing localized software tailored for construction logistics.",
-          points: [
-            "Implemented project management software tailored for construction.",
-            "Deployed cloud collaboration tools to connect office staff and on-site teams.",
-            "Introduced real-time dashboards for monitoring progress, costs, and risks."
-          ]
-        },
-        {
-          title: "Process Optimization & Training",
-          description: "Ensuring adoption through hands-on workshops and protocols.",
-          points: [
-            "Streamlined reporting processes to reduce paperwork and redundancy.",
-            "Trained staff and project managers on digital platforms to ensure adoption.",
-            "Established new communication protocols supported by digital tools."
-          ]
-        },
-        {
-          title: "Change Management",
-          description: "Aligning digital adoption with cultural change.",
-          points: [
-            "Worked with leadership to align digital adoption with cultural change.",
-            "Set up ongoing support and feedback loops to continuously improve workflows."
-          ]
-        }
-      ],
-      outcome: "Results: Within 6 months, the firm achieved a 65% revenue increase due to better resource allocation and zero project overruns. Communication delays were eliminated, leading to a 40% faster month-end close."
-    },
-    testimonial: {
-      name: "Marlo Fentris",
-      role: "CEO, Infrastructure Group",
-      quote: "They transformed our work by streamlining operations, boosting efficiency, and delivering results that we could measure immediately.",
-      image: "/images/avatar-user.jpg"
-    },
-    metrics: [
-      { value: "65%", label: "Revenue Growth" },
-      { value: "40%", label: "Faster Close" },
-      { value: "Zero", label: "Project Overruns" }
-    ],
-    image: "/images/strategy-planning.jpg",
-    category: "Strategy"
-  },
-  {
-    id: "finance-optimization",
-    title: "Financial Governance & Compliance",
-    client: "FMCG Manufacturer",
-    industry: "Manufacturing",
-    location: "Kampala, Uganda",
-    sector: "Consumer Goods",
-    solution: "Financial Advisory",
-    summary: "Rebuilding financial integrity for a leading manufacturer.",
-    tagline: "Reduced tax exposure by KSh 12M through automated compliance and governance.",
-    duration: "4 months",
-    date: "Feb 28, 2024",
-    narrative: {
-      problem: "The manufacturer's finance team was managing parallel manual spreadsheets, leading to a 15% error rate in VAT filings and an imminent KRA compliance risk. Manual reconciliations took 10 days each month, preventing real-time cash flow management.",
-      turningPoint: "AK Prime was hired to implement automated financial governance and prepare the team for a rigorous regulatory audit.",
-      approach: [
-        {
-          title: "Audit Preparation & Remediation",
-          description: "Cleaning up legacy reconciliation errors.",
-          points: [
-            "Identified KSh 12M in potential tax overpayments and missed credits.",
-            "Reconstructed three years of historical financial records."
-          ]
-        },
-        {
-          title: "Compliance Automation",
-          description: "Deploying automated tax and filing engines.",
-          points: [
-            "Implemented localized eTIMS integration for real-time reporting.",
-            "Created automated VAT and WHT reconciliation dashboards."
-          ]
-        }
-      ],
-      outcome: "Results: Mitigated KSh 12M in tax exposure and achieved 100% audit readiness. Month-end close was reduced to 3 days, providing the Board with instant visibility into working capital."
-    },
-    testimonial: {
-      name: "Sarah Kimani",
-      role: "CFO, Manufacturing Co.",
-      quote: "The team's deep understanding of local compliance and global best practices saved us millions.",
-      image: "/images/avatar-consultant.jpg"
-    },
-    metrics: [
-      { value: "KSh12M", label: "Exposure Resolved" },
-      { value: "3 Days", label: "Month-End Close" },
-      { value: "100%", label: "Audit Readiness" }
+      { value: "5 Years", label: "Data Reconciled" },
+      { value: "2 Months", label: "Delivery Time" },
+      { value: "Audit-Ready", label: "Outcome" }
     ],
     image: "/images/financial-analysis.jpg",
     category: "Finance"

@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "ERP Implementation | Odoo, SAP B1, Dynamics 365",
-  description: "AK Prime Consulting delivers end-to-end ERP transformation — from vendor selection to go-live. We connect finance, operations, and supply chain in one real-time system.",
+  description: "AK Prime Consulting delivers end-to-end ERP transformation, from vendor selection to go-live. We connect finance, operations, and supply chain in one real-time system.",
 };
 
 const deliveryProcess = [
@@ -49,7 +49,7 @@ export default function ERPPage() {
                 <span className="text-[#37B4B4]">Unified Operations</span>
               </h1>
               <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-2xl">
-                AK Prime delivers end-to-end ERP transformation that connects finance, operations, and data across your entire organisation — from selection to go-live and beyond.
+                AK Prime delivers end-to-end ERP transformation that connects finance, operations, and data across your entire organisation, from selection to go-live and beyond.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -130,7 +130,7 @@ export default function ERPPage() {
                   <p className="text-white/80 text-sm italic mb-3">
                     "AK Prime reduced our month-end close from 18 days to 4. The ERP implementation was delivered on time and the team adoption was outstanding."
                   </p>
-                  <p className="text-white/40 text-xs">— Finance Director, Manufacturing firm · Nairobi</p>
+                  <p className="text-white/40 text-xs">Finance Director, Manufacturing firm · Nairobi</p>
                 </div>
               </div>
             </ScrollReveal>

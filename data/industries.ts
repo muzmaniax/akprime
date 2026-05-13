@@ -14,7 +14,7 @@ export const industriesData: Industry[] = [
   {
     slug: "manufacturing",
     name: "Manufacturing",
-    shortDescription: "Precision at scale — ERP, supply chain visibility and production analytics.",
+    shortDescription: "Precision at scale: ERP, supply chain visibility and production analytics.",
     heroHeadline: "Optimise Production Lines & Secure Your Supply Chain.",
     photo: "/images/tech-workspace.jpg",
     challenges: [

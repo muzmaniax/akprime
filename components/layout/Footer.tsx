@@ -64,7 +64,7 @@ export function Footer() {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <MapPin size={14} className="mt-1 text-[#37B4B4] shrink-0" />
-                  <span>Nairobi &amp; Mombasa, Kenya</span>
+                  <span>Mombasa · Nairobi · Dubai</span>
                 </li>
               </ul>
             </div>

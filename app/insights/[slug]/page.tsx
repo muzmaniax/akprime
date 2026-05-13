@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { getContentCMS } from "@/lib/content-cms";
 
 const articles = [
   {
@@ -22,7 +23,7 @@ const articles = [
       <p>Under pressure to act quickly, leadership teams often accept the first plausible explanation for their challenges. A consultant arrives, observes the system for a few days, and recommends a solution. The problem is that surface-level problems are often symptoms of deeper, systemic issues.</p>
 
       <h3>The Cost of Getting It Wrong</h3>
-      <p>A misdiagnosed problem leads to wasted capital, opportunity cost, and demoralised teams. A company that invests millions in an ERP implementation when the real issue is organizational misalignment won't suddenly operate better — they'll just have an expensive system managing bad processes.</p>
+      <p>A misdiagnosed problem leads to wasted capital, opportunity cost, and demoralised teams. A company that invests millions in an ERP implementation when the real issue is organizational misalignment won't suddenly operate better. They'll just have an expensive system managing bad processes.</p>
 
       <h3>Structured Discovery Works</h3>
       <p>At AK Prime, we start every engagement with a rigorous diagnostic phase. We interview stakeholders across the business, map current workflows, identify gaps between intended and actual performance, and build a clear diagnostic report before recommending solutions. This ensures that the problems we solve are the right ones.</p>
@@ -42,16 +43,16 @@ const articles = [
     title: "The Real Cost of Poor Decision-Making for Business",
     excerpt: "How informational gaps cascade into operational failures. And how to fix it.",
     content: `
-      <p>Every strategic decision — whether it's entering a new market, scaling operations, or restructuring the organisation — is made on incomplete information. The challenge isn't eliminating uncertainty; it's building sufficient rigour into decision-making so that when things do go wrong, the downside is minimised.</p>
+      <p>Every strategic decision, whether it's entering a new market, scaling operations, or restructuring the organisation, is made on incomplete information. The challenge isn't eliminating uncertainty; it's building sufficient rigour into decision-making so that when things do go wrong, the downside is minimised.</p>
 
       <h3>The Decision-Making Framework</h3>
       <p>Poor decisions happen when: (1) the right stakeholders aren't in the room; (2) the relevant data isn't synthesized; (3) alternative scenarios aren't tested; or (4) implementation plans lack clarity on ownership and accountability.</p>
 
       <h3>The Compounding Effect</h3>
-      <p>A poor decision made by a CFO in Q1 cascades through operational priorities, capital deployment, and team morale for the entire year. By the time the mistake is recognised, millions in damage have already occurred. The cost isn't just the direct impact of the poor decision — it's the ripple effect across the organization.</p>
+      <p>A poor decision made by a CFO in Q1 cascades through operational priorities, capital deployment, and team morale for the entire year. By the time the mistake is recognised, millions in damage have already occurred. The cost isn't just the direct impact of the poor decision; it's the ripple effect across the organization.</p>
 
       <h3>Building Decision-Making Discipline</h3>
-      <p>Strong organisations implement governance frameworks that slow down high-stakes decisions just enough to get the diagnosis right, gather necessary intelligence, and pressure-test assumptions. This doesn't mean analysis paralysis — it means intentional structure.</p>
+      <p>Strong organisations implement governance frameworks that slow down high-stakes decisions just enough to get the diagnosis right, gather necessary intelligence, and pressure-test assumptions. This doesn't mean analysis paralysis; it means intentional structure.</p>
 
       <p>At AK Prime, we help organisations design decision-making governance that delivers clarity without bureaucracy.</p>
     `,
@@ -68,7 +69,7 @@ const articles = [
     title: "When Founders Should Seek External Perspective",
     excerpt: "The moments when fresh, external eyes unlock breakthrough clarity.",
     content: `
-      <p>Founders live inside their company. They see problems through the lens of existing constraints, past decisions, and internal politics. This insider perspective is invaluable — but it's also a liability when the business reaches moments of inflection where the old playbook no longer works.</p>
+      <p>Founders live inside their company. They see problems through the lens of existing constraints, past decisions, and internal politics. This insider perspective is invaluable, but it's also a liability when the business reaches moments of inflection where the old playbook no longer works.</p>
 
       <h3>The Limits of Internal Perspective</h3>
       <p>A founder knows their business better than anyone. But that same intimacy can create blind spots. Team dynamics that feel "normal" to an insider might signal deeper dysfunction to an external observer. Processes that feel efficient internally might appear as unnecessary friction to someone seeing them for the first time.</p>
@@ -98,8 +99,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function InsightArticlePage({ params }: Props) {
   const { slug } = await params;
-  const article = articles.find((a) => a.slug === slug);
-  if (!article) notFound();
+  const baseArticle = articles.find((a) => a.slug === slug);
+  if (!baseArticle) notFound();
+
+  // Merge CMS overrides (server-side — no client round-trip)
+  const cms = getContentCMS();
+  const overrides = cms.insights[slug] ?? {};
+  const article = {
+    ...baseArticle,
+    title:      overrides.title      ?? baseArticle.title,
+    category:   overrides.category   ?? baseArticle.category,
+    author:     overrides.author     ?? baseArticle.author,
+    authorRole: overrides.authorRole ?? baseArticle.authorRole,
+    date:       overrides.date       ?? baseArticle.date,
+    excerpt:    overrides.excerpt    ?? baseArticle.excerpt,
+    content:    overrides.content    ?? baseArticle.content,
+  };
 
   return (
     <div className="bg-white min-h-screen">
@@ -186,7 +201,7 @@ export default async function InsightArticlePage({ params }: Props) {
               <div className="text-[14px] font-semibold text-[#082121]">{article.author}</div>
               <div className="text-[13px] text-[#3a5a5a] mt-0.5">{article.authorRole}, AK Prime Consulting</div>
               <p className="mt-3 text-[13px] text-[#3a5a5a] leading-relaxed max-w-lg">
-                Our insights are drawn from decades of on-the-ground experience implementing systems and operational strategies across diverse industries in East Africa.
+                Our insights are drawn from decades of on-the-ground experience implementing systems and operational strategies across diverse industries in Africa and the Middle East.
               </p>
               <Link
                 href="/contact"

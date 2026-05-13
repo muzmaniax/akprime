@@ -1,0 +1,100 @@
+{
+  "case-studies": {
+    "mo-radio-tax-compliance": {
+      "image": "/images/business-team.jpg",
+      "title": "Recovering Hidden Tax Overpayments",
+      "tagline": "Saved a broadcasting network KSh 3.5M through strategic tax compliance audit.",
+      "summary": "Uncovered and recovered KSh 3.5M in tax overpayments for a leading media network.",
+      "duration": "3 months",
+      "metrics": [
+        {
+          "value": "KSh 3.5M",
+          "label": "Recovered"
+        },
+        {
+          "value": "100%",
+          "label": "Filing Accuracy"
+        },
+        {
+          "value": "2 Days",
+          "label": "Month-End Close"
+        }
+      ],
+      "narrative_problem": "MO Radio's finance team was managing multiple spreadsheets without a unified system, leading to duplicate tax filings and missed deduction claims. The station was overpaying taxes without realizing it, and had no clear visibility into their tax position. This lack of control exposed them to compliance risks and wasted operational capital that could have been reinvested into programming and infrastructure.",
+      "narrative_outcome": "Recovered KSh 3.5M in overpaid taxes within 3 months. The station now has complete visibility into its tax position, achieved 100% filing accuracy, and reduced month-end close time from 8 days to 2 days. The recovered capital was reinvested into new broadcast equipment and content production.",
+      "testimonial_quote": "We were overpaying taxes without even realizing it. AK Prime stepped in, audited everything, and fixed the gaps immediately. What stood out was how clear they made the whole process. We're now compliant, saving money, and finally have control over our finances.",
+      "testimonial_name": "Station Manager",
+      "testimonial_role": "MO Radio 88.2FM",
+      "approach": [
+        {
+          "title": "Comprehensive Tax Audit",
+          "description": "Reconstructing three years of tax filings to identify discrepancies.",
+          "points": [
+            "Reviewed all VAT, income tax, and statutory filings from the past 36 months.",
+            "Identified KSh 3.5M in duplicate payments and missed allowable deductions.",
+            "Documented evidence for tax authority engagement and recovery claims."
+          ]
+        },
+        {
+          "title": "Financial System Implementation",
+          "description": "Building a unified accounting infrastructure.",
+          "points": [
+            "Implemented cloud-based accounting software integrated with bank feeds.",
+            "Created automated tax reconciliation dashboards for real-time compliance monitoring.",
+            "Established internal controls to prevent future filing errors and overpayments."
+          ]
+        },
+        {
+          "title": "Compliance & Process Redesign",
+          "description": "Streamlining tax workflows and documentation.",
+          "points": [
+            "Developed new monthly tax review processes with dual sign-off requirements.",
+            "Trained finance staff on the new systems and compliance protocols.",
+            "Created templates and checklists for all statutory filings."
+          ]
+        },
+        {
+          "title": "Tax Authority Engagement",
+          "description": "Supporting recovery and establishing positive regulatory relationships.",
+          "points": [
+            "Prepared and filed formal tax revision requests with supporting documentation.",
+            "Coordinated with KRA to expedite recovery of overpayments.",
+            "Established quarterly compliance reviews to maintain filing accuracy."
+          ]
+        }
+      ]
+    },
+    "coastal-image-technologies": {
+      "image": null
+    }
+  },
+  "insights": {
+    "why-most-business-problems-are-misdiagnosed": {
+      "title": "Why Most Business Problems Are Misdiagnosed",
+      "category": "Strategy",
+      "author": "",
+      "authorRole": "",
+      "date": "January 2026",
+      "excerpt": "The cost of getting the diagnosis wrong is too high. Here's how we approach discovery.",
+      "content": "<p>Most business failures don't stem from poor execution. They stem from solving the wrong problem.</p>\n\n<h3>The Diagnosis Trap</h3>\n<p>Under pressure to act quickly, leadership teams often accept the first plausible explanation for their challenges.</p>\n\n<h3>Structured Discovery Works</h3>\n<p>At AK Prime, we start every engagement with a rigorous diagnostic phase before recommending solutions.</p>"
+    },
+    "the-real-cost-of-poor-decision-making": {
+      "title": "The Real Cost of Poor Decision-Making for Business",
+      "category": "Operations",
+      "author": "",
+      "authorRole": "",
+      "date": "January 2026",
+      "excerpt": "How informational gaps cascade into operational failures. And how to fix it.",
+      "content": "<p>Every strategic decision is made on incomplete information. The challenge is building sufficient rigour into decision-making.</p>\n\n<h3>The Decision-Making Framework</h3>\n<p>Poor decisions happen when the right stakeholders aren't in the room, relevant data isn't synthesized, or implementation plans lack clarity.</p>"
+    },
+    "when-founders-should-seek-external-perspective": {
+      "title": "When Founders Should Seek External Perspective",
+      "category": "Leadership",
+      "author": "",
+      "authorRole": "",
+      "date": "January 2026",
+      "excerpt": "The moments when fresh, external eyes unlock breakthrough clarity.",
+      "content": "<p>Founders live inside their company. This insider perspective is invaluable, but it's also a liability at moments of inflection.</p>\n\n<h3>The Right Moments</h3>\n<p>Consider external counsel when scaling, entering new markets, facing operational bottlenecks, or sensing strategic misalignment.</p>"
+    }
+  }
+}

@@ -5,8 +5,9 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
 import { Reveal, Eyebrow } from "@/components/ui/Primitives";
-import { industriesData } from "@/data/industries";
+import { industriesData, type Industry } from "@/data/industries";
 import { CTABannerSection } from "@/components/sections/TestimonialsInsightsCTA";
+import { useSiteImage } from "@/lib/use-site-images";
 
 export default function IndustriesPage() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -35,22 +36,7 @@ export default function IndustriesPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {industriesData.map((ind, i) => (
               <Reveal key={ind.slug} delay={(i % 6) * 60}>
-                <Link href={`/industries/${ind.slug}`} className="group block card-dark overflow-hidden">
-                  <div className="aspect-[16/10] relative overflow-hidden">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                      style={{ backgroundImage: `url(${ind.photo})` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#082121] via-transparent" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-white group-hover:text-[#37B4B4] transition-colors">{ind.name}</h3>
-                    <p className="mt-2 text-[13px] text-white/55 leading-relaxed line-clamp-2">{ind.shortDescription}</p>
-                    <div className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-[#37B4B4] flex-wrap">
-                      View industry <ArrowUpRight size={13} strokeWidth={2.25} className="shrink-0" />
-                    </div>
-                  </div>
-                </Link>
+                <IndustryCard ind={ind} />
               </Reveal>
             ))}
           </div>
@@ -60,5 +46,31 @@ export default function IndustriesPage() {
       <CTABannerSection onBooking={() => setBookingOpen(true)} />
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
+  );
+}
+
+/* ── Each card is its own component so it can call useSiteImage ── */
+function IndustryCard({ ind }: { ind: Industry }) {
+  // Same slot drives both the listing card and the detail page hero.
+  // Both stay in sync automatically.
+  const photo = useSiteImage(`industry.${ind.slug}`) || ind.photo;
+
+  return (
+    <Link href={`/industries/${ind.slug}`} className="group block card-dark overflow-hidden">
+      <div className="aspect-[16/10] relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+          style={{ backgroundImage: `url(${photo})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#082121] via-transparent" />
+      </div>
+      <div className="p-6">
+        <h3 className="text-white group-hover:text-[#37B4B4] transition-colors">{ind.name}</h3>
+        <p className="mt-2 text-[13px] text-white/55 leading-relaxed line-clamp-2">{ind.shortDescription}</p>
+        <div className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-[#37B4B4] flex-wrap">
+          View industry <ArrowUpRight size={13} strokeWidth={2.25} className="shrink-0" />
+        </div>
+      </div>
+    </Link>
   );
 }

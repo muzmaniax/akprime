@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow } from "@/components/ui/Primitives";
 import { CTABannerSection } from "@/components/sections/TestimonialsInsightsCTA";
+import { getContentCMS } from "@/lib/content-cms";
 
 export const metadata: Metadata = {
   title: "Insights | AK Prime Consulting",
@@ -25,7 +26,7 @@ const ARTICLES = [
     slug: "the-real-cost-of-poor-decision-making",
     category: "Operations",
     title: "The real cost of poor decision-making for business",
-    excerpt: "How informational gaps cascade into operational failures — and how to fix it.",
+    excerpt: "How informational gaps cascade into operational failures, and how to fix it.",
     author: "Hanry Mandu",
     date: "Jan 20, 2026",
     readTime: "6 min read",
@@ -43,13 +44,28 @@ const ARTICLES = [
   },
 ];
 
-const featured = ARTICLES.find((a) => a.featured)!;
-const rest = ARTICLES.filter((a) => !a.featured);
-
 export default function InsightsPage() {
+  const cms = getContentCMS();
+
+  // Merge CMS overrides into ARTICLES
+  const articles = ARTICLES.map(a => {
+    const overrides = cms.insights[a.slug] ?? {};
+    return {
+      ...a,
+      title:    overrides.title    ?? a.title,
+      excerpt:  overrides.excerpt  ?? a.excerpt,
+      category: overrides.category ?? a.category,
+      author:   overrides.author   ?? a.author,
+      date:     overrides.date     ?? a.date,
+    };
+  });
+
+  const featured = articles.find((a) => a.featured)!;
+  const rest = articles.filter((a) => !a.featured);
   return (
     <div className="bg-white">
       {/* ── Hero ── */}
+
       <section className="section-dark border-b border-white/[0.06]" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
         <div className="container-x max-w-3xl text-center">
           <Reveal><Eyebrow className="justify-center">Insights</Eyebrow></Reveal>

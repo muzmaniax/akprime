@@ -31,7 +31,7 @@ export const servicesData: ServiceData[] = [
     name: "ERP Implementation",
     icon: "database",
     photo: "/images/office-culture.jpg",
-    shortDescription: "We manage the full ERP journey — from vendor selection to go-live training. Unify your operations.",
+    shortDescription: "We manage the full ERP journey, from vendor selection to go-live training. Unify your operations.",
     heroHeadline: "Stop Wrestling with Data. Unify Your Operations with ERP.",
     painPoints: [
       "Month-end close takes 15+ days due to manual reconciliations.",
@@ -91,7 +91,7 @@ export const servicesData: ServiceData[] = [
     name: "Training Services",
     icon: "graduation-cap",
     photo: "/images/cloud-computing.jpg",
-    shortDescription: "Role-based ERP and systems training that drives real adoption — not just awareness.",
+    shortDescription: "Role-based ERP and systems training that drives real adoption, not just awareness.",
     heroHeadline: "Software Only Works If Your People Know How to Use It.",
     painPoints: [
       "Low adoption rates following heavy investments in new software systems.",
@@ -495,7 +495,7 @@ export const servicesData: ServiceData[] = [
       "Unclear job grades and reporting lines causing internal friction.",
       "Workforce plans built on instinct rather than data.",
     ],
-    solution: "We design organisational structures that match strategy — clear job grades, reporting lines, and workforce plans tied to business outcomes rather than headcount inertia.",
+    solution: "We design organisational structures that match strategy: clear job grades, reporting lines, and workforce plans tied to business outcomes rather than headcount inertia.",
     outcomes: [
       "Workforce plan aligned to 12–24 month strategy",
       "Job grading framework with role profiles",
@@ -555,7 +555,7 @@ export const servicesData: ServiceData[] = [
       "Payroll errors eroding employee trust and creating reconciliation chaos.",
       "Internal payroll consuming senior finance time better spent elsewhere.",
     ],
-    solution: "We run payroll end-to-end — calculations, statutory deductions, payslip distribution, and on-time submissions to KRA, NSSF, NHIF, and NITA. Your team gets a clean monthly report; we handle the rest.",
+    solution: "We run payroll end-to-end: calculations, statutory deductions, payslip distribution, and on-time submissions to KRA, NSSF, NHIF, and NITA. Your team gets a clean monthly report; we handle the rest.",
     outcomes: [
       "Monthly payroll processed and paid on agreed dates",
       "PAYE, NSSF, NHIF and NITA submissions filed on time",
@@ -585,7 +585,7 @@ export const servicesData: ServiceData[] = [
       "Unstructured interviews producing inconsistent and biased decisions.",
       "Onboarding gaps causing new hires to disengage in their first 90 days.",
     ],
-    solution: "We run structured, end-to-end hiring — job profiling, sourcing, shortlisting, competency interviews, reference checks, and a 90-day onboarding plan that gets new hires productive fast.",
+    solution: "We run structured, end-to-end hiring: job profiling, sourcing, shortlisting, competency interviews, reference checks, and a 90-day onboarding plan that gets new hires productive fast.",
     outcomes: [
       "Job profile and competency framework per role",
       "Shortlist of 3–5 qualified candidates",
@@ -612,10 +612,10 @@ export const servicesData: ServiceData[] = [
     heroHeadline: "Turn Performance Conversations into Business Outcomes.",
     painPoints: [
       "Annual appraisals that nobody takes seriously and nothing changes.",
-      "KPIs disconnected from strategy — measuring activity not impact.",
+      "KPIs disconnected from strategy, measuring activity not impact.",
       "No structured way to surface, develop, or exit underperformers.",
     ],
-    solution: "We design KPI frameworks tied to business strategy and run quarterly cycles that drive real conversations — including talent reviews, succession planning, and structured PIPs where needed.",
+    solution: "We design KPI frameworks tied to business strategy and run quarterly cycles that drive real conversations, including talent reviews, succession planning, and structured PIPs where needed.",
     outcomes: [
       "KPI framework cascading from strategy to roles",
       "Quarterly appraisal cycle with manager training",
@@ -645,7 +645,7 @@ export const servicesData: ServiceData[] = [
       "No employee self-service for leave, payslips or document access.",
       "Reporting takes days instead of minutes.",
     ],
-    solution: "We select and implement HRMS platforms — Odoo HR, SAP B1, or specialist HR tools — with full configuration, data migration, training, and post-go-live support so the system actually gets used.",
+    solution: "We select and implement HRMS platforms (Odoo HR, SAP B1, or specialist HR tools) with full configuration, data migration, training, and post-go-live support so the system actually gets used.",
     outcomes: [
       "HRMS selected and fitted to your processes",
       "Migration of employee, leave, and payroll data",
@@ -675,7 +675,7 @@ export const servicesData: ServiceData[] = [
       "No clear link between L&D investment and business outcomes.",
       "Fragmented programmes that miss the capabilities the strategy actually needs.",
     ],
-    solution: "We diagnose capability gaps, design an L&D strategy tied to business outcomes, and deliver blended programmes — classroom, e-learning, and on-the-job — with assessment to prove behaviour change.",
+    solution: "We diagnose capability gaps, design an L&D strategy tied to business outcomes, and deliver blended programmes (classroom, e-learning, and on-the-job) with assessment to prove behaviour change.",
     outcomes: [
       "Training needs analysis tied to strategy",
       "L&D strategy and curriculum roadmap",

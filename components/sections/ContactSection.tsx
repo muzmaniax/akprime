@@ -13,13 +13,14 @@ export function ContactSection() {
     setSubmitting(true);
     await new Promise((r) => setTimeout(r, 800));
     setSubmitting(false);
-    toast.success("Thanks — we'll be in touch within one business day.");
+    toast.success("Thanks. We'll be in touch within one business day.");
     (e.target as HTMLFormElement).reset();
   }
 
   return (
     <section className="section-light section-py border-t border-[#082121]/8">
-      <div className="container-x grid lg:grid-cols-12 gap-8 lg:gap-12">
+      <div className="container-x">
+        <div className="max-w-[1060px] mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12">
 
         {/* Left — info panel. Pushed below form on mobile via order */}
         <Reveal className="lg:col-span-5 order-2 lg:order-1 space-y-6">
@@ -33,11 +34,11 @@ export function ContactSection() {
             </p>
           </div>
 
-          {/* Tiles — always 3 columns, compact horizontal layout */}
-          <div className="grid grid-cols-3 gap-3">
-            <ContactTile icon={<Phone size={15} />} label="Call" value="0118 001 001" />
-            <ContactTile icon={<Mail size={15} />} label="Email" value="info@akprime.co.ke" />
-            <ContactTile icon={<Clock size={15} />} label="Hours" value="Mon–Fri 9am–6pm" />
+          {/* Contact details — simple vertical list */}
+          <div className="flex flex-col gap-4">
+            <ContactRow icon={<Phone size={15} />} label="Call" value="0118 001 001" />
+            <ContactRow icon={<Mail size={15} />} label="Email" value="info@akprime.co.ke" />
+            <ContactRow icon={<Clock size={15} />} label="Hours" value="Mon–Fri 9am–6pm" />
           </div>
         </Reveal>
 
@@ -75,20 +76,19 @@ export function ContactSection() {
           </form>
         </Reveal>
 
+        </div>
       </div>
     </section>
   );
 }
 
-function ContactTile({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function ContactRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="card-light p-3 sm:p-4 flex flex-col gap-2.5">
-      <div className="w-7 h-7 rounded-full bg-[#37B4B4]/10 text-[#37B4B4] flex items-center justify-center shrink-0">
-        {icon}
-      </div>
+    <div className="flex items-center gap-3">
+      <span className="text-[#37B4B4] shrink-0">{icon}</span>
       <div>
         <div className="text-[10px] tracking-widest uppercase text-[#3a5a5a]/60 font-medium">{label}</div>
-        <div className="text-[12px] sm:text-[13px] font-medium text-[#082121] mt-0.5 leading-snug break-words">{value}</div>
+        <div className="text-[13px] font-medium text-[#082121] leading-snug">{value}</div>
       </div>
     </div>
   );

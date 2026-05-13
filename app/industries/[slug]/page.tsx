@@ -6,6 +6,8 @@ import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, X } from "lucide-react";
 import { industriesData } from "@/data/industries";
 import { Reveal } from "@/components/ui/Primitives";
+import { useSiteImage } from "@/lib/use-site-images";
+import Waves from "@/components/ui/Waves";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -15,7 +17,12 @@ export default function IndustryPage({ params }: Props) {
   const resolvedParams = use(params);
   const industry = industriesData.find((i) => i.slug === resolvedParams.slug);
 
+  // Hook must be called unconditionally before any early returns
+  const industryPhoto = useSiteImage(`industry.${resolvedParams.slug}`);
+
   if (!industry) notFound();
+
+  const photo = industryPhoto || industry.photo;
 
   return (
     <div className="bg-white min-h-screen">
@@ -27,7 +34,7 @@ export default function IndustryPage({ params }: Props) {
       >
         {/* Photo */}
         <img
-          src={industry.photo}
+          src={photo}
           alt={industry.name}
           className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
           style={{ filter: "brightness(0.45) saturate(0.7)" }}
@@ -180,8 +187,24 @@ export default function IndustryPage({ params }: Props) {
       </section>
 
       {/* ── 3. CTA Banner ── */}
-      <section className="bg-[#082121] py-20 px-5">
-        <div className="container-x max-w-2xl text-center">
+      <section className="bg-[#082121] py-20 px-5 relative overflow-hidden">
+        {/* Waves — Perlin-noise field lines in akprime teal */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Waves
+            lineColor="rgba(55, 180, 180, 0.14)"
+            backgroundColor="transparent"
+            waveSpeedX={0.014}
+            waveSpeedY={0.006}
+            waveAmpX={38}
+            waveAmpY={18}
+            xGap={14}
+            yGap={40}
+            friction={0.93}
+            tension={0.006}
+            maxCursorMove={110}
+          />
+        </div>
+        <div className="container-x max-w-2xl text-center relative z-10">
           <Reveal>
             <p className="eyebrow justify-center mb-5">{industry.name}</p>
             <h2

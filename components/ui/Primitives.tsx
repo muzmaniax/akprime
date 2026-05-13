@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
+import { type ReactNode } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import FadeContent from "@/components/ui/FadeContent";
 
-/* Reveal — single fade-up scroll primitive */
+/* Reveal — GSAP blur-fade scroll primitive */
 export function Reveal({
   children,
   delay = 0,
@@ -15,35 +16,16 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setShown(true);
-            obs.disconnect();
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  const style: CSSProperties = shown
-    ? { animation: `reveal-up 600ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms both` }
-    : { opacity: 0, transform: "translateY(14px)" };
-
   return (
-    <div ref={ref} style={style} className={className}>
+    <FadeContent
+      delay={delay}
+      duration={700}
+      blur={true}
+      threshold={0.12}
+      className={className}
+    >
       {children}
-    </div>
+    </FadeContent>
   );
 }
 
