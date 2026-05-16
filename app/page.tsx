@@ -1,49 +1,15 @@
-"use client";
+import { Metadata } from "next";
+import { HomePageClient } from "@/components/sections/HomePageClient";
 
-import { useState } from "react";
-import { BookingModal } from "@/components/ui/BookingModal";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { ProblemSection } from "@/components/sections/MidSections";
-import { ServicesSection } from "@/components/sections/ServicesSection";
-import { ProcessSection, IndustriesSection } from "@/components/sections/ProcessAndIndustries";
-import { CaseStudiesSection } from "@/components/sections/CaseAndPackages";
-import {
-  TestimonialsSection,
-  InsightsSection,
-  FAQSection,
-  CTABannerSection,
-} from "@/components/sections/TestimonialsInsightsCTA";
-import { ContactSection } from "@/components/sections/ContactSection";
+export const metadata: Metadata = {
+  title: "AK Prime Consulting | ERP, Financial & Strategic Advisory",
+  description:
+    "AK Prime Consulting (AKPrime) — ERP implementation, AI integration, and financial transformation for organisations in Kenya and the UAE. SAP, Odoo, NetSuite specialists. Offices in Mombasa, Nairobi, and Dubai.",
+  alternates: {
+    canonical: "https://www.akprimeconsulting.com",
+  },
+};
 
 export default function HomePage() {
-  const [bookingOpen, setBookingOpen] = useState(false);
-  const openBooking = () => setBookingOpen(true);
-
-  return (
-    <>
-      {/* DARK   — Hero */}
-      <HeroSection onBooking={openBooking} />
-      {/* LIGHT  — About + stats */}
-      <ProblemSection onBooking={openBooking} />
-      {/* LIGHT  — Services practice areas (photo cards) */}
-      <ServicesSection />
-      {/* LIGHT (tint) — 5-phase framework */}
-      <ProcessSection />
-      {/* DARK   — Industries (photo cards) */}
-      <IndustriesSection />
-      {/* DARK   — Featured case study */}
-      <CaseStudiesSection />
-      {/* LIGHT  — Testimonials */}
-      <TestimonialsSection />
-      {/* LIGHT (tint) — Insights */}
-      <InsightsSection />
-      {/* DARK   — FAQ */}
-      <FAQSection />
-      {/* DARK   — CTA banner */}
-      <CTABannerSection onBooking={openBooking} />
-      {/* LIGHT  — Contact form */}
-      <ContactSection />
-      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
-    </>
-  );
+  return <HomePageClient />;
 }

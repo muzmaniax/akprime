@@ -1,10 +1,12 @@
 import { MetadataRoute } from "next";
+import { industriesData } from "@/data/industries";
+import { caseStudies } from "@/data/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.akprimeconsulting.com";
   const now = new Date();
 
-  const pages = [
+  const staticPages = [
     { url: "/", priority: 1.0, changeFrequency: "weekly" as const },
     { url: "/services", priority: 0.9, changeFrequency: "weekly" as const },
     { url: "/services/erp", priority: 0.85, changeFrequency: "monthly" as const },
@@ -21,10 +23,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/resources", priority: 0.8, changeFrequency: "monthly" as const },
   ];
 
-  return pages.map((page) => ({
-    url: `${base}${page.url}`,
+  const industryPages = industriesData.map((industry) => ({
+    url: `${base}/industries/${industry.slug}`,
     lastModified: now,
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
   }));
+
+  const caseStudyPages = caseStudies.map((cs) => ({
+    url: `${base}/case-studies/${cs.id}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticPages.map((page) => ({
+      url: `${base}${page.url}`,
+      lastModified: now,
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+    })),
+    ...industryPages,
+    ...caseStudyPages,
+  ];
 }

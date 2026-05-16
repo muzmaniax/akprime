@@ -3,8 +3,9 @@ import { Reveal, Eyebrow } from "@/components/ui/Primitives";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Contact | AK Prime Consulting",
-  description: "Get in touch with AK Prime. Strategic consulting for organisations ready to scale.",
+  title: "Contact AK Prime Consulting | Book a Consultation",
+  description: "Get in touch with AK Prime Consulting (AKPrime). Book a consultation for ERP implementation, finance consulting, or digital transformation in Kenya and the UAE.",
+  alternates: { canonical: "https://www.akprimeconsulting.com/contact" },
 };
 
 export default function ContactPage() {

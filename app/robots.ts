@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/thank-you"],
+      disallow: ["/api/", "/admin/", "/thank-you"],
     },
     sitemap: "https://www.akprimeconsulting.com/sitemap.xml",
   };
