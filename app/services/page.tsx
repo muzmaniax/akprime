@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Services | AK Prime Consulting — ERP, AI & Finance Advisory",
   description:
     "AK Prime Consulting (AKPrime) services: ERP implementation (SAP, Odoo, NetSuite), AI integration, financial transformation, project management, and digital strategy for organisations in Kenya and the UAE.",
-  alternates: { canonical: "https://www.akprimeconsulting.com/services" },
+  alternates: { canonical: "https://akprime.co.ke/services" },
 };
 
 export default function ServicesPage() {

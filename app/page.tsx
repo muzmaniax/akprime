@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "AK Prime Consulting (AKPrime) — ERP implementation, AI integration, and financial transformation for organisations in Kenya and the UAE. SAP, Odoo, NetSuite specialists. Offices in Mombasa, Nairobi, and Dubai.",
   alternates: {
-    canonical: "https://www.akprimeconsulting.com",
+    canonical: "https://akprime.co.ke",
   },
 };
 

@@ -9,7 +9,7 @@ import { getSiteImage } from "@/lib/site-images";
 export const metadata: Metadata = {
   title: "Insights | AK Prime Consulting",
   description: "AK Prime Consulting insights: articles on ERP implementation, digital transformation, finance strategy, and how leaders operate in complex business environments.",
-  alternates: { canonical: "https://www.akprimeconsulting.com/insights" },
+  alternates: { canonical: "https://akprime.co.ke/insights" },
 };
 
 const ARTICLES = [

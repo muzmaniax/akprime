@@ -3,7 +3,7 @@ import { industriesData } from "@/data/industries";
 import { caseStudies } from "@/data/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.akprimeconsulting.com";
+  const base = "https://akprime.co.ke";
   const now = new Date();
 
   const staticPages = [

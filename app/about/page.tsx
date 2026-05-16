@@ -8,7 +8,7 @@ import BorderGlow from "@/components/ui/BorderGlow";
 export const metadata: Metadata = {
   title: "About AK Prime Consulting | Strategic Consulting Firm",
   description: "AK Prime Consulting (AKPrime) is a strategic consulting firm helping organisations in Kenya and the UAE navigate complexity and build systems that scale. Offices in Mombasa, Nairobi, and Dubai.",
-  alternates: { canonical: "https://www.akprimeconsulting.com/about" },
+  alternates: { canonical: "https://akprime.co.ke/about" },
 };
 
 const VALUES = [

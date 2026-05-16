@@ -5,7 +5,7 @@ import { PageLoader } from "@/components/layout/PageLoader";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
 
-const SITE_URL = "https://www.akprimeconsulting.com";
+const SITE_URL = "https://akprime.co.ke";
 
 export const metadata: Metadata = {
   title: {

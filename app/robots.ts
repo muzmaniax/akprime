@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/", "/thank-you"],
     },
-    sitemap: "https://www.akprimeconsulting.com/sitemap.xml",
+    sitemap: "https://akprime.co.ke/sitemap.xml",
   };
 }

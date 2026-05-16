@@ -5,7 +5,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 export const metadata: Metadata = {
   title: "Contact AK Prime Consulting | Book a Consultation",
   description: "Get in touch with AK Prime Consulting (AKPrime). Book a consultation for ERP implementation, finance consulting, or digital transformation in Kenya and the UAE.",
-  alternates: { canonical: "https://www.akprimeconsulting.com/contact" },
+  alternates: { canonical: "https://akprime.co.ke/contact" },
 };
 
 export default function ContactPage() {
