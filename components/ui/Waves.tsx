@@ -148,18 +148,24 @@ const Waves = ({
     function movePoints(time: number) {
       const lines = linesRef.current, mouse = mouseRef.current, noise = noiseRef.current;
       const { waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, friction, tension, maxCursorMove } = configRef.current;
-      lines.forEach(pts => {
-        pts.forEach(p => {
-          const move = noise.perlin2((p.x + time * waveSpeedX) * 0.002, (p.y + time * waveSpeedY) * 0.0015) * 12;
+      const tX = time * waveSpeedX * 0.002, tY = time * waveSpeedY * 0.0015;
+      const msx = mouse.sx, msy = mouse.sy;
+      const cosA = Math.cos(mouse.a), sinA = Math.sin(mouse.a);
+      const mvs = Math.max(175, mouse.vs), mvsFactor = mvs * 0.00065;
+      for (let i = 0; i < lines.length; i++) {
+        const pts = lines[i];
+        for (let j = 0; j < pts.length; j++) {
+          const p = pts[j];
+          const move = noise.perlin2(p.x + tX, p.y + tY) * 12;
           p.wave.x = Math.cos(move) * waveAmpX;
           p.wave.y = Math.sin(move) * waveAmpY;
-          const dx = p.x - mouse.sx, dy = p.y - mouse.sy;
-          const dist = Math.hypot(dx, dy), l = Math.max(175, mouse.vs);
-          if (dist < l) {
-            const s = 1 - dist / l;
+          const dx = p.x - msx, dy = p.y - msy;
+          const dist = Math.hypot(dx, dy);
+          if (dist < mvs) {
+            const s = 1 - dist / mvs;
             const f = Math.cos(dist * 0.001) * s;
-            p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00065;
-            p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00065;
+            p.cursor.vx += cosA * f * mvsFactor;
+            p.cursor.vy += sinA * f * mvsFactor;
           }
           p.cursor.vx += (0 - p.cursor.x) * tension;
           p.cursor.vy += (0 - p.cursor.y) * tension;
@@ -167,10 +173,12 @@ const Waves = ({
           p.cursor.vy *= friction;
           p.cursor.x += p.cursor.vx * 2;
           p.cursor.y += p.cursor.vy * 2;
-          p.cursor.x = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.x));
-          p.cursor.y = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.y));
-        });
-      });
+          if (p.cursor.x > maxCursorMove) p.cursor.x = maxCursorMove;
+          else if (p.cursor.x < -maxCursorMove) p.cursor.x = -maxCursorMove;
+          if (p.cursor.y > maxCursorMove) p.cursor.y = maxCursorMove;
+          else if (p.cursor.y < -maxCursorMove) p.cursor.y = -maxCursorMove;
+        }
+      }
     }
 
     function moved(point: Point, withCursor = true) {
@@ -185,16 +193,18 @@ const Waves = ({
       ctx.clearRect(0, 0, width, height);
       ctx.beginPath();
       ctx.strokeStyle = configRef.current.lineColor;
+      ctx.lineWidth = 1;
       linesRef.current.forEach(points => {
         let p1 = moved(points[0], false);
         ctx.moveTo(p1.x, p1.y);
-        points.forEach((p, idx) => {
+        for (let idx = 0; idx < points.length; idx++) {
+          const p = points[idx];
           const isLast = idx === points.length - 1;
           p1 = moved(p, !isLast);
           const p2 = moved(points[idx + 1] || points[points.length - 1], !isLast);
           ctx.lineTo(p1.x, p1.y);
           if (isLast) ctx.moveTo(p2.x, p2.y);
-        });
+        }
       });
       ctx.stroke();
     }
@@ -207,7 +217,7 @@ const Waves = ({
       const d = Math.hypot(dx, dy);
       mouse.v = d;
       mouse.vs += (d - mouse.vs) * 0.1;
-      mouse.vs = Math.min(100, mouse.vs);
+      if (mouse.vs > 100) mouse.vs = 100;
       mouse.lx = mouse.x;
       mouse.ly = mouse.y;
       mouse.a = Math.atan2(dy, dx);
@@ -228,7 +238,16 @@ const Waves = ({
       if (!mouse.set) { mouse.sx = mouse.x; mouse.sy = mouse.y; mouse.lx = mouse.x; mouse.ly = mouse.y; mouse.set = true; }
     }
 
-    function onScroll() { boundingRef.current = container.getBoundingClientRect(); }
+    let scrollPending = false;
+    function onScroll() {
+      if (!scrollPending) {
+        scrollPending = true;
+        requestAnimationFrame(() => {
+          boundingRef.current = container.getBoundingClientRect();
+          scrollPending = false;
+        });
+      }
+    }
 
     setSize();
     setLines();
@@ -251,9 +270,9 @@ const Waves = ({
     <div
       ref={containerRef}
       className={`waves ${className}`}
-      style={{ position: "absolute", top: 0, left: 0, margin: 0, padding: 0, width: "100%", height: "100%", overflow: "hidden", backgroundColor, ...style }}
+      style={{ position: "absolute", top: 0, left: 0, margin: 0, padding: 0, width: "100%", height: "100%", overflow: "hidden", backgroundColor, willChange: "transform", ...style }}
     >
-      <canvas ref={canvasRef} className="waves-canvas" />
+      <canvas ref={canvasRef} className="waves-canvas" style={{ willChange: "contents" }} />
     </div>
   );
 };
