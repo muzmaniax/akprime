@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Resources & Free Downloads | AK Prime Consulting",
-  description: "Free guides, checklists, and assessments from AK Prime Consulting — covering ERP implementation, AI strategy, cashflow optimisation, and digital transformation readiness.",
+  description: "Free guides, checklists, and assessments from AK Prime Consulting, covering ERP implementation, AI strategy, cashflow optimisation, and digital transformation readiness.",
 };
 
 const resources = [
@@ -57,7 +57,7 @@ export default function ResourcesPage() {
               <span className="text-[#37B4B4]">Make Better Decisions</span>
             </h1>
             <p className="text-white/55 text-base max-w-2xl mx-auto">
-              Free guides, assessments, and checklists from our consulting team — practical resources you can use immediately.
+              Free guides, assessments, and checklists from our consulting team. Practical resources you can use immediately.
             </p>
           </ScrollReveal>
         </div>

@@ -50,10 +50,10 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 transition-colors duration-200",
+          "sticky top-0 z-50 transition-colors duration-200 border-b border-white/[0.12]",
           (scrolled || forceSolid)
-            ? "bg-[#082121]/95 backdrop-blur-md border-b border-white/[0.07]"
-            : "bg-transparent border-b border-transparent"
+            ? "bg-[#082121]/95 backdrop-blur-md"
+            : "bg-transparent"
         )}
         style={{ height: "var(--navbar-h)" }}
         onMouseLeave={() => setOpenMenu(null)}
@@ -153,8 +153,8 @@ export function Navbar() {
                     </div>
                   ))}
                   <div className="col-span-4 pt-6 border-t border-white/10">
-                    <Link href="/services" className="text-[#37B4B4] hover:text-[#29E0C8] text-[13px] font-semibold inline-flex items-center gap-1.5">
-                      View all services <ArrowUpRight size={14} />
+                    <Link href="/services" className="text-[#37B4B4] hover:text-[#29E0C8] text-[13px] font-semibold inline-flex items-center gap-1.5 flex-wrap">
+                      View all services <ArrowUpRight size={14} className="shrink-0" />
                     </Link>
                   </div>
                 </div>
@@ -176,8 +176,8 @@ export function Navbar() {
                     </Link>
                   ))}
                   <div className="col-span-3 pt-2">
-                    <Link href="/industries" className="text-[#37B4B4] hover:text-[#29E0C8] text-[13px] font-semibold inline-flex items-center gap-1.5">
-                      View all industries <ArrowUpRight size={14} />
+                    <Link href="/industries" className="text-[#37B4B4] hover:text-[#29E0C8] text-[13px] font-semibold inline-flex items-center gap-1.5 flex-wrap">
+                      View all industries <ArrowUpRight size={14} className="shrink-0" />
                     </Link>
                   </div>
                 </div>
@@ -211,8 +211,8 @@ export function Navbar() {
                     </ul>
                   </div>
                 ))}
-                <Link href="/services" className="text-[#37B4B4] text-[14px] font-semibold inline-flex items-center gap-1.5 pt-2">
-                  All services <ArrowUpRight size={14} />
+                <Link href="/services" className="text-[#37B4B4] text-[14px] font-semibold inline-flex items-center gap-1.5 pt-2 flex-wrap">
+                  All services <ArrowUpRight size={14} className="shrink-0" />
                 </Link>
               </div>
             </MobileAccordion>

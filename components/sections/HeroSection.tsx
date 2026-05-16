@@ -1,144 +1,363 @@
 "use client";
 
 import Link from "next/link";
-import { Reveal } from "@/components/ui/Primitives";
-import { TrustedLogosCarousel } from "@/components/sections/TrustedLogosCarousel";
+import { ChevronDown } from "lucide-react";
+import { useSiteImage } from "@/lib/use-site-images";
+
+/*
+ * Figma reference: node 144:166, canvas 1920px wide.
+ * We target ~1280px viewport width and ~650px viewport height (browser chrome
+ * typically eats ~90px from a 768px screen, plus navbar ~64px).
+ * vw() clamps between a comfortable minimum and the Figma maximum.
+ */
+function vw(px: number, min: number) {
+  return `clamp(${min}px, ${((px / 1920) * 100).toFixed(3)}vw, ${px}px)`;
+}
+
+/*
+ * Logo set: 6 logos, widths sum = 500.18px, 5 internal gaps × 63px = 315px,
+ * 1 inter-set gap = 63px → one full set = 878px. Translate -878px for seamless loop.
+ */
+const LOGOS = [
+  { src: "/partners/partner-step.png",      alt: "Step Innovations Africa",      w: 95,     h: 37    },
+  { src: "/partners/partner-coastal.png",   alt: "Coastal Image Technologies",   w: 107.48, h: 34.57 },
+  { src: "/partners/partner-explosify.png", alt: "Explosify",                    w: 98.70,  h: 22.84 },
+  { src: "/partners/partner-moradio.png",   alt: "MO Radio",                     w: 51,     h: 40.91 },
+  { src: "/partners/partner-maxfill.png",   alt: "Maxfill Energy Limited",       w: 80,     h: 41    },
+  { src: "/partners/partner-sevenseas.png", alt: "Seven Seas Connection Agency", w: 68,     h: 53    },
+];
 
 export function HeroSection({ onBooking }: { onBooking?: () => void }) {
+  const heroBg = useSiteImage("hero.background");
+  const bgSrc = heroBg || "/images/hero-coins.jpg";
+
   return (
-    <section className="relative section-dark overflow-hidden flex flex-col" style={{ minHeight: "calc(100vh - var(--navbar-h, 64px))" }}>
+    <section
+      className="relative overflow-hidden w-full"
+      /* dvh accounts for mobile browser bars; on desktop = vh */
+      style={{ height: "calc(100dvh - var(--navbar-h, 64px))" }}
+    >
+      {/* ── Keyframe animations ── */}
+      <style>{`
+        @keyframes ken-burns {
+          from { transform: scale(1);    }
+          to   { transform: scale(1.08); }
+        }
+        @keyframes marquee-scroll {
+          from { transform: translateX(0);     }
+          to   { transform: translateX(-878px); }
+        }
+        @keyframes marquee-scroll-mobile {
+          from { transform: translateX(0);     }
+          to   { transform: translateX(-540px); }
+        }
+        @keyframes bounce-y {
+          0%, 100% { transform: translateY(0);   opacity: 0.5; }
+          50%       { transform: translateY(6px); opacity: 1;   }
+        }
+        /* Mobile: pan image right so the dramatic coins fill the frame */
+        @media (max-width: 1023px) {
+          .hero-bg { background-position: 70% center; }
+        }
+      `}</style>
 
-      {/* ── Background ── */}
-      <div className="absolute inset-0 -z-0">
-        {/* Photo */}
-        <img
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=2000&q=80"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Dark multiply overlay — matches Figma rgba(8,35,35,0.98) multiply */}
-        <div className="absolute inset-0 bg-[#082323] opacity-[0.93] mix-blend-multiply" />
+      {/* ── Background photo with Ken Burns slow zoom ── */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg"
+        style={{
+          backgroundImage: `url('${bgSrc}')`,
+          animation: "ken-burns 22s ease-out forwards",
+          willChange: "transform",
+        }}
+      />
 
-        {/* Diagonal gradient blob — top centre-right (Figma Vector, -15.81deg) */}
+      {/* ── Desktop gradient ── */}
+      <div
+        className="absolute inset-0 pointer-events-none hidden lg:block"
+        style={{
+          backgroundImage: [
+            "linear-gradient(180deg, rgba(0,0,0,0.215) 64.767%, rgba(0,0,0,0.86) 94.252%)",
+            "linear-gradient(89.57deg, rgba(0,0,0,0.3) 2.315%, rgba(0,0,0,0) 67.248%)",
+          ].join(", "),
+        }}
+      />
+      {/* ── Mobile gradient — stronger bottom-up fade for text legibility ── */}
+      <div
+        className="absolute inset-0 pointer-events-none lg:hidden"
+        style={{
+          backgroundImage:
+            "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%)",
+        }}
+      />
+
+      {/* ══════════════════════════════════════
+          DESKTOP (≥ 1024px)
+          Content: left 79px, top 37.9% (372/981)
+          Trusted By: centred, pinned bottom
+      ══════════════════════════════════════ */}
+
+      {/* Content block — node 144:179 */}
+      <div
+        className="absolute inset-x-0 z-10 hidden lg:block"
+        style={{ top: "clamp(110px, 28%, 340px)" }}
+      >
+        <div className="container-x">
+          <div className="max-w-[1060px] mx-auto">
         <div
-          className="absolute pointer-events-none"
           style={{
-            top: "10%",
-            left: "30%",
-            width: "55%",
-            height: "45%",
-            background:
-              "linear-gradient(135deg, rgba(55,180,180,0.18) 0%, rgba(14,62,62,0.08) 50%, transparent 100%)",
-            transform: "rotate(-16deg)",
-            filter: "blur(48px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: vw(28, 20),
+            maxWidth: vw(620, 280),
           }}
-        />
+        >
+        {/* Text group */}
+        <div style={{ display: "flex", flexDirection: "column", gap: vw(16, 12) }}>
+          {/* Headline */}
+          <p
+            style={{
+              fontFamily: "'Funnel Display', sans-serif",
+              fontWeight: 500,
+              fontSize: vw(46, 24),
+              lineHeight: 1.08,
+              letterSpacing: "-0.04em",
+              color: "white",
+              wordWrap: "break-word",
+              textShadow:
+                "0px 7px 15px rgba(0,0,0,0.08), 0px 27px 27px rgba(0,0,0,0.07), 0px 62px 37px rgba(0,0,0,0.04), 0px 110px 44px rgba(0,0,0,0.01), 0px 172px 48px rgba(0,0,0,0)",
+            }}
+          >
+            Built for organisations that hold themselves to<br />a higher standard.
+          </p>
 
-        {/* Diagonal gradient blob — bottom left (Figma Vector1, -103.85deg) */}
-        <div
-          className="absolute pointer-events-none"
+          {/* Body */}
+          <p
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 400,
+              fontSize: vw(15, 13),
+              lineHeight: 1.6,
+              letterSpacing: "0em",
+              color: "rgba(255,255,255,0.68)",
+              maxWidth: vw(420, 260),
+              wordWrap: "break-word",
+            }}
+          >
+            Senior advisory for leadership teams who need<br />financial discipline, operational clarity, and systems that scale.
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div style={{ display: "flex", alignItems: "center", gap: vw(10, 8) }}>
+          <button
+            type="button"
+            onClick={onBooking}
+            style={{
+              height: vw(40, 36),
+              padding: `0 ${vw(18, 16)}`,
+              background: "#37b4b4",
+              border: "1px solid #36c0c0",
+              borderRadius: 7,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              flexShrink: 0,
+            }}
+          >
+            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "#0a3030", whiteSpace: "nowrap" }}>
+              Book a Call
+            </span>
+          </button>
+          <Link
+            href="/contact"
+            style={{
+              height: vw(40, 36),
+              padding: `0 ${vw(18, 16)}`,
+              background: "rgba(227,227,227,0.1)",
+              border: "1px solid #767676",
+              borderRadius: 7,
+              boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textDecoration: "none",
+              flexShrink: 0,
+            }}
+          >
+            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "white", whiteSpace: "nowrap" }}>
+              Contact
+            </span>
+          </Link>
+        </div>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Trusted By — desktop, animated marquee, pinned bottom */}
+      <div
+        className="absolute z-10 hidden lg:flex flex-col items-center"
+        style={{
+          left: "50%",
+          transform: "translateX(-50%) scale(0.813)",
+          transformOrigin: "bottom center",
+          bottom: "32px",
+          width: "816px",
+        }}
+      >
+        {/* "TRUSTED BY:" label */}
+        <p
           style={{
-            bottom: "-5%",
-            left: "0%",
-            width: "30%",
-            height: "50%",
-            background:
-              "linear-gradient(200deg, rgba(55,180,180,0.14) 0%, rgba(8,33,33,0.06) 60%, transparent 100%)",
-            transform: "rotate(-104deg)",
-            filter: "blur(56px)",
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 400,
+            fontSize: 14,
+            lineHeight: 1,
+            color: "white",
+            textAlign: "center",
+            marginBottom: 8,
+            textShadow:
+              "0px 1px 3px rgba(0,0,0,0.29), 0px 5px 5px rgba(0,0,0,0.26), 0px 12px 7px rgba(0,0,0,0.15), 0px 21px 8px rgba(0,0,0,0.04), 0px 33px 9px rgba(0,0,0,0.01)",
           }}
-        />
+        >
+          TRUSTED BY:
+        </p>
 
-        {/* Diagonal gradient blob — bottom right (Figma Vector2) */}
+        {/* Marquee track — overflow hidden + side gradient masks */}
         <div
-          className="absolute pointer-events-none"
           style={{
-            bottom: "-15%",
-            right: "-2%",
-            width: "50%",
-            height: "45%",
-            background:
-              "linear-gradient(135deg, rgba(55,180,180,0.12) 0%, transparent 70%)",
-            transform: "rotate(-16deg)",
-            filter: "blur(48px)",
+            width: "100%",
+            height: 53,
+            overflow: "hidden",
+            maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+          }}
+        >
+          {/* Animated track — logos doubled for seamless loop */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 63,
+              height: 53,
+              opacity: 0.70,
+              width: "max-content",
+              animation: "marquee-scroll 25s linear infinite",
+              willChange: "transform",
+            }}
+          >
+            {[...LOGOS, ...LOGOS].map((logo, i) => (
+              <img
+                key={i}
+                src={logo.src}
+                alt={logo.alt}
+                style={{ width: logo.w, height: logo.h, objectFit: "contain", flexShrink: 0 }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator — desktop only, bounces gently */}
+      <div
+        className="absolute z-10 hidden lg:flex flex-col items-center gap-1"
+        style={{ left: "50%", transform: "translateX(-50%)", bottom: "104px" }}
+      >
+        <ChevronDown
+          size={20}
+          strokeWidth={1.5}
+          style={{
+            color: "rgba(255,255,255,0.45)",
+            animation: "bounce-y 2s ease-in-out infinite",
           }}
         />
       </div>
 
-      {/* ── Main content — vertically centred ── */}
-      <div className="relative flex-1 flex flex-col items-center justify-center gap-3 px-5 pt-16 pb-10 text-center">
-
-        {/* Pill badge */}
-        <Reveal>
-          <div className="inline-flex items-center gap-1.5 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[rgba(32,190,179,0.13)] border border-[rgba(19,122,122,0.5)] text-[12px] sm:text-[13px] whitespace-nowrap">
-            <span className="text-white/70 flex items-center gap-1 sm:gap-2">
-              <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#37B4B4] inline-block shrink-0" />
-              <span className="hidden sm:inline">Trusted by leading organisations</span>
-              <span className="sm:hidden">Trusted by teams</span>
-            </span>
-            <Link
-              href="/case-studies"
-              className="text-[#4cf0f0] hover:text-white font-normal transition-colors"
-            >
-              See case studies
-            </Link>
-          </div>
-        </Reveal>
-
-        {/* Headline */}
-        <Reveal delay={80}>
-          <h1
-            className="text-white font-medium text-center text-balance"
-            style={{
-              fontSize: "clamp(32px, 3.6vw, 52px)",
-              letterSpacing: "-0.04em",
-              lineHeight: 1.05,
-              maxWidth: "780px",
-            }}
-          >
-            Strategic consulting for businesses ready to scale.
-          </h1>
-        </Reveal>
-
-        {/* Body */}
-        <Reveal delay={160}>
+      {/* ══════════════════════════════════════
+          MOBILE (< 1024px)
+      ══════════════════════════════════════ */}
+      <div className="lg:hidden absolute inset-0 z-10 flex flex-col justify-end px-5 pb-5">
+        <div className="flex flex-col gap-3 mb-5">
           <p
-            className="text-white/75 font-normal text-center"
             style={{
-              fontSize: "clamp(13px, 1.1vw, 15px)",
-              letterSpacing: "-0.01em",
-              lineHeight: 1.55,
-              maxWidth: "620px",
+              fontFamily: "'Funnel Display', sans-serif",
+              fontWeight: 500,
+              fontSize: "clamp(22px, 5.5vw, 32px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.04em",
+              color: "white",
             }}
           >
-            We help organisations navigate complexity, make informed decisions, and build
-            systems that scale — through clarity, structure, and disciplined execution.
+            Built for organisations<br />that hold themselves to<br />a higher standard.
           </p>
-        </Reveal>
-
-        {/* CTAs */}
-        <Reveal delay={240}>
-          <div className="flex items-center gap-2 sm:gap-3 mt-1 flex-wrap">
-            <Link
-              href="/contact"
-              className="h-10 px-4 sm:px-6 rounded-lg bg-white/[0.08] border border-white/25 text-white text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center hover:bg-white/15 transition-colors whitespace-nowrap"
-            >
-              Contact
-            </Link>
+          <p
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 400,
+              fontSize: 13,
+              lineHeight: 1.6,
+              letterSpacing: "0em",
+              color: "rgba(255,255,255,0.68)",
+              maxWidth: 300,
+            }}
+          >
+            Senior advisory for leadership teams who need<br />financial discipline, operational clarity, and systems that scale.
+          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
             <button
               type="button"
               onClick={onBooking}
-              className="h-10 px-4 sm:px-6 rounded-lg bg-[#37B4B4] border border-[#36c0c0] text-[#0a3030] text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center hover:bg-[#29E0C8] transition-colors whitespace-nowrap"
+              style={{ height: 36, padding: "0 16px", background: "#37b4b4", border: "1px solid #36c0c0", borderRadius: 7, color: "#0a3030", fontSize: 13, fontWeight: 500, fontFamily: "'Inter', sans-serif", letterSpacing: "-0.01em", cursor: "pointer", display: "flex", alignItems: "center", whiteSpace: "nowrap" }}
             >
               Book a Call
             </button>
+            <Link
+              href="/contact"
+              style={{ height: 36, padding: "0 16px", background: "rgba(227,227,227,0.1)", border: "1px solid #767676", borderRadius: 7, color: "white", fontSize: 13, fontWeight: 500, fontFamily: "'Inter', sans-serif", letterSpacing: "-0.01em", boxShadow: "0px 4px 4px rgba(0,0,0,0.25)", display: "flex", alignItems: "center", whiteSpace: "nowrap", textDecoration: "none" }}
+            >
+              Contact
+            </Link>
           </div>
-        </Reveal>
-      </div>
+        </div>
 
-      {/* ── Client logos — anchored to bottom ── */}
-      <div className="relative w-full border-t border-white/[0.06]">
-        <TrustedLogosCarousel />
+        {/* Trusted By — mobile marquee */}
+        <div>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.65)", textAlign: "center", letterSpacing: "0.1em", marginBottom: 8 }}>
+            TRUSTED BY:
+          </p>
+          {/* Mobile marquee — narrower logos, faster scroll */}
+          <div
+            style={{
+              width: "100%",
+              height: 36,
+              overflow: "hidden",
+              maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 32,
+                height: 36,
+                opacity: 0.7,
+                width: "max-content",
+                animation: "marquee-scroll-mobile 20s linear infinite",
+                willChange: "transform",
+              }}
+            >
+              {[...LOGOS, ...LOGOS].map((logo, i) => (
+                <img
+                  key={i}
+                  src={logo.src}
+                  alt={logo.alt}
+                  style={{ height: Math.round(logo.h * 0.6), width: "auto", objectFit: "contain", flexShrink: 0 }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
     </section>

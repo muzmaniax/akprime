@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow } from "@/components/ui/Primitives";
 import { CTABannerSection } from "@/components/sections/TestimonialsInsightsCTA";
+import { getContentCMS } from "@/lib/content-cms";
+import { getSiteImage } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Insights | AK Prime Consulting",
@@ -16,20 +18,20 @@ const ARTICLES = [
     title: "Why most business problems are misdiagnosed",
     excerpt: "The cost of getting the diagnosis wrong is too high. Here's how we approach discovery.",
     author: "Mark Wood",
-    date: "Jan 20, 2026",
+    date: "Apr 3, 2026",
     readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=80",
+    image: "/images/laptop-workspace.jpg",
     featured: true,
   },
   {
     slug: "the-real-cost-of-poor-decision-making",
     category: "Operations",
     title: "The real cost of poor decision-making for business",
-    excerpt: "How informational gaps cascade into operational failures — and how to fix it.",
+    excerpt: "How informational gaps cascade into operational failures, and how to fix it.",
     author: "Hanry Mandu",
-    date: "Jan 20, 2026",
+    date: "Mar 14, 2026",
     readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    image: "/images/hero-workspace-bw.jpg",
   },
   {
     slug: "when-founders-should-seek-external-perspective",
@@ -37,19 +39,36 @@ const ARTICLES = [
     title: "When founders should seek external perspective",
     excerpt: "The moments when fresh, external eyes unlock breakthrough clarity.",
     author: "Andy Milan",
-    date: "Jan 20, 2026",
+    date: "Feb 20, 2026",
     readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
+    image: "/images/professional-headshot.jpg",
   },
 ];
 
-const featured = ARTICLES.find((a) => a.featured)!;
-const rest = ARTICLES.filter((a) => !a.featured);
-
 export default function InsightsPage() {
+  const cms = getContentCMS();
+
+  // Merge CMS overrides (content + images) into ARTICLES
+  const articles = ARTICLES.map(a => {
+    const overrides = cms.insights[a.slug] ?? {};
+    const cmsImage = getSiteImage(`insight.${a.slug}.image`);
+    return {
+      ...a,
+      image:    cmsImage  || a.image,
+      title:    overrides.title    ?? a.title,
+      excerpt:  overrides.excerpt  ?? a.excerpt,
+      category: overrides.category ?? a.category,
+      author:   overrides.author   ?? a.author,
+      date:     overrides.date     ?? a.date,
+    };
+  });
+
+  const featured = articles.find((a) => a.featured)!;
+  const rest = articles.filter((a) => !a.featured);
   return (
     <div className="bg-white">
       {/* ── Hero ── */}
+
       <section className="section-dark border-b border-white/[0.06]" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
         <div className="container-x max-w-3xl text-center">
           <Reveal><Eyebrow className="justify-center">Insights</Eyebrow></Reveal>
@@ -97,17 +116,12 @@ export default function InsightsPage() {
                   </p>
                   <div className="mt-6 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-[13px] text-[#3a5a5a]">
-                      <div className="w-7 h-7 rounded-full bg-[#0E3E3E] flex items-center justify-center">
-                        <span className="text-[#37B4B4] text-[9px] font-semibold">
-                          {featured.author.split(" ").map(w => w[0]).join("")}
-                        </span>
-                      </div>
                       <span>{featured.author}</span>
                       <span className="text-[#082121]/25">·</span>
                       <time>{featured.date}</time>
                     </div>
-                    <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all">
-                      Read article <ArrowUpRight size={14} />
+                    <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all flex-wrap">
+                      Read article <ArrowUpRight size={14} className="shrink-0" />
                     </span>
                   </div>
                 </div>
@@ -151,11 +165,6 @@ export default function InsightsPage() {
                       {a.excerpt}
                     </p>
                     <div className="mt-4 flex items-center gap-2 text-[12px] text-[#3a5a5a]">
-                      <div className="w-6 h-6 rounded-full bg-[#0E3E3E] flex items-center justify-center shrink-0">
-                        <span className="text-[#37B4B4] text-[8px] font-semibold">
-                          {a.author.split(" ").map(w => w[0]).join("")}
-                        </span>
-                      </div>
                       <span>{a.author}</span>
                       <span className="text-[#082121]/25">·</span>
                       <time>{a.date}</time>

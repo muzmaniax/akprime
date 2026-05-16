@@ -25,7 +25,7 @@ const SERVICES: ServiceItem[] = [
     key: "Finance & Compliance",
     icon: Shield,
     headline: "Finance & Compliance",
-    blurb: "CFO advisory, FP&A modelling, audit frameworks and regulatory readiness — built for organisations that need rigour without the overhead.",
+    blurb: "CFO advisory, FP&A modelling, audit frameworks and regulatory readiness, built for organisations that need rigour without the overhead.",
     href: "/services",
   },
   {
@@ -39,7 +39,7 @@ const SERVICES: ServiceItem[] = [
     key: "HR & People Services",
     icon: Users,
     headline: "HR & People Services",
-    blurb: "Organisation design, payroll, recruitment, and L&D — integrated into one people platform that actually works at scale.",
+    blurb: "Organisation design, payroll, recruitment, and L&D, integrated into one people platform that actually works at scale.",
     href: "/services",
   },
   {
@@ -55,6 +55,7 @@ export function ServicesSection() {
   return (
     <section className="bg-white section-py border-t border-[#082121]/8">
       <div className="container-x">
+        <div className="max-w-[1060px] mx-auto">
 
         {/* Header row */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
@@ -111,6 +112,7 @@ export function ServicesSection() {
               </Reveal>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

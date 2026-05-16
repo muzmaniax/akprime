@@ -14,9 +14,9 @@ export const industriesData: Industry[] = [
   {
     slug: "manufacturing",
     name: "Manufacturing",
-    shortDescription: "Precision at scale — ERP, supply chain visibility and production analytics.",
+    shortDescription: "Precision at scale: ERP, supply chain visibility and production analytics.",
     heroHeadline: "Optimise Production Lines & Secure Your Supply Chain.",
-    photo: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
+    photo: "/images/tech-workspace.jpg",
     challenges: [
       "Siloed demand forecasting leading to inventory stockouts or costly overstock.",
       "Lack of real-time visibility into machine downtime and OEE (Overall Equipment Effectiveness).",
@@ -39,7 +39,7 @@ export const industriesData: Industry[] = [
     name: "Financial Services",
     shortDescription: "Modernise core banking, automate compliance and close audit cycles faster.",
     heroHeadline: "Modernise Core Banking & Fortify Compliance Operations.",
-    photo: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1200&q=80",
+    photo: "/images/success-team.jpg",
     challenges: [
       "Legacy core banking arrays preventing rapid deployment of digital financial products.",
       "Increasingly complex AML/KYC regulatory requirements requiring manual oversight.",
@@ -62,7 +62,7 @@ export const industriesData: Industry[] = [
     name: "Logistics",
     shortDescription: "Intelligent routing, fleet telemetry and same-day digital invoicing.",
     heroHeadline: "Intelligent Fleet Management & Vansales Automation.",
-    photo: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80",
+    photo: "/images/digital-transformation.jpg",
     challenges: [
       "Inefficient routing causing excess fuel consumption and delayed deliveries.",
       "Paper-based dispatch and proof-of-delivery causing invoice turnaround delays.",
@@ -85,7 +85,7 @@ export const industriesData: Industry[] = [
     name: "Healthcare",
     shortDescription: "Integrated HMIS, zero-defect billing and secure patient data governance.",
     heroHeadline: "Secure Patient Data & Seamless HMIS Deployments.",
-    photo: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80",
+    photo: "/images/business-growth.jpg",
     challenges: [
       "Disconnected clinical and billing systems causing revenue leakage and claim rejections.",
       "Data privacy vulnerabilities complying with health data protection acts.",
@@ -108,7 +108,7 @@ export const industriesData: Industry[] = [
     name: "NGOs & Donors",
     shortDescription: "Real-time M&E, transparent donor reporting and field-ready fund tracking.",
     heroHeadline: "Transparent Impact Reporting & M&E Automation.",
-    photo: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80",
+    photo: "/images/innovation-lab.jpg",
     challenges: [
       "Manual, spreadsheet-based donor reporting lacking real-time data integrity.",
       "Difficulty tracking multi-currency fund utilisation across decentralized field offices.",
@@ -131,7 +131,7 @@ export const industriesData: Industry[] = [
     name: "Government",
     shortDescription: "GRP deployment, e-government portals and transparent public procurement.",
     heroHeadline: "Digital Governance & Public Finance Management.",
-    photo: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1200&q=80",
+    photo: "/images/professional-discussion.jpg",
     challenges: [
       "Fragmented legacy civil service directories causing payroll leakages.",
       "Inefficient revenue collection systems with high citizen friction.",
@@ -154,7 +154,7 @@ export const industriesData: Industry[] = [
     name: "Education",
     shortDescription: "Integrated SIS, automated fee collection and AI-assisted timetabling.",
     heroHeadline: "Scale Academic Excellence with Automated Administration.",
-    photo: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&q=80",
+    photo: "/images/business-analysis.jpg",
     challenges: [
       "Disconnect between student enrollment systems and fee collection ledgers.",
       "Manual alumni tracking and engagement limiting fundraising potential.",
@@ -177,7 +177,7 @@ export const industriesData: Industry[] = [
     name: "Retail & FMCG",
     shortDescription: "Unified POS, predictive inventory and rapid end-of-day cash reconciliation.",
     heroHeadline: "Omnichannel Point-of-Sale & Predictive Inventory.",
-    photo: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80",
+    photo: "/images/team-brainstorm.jpg",
     challenges: [
       "Disconnect between physical POS systems and e-commerce inventory.",
       "Inability to predict seasonal velocity, leading to markdowns on dead stock.",

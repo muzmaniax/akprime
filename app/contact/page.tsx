@@ -4,7 +4,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 
 export const metadata: Metadata = {
   title: "Contact | AK Prime Consulting",
-  description: "Get in touch with AK Prime — strategic consulting for organisations ready to scale.",
+  description: "Get in touch with AK Prime. Strategic consulting for organisations ready to scale.",
 };
 
 export default function ContactPage() {

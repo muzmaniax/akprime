@@ -7,20 +7,22 @@ import { z } from "zod";
 import {
   Dialog,
   DialogContent,
+  DialogClose,
   DialogHeader,
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { ArrowUpRight, Check, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { ArrowUpRight, Check, Mail, Phone, MapPin, Clock, X } from "lucide-react";
 import { servicesData } from "@/data/services";
 import { cn } from "@/lib/utils";
+import { useSiteImage } from "@/lib/use-site-images";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
   company: z.string().min(1, "Company is required"),
   email: z.string().email("Valid email required"),
-  phone: z.string().optional(),
+  phone: z.string().min(1, "Phone number is required"),
   service: z.string().optional(),
   message: z.string().optional(),
 });
@@ -34,6 +36,7 @@ interface BookingModalProps {
 }
 
 export function BookingModal({ open, onOpenChange, prefilledService }: BookingModalProps) {
+  const bookingBg = useSiteImage("booking.bg");
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -61,51 +64,56 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
   return (
     <Dialog open={open} onOpenChange={(o) => { onOpenChange(o); if (!o) { reset(); setSubmitted(false); } }}>
       <DialogContent
-        className="bg-transparent border-0 shadow-none p-0 max-w-3xl w-[calc(100vw-2rem)] max-h-[92vh] overflow-hidden rounded-3xl"
+        showCloseButton={false}
+        className="bg-transparent border-0 shadow-none ring-0 p-0 gap-0 w-[calc(100vw-2rem)] max-w-[900px] sm:max-w-[900px] max-h-[90vh] overflow-hidden rounded-3xl"
       >
         {!submitted ? (
-          <div className="grid md:grid-cols-12 max-h-[92vh] rounded-3xl overflow-hidden bg-white shadow-2xl">
+          <div className="relative grid md:grid-cols-[5fr_7fr] max-h-[90vh] rounded-3xl overflow-hidden bg-white shadow-2xl">
+            {/* Close button */}
+            <DialogClose className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/20 hover:bg-black/35 flex items-center justify-center text-white transition-colors backdrop-blur-sm">
+              <X size={15} strokeWidth={2.5} />
+            </DialogClose>
             {/* LEFT — info panel (dark, photo-backed) */}
-            <div className="hidden md:block md:col-span-5 relative bg-[#082121] text-white p-8 lg:p-9">
+            <div className="hidden md:flex flex-col relative bg-[#082121] text-white p-7">
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-25"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400&q=80')" }}
+                style={{ backgroundImage: `url('${bookingBg || "/images/team-collaboration.jpg"}')` }}
               />
               <div className="absolute inset-0 bg-gradient-to-br from-[#082121] via-[#082121]/85 to-[#0E3E3E]/80" />
               <div className="relative h-full flex flex-col">
                 <DialogHeader className="text-left space-y-2">
-                  <span className="inline-flex items-center gap-2 self-start text-[11px] font-semibold tracking-label uppercase text-[#37B4B4]">
+                  <span className="inline-flex items-center gap-2 self-start text-[11px] font-semibold tracking-[0.14em] uppercase text-[#37B4B4]">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
                     Strategy Call
                   </span>
-                  <DialogTitle className="text-white text-[28px] leading-[1.1] font-semibold tracking-tight">
+                  <DialogTitle className="text-white text-[22px] leading-[1.15] font-semibold tracking-tight">
                     Let&apos;s talk about your goals.
                   </DialogTitle>
-                  <DialogDescription className="text-white/65 text-[14px] leading-relaxed pt-1">
-                    A free 30-minute discovery call. No hard sell — an honest assessment of where we can help and where we can&apos;t.
+                  <DialogDescription className="text-white/65 text-[13px] leading-relaxed pt-1">
+                    A free 30-minute discovery call. No hard sell, just an honest assessment of where we can help and where we can&apos;t.
                   </DialogDescription>
                 </DialogHeader>
 
-                <ul className="mt-8 space-y-3 text-[13px] text-white/80">
+                <ul className="mt-6 space-y-3 text-[13px] text-white/80">
                   <Bullet>Senior consultant, not a sales rep</Bullet>
                   <Bullet>Reply within 1 business day</Bullet>
                   <Bullet>Clear proposal in 5 business days</Bullet>
                 </ul>
 
-                <div className="mt-auto pt-8 space-y-3 text-[13px]">
+                <div className="mt-auto pt-6 space-y-3 text-[13px]">
                   <ContactRow icon={<Mail size={14} />} value="info@akprime.co.ke" />
                   <ContactRow icon={<Phone size={14} />} value="0118 001 001" />
-                  <ContactRow icon={<MapPin size={14} />} value="Nairobi & Mombasa" />
+                  <ContactRow icon={<MapPin size={14} />} value="Mombasa · Nairobi · Dubai" />
                   <ContactRow icon={<Clock size={14} />} value="Mon–Fri · 9am–6pm EAT" />
                 </div>
               </div>
             </div>
 
             {/* RIGHT — form panel (light) */}
-            <div className="md:col-span-7 bg-white p-6 sm:p-8 lg:p-9 overflow-y-auto">
+            <div className="bg-white p-6 sm:p-8 overflow-y-auto">
               {/* Mobile header (md hidden uses left panel, mobile shows compact title) */}
               <div className="md:hidden mb-5">
-                <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-label uppercase text-[#37B4B4]">
+                <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase text-[#37B4B4]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#37B4B4]" />
                   Strategy Call
                 </span>
@@ -144,7 +152,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
                       className={inputCls(!!errors.email)}
                     />
                   </Field>
-                  <Field label="Phone / WhatsApp" optional>
+                  <Field label="Phone / WhatsApp" error={errors.phone?.message}>
                     <input
                       {...register("phone")}
                       placeholder="+254..."
@@ -175,8 +183,8 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
                   <textarea
                     {...register("message")}
                     placeholder="Brief overview of what you're working on…"
-                    rows={3}
-                    className={cn(inputCls(false), "resize-none py-2.5 leading-relaxed")}
+                    rows={4}
+                    className={cn(inputCls(false), "resize-none py-3 leading-relaxed")}
                   />
                 </Field>
 
@@ -220,7 +228,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
 
 function inputCls(hasError: boolean) {
   return cn(
-    "w-full h-11 rounded-xl bg-white px-3.5 text-[14px] text-[#082121] placeholder:text-[#082121]/40 focus:outline-none transition-colors border",
+    "w-full h-12 rounded-xl bg-white px-4 text-[14px] text-[#082121] placeholder:text-[#082121]/40 focus:outline-none transition-colors border",
     hasError
       ? "border-red-400 focus:border-red-500"
       : "border-[#082121]/12 focus:border-[#37B4B4] focus:ring-2 focus:ring-[#37B4B4]/15"

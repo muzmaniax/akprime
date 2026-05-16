@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const benefits = [
-  "Honest assessment — no hard sell, no wasted time",
+  "Honest assessment. No hard sell, no wasted time.",
   "Tailored to your specific industry and business size",
   "Advice from a senior consultant with 15+ years of experience",
   "Clear recommended next steps, even if we're not the right fit",
@@ -28,7 +28,7 @@ export default function BookPage() {
               <span className="text-[#37B4B4]">Discovery Call</span>
             </h1>
             <p className="text-white/60 text-lg leading-relaxed mb-8">
-              Not sure if AK Prime is right for you? Book a no-obligation call. We'll hear about your situation, ask the right questions, and give you an honest recommendation — whether that means working together or pointing you in another direction.
+              Not sure if AK Prime is right for you? Book a no-obligation call. We'll hear about your situation, ask the right questions, and give you an honest recommendation, whether that means working together or pointing you in another direction.
             </p>
 
             <div className="space-y-4 mb-10">
