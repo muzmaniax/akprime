@@ -11,10 +11,22 @@ export function ContactSection() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitting(false);
-    toast.success("Thanks. We'll be in touch within one business day.");
-    (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    const data = Object.fromEntries(new FormData(form).entries());
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error();
+      toast.success("Thanks. We'll be in touch within one business day.");
+      form.reset();
+    } catch {
+      toast.error("Something went wrong. Please email us directly at info@akprime.co.ke");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
