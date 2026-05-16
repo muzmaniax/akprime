@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
@@ -9,91 +8,33 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 465,
-      secure: process.env.SMTP_SECURE !== "false", // true for 465, false for 587
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+    const key = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (!key) {
+      console.error("WEB3FORMS_KEY not set");
+      return NextResponse.json({ error: "Server misconfiguration" }, { status: 500 });
+    }
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: key,
+        subject: `New enquiry from ${first} ${last} — AK Prime`,
+        from_name: `${first} ${last}`,
+        replyto: email,
+        name: `${first} ${last}`,
+        email,
+        phone: phone || "Not provided",
+        message,
+      }),
     });
 
-    // Email to AK Prime team
-    await transporter.sendMail({
-      from: `"AK Prime Website" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_TO_EMAIL || "info@akprime.co.ke",
-      replyTo: email,
-      subject: `New enquiry from ${first} ${last}`,
-      html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#082121">
-          <div style="background:#082121;padding:24px 32px;border-radius:8px 8px 0 0">
-            <img src="https://akprime.co.ke/logo-primary.png" alt="AK Prime" height="36" style="display:block" />
-          </div>
-          <div style="background:#f4fafa;padding:32px;border-radius:0 0 8px 8px;border:1px solid #e0eeee;border-top:none">
-            <h2 style="margin:0 0 24px;font-size:20px;color:#082121">New website enquiry</h2>
-            <table style="width:100%;border-collapse:collapse;font-size:14px">
-              <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #d0e8e8;color:#3a5a5a;width:120px">Name</td>
-                <td style="padding:10px 0;border-bottom:1px solid #d0e8e8;font-weight:600">${first} ${last}</td>
-              </tr>
-              <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #d0e8e8;color:#3a5a5a">Email</td>
-                <td style="padding:10px 0;border-bottom:1px solid #d0e8e8">
-                  <a href="mailto:${email}" style="color:#37B4B4">${email}</a>
-                </td>
-              </tr>
-              ${phone ? `
-              <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #d0e8e8;color:#3a5a5a">Phone</td>
-                <td style="padding:10px 0;border-bottom:1px solid #d0e8e8">${phone}</td>
-              </tr>` : ""}
-              <tr>
-                <td style="padding:10px 0;color:#3a5a5a;vertical-align:top">Message</td>
-                <td style="padding:10px 0;line-height:1.6">${message.replace(/\n/g, "<br>")}</td>
-              </tr>
-            </table>
-            <div style="margin-top:28px">
-              <a href="mailto:${email}" style="display:inline-block;background:#37B4B4;color:#fff;text-decoration:none;padding:12px 24px;border-radius:6px;font-size:14px;font-weight:600">
-                Reply to ${first}
-              </a>
-            </div>
-          </div>
-          <p style="font-size:12px;color:#3a5a5a;text-align:center;margin-top:16px">
-            AK Prime Consulting · akprime.co.ke
-          </p>
-        </div>
-      `,
-    });
+    const data = await res.json();
 
-    // Auto-reply to the sender
-    await transporter.sendMail({
-      from: `"AK Prime Consulting" <${process.env.SMTP_USER}>`,
-      to: email,
-      subject: "We received your message — AK Prime Consulting",
-      html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#082121">
-          <div style="background:#082121;padding:24px 32px;border-radius:8px 8px 0 0">
-            <img src="https://akprime.co.ke/logo-primary.png" alt="AK Prime" height="36" style="display:block" />
-          </div>
-          <div style="background:#f4fafa;padding:32px;border-radius:0 0 8px 8px;border:1px solid #e0eeee;border-top:none">
-            <h2 style="margin:0 0 16px;font-size:20px">Hi ${first},</h2>
-            <p style="font-size:15px;line-height:1.7;margin:0 0 16px">
-              Thank you for reaching out to AK Prime Consulting. We've received your message and will get back to you within one business day.
-            </p>
-            <p style="font-size:15px;line-height:1.7;margin:0 0 24px">
-              In the meantime, feel free to explore our <a href="https://akprime.co.ke/services" style="color:#37B4B4">services</a> or <a href="https://akprime.co.ke/case-studies" style="color:#37B4B4">case studies</a>.
-            </p>
-            <a href="https://akprime.co.ke/book" style="display:inline-block;background:#082121;color:#fff;text-decoration:none;padding:12px 24px;border-radius:6px;font-size:14px;font-weight:600">
-              Book a consultation
-            </a>
-          </div>
-          <p style="font-size:12px;color:#3a5a5a;text-align:center;margin-top:16px">
-            AK Prime Consulting · akprime.co.ke · info@akprime.co.ke
-          </p>
-        </div>
-      `,
-    });
+    if (!data.success) {
+      console.error("Web3Forms error:", data);
+      return NextResponse.json({ error: "Failed to send" }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {
