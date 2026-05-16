@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { PageLoader } from "@/components/layout/PageLoader";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
 
@@ -91,6 +90,8 @@ export const viewport = {
 };
 
 import { ClientProviders } from "@/components/layout/ClientProviders";
+import { PageTransition } from "@/components/layout/PageTransition";
+import { MobileBackButton } from "@/components/layout/MobileBackButton";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -177,9 +178,11 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-sans min-h-screen bg-[#082121] text-white overflow-x-hidden" suppressHydrationWarning>
         <ClientProviders>
-          <PageLoader />
           <Navbar />
-          <main className="pb-16 lg:pb-0">{children}</main>
+          <PageTransition>
+            <MobileBackButton />
+            <main className="pb-16 lg:pb-0">{children}</main>
+          </PageTransition>
           <Footer />
         </ClientProviders>
       </body>

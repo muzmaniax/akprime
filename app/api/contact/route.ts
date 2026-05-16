@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: "AK Prime Website <noreply@akprime.co.ke>",
       to: "info@akprime.co.ke",
-      reply_to: email,
+      replyTo: email,
       subject: `New enquiry from ${first} ${last}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#082121">
