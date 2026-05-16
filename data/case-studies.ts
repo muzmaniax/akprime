@@ -43,8 +43,8 @@ export const caseStudies: CaseStudy[] = [
     location: "Nairobi, Kenya",
     sector: "Broadcasting",
     solution: "Financial Governance & Compliance",
-    summary: "Uncovered and recovered KSh 8.5M in tax overpayments for a leading media network.",
-    tagline: "Saved a broadcasting network KSh 8.5M through strategic tax compliance audit.",
+    summary: "Uncovered and recovered KSh 3.5M in tax overpayments for a leading media network.",
+    tagline: "Saved a broadcasting network KSh 3.5M through strategic tax compliance audit.",
     duration: "3 months",
     date: "Nov 15, 2024",
     narrative: {
@@ -56,7 +56,7 @@ export const caseStudies: CaseStudy[] = [
           description: "Reconstructing three years of tax filings to identify discrepancies.",
           points: [
             "Reviewed all VAT, income tax, and statutory filings from the past 36 months.",
-            "Identified KSh 8.5M in duplicate payments and missed allowable deductions.",
+            "Identified KSh 3.5M in duplicate payments and missed allowable deductions.",
             "Documented evidence for tax authority engagement and recovery claims."
           ]
         },
@@ -88,7 +88,7 @@ export const caseStudies: CaseStudy[] = [
           ]
         }
       ],
-      outcome: "Recovered KSh 8.5M in overpaid taxes within 3 months. The station now has complete visibility into its tax position, achieved 100% filing accuracy, and reduced month-end close time from 8 days to 2 days. The recovered capital was reinvested into new broadcast equipment and content production."
+      outcome: "Recovered KSh 3.5M in overpaid taxes within 3 months. The station now has complete visibility into its tax position, achieved 100% filing accuracy, and reduced month-end close time from 8 days to 2 days. The recovered capital was reinvested into new broadcast equipment and content production."
     },
     testimonial: {
       name: "Station Manager",
@@ -97,7 +97,7 @@ export const caseStudies: CaseStudy[] = [
       image: "/images/avatar-professional.jpg"
     },
     metrics: [
-      { value: "KSh 8.5M", label: "Recovered" },
+      { value: "KSh 3.5M", label: "Recovered" },
       { value: "100%", label: "Filing Accuracy" },
       { value: "2 Days", label: "Month-End Close" }
     ],

@@ -182,7 +182,7 @@ const ARTICLES = [
     category: "Strategy",
     title: "Why most business problems are misdiagnosed",
     author: "Mark Wood",
-    date: "Jan 20, 2026",
+    date: "Apr 3, 2026",
     image: "/images/laptop-workspace.jpg",
   },
   {
@@ -190,7 +190,7 @@ const ARTICLES = [
     category: "Operations",
     title: "The real cost of poor decision-making for business",
     author: "Hanry Mandu",
-    date: "Jan 20, 2026",
+    date: "Mar 14, 2026",
     image: "/images/hero-workspace-bw.jpg",
   },
   {
@@ -198,21 +198,21 @@ const ARTICLES = [
     category: "Leadership",
     title: "When founders should seek external perspective",
     author: "Andy Milan",
-    date: "Jan 20, 2026",
+    date: "Feb 20, 2026",
     image: "/images/professional-headshot.jpg",
   },
 ];
 
 export function InsightsSection() {
-  const card1 = useSiteImage("insights.card_1");
-  const card2 = useSiteImage("insights.card_2");
-  const card3 = useSiteImage("insights.card_3");
-  const cms   = useCMSContent();
+  const img0 = useSiteImage(`insight.${ARTICLES[0].slug}.image`);
+  const img1 = useSiteImage(`insight.${ARTICLES[1].slug}.image`);
+  const img2 = useSiteImage(`insight.${ARTICLES[2].slug}.image`);
+  const cms  = useCMSContent();
 
   const articleImages = [
-    card1 || ARTICLES[0].image,
-    card2 || ARTICLES[1].image,
-    card3 || ARTICLES[2].image,
+    img0 || ARTICLES[0].image,
+    img1 || ARTICLES[1].image,
+    img2 || ARTICLES[2].image,
   ];
 
   /* Merge CMS overrides into the static article list */

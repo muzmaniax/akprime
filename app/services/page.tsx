@@ -8,6 +8,7 @@ import { Reveal, Eyebrow } from "@/components/ui/Primitives";
 import { BookingModal } from "@/components/ui/BookingModal";
 import { servicesData, type ServiceCategory, type ServiceData } from "@/data/services";
 import { useSiteImage } from "@/lib/use-site-images";
+import Waves from "@/components/ui/Waves";
 
 const CATEGORIES: { key: ServiceCategory; short: string; blurb: string; icon: React.ElementType }[] = [
   {
@@ -266,6 +267,21 @@ export default function ServicesPage() {
         <div className="container-x">
           <Reveal>
             <div className="rounded-3xl bg-[#082121] text-white p-10 lg:p-14 text-center relative overflow-hidden">
+              <div className="absolute inset-0 pointer-events-none">
+                <Waves
+                  lineColor="rgba(55, 180, 180, 0.13)"
+                  backgroundColor="transparent"
+                  waveSpeedX={0.014}
+                  waveSpeedY={0.006}
+                  waveAmpX={38}
+                  waveAmpY={18}
+                  xGap={14}
+                  yGap={40}
+                  friction={0.93}
+                  tension={0.006}
+                  maxCursorMove={110}
+                />
+              </div>
               <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[#37B4B4]/15 blur-3xl pointer-events-none" />
               <div className="relative">
                 <Eyebrow className="justify-center">Get in touch</Eyebrow>

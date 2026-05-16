@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow } from "@/components/ui/Primitives";
 import { CTABannerSection } from "@/components/sections/TestimonialsInsightsCTA";
 import { getContentCMS } from "@/lib/content-cms";
+import { getSiteImage } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Insights | AK Prime Consulting",
@@ -17,7 +18,7 @@ const ARTICLES = [
     title: "Why most business problems are misdiagnosed",
     excerpt: "The cost of getting the diagnosis wrong is too high. Here's how we approach discovery.",
     author: "Mark Wood",
-    date: "Jan 20, 2026",
+    date: "Apr 3, 2026",
     readTime: "7 min read",
     image: "/images/laptop-workspace.jpg",
     featured: true,
@@ -28,7 +29,7 @@ const ARTICLES = [
     title: "The real cost of poor decision-making for business",
     excerpt: "How informational gaps cascade into operational failures, and how to fix it.",
     author: "Hanry Mandu",
-    date: "Jan 20, 2026",
+    date: "Mar 14, 2026",
     readTime: "6 min read",
     image: "/images/hero-workspace-bw.jpg",
   },
@@ -38,7 +39,7 @@ const ARTICLES = [
     title: "When founders should seek external perspective",
     excerpt: "The moments when fresh, external eyes unlock breakthrough clarity.",
     author: "Andy Milan",
-    date: "Jan 20, 2026",
+    date: "Feb 20, 2026",
     readTime: "5 min read",
     image: "/images/professional-headshot.jpg",
   },
@@ -47,11 +48,13 @@ const ARTICLES = [
 export default function InsightsPage() {
   const cms = getContentCMS();
 
-  // Merge CMS overrides into ARTICLES
+  // Merge CMS overrides (content + images) into ARTICLES
   const articles = ARTICLES.map(a => {
     const overrides = cms.insights[a.slug] ?? {};
+    const cmsImage = getSiteImage(`insight.${a.slug}.image`);
     return {
       ...a,
+      image:    cmsImage  || a.image,
       title:    overrides.title    ?? a.title,
       excerpt:  overrides.excerpt  ?? a.excerpt,
       category: overrides.category ?? a.category,
@@ -113,11 +116,6 @@ export default function InsightsPage() {
                   </p>
                   <div className="mt-6 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-[13px] text-[#3a5a5a]">
-                      <div className="w-7 h-7 rounded-full bg-[#0E3E3E] flex items-center justify-center">
-                        <span className="text-[#37B4B4] text-[9px] font-semibold">
-                          {featured.author.split(" ").map(w => w[0]).join("")}
-                        </span>
-                      </div>
                       <span>{featured.author}</span>
                       <span className="text-[#082121]/25">·</span>
                       <time>{featured.date}</time>
@@ -167,11 +165,6 @@ export default function InsightsPage() {
                       {a.excerpt}
                     </p>
                     <div className="mt-4 flex items-center gap-2 text-[12px] text-[#3a5a5a]">
-                      <div className="w-6 h-6 rounded-full bg-[#0E3E3E] flex items-center justify-center shrink-0">
-                        <span className="text-[#37B4B4] text-[8px] font-semibold">
-                          {a.author.split(" ").map(w => w[0]).join("")}
-                        </span>
-                      </div>
                       <span>{a.author}</span>
                       <span className="text-[#082121]/25">·</span>
                       <time>{a.date}</time>

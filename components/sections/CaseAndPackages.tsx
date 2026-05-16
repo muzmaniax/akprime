@@ -3,15 +3,22 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow } from "@/components/ui/Primitives";
-import { caseStudies } from "@/data/case-studies";
+import { caseStudies, type CaseStudy } from "@/data/case-studies";
 import { useSiteImage } from "@/lib/use-site-images";
+import { useCMSContent } from "@/lib/use-cms-content";
 
 export function CaseStudiesSection() {
+  const cms = useCMSContent();
+
   const top = caseStudies.slice(0, 2).map((cs) => {
     const cardImage = useSiteImage(`casestudy.${cs.id}.image`) || cs.image;
+    const cmsCs = cms?.["case-studies"]?.[cs.id] as Record<string, unknown> | undefined;
     return {
       ...cs,
       image: cardImage,
+      ...(cmsCs?.tagline ? { tagline: cmsCs.tagline as string } : {}),
+      ...(cmsCs?.summary ? { summary: cmsCs.summary as string } : {}),
+      ...(cmsCs?.metrics ? { metrics: cmsCs.metrics as CaseStudy["metrics"] } : {}),
     };
   });
 
