@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | AK Prime Consulting",
   },
   description:
-    "AK Prime Consulting (AKPrime) provides ERP implementation, finance consulting, and digital transformation for organisations in Kenya and the UAE. Headquartered in Mombasa with offices in Nairobi and Dubai. Specialists in SAP, Odoo, and NetSuite.",
+    "AK Prime Consulting — Kenya's leading ERP, finance & AI advisory firm. We help organisations replace broken systems, automate operations, and scale with confidence. SAP, Odoo & NetSuite specialists. Offices in Mombasa, Nairobi & Dubai.",
   keywords: [
     "AK Prime",
     "AKPrime",
