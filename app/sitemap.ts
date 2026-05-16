@@ -1,50 +1,37 @@
 import { MetadataRoute } from "next";
-import { industriesData } from "@/data/industries";
-import { caseStudies } from "@/data/case-studies";
+
+const BASE = "https://akprime.co.ke";
+const NOW = new Date("2026-05-16");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://akprime.co.ke";
-  const now = new Date();
-
-  const staticPages = [
-    { url: "/", priority: 1.0, changeFrequency: "weekly" as const },
-    { url: "/services", priority: 0.9, changeFrequency: "weekly" as const },
-    { url: "/services/erp", priority: 0.85, changeFrequency: "monthly" as const },
-    { url: "/services/ai", priority: 0.85, changeFrequency: "monthly" as const },
-    { url: "/services/pm", priority: 0.8, changeFrequency: "monthly" as const },
-    { url: "/services/finance", priority: 0.8, changeFrequency: "monthly" as const },
-    { url: "/services/digital", priority: 0.8, changeFrequency: "monthly" as const },
-    { url: "/industries", priority: 0.85, changeFrequency: "monthly" as const },
-    { url: "/case-studies", priority: 0.85, changeFrequency: "monthly" as const },
-    { url: "/about", priority: 0.75, changeFrequency: "monthly" as const },
-    { url: "/contact", priority: 0.9, changeFrequency: "monthly" as const },
-    { url: "/book", priority: 0.9, changeFrequency: "monthly" as const },
-    { url: "/insights", priority: 0.8, changeFrequency: "weekly" as const },
-    { url: "/resources", priority: 0.8, changeFrequency: "monthly" as const },
-  ];
-
-  const industryPages = industriesData.map((industry) => ({
-    url: `${base}/industries/${industry.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.75,
-  }));
-
-  const caseStudyPages = caseStudies.map((cs) => ({
-    url: `${base}/case-studies/${cs.id}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
   return [
-    ...staticPages.map((page) => ({
-      url: `${base}${page.url}`,
-      lastModified: now,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-    })),
-    ...industryPages,
-    ...caseStudyPages,
+    // Core
+    { url: BASE, lastModified: NOW, changeFrequency: "weekly", priority: 1.0 },
+    { url: `${BASE}/services`, lastModified: NOW, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/contact`, lastModified: NOW, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/book`, lastModified: NOW, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/industries`, lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/case-studies`, lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/insights`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/resources`, lastModified: NOW, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/about`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    // Services
+    { url: `${BASE}/services/erp`, lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/services/ai`, lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/services/pm`, lastModified: NOW, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/services/finance`, lastModified: NOW, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/services/digital`, lastModified: NOW, changeFrequency: "monthly", priority: 0.8 },
+    // Industries
+    { url: `${BASE}/industries/manufacturing`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/industries/financial-services`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/industries/logistics`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/industries/healthcare`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/industries/ngos`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/industries/government`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/industries/education`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/industries/retail`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    // Case studies
+    { url: `${BASE}/case-studies/mo-radio-tax-compliance`, lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/case-studies/coastal-image-technologies`, lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
   ];
 }
