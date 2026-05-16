@@ -12,24 +12,14 @@ export function ContactSection() {
     e.preventDefault();
     setSubmitting(true);
     const form = e.target as HTMLFormElement;
-    const fd = new FormData(form);
+    const data = Object.fromEntries(new FormData(form).entries());
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: "c4a9e225-3dde-4fcf-8482-1ed4e6d727c4",
-          subject: `New enquiry from ${fd.get("first")} ${fd.get("last")} — AK Prime`,
-          from_name: `${fd.get("first")} ${fd.get("last")}`,
-          replyto: fd.get("email"),
-          name: `${fd.get("first")} ${fd.get("last")}`,
-          email: fd.get("email"),
-          phone: fd.get("phone") || "Not provided",
-          message: fd.get("message"),
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
-      const data = await res.json();
-      if (!data.success) throw new Error(data.message);
+      if (!res.ok) throw new Error();
       toast.success("Thanks. We'll be in touch within one business day.");
       form.reset();
     } catch {
