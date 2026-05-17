@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { Reveal, Eyebrow, SectionHeader } from "@/components/ui/Primitives";
+import { Reveal, Eyebrow, SectionHeader, StaggerReveal } from "@/components/ui/Primitives";
 import { industriesData, type Industry } from "@/data/industries";
 import { useSiteImages } from "@/lib/use-site-images";
 
@@ -36,21 +36,19 @@ export function ProcessSection() {
 
           {/* Right — steps list */}
           <div className="lg:col-span-8">
-            <dl className="space-y-0 divide-y divide-[#082121]/8">
-              {PROCESS.map((p, i) => (
-                <Reveal key={p.num} delay={i * 60}>
-                  <div className="grid sm:grid-cols-12 gap-4 py-7">
-                    <dt className="sm:col-span-3 flex items-start gap-3">
-                      <span className="text-[12px] font-semibold tracking-widest text-[#37B4B4] mt-0.5">{p.num}</span>
-                      <span className="text-[17px] font-medium text-[#082121]">{p.title}</span>
-                    </dt>
-                    <dd className="sm:col-span-9 text-[14px] text-[#3a5a5a] leading-relaxed">
-                      {p.desc}
-                    </dd>
-                  </div>
-                </Reveal>
+            <StaggerReveal className="space-y-0 divide-y divide-[#082121]/8" stagger={0.07}>
+              {PROCESS.map((p) => (
+                <div key={p.num} className="grid sm:grid-cols-12 gap-4 py-7">
+                  <dt className="sm:col-span-3 flex items-start gap-3">
+                    <span className="text-[12px] font-semibold tracking-widest text-[#37B4B4] mt-0.5">{p.num}</span>
+                    <span className="text-[17px] font-medium text-[#082121]">{p.title}</span>
+                  </dt>
+                  <dd className="sm:col-span-9 text-[14px] text-[#3a5a5a] leading-relaxed">
+                    {p.desc}
+                  </dd>
+                </div>
               ))}
-            </dl>
+            </StaggerReveal>
           </div>
 
         </div>
@@ -84,10 +82,10 @@ export function IndustriesSection() {
           </Reveal>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <StaggerReveal className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" stagger={0.07}>
           {visibleIndustries.map((ind: Industry, i) => (
-            <Reveal key={ind.slug} delay={(i % 3) * 60}>
-              <Link
+            <div key={ind.slug}>
+            <Link
                 href={`/industries/${ind.slug}`}
                 className="group relative block aspect-[3/2] sm:aspect-[4/3] lg:aspect-[3/2] rounded-2xl overflow-hidden ring-1 ring-white/10 hover:ring-[#37B4B4]/40 transition-all duration-300"
               >
@@ -120,9 +118,9 @@ export function IndustriesSection() {
                   </span>
                 </div>
               </Link>
-            </Reveal>
+            </div>
           ))}
-        </div>
+        </StaggerReveal>
 
         {industriesData.length > 6 && (
           <Reveal delay={200}>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight, Cpu, Shield, BarChart3, Users, TrendingUp } from "lucide-react";
-import { Reveal, Eyebrow } from "@/components/ui/Primitives";
+import { Reveal, Eyebrow, StaggerReveal } from "@/components/ui/Primitives";
 import { servicesData, type ServiceCategory } from "@/data/services";
 
 type ServiceItem = {
@@ -76,12 +76,12 @@ export function ServicesSection() {
         </div>
 
         {/* Feature grid — 3 top, 2 bottom */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
           {SERVICES.map((service, i) => {
             const Icon = service.icon;
             const count = servicesData.filter((s) => s.category === service.key).length;
             return (
-              <Reveal key={service.key} delay={i * 60} className={i === 3 ? "lg:col-start-1" : ""}>
+              <div key={service.key} className={i === 3 ? "lg:col-start-1" : ""}>
                 <Link
                   href={service.href}
                   className="group flex flex-col h-full rounded-2xl border border-[#082121]/8 hover:border-[#37B4B4]/40 bg-[#F4FAFA] hover:bg-white transition-all duration-200 p-6 lg:p-7"
@@ -109,10 +109,10 @@ export function ServicesSection() {
                     </span>
                   </div>
                 </Link>
-              </Reveal>
+              </div>
             );
           })}
-        </div>
+        </StaggerReveal>
         </div>
       </div>
     </section>

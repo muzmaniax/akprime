@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Reveal, Eyebrow } from "@/components/ui/Primitives";
+import { Reveal, Eyebrow, StaggerReveal } from "@/components/ui/Primitives";
 import { caseStudies, type CaseStudy } from "@/data/case-studies";
 import { useSiteImage } from "@/lib/use-site-images";
 import { useCMSContent } from "@/lib/use-cms-content";
@@ -44,19 +44,19 @@ export function CaseStudiesSection() {
           </Reveal>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-4 items-stretch">
-          {top.map((cs, i) => (
-            <Reveal key={cs.id} delay={i * 80} className="h-full">
+        <StaggerReveal className="grid lg:grid-cols-2 gap-4 items-stretch">
+          {top.map((cs) => (
+            <div key={cs.id} className="h-full">
               <Link
                 href={`/case-studies/${cs.id}`}
                 className="group flex flex-col h-full rounded-2xl overflow-hidden border border-white/0 hover:border-[#37B4B4]/30 transition-colors"
               >
                 {/* Mobile layout */}
                 <div className="md:hidden flex flex-col h-full bg-white text-[#082121] rounded-2xl overflow-hidden">
-                  <div className="relative h-[180px] bg-[#082121] overflow-hidden flex-shrink-0">
+                  <div className="relative h-[180px] bg-[#082121] img-zoom flex-shrink-0">
                     <div
                       className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${cs.image})` }}
+                      style={{ backgroundImage: `url(${cs.image})`, transition: "transform 700ms cubic-bezier(0.22,1,0.36,1)" }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/5 to-transparent" />
                   </div>
@@ -113,9 +113,9 @@ export function CaseStudiesSection() {
                   </div>
                 </div>
               </Link>
-            </Reveal>
+            </div>
           ))}
-        </div>
+        </StaggerReveal>
 
         </div>
       </div>

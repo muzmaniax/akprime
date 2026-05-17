@@ -1,10 +1,14 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { type ReactNode, useRef, useEffect, type MouseEvent } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeContent from "@/components/ui/FadeContent";
+
+gsap.registerPlugin(ScrollTrigger);
 
 /* Reveal — GSAP blur-fade scroll primitive */
 export function Reveal({
@@ -111,6 +115,96 @@ export function GhostButton({
   const cls = cn("btn-ghost", light && "btn-ghost-light", className);
   if (href) return <Link href={href} className={cls}>{children}</Link>;
   return <button type="button" onClick={onClick} className={cls}>{children}</button>;
+}
+
+/* StaggerReveal — animates direct children in staggered sequence on scroll */
+export function StaggerReveal({
+  children,
+  className,
+  delay = 0,
+  stagger = 0.09,
+  from = "bottom",
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  stagger?: number;
+  from?: "bottom" | "scale";
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+    const items = Array.from(container.children) as HTMLElement[];
+    if (!items.length) return;
+
+    const initial: gsap.TweenVars = { autoAlpha: 0, filter: "blur(4px)" };
+    if (from === "bottom") initial.y = 22;
+    else { initial.scale = 0.95; initial.y = 10; }
+
+    gsap.set(items, initial);
+
+    const st = ScrollTrigger.create({
+      trigger: container,
+      start: "top 88%",
+      once: true,
+      onEnter: () => {
+        const target: gsap.TweenVars = {
+          autoAlpha: 1, filter: "blur(0px)", y: 0,
+          duration: 0.65, ease: "expo.out", stagger, delay,
+        };
+        if (from === "scale") target.scale = 1;
+        gsap.to(items, target);
+      },
+    });
+
+    return () => { st.kill(); gsap.killTweensOf(items); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return <div ref={ref} className={className}>{children}</div>;
+}
+
+/* MagneticWrapper — subtle magnetic pull on hover (desktop only) */
+export function MagneticWrapper({
+  children,
+  strength = 0.32,
+  className,
+}: {
+  children: ReactNode;
+  strength?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const onMove = (e: MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width  / 2)) * strength;
+    const dy = (e.clientY - (r.top  + r.height / 2)) * strength;
+    el.style.transition = "transform 120ms ease";
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
+  };
+
+  const onLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.transition = "transform 450ms cubic-bezier(0.34, 1.56, 0.64, 1)";
+    el.style.transform = "translate(0, 0)";
+  };
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      {children}
+    </div>
+  );
 }
 
 /* SectionHeader — eyebrow + headline + optional sub */

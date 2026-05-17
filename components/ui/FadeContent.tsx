@@ -16,18 +16,22 @@ interface FadeContentProps {
   initialOpacity?: number;
   className?: string;
   style?: CSSProperties;
+  from?: "bottom" | "left" | "right" | "scale";
+  distance?: number;
 }
 
 export default function FadeContent({
   children,
   blur = true,
-  duration = 700,
+  duration = 650,
   delay = 0,
-  ease = "power2.out",
+  ease = "expo.out",
   threshold = 0.12,
   initialOpacity = 0,
   className = "",
   style,
+  from = "bottom",
+  distance = 22,
 }: FadeContentProps) {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -35,24 +39,32 @@ export default function FadeContent({
     const el = ref.current;
     if (!el) return;
 
-    const getSeconds = (val: number) => (val > 10 ? val / 1000 : val);
+    const toSec = (v: number) => (v > 10 ? v / 1000 : v);
 
-    gsap.set(el, {
+    const initial: gsap.TweenVars = {
       autoAlpha: initialOpacity,
       filter: blur ? "blur(6px)" : "blur(0px)",
-      y: 12,
       willChange: "opacity, filter, transform",
-    });
+    };
 
-    const tl = gsap.timeline({ paused: true, delay: getSeconds(delay) });
+    if (from === "bottom")      { initial.y = distance; }
+    else if (from === "left")   { initial.x = -distance; initial.y = 0; }
+    else if (from === "right")  { initial.x = distance;  initial.y = 0; }
+    else if (from === "scale")  { initial.scale = 0.94;  initial.y = distance * 0.4; }
 
-    tl.to(el, {
+    gsap.set(el, initial);
+
+    const target: gsap.TweenVars = {
       autoAlpha: 1,
       filter: "blur(0px)",
-      y: 0,
-      duration: getSeconds(duration),
+      x: 0, y: 0,
+      duration: toSec(duration),
       ease,
-    });
+    };
+    if (from === "scale") target.scale = 1;
+
+    const tl = gsap.timeline({ paused: true, delay: toSec(delay) });
+    tl.to(el, target);
 
     const st = ScrollTrigger.create({
       trigger: el,

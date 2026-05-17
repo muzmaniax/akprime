@@ -297,6 +297,78 @@
 .marquee-track { animation: marquee 40s linear infinite; display: flex; white-space: nowrap; }
 .marquee-track:hover { animation-play-state: paused; }
 
+/* ═══════════════════════════════════════════════════════
+   MOTION SYSTEM — 2025 interaction layer
+═══════════════════════════════════════════════════════ */
+
+/* CTA banner animated glow (replaces canvas Waves) */
+@keyframes glow-pulse { 0%, 100% { opacity: 0.75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.14); } }
+@keyframes glow-drift  { from { transform: translate(0, 0) rotate(-8deg); } to { transform: translate(18%, 10%) rotate(8deg); } }
+
+.cta-glow-bg {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.cta-glow-bg::before {
+  content: "";
+  position: absolute; inset: -20%;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(55,180,180,0.20), transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(41,224,200,0.12), transparent 60%);
+  animation: glow-pulse 9s ease-in-out infinite;
+}
+.cta-glow-bg::after {
+  content: "";
+  position: absolute; top: -50%; left: -30%; width: 70%; height: 160%;
+  background: radial-gradient(ellipse 60% 50%, rgba(55,180,180,0.10), transparent 70%);
+  animation: glow-drift 14s ease-in-out infinite alternate;
+}
+
+/* Card hover — spring lift + teal glow border */
+.card-dark {
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms ease,
+    background 200ms ease;
+}
+.card-dark:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(55,180,180,0.18);
+  border-color: rgba(55,180,180,0.45);
+  background: rgba(255,255,255,0.06);
+}
+
+/* Image container — smooth scale on hover */
+.img-zoom { overflow: hidden; }
+.img-zoom img { transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
+.img-zoom:hover img { transform: scale(1.045); }
+
+/* Inline link hover underline */
+.link-hover {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+}
+.link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-hover:hover::after { width: 100%; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cta-glow-bg::before, .cta-glow-bg::after { animation: none; }
+  .card-dark, .card-dark:hover { transform: none !important; }
+  .img-zoom:hover img { transform: none !important; }
+  .btn-cta:hover, .btn-cta:active,
+  .btn-ghost:hover, .btn-ghost:active { transform: none !important; box-shadow: none !important; }
+}
+
 /* Carousel track helper */
 .carousel-track::-webkit-scrollbar { display: none; }
 
@@ -314,15 +386,18 @@
   font-size: 0.875rem;
   font-weight: 600;
   white-space: nowrap;
-  transition: background 180ms ease, box-shadow 180ms ease;
+  transition:
+    background 200ms ease,
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 220ms ease;
   cursor: pointer;
   border: none;
   text-decoration: none;
   flex-shrink: 0;
 }
-.btn-cta:hover  { background: #45cfcf; }
-.btn-cta:active { transform: scale(0.97); }
-.btn-cta:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn-cta:hover  { background: #45cfcf; transform: translateY(-2px) scale(1.01); box-shadow: 0 8px 28px rgba(55,180,180,0.38); }
+.btn-cta:active { transform: translateY(1px) scale(0.97); box-shadow: none; transition-duration: 80ms; }
+.btn-cta:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
 .btn-ghost {
   display: inline-flex;
@@ -338,13 +413,17 @@
   font-weight: 600;
   white-space: nowrap;
   border: 1.5px solid var(--accent);
-  transition: background 180ms ease, color 180ms ease;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 220ms ease;
   cursor: pointer;
   text-decoration: none;
   flex-shrink: 0;
 }
-.btn-ghost:hover  { background: rgba(55,180,180,0.08); }
-.btn-ghost:active { transform: scale(0.97); }
+.btn-ghost:hover  { background: rgba(55,180,180,0.08); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(55,180,180,0.18); }
+.btn-ghost:active { transform: translateY(1px) scale(0.97); box-shadow: none; transition-duration: 80ms; }
 
 .btn-ghost-light {
   color: #082121;

@@ -7,7 +7,6 @@ import { ArrowLeft, ArrowUpRight, CheckCircle2, ChevronRight } from "lucide-reac
 import { Button } from "@/components/ui/button-cva";
 import { servicesData } from "@/data/services";
 import { useSiteImage } from "@/lib/use-site-images";
-import Waves from "@/components/ui/Waves";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -202,22 +201,7 @@ export default function ServicePage({ params }: Props) {
       <section className="py-24 bg-[#082121] text-center px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#37B4B4]/5 mix-blend-screen" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#37B4B4]/20 rounded-full blur-[120px] pointer-events-none" />
-        {/* Waves — Perlin-noise field lines in akprime teal */}
-        <div className="absolute inset-0 pointer-events-none">
-          <Waves
-            lineColor="rgba(55, 180, 180, 0.14)"
-            backgroundColor="transparent"
-            waveSpeedX={0.014}
-            waveSpeedY={0.006}
-            waveAmpX={38}
-            waveAmpY={18}
-            xGap={14}
-            yGap={40}
-            friction={0.93}
-            tension={0.006}
-            maxCursorMove={110}
-          />
-        </div>
+        <div className="cta-glow-bg" />
         
         <div className="max-w-3xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-medium text-white mb-6 leading-tight">

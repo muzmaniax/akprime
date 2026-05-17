@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useSiteImage } from "@/lib/use-site-images";
+import { MagneticWrapper } from "@/components/ui/Primitives";
 
 /*
  * Figma reference: node 144:166, canvas 1920px wide.
@@ -151,46 +152,53 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
 
         {/* Buttons */}
         <div style={{ display: "flex", alignItems: "center", gap: vw(10, 8) }}>
-          <button
-            type="button"
-            onClick={onBooking}
-            style={{
-              height: vw(40, 36),
-              padding: `0 ${vw(18, 16)}`,
-              background: "#37b4b4",
-              border: "1px solid #36c0c0",
-              borderRadius: 7,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              flexShrink: 0,
-            }}
-          >
-            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "#0a3030", whiteSpace: "nowrap" }}>
-              Book a Call
-            </span>
-          </button>
-          <Link
-            href="/contact"
-            style={{
-              height: vw(40, 36),
-              padding: `0 ${vw(18, 16)}`,
-              background: "rgba(227,227,227,0.1)",
-              border: "1px solid #767676",
-              borderRadius: 7,
-              boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textDecoration: "none",
-              flexShrink: 0,
-            }}
-          >
-            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "white", whiteSpace: "nowrap" }}>
-              Contact
-            </span>
-          </Link>
+          <MagneticWrapper>
+            <button
+              type="button"
+              onClick={onBooking}
+              style={{
+                height: vw(40, 36),
+                padding: `0 ${vw(18, 16)}`,
+                background: "#37b4b4",
+                border: "1px solid #36c0c0",
+                borderRadius: 7,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                flexShrink: 0,
+                transition: "box-shadow 220ms ease, background 200ms ease",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 28px rgba(55,180,180,0.45)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.boxShadow = "none"; }}
+            >
+              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "#0a3030", whiteSpace: "nowrap" }}>
+                Book a Call
+              </span>
+            </button>
+          </MagneticWrapper>
+          <MagneticWrapper>
+            <Link
+              href="/contact"
+              style={{
+                height: vw(40, 36),
+                padding: `0 ${vw(18, 16)}`,
+                background: "rgba(227,227,227,0.1)",
+                border: "1px solid #767676",
+                borderRadius: 7,
+                boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textDecoration: "none",
+                flexShrink: 0,
+              }}
+            >
+              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "white", whiteSpace: "nowrap" }}>
+                Contact
+              </span>
+            </Link>
+          </MagneticWrapper>
         </div>
         </div>
           </div>
