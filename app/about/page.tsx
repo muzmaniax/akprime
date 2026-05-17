@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import { Reveal, Eyebrow, StatCell, SectionHeader, CtaButton, GhostButton } from "@/components/ui/Primitives";
-import { CTABannerSection, FAQSection } from "@/components/sections/TestimonialsInsightsCTA";
+import { FAQSection } from "@/components/sections/TestimonialsInsightsCTA";
 import { Database, Cloud, TrendingUp, Zap, Users, Shield } from "lucide-react";
 import { getSiteImage } from "@/lib/site-images";
+import { AboutCTA } from "./AboutCTA";
 import BorderGlow from "@/components/ui/BorderGlow";
 
 export const metadata: Metadata = {
@@ -189,7 +190,7 @@ export default function AboutPage() {
       </section>
 
       <FAQSection />
-      <CTABannerSection />
+      <AboutCTA />
     </>
   );
 }

@@ -76,9 +76,9 @@ export function Footer() {
           <div className="text-[18px] sm:text-[22px] text-white/85 max-w-xl leading-snug">
             Ready to bring clarity to your operations?
           </div>
-          <Link href="/contact" className="btn-cta self-start sm:self-auto">
+          <a href="/contact" className="btn-cta self-start sm:self-auto">
             Start the conversation <ArrowUpRight size={16} strokeWidth={2.25} />
-          </Link>
+          </a>
         </div>
 
         {/* Oversized wordmark */}

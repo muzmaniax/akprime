@@ -34,8 +34,8 @@ export function ContactSection() {
       <div className="container-x">
         <div className="max-w-[1060px] mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12">
 
-        {/* Left — info panel. Pushed below form on mobile via order */}
-        <Reveal className="lg:col-span-5 order-2 lg:order-1 space-y-6">
+        {/* Left — info panel */}
+        <Reveal className="lg:col-span-5 space-y-6">
           <div>
             <Eyebrow>Contact</Eyebrow>
             <h2 className="mt-4 text-[#082121] text-balance">
@@ -54,8 +54,8 @@ export function ContactSection() {
           </div>
         </Reveal>
 
-        {/* Right — form. Comes first on mobile via order */}
-        <Reveal delay={120} className="lg:col-span-7 order-1 lg:order-2">
+        {/* Right — form */}
+        <Reveal delay={120} className="lg:col-span-7">
           <form onSubmit={onSubmit} className="card-light p-5 sm:p-7 lg:p-8 space-y-4 sm:space-y-5">
             <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
               <Field label="First name" name="first" placeholder="e.g. John" required />

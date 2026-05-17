@@ -291,12 +291,12 @@ export function InsightsSection() {
 
 /* ─── FAQ — Tailwind UI "Offset with supporting text" two-column ─── */
 const FAQ = [
-  { q: "What type of businesses do you work with?", a: "We work with small to mid-sized businesses, growth-stage companies, and established organisations. Our clients are typically founders, executives, and leadership teams facing strategic, operational, or growth-related decisions." },
-  { q: "When should a business consider hiring a consultant?", a: "When a decision carries weight you don't want to get wrong. Typical moments: scaling teams, system migrations, fundraising, restructures, or entering a new market." },
-  { q: "What makes AK Prime different from other consulting firms?", a: "We bring rigour without the overhead: small senior teams, no junior shuffle, and a focus on building lasting capability inside your organisation rather than dependence on us." },
-  { q: "Do you provide ready-made solutions?", a: "No. Every engagement starts with discovery. The cost of getting the diagnosis wrong is too high." },
-  { q: "How does a typical engagement work?", a: "A 2-week diagnostic, then a defined scope of 4–16 weeks depending on the work. We share a clear plan, milestones, and deliverables before the engagement starts." },
-  { q: "Where do you operate?", a: "We are headquartered in Mombasa with offices in Nairobi and Dubai. We serve clients across Africa and the Middle East, with capacity for international engagements beyond these regions." },
+  { q: "What type of businesses do you work with?", a: "We work with SMEs, growth-stage companies, and established organisations across manufacturing, retail, healthcare, logistics, and professional services. Our clients are typically founders, CFOs, and leadership teams facing strategic, operational, or technology decisions." },
+  { q: "Do you implement ready-made software like Odoo or HRMS?", a: "Yes. We implement and customise proven platforms including Odoo ERP, HRMS solutions, and NetSuite — configured to fit your specific workflows. We also advise on system selection when you're evaluating options, so you adopt the right tool, not just any tool." },
+  { q: "What makes AK Prime different from other consulting firms?", a: "Senior-led delivery with no junior shuffle. We combine strategic advisory with hands-on implementation — whether that's an ERP rollout, a finance transformation, or an AI integration. You get one accountable team from diagnosis to go-live." },
+  { q: "How does a typical engagement work?", a: "We start with a 1–2 week discovery to understand your current state and define scope. From there, engagements typically run 4–16 weeks with clear milestones and deliverables agreed upfront. For product implementations like Odoo, we follow a structured configure-test-train-go-live methodology." },
+  { q: "When should a business consider hiring a consultant?", a: "When a decision carries weight you can't afford to get wrong — system migrations, finance restructures, scaling operations, entering a new market, or replacing a broken ERP. If the cost of delay or a wrong turn is high, that's the right moment." },
+  { q: "Where do you operate?", a: "We are headquartered in Mombasa with offices in Nairobi and Dubai. We serve clients across East Africa and the Middle East, with capacity for remote and hybrid engagements globally." },
 ];
 
 export function FAQSection() {
