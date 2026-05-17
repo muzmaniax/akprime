@@ -40,6 +40,22 @@ export const metadata: Metadata = {
     "management consulting UAE",
     "technology consulting Nairobi",
     "operational excellence consulting",
+    "finance consulting Kenya",
+    "finance consulting services Africa",
+    "audit services Kenya",
+    "audit consulting Mombasa",
+    "HR services consulting Kenya",
+    "HRMS implementation Kenya",
+    "Odoo ERP Kenya",
+    "Odoo implementation Mombasa",
+    "NetSuite consulting Africa",
+    "management consulting Nairobi",
+    "management consulting Mombasa",
+    "CFO advisory Kenya",
+    "financial transformation Kenya",
+    "ERP system Kenya",
+    "business process consulting Dubai",
+    "accounting services Kenya",
   ],
   alternates: {
     canonical: SITE_URL,
@@ -147,6 +163,143 @@ const organizationSchema = {
   sameAs: [],
 };
 
+const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${SITE_URL}/#professionalservice`,
+  name: "AK Prime Consulting",
+  url: SITE_URL,
+  telephone: "",
+  email: "info@akprime.co.ke",
+  description:
+    "AK Prime Consulting provides finance consulting, audit & assurance, HR consulting, ERP implementation (Odoo, NetSuite, SAP), AI integration, and management consulting for organisations in Kenya and the UAE.",
+  areaServed: ["Kenya", "UAE", "East Africa"],
+  address: [
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Mombasa",
+      addressCountry: "KE",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Nairobi",
+      addressCountry: "KE",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Dubai",
+      addressCountry: "AE",
+    },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "AK Prime Consulting Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Finance & FP&A Consulting",
+          description:
+            "CFO advisory, financial planning and analysis (FP&A), consolidation, budgeting, and financial transformation for organisations in Kenya and the UAE.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Audit & Assurance Services",
+          description:
+            "Internal audit, risk frameworks, compliance reviews, and regulatory readiness for businesses across East Africa and the Middle East.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "HR Consulting & HRMS Implementation",
+          description:
+            "HR strategy, organisation design, payroll compliance, and end-to-end HRMS implementation including system selection, configuration, and staff training.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "ERP Implementation (Odoo, NetSuite, SAP)",
+          description:
+            "Full lifecycle ERP implementation and customisation for Odoo ERP, NetSuite, and SAP for businesses in Kenya, Nairobi, Mombasa, and Dubai.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "AI Integration",
+          description:
+            "AI workflow automation and intelligent system integration to optimise business operations across East Africa and the Middle East.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Management Consulting",
+          description:
+            "Strategic management consulting, operational excellence, and business process optimisation for organisations in Nairobi, Mombasa, and Dubai.",
+        },
+      },
+    ],
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What finance consulting services does AK Prime offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "AK Prime provides CFO advisory, financial planning and analysis (FP&A), consolidation, budgeting, and financial transformation services for organisations in Kenya and the UAE.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does AK Prime offer audit and assurance services?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. AK Prime provides internal audit, risk frameworks, compliance reviews, and regulatory readiness services for businesses across East Africa and the Middle East.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can AK Prime help with HR consulting and HRMS implementation?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. AK Prime handles HR strategy, organisation design, payroll compliance, and end-to-end HRMS implementation — including system selection, configuration, and staff training.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Which ERP systems does AK Prime implement?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "AK Prime implements and customises Odoo ERP, NetSuite, and SAP for businesses in Kenya, Nairobi, Mombasa, and Dubai. We handle full project lifecycle from requirements to go-live.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is AK Prime Consulting located?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "AK Prime Consulting is headquartered in Mombasa, Kenya, with offices in Nairobi and Dubai. We serve clients across East Africa and the Middle East.",
+      },
+    },
+  ],
+};
+
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -183,6 +336,14 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </head>
       <body className="antialiased font-sans min-h-screen bg-[#082121] text-white overflow-x-hidden" suppressHydrationWarning>

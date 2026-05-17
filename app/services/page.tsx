@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import { ServicesPageClient } from "./ServicesPageClient";
 
 export const metadata: Metadata = {
-  title: "Services | AK Prime Consulting — ERP, AI & Finance Advisory",
+  title: "Services | ERP, Finance, Audit & HR Consulting",
   description:
-    "AK Prime Consulting (AKPrime) services: ERP implementation (SAP, Odoo, NetSuite), AI integration, financial transformation, project management, and digital strategy for organisations in Kenya and the UAE.",
+    "AK Prime Consulting offers ERP implementation (Odoo, NetSuite, SAP), finance & FP&A consulting, audit & assurance, HR consulting, AI integration, and management consulting for organisations in Kenya and the UAE.",
   alternates: { canonical: "https://akprime.co.ke/services" },
 };
 

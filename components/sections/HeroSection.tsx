@@ -34,8 +34,8 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
   return (
     <section
       className="relative overflow-hidden w-full"
-      /* dvh accounts for mobile browser bars; on desktop = vh */
-      style={{ height: "calc(100dvh - var(--navbar-h, 64px))" }}
+      /* svh = small viewport height — stable, ignores browser chrome resize */
+      style={{ height: "calc(100svh - var(--navbar-h, 64px))", isolation: "isolate" }}
     >
       {/* ── Keyframe animations ── */}
       <style>{`
@@ -68,6 +68,8 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           backgroundImage: `url('${bgSrc}')`,
           animation: "ken-burns 22s ease-out forwards",
           willChange: "transform",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
         }}
       />
 
@@ -359,6 +361,12 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           </div>
         </div>
       </div>
+
+      {/* ── Gradient bridge: blends dark hero bottom into the white section below ── */}
+      <div
+        className="absolute inset-x-0 bottom-0 pointer-events-none z-20"
+        style={{ height: "80px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)" }}
+      />
 
     </section>
   );
