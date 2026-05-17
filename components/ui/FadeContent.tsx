@@ -65,6 +65,8 @@ export default function FadeContent({
 
     const tl = gsap.timeline({ paused: true, delay: toSec(delay) });
     tl.to(el, target);
+    // Release GPU layer once animation is done
+    tl.set(el, { clearProps: "willChange" });
 
     const st = ScrollTrigger.create({
       trigger: el,

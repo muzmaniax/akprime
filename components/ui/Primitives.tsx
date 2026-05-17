@@ -153,6 +153,7 @@ export function StaggerReveal({
         const target: gsap.TweenVars = {
           autoAlpha: 1, filter: "blur(0px)", y: 0,
           duration: 0.65, ease: "expo.out", stagger, delay,
+          onComplete: () => gsap.set(items, { clearProps: "willChange,filter" }),
         };
         if (from === "scale") target.scale = 1;
         gsap.to(items, target);

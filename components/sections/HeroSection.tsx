@@ -261,6 +261,10 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
                 key={i}
                 src={logo.src}
                 alt={logo.alt}
+                loading="lazy"
+                decoding="async"
+                width={Math.round(logo.w)}
+                height={Math.round(logo.h)}
                 style={{ width: logo.w, height: logo.h, objectFit: "contain", flexShrink: 0 }}
               />
             ))}
@@ -362,6 +366,10 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
                   key={i}
                   src={logo.src}
                   alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width={Math.round(logo.w)}
+                  height={Math.round(logo.h)}
                   style={{ height: Math.round(logo.h * 0.6), width: "auto", objectFit: "contain", flexShrink: 0 }}
                 />
               ))}

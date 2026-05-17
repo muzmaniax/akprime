@@ -1,8 +1,18 @@
 import "./globals.css";
+import { Funnel_Display } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
+import siteImages from "@/data/site-images.json";
+
+const funnelDisplay = Funnel_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+  preload: true,
+});
 
 const SITE_URL = "https://akprime.co.ke";
 
@@ -326,9 +336,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const heroImage = (siteImages as Record<string, string>)["hero.background"] ?? "/images/hero-coins.jpg";
+
   return (
-    <html lang="en">
+    <html lang="en" className={funnelDisplay.variable}>
       <head>
+        {/* LCP preload — hero background image discovered early */}
+        <link rel="preload" as="image" href={heroImage} fetchPriority="high" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
