@@ -1,12 +1,12 @@
 import "./globals.css";
-import { Funnel_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
 import siteImages from "@/data/site-images.json";
 
-const funnelDisplay = Funnel_Display({
+const inter = Inter({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
@@ -339,7 +339,7 @@ export default function RootLayout({
   const heroImage = (siteImages as Record<string, string>)["hero.background"] ?? "/images/hero-coins.webp";
 
   return (
-    <html lang="en" className={funnelDisplay.variable}>
+    <html lang="en" className={inter.variable}>
       <head>
         {/* LCP preload â€” hero background image discovered early */}
         <link rel="preload" as="image" href={heroImage} fetchPriority="high" />

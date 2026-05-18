@@ -119,7 +119,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           {/* Headline */}
           <p
             style={{
-              fontFamily: "'Funnel Display', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontWeight: 500,
               fontSize: vw(46, 24),
               lineHeight: 1.08,
@@ -292,7 +292,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         <div className="flex flex-col gap-3 mb-5">
           <p
             style={{
-              fontFamily: "'Funnel Display', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontWeight: 500,
               fontSize: "clamp(22px, 5.5vw, 32px)",
               lineHeight: 1.1,
