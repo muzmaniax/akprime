@@ -233,14 +233,12 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           TRUSTED BY:
         </p>
 
-        {/* Marquee track — overflow hidden + side gradient masks */}
+        {/* Marquee track — overflow hidden clips edges cleanly */}
         <div
           style={{
             width: "100%",
             height: 53,
             overflow: "hidden",
-            maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           }}
         >
           {/* Animated track — logos doubled for seamless loop */}
@@ -339,14 +337,12 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.65)", textAlign: "center", letterSpacing: "0.1em", marginBottom: 8 }}>
             TRUSTED BY:
           </p>
-          {/* Mobile marquee — narrower logos, faster scroll */}
+          {/* Mobile marquee */}
           <div
             style={{
               width: "100%",
               height: 36,
               overflow: "hidden",
-              maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
             }}
           >
             <div
