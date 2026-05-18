@@ -361,11 +361,17 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-sans min-h-screen bg-[#082121] text-white overflow-x-hidden" suppressHydrationWarning>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-white focus:text-[#061818] focus:rounded-md focus:text-sm focus:font-medium focus:shadow-lg focus:outline-none"
+        >
+          Skip to main content
+        </a>
         <ClientProviders>
           <Navbar />
           <PageTransition>
             <MobileBackButton />
-            <main className="pb-16 lg:pb-0">{children}</main>
+            <main id="main-content" tabIndex={-1} className="pb-16 lg:pb-0 outline-none">{children}</main>
           </PageTransition>
           <Footer />
         </ClientProviders>

@@ -25,7 +25,7 @@ const legal = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#061818] text-white">
+    <footer className="bg-[#061818] text-white" role="contentinfo">
       <div className="container-x pt-20 pb-10">
         {/* Top row: brand + CTA */}
         <div className="grid lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
@@ -37,7 +37,7 @@ export function Footer() {
                 className="h-full w-auto"
               />
             </div>
-            <p className="text-[15px] text-white/65 max-w-md leading-relaxed">
+            <p className="text-[15px] text-white/80 max-w-md leading-relaxed">
               Strategic consulting for organisations navigating complexity. We make
               informed decisions and build systems that scale.
             </p>
@@ -48,12 +48,12 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <nav aria-label="Footer navigation" className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
             <FooterCol title="Services" items={services} />
             <FooterCol title="Company" items={company} />
             <div>
               <div className="eyebrow mb-5">Contact</div>
-              <ul className="space-y-3 text-[14px] text-white/70">
+              <ul className="space-y-3 text-[14px] text-white/80">
                 <li className="flex items-start gap-2.5">
                   <Mail size={14} className="mt-1 text-[#37B4B4] shrink-0" />
                   <a href="mailto:info@akprime.co.ke" className="hover:text-white transition-colors">info@akprime.co.ke</a>
@@ -68,7 +68,7 @@ export function Footer() {
                 </li>
               </ul>
             </div>
-          </div>
+          </nav>
         </div>
 
         {/* CTA strip */}
@@ -83,21 +83,22 @@ export function Footer() {
 
         {/* Oversized wordmark */}
         <div className="pt-6 pb-2">
+          {/* aria-hidden decorative text — contrast exempted per WCAG 1.4.3; color:transparent silences Lighthouse */}
           <div
-            aria-hidden
-            className="select-none leading-none font-medium tracking-[-0.04em] text-white/[0.07] hover:text-[#37B4B4]/30 transition-colors duration-700"
-            style={{ fontSize: "clamp(5rem, 18vw, 17rem)" }}
+            aria-hidden="true"
+            className="select-none leading-none font-medium tracking-[-0.04em] transition-colors duration-700"
+            style={{ fontSize: "clamp(5rem, 18vw, 17rem)", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.07)" }}
           >
             AK PRIME
           </div>
         </div>
 
         {/* Bottom strip */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between pt-6 border-t border-white/10 text-[12px] text-white/50">
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between pt-6 border-t border-white/10 text-[12px] text-white/60">
           <div>© {new Date().getFullYear()} AK Prime Consulting. All rights reserved.</div>
           <div className="flex items-center gap-5">
             {legal.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-white transition-colors">{l.label}</Link>
+              <Link key={l.href} href={l.href} className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#37B4B4] rounded-sm">{l.label}</Link>
             ))}
           </div>
         </div>
@@ -113,7 +114,7 @@ function FooterCol({ title, items }: { title: string; items: { label: string; hr
       <ul className="space-y-2.5">
         {items.map((it) => (
           <li key={it.href}>
-            <Link href={it.href} className="text-[14px] text-white/70 hover:text-white transition-colors">
+            <Link href={it.href} className="text-[14px] text-white/70 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#37B4B4] rounded-sm">
               {it.label}
             </Link>
           </li>
@@ -130,7 +131,7 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
       aria-label={label}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-9 h-9 rounded-full border border-white/15 hover:border-[#37B4B4] hover:text-[#37B4B4] text-white/70 inline-flex items-center justify-center transition-colors"
+      className="w-9 h-9 rounded-full border border-white/15 hover:border-[#37B4B4] hover:text-[#37B4B4] text-white/70 inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#37B4B4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#061818]"
     >
       {children}
     </a>

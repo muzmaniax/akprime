@@ -71,7 +71,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1 text-[14px]">
+          <nav aria-label="Primary navigation" className="hidden lg:flex items-center gap-1 text-[14px]">
             <NavLink href="/" active={pathname === "/"}>Home</NavLink>
 
             <DropdownTrigger
@@ -110,10 +110,10 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setBookingOpen(true)}
-              className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] text-[13px] font-semibold transition-colors"
+              className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#37B4B4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#082121]"
             >
               Book a call
-              <ArrowUpRight size={14} strokeWidth={2.5} />
+              <ArrowUpRight size={14} strokeWidth={2.5} aria-hidden="true" />
             </button>
           </div>
 
@@ -121,10 +121,12 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
-            className="lg:hidden text-white p-2 -mr-2"
-            aria-label="Open menu"
+            className="lg:hidden text-white p-2 -mr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-md"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
 
@@ -190,8 +192,11 @@ export function Navbar() {
       </header>
 
       {/* Mobile panel */}
-      {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-[#082121] pt-[var(--navbar-h)] overflow-y-auto">
+      <div
+        id="mobile-nav"
+        aria-hidden={!mobileOpen}
+        className={`lg:hidden fixed inset-0 z-40 bg-[#082121] pt-[var(--navbar-h)] overflow-y-auto transition-transform duration-200 ${mobileOpen ? "translate-x-0" : "-translate-x-full pointer-events-none"}`}
+      >
           <div className="container-x py-6">
             <Link href="/" className="block py-3 text-[20px] font-normal text-white border-b border-white/10">Home</Link>
 
@@ -243,13 +248,12 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => { setMobileOpen(false); setBookingOpen(true); }}
-              className="w-full mt-8 py-3.5 px-4 rounded-lg bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] text-[15px] font-semibold inline-flex items-center justify-center gap-2 transition-colors"
+              className="w-full mt-8 py-3.5 px-4 rounded-lg bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] text-[15px] font-semibold inline-flex items-center justify-center gap-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#37B4B4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#082121]"
             >
-              Book a Strategy Call <ArrowUpRight size={16} strokeWidth={2.25} />
+              Book a Strategy Call <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
             </button>
           </div>
-        </div>
-      )}
+      </div>
 
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
@@ -261,7 +265,7 @@ function NavLink({ href, active, children }: { href: string; active?: boolean; c
     <Link
       href={href}
       className={cn(
-        "px-3 py-2 rounded-md text-[14px] font-normal transition-colors",
+        "px-3 py-2 rounded-md text-[14px] font-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
         active ? "text-[#37B4B4]" : "text-white/75 hover:text-white"
       )}
     >
@@ -278,13 +282,15 @@ function DropdownTrigger({
       href={href}
       onMouseEnter={onOpen}
       onClick={onClose}
+      aria-expanded={open}
+      aria-haspopup="true"
       className={cn(
-        "px-3 py-2 rounded-md text-[14px] font-normal transition-colors inline-flex items-center gap-1",
+        "px-3 py-2 rounded-md text-[14px] font-normal transition-colors inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
         active || open ? "text-[#37B4B4]" : "text-white/75 hover:text-white"
       )}
     >
       {label}
-      <ChevronDown size={13} className={cn("transition-transform", open && "rotate-180")} />
+      <ChevronDown size={13} className={cn("transition-transform", open && "rotate-180")} aria-hidden="true" />
     </Link>
   );
 }
@@ -297,10 +303,11 @@ function MobileAccordion({
       <button
         type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-3 text-[20px] font-normal text-white"
+        aria-expanded={open}
+        className="w-full flex items-center justify-between py-3 text-[20px] font-normal text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-md"
       >
         {label}
-        <ChevronDown size={20} className={cn("transition-transform", open && "rotate-180")} />
+        <ChevronDown size={20} className={cn("transition-transform", open && "rotate-180")} aria-hidden="true" />
       </button>
       {open && <div className="pb-5">{children}</div>}
     </div>

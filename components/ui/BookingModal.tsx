@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -70,8 +70,11 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
         {!submitted ? (
           <div className="relative grid md:grid-cols-[5fr_7fr] max-h-[90vh] rounded-3xl overflow-hidden bg-white shadow-2xl">
             {/* Close button */}
-            <DialogClose className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/20 hover:bg-black/35 flex items-center justify-center text-white transition-colors backdrop-blur-sm">
-              <X size={15} strokeWidth={2.5} />
+            <DialogClose
+              className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/20 hover:bg-black/35 flex items-center justify-center text-white transition-colors backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              aria-label="Close dialog"
+            >
+              <X size={15} strokeWidth={2.5} aria-hidden="true" />
             </DialogClose>
             {/* LEFT â€” info panel (dark, photo-backed) */}
             <div className="hidden md:flex flex-col relative bg-[#082121] text-white p-7">
@@ -246,17 +249,19 @@ function Field({
   error?: string;
   children: React.ReactNode;
 }) {
+  const id = label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
   return (
-    <label className="block">
-      <span className="flex items-center justify-between mb-1.5">
+    <div className="block">
+      <label htmlFor={id} className="flex items-center justify-between mb-1.5">
         <span className="text-[12px] font-medium text-[#082121]">
-          {label}{!optional && <span className="text-[#37B4B4] ml-0.5">*</span>}
+          {label}{!optional && <span className="text-[#37B4B4] ml-0.5" aria-hidden="true">*</span>}
+          {!optional && <span className="sr-only"> (required)</span>}
         </span>
         {optional && <span className="text-[11px] text-[#3a5a5a]/60">Optional</span>}
-      </span>
-      {children}
-      {error && <span className="block mt-1 text-[11px] text-red-500">{error}</span>}
-    </label>
+      </label>
+      {React.cloneElement(children as React.ReactElement<{ id?: string }>, { id })}
+      {error && <span role="alert" className="block mt-1 text-[11px] text-red-500">{error}</span>}
+    </div>
   );
 }
 
