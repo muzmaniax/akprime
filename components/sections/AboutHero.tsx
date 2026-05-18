@@ -7,7 +7,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { FiMapPin, FiArrowRight } from "react-icons/fi";
+import { MapPin, ArrowRight } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { useSiteImage } from "@/lib/use-site-images";
@@ -68,7 +68,7 @@ const CenterImage = ({ sectionHeight }: { sectionHeight: number }) => {
         backgroundSize,
         opacity,
         backgroundImage:
-          "url(/images/agile-methodology.jpg",
+          "url(/images/agile-methodology.webp",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
@@ -103,28 +103,28 @@ const ParallaxImages = () => {
   return (
     <div className="mx-auto max-w-5xl px-4 pt-[200px] relative z-20">
       <ParallaxImg
-        src={col1 || "/images/diverse-team.jpg"}
+        src={col1 || "/images/diverse-team.webp"}
         alt="Team collaboration"
         start={-200}
         end={200}
         className="w-1/3 rounded-[22px]"
       />
       <ParallaxImg
-        src={col2 || "/images/startup-meeting.jpg"}
+        src={col2 || "/images/startup-meeting.webp"}
         alt="Data analysis"
         start={200}
         end={-250}
         className="mx-auto w-2/3 rounded-[22px]"
       />
       <ParallaxImg
-        src={col3 || "/images/professional-workspace.jpg"}
+        src={col3 || "/images/professional-workspace.webp"}
         alt="Modern office"
         start={-200}
         end={200}
         className="ml-auto w-1/3 rounded-[22px]"
       />
       <ParallaxImg
-        src={col4 || "/images/modern-office.jpg"}
+        src={col4 || "/images/modern-office.webp"}
         alt="Business strategy"
         start={0}
         end={-500}
@@ -206,7 +206,7 @@ const JourneyItem = ({ title, date, location }: { title: string, date: string, l
       </div>
       <div className="flex items-center gap-1.5 text-end text-sm uppercase text-white/40">
         <p>{location}</p>
-        <FiMapPin className="text-[#37B4B4]" />
+        <MapPin className="text-[#37B4B4]" />
       </div>
     </motion.div>
   );

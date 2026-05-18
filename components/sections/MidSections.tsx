@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow, StatCell } from "@/components/ui/Primitives";
 import { useSiteImage } from "@/lib/use-site-images";
 
-/* ── Animated counter — counts from 0 to target when scrolled into view ── */
+/* â”€â”€ Animated counter â€” counts from 0 to target when scrolled into view â”€â”€ */
 function CountUp({ raw }: { raw: string }) {
   const match = raw.match(/^(\d+)(.*)$/);
   if (!match) return <>{raw}</>;
@@ -46,7 +46,7 @@ function CountUp({ raw }: { raw: string }) {
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
-/* ── About / Stats block ── */
+/* â”€â”€ About / Stats block â”€â”€ */
 export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => void }) {
   const aboutPhoto = useSiteImage("home.about_photo");
   return (
@@ -55,7 +55,7 @@ export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => vo
         <div className="max-w-[1060px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center lg:items-stretch">
 
-          {/* LEFT — text + stats */}
+          {/* LEFT â€” text + stats */}
           <Reveal>
             <Eyebrow>About AK Prime</Eyebrow>
             <h2 className="mt-3 text-[#082121] text-balance">
@@ -91,11 +91,11 @@ export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => vo
             </dl>
           </Reveal>
 
-          {/* RIGHT — photo */}
+          {/* RIGHT â€” photo */}
           <Reveal delay={120} className="lg:h-full">
             <div className="aspect-[4/5] lg:aspect-auto lg:h-full w-full overflow-hidden rounded-2xl">
               <img
-                src={aboutPhoto || "/images/team-collaboration.jpg"}
+                src={aboutPhoto || "/images/team-collaboration.webp"}
                 alt="AK Prime consulting team"
                 className="w-full h-full object-cover"
               />

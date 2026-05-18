@@ -3,17 +3,17 @@
 import Image from "next/image";
 import { useSiteImage } from "@/lib/use-site-images";
 
-/* Per-logo sizing — tuned to visual weight, not uniform height.
+/* Per-logo sizing â€” tuned to visual weight, not uniform height.
    Aspect ratios: Coastal 2.44 | Explosify 4.06 | Maxfill 1.96 | MO Radio 1.27 | Seven Seas 1.30 | Step 2.55
    Goal: equal perceived area + readable at strip scale.
-   mix-blend-screen + grayscale + invert → white logo backgrounds dissolve into dark hero. */
+   mix-blend-screen + grayscale + invert â†’ white logo backgrounds dissolve into dark hero. */
 const PARTNER_META = [
-  { alt: "Coastal Image Technologies",  w: 661, h: 271, imgClass: "h-9 w-auto max-w-[100px]",  fallback: "/partners/partner-1.png" },
-  { alt: "Explosify",                   w: 727, h: 179, imgClass: "h-7 w-auto max-w-[100px]",  fallback: "/partners/partner-2.png" },
-  { alt: "Maxfill Energy Limited",      w: 689, h: 351, imgClass: "h-11 w-auto max-w-[100px]", fallback: "/partners/partner-3.png" },
-  { alt: "MO Radio",                    w: 388, h: 305, imgClass: "h-14 w-auto max-w-[72px]",  fallback: "/partners/partner-4.png" },
-  { alt: "Seven Seas Connection Agency",w: 395, h: 305, imgClass: "h-14 w-auto max-w-[72px]",  fallback: "/partners/partner-5.png" },
-  { alt: "Step Innovations Africa",     w: 695, h: 273, imgClass: "h-11 w-auto max-w-[110px]", fallback: "/partners/partner-6.png" },
+  { alt: "Coastal Image Technologies",  w: 661, h: 271, imgClass: "h-9 w-auto max-w-[100px]",  fallback: "/partners/partner-1.webp" },
+  { alt: "Explosify",                   w: 727, h: 179, imgClass: "h-7 w-auto max-w-[100px]",  fallback: "/partners/partner-2.webp" },
+  { alt: "Maxfill Energy Limited",      w: 689, h: 351, imgClass: "h-11 w-auto max-w-[100px]", fallback: "/partners/partner-3.webp" },
+  { alt: "MO Radio",                    w: 388, h: 305, imgClass: "h-14 w-auto max-w-[72px]",  fallback: "/partners/partner-4.webp" },
+  { alt: "Seven Seas Connection Agency",w: 395, h: 305, imgClass: "h-14 w-auto max-w-[72px]",  fallback: "/partners/partner-5.webp" },
+  { alt: "Step Innovations Africa",     w: 695, h: 273, imgClass: "h-11 w-auto max-w-[110px]", fallback: "/partners/partner-6.webp" },
 ];
 
 export function TrustedLogosCarousel({ label }: { label?: string }) {

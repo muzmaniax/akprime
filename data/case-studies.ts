@@ -94,14 +94,14 @@ export const caseStudies: CaseStudy[] = [
       name: "Station Manager",
       role: "MO Radio 88.2FM",
       quote: "We were overpaying taxes without even realizing it. AK Prime stepped in, audited everything, and fixed the gaps immediately. What stood out was how clear they made the whole process. We're now compliant, saving money, and finally have control over our finances.",
-      image: "/images/avatar-professional.jpg"
+      image: "/images/avatar-professional.webp"
     },
     metrics: [
       { value: "KSh 3.5M", label: "Recovered" },
       { value: "100%", label: "Filing Accuracy" },
       { value: "2 Days", label: "Month-End Close" }
     ],
-    image: "/images/business-team.jpg",
+    image: "/images/business-team.webp",
     category: "Finance"
   },
   {
@@ -116,7 +116,7 @@ export const caseStudies: CaseStudy[] = [
     summary: "Delivered a full-scope financial clean-up, tax reconciliation, and cloud accounting migration for a technology firm operating on manual records since 2020.",
     tagline: "Transformed five years of manual records into a clean, audit-ready cloud accounting system in just two months.",
     duration: "2 months",
-    date: "2020–2024",
+    date: "2020â€“2024",
     narrative: {
       problem: "Coastal Image Technologies had been operating for five years without a formal accounting system. All financial records were maintained manually, leaving the business with no reliable view of its financial position, unreconciled tax obligations, outstanding debtor and creditor balances, and a growing risk of regulatory exposure. When the client sought to put their house in order, the scope of remediation across five years of transactions was significant.",
       turningPoint: "AK Prime was engaged to perform a full-scope financial clean-up: capturing, classifying, and reconciling every transaction from 2020 to 2024, resolving compliance gaps with KRA, and migrating the business onto a modern cloud accounting platform.",
@@ -174,14 +174,14 @@ export const caseStudies: CaseStudy[] = [
       name: "Managing Director",
       role: "Coastal Image Technologies Limited",
       quote: "Five years of records that had never been properly accounted for. AK Prime came in, made sense of everything, and handed us a clean set of books and a system we can actually use. The turnaround was faster than we thought possible.",
-      image: "/images/avatar-professional.jpg"
+      image: "/images/avatar-professional.webp"
     },
     metrics: [
       { value: "5 Years", label: "Data Reconciled" },
       { value: "2 Months", label: "Delivery Time" },
       { value: "Audit-Ready", label: "Outcome" }
     ],
-    image: "/images/financial-analysis.jpg",
+    image: "/images/financial-analysis.webp",
     category: "Finance"
   }
 ];

@@ -30,7 +30,7 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "ERP Implementation",
     icon: "database",
-    photo: "/images/office-culture.jpg",
+    photo: "/images/office-culture.webp",
     shortDescription: "We manage the full ERP journey, from vendor selection to go-live training. Unify your operations.",
     heroHeadline: "Stop Wrestling with Data. Unify Your Operations with ERP.",
     painPoints: [
@@ -40,7 +40,7 @@ export const servicesData: ServiceData[] = [
     ],
     solution: "We implement modern ERP systems tailored for growing enterprises. By replacing siloed software with a single, unified platform, we automate your core processes and deliver a single source of truth for your entire organisation.",
     outcomes: [
-      "40–60% reduction in month-end close time",
+      "40â€“60% reduction in month-end close time",
       "Real-time finance and operations visibility",
       "90%+ user adoption at 60 days post go-live",
       "Business process reengineering (BPR) included",
@@ -51,7 +51,7 @@ export const servicesData: ServiceData[] = [
       { title: "Data Migration & Testing", desc: "Rigorous cleansing of legacy data and comprehensive User Acceptance Testing." },
       { title: "Training & Go-Live", desc: "Role-based training programmes ensuring your team is confident from day one." }
     ],
-    tools: "Odoo · SAP Business One · Microsoft Dynamics 365 · Oracle NetSuite",
+    tools: "Odoo Â· SAP Business One Â· Microsoft Dynamics 365 Â· Oracle NetSuite",
     cta: "Book an ERP Assessment",
   },
   {
@@ -60,7 +60,7 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "AI Integration & Automation",
     icon: "cpu",
-    photo: "/images/remote-work.jpg",
+    photo: "/images/remote-work.webp",
     shortDescription: "Pragmatic AI deployments that automate workflows and predict demand, governed by strict ethics.",
     heroHeadline: "Turn AI from a Buzzword into a Bottom-Line Advantage.",
     painPoints: [
@@ -70,7 +70,7 @@ export const servicesData: ServiceData[] = [
     ],
     solution: "We bypass the hype to deliver pragmatic AI solutions. Starting with a low-risk proof of concept, we deploy machine learning models and intelligent automation that directly reduce operational costs and improve forecasting accuracy.",
     outcomes: [
-      "30–60 hours/week saved on manual processing",
+      "30â€“60 hours/week saved on manual processing",
       "Predictive forecasting accuracy improvement",
       "Automated workflows across finance and ops",
       "Ethics review and data governance framework included",
@@ -81,7 +81,7 @@ export const servicesData: ServiceData[] = [
       { title: "Integration & Scaling", desc: "Deploying the solution across the enterprise with full API integrations." },
       { title: "Governance & Handoff", desc: "Establishing ethical guidelines, monitoring tools, and training your internal team." }
     ],
-    tools: "OpenAI / GPT · Azure AI · LangChain · Power BI",
+    tools: "OpenAI / GPT Â· Azure AI Â· LangChain Â· Power BI",
     cta: "Explore AI Opportunities",
   },
   {
@@ -90,7 +90,7 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "Training Services",
     icon: "graduation-cap",
-    photo: "/images/cloud-computing.jpg",
+    photo: "/images/cloud-computing.webp",
     shortDescription: "Role-based ERP and systems training that drives real adoption, not just awareness.",
     heroHeadline: "Software Only Works If Your People Know How to Use It.",
     painPoints: [
@@ -111,7 +111,7 @@ export const servicesData: ServiceData[] = [
       { title: "Delivery Execution", desc: "Conducting dynamic, hands-on training sessions via classroom or digital platforms." },
       { title: "Competency Measurement", desc: "Administering practical assessments to ensure knowledge retention and readiness." }
     ],
-    tools: "Moodle · TalentLMS · Zoom · Custom Manuals",
+    tools: "Moodle Â· TalentLMS Â· Zoom Â· Custom Manuals",
     cta: "Plan Your Training Programme",
   },
 
@@ -122,7 +122,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Project Management",
     icon: "kanban",
-    photo: "/images/hero-workspace-bw.jpg",
+    photo: "/images/hero-workspace-bw.webp",
     shortDescription: "Structured governance from initiation to close. Deliver on time and on budget.",
     heroHeadline: "Deliver Complex Projects Without the Chaos.",
     painPoints: [
@@ -143,7 +143,7 @@ export const servicesData: ServiceData[] = [
       { title: "Execution & Monitoring", desc: "Managing daily deliverables, tracking milestones, and resolving blockers." },
       { title: "Closure & Handover", desc: "Formal sign-off, transition to operations, and post-implementation reviews." }
     ],
-    tools: "MS Project · Asana · Jira · Primavera · MS Teams",
+    tools: "MS Project Â· Asana Â· Jira Â· Primavera Â· MS Teams",
     cta: "Discuss Your Project",
   },
   {
@@ -152,7 +152,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Business Analysis",
     icon: "file-search",
-    photo: "/images/data-analysis.jpg",
+    photo: "/images/data-analysis.webp",
     shortDescription: "Translating stakeholder needs into clear specifications so developers build the right thing.",
     heroHeadline: "Bridge the Gap Between Business Strategy and IT Delivery.",
     painPoints: [
@@ -173,7 +173,7 @@ export const servicesData: ServiceData[] = [
       { title: "Specification Drafting", desc: "Writing unambiguous functional requirements and user stories." },
       { title: "Validation & UAT", desc: "Ensuring built solutions accurately address the defined business problems." }
     ],
-    tools: "BPMN · Bizagi · Lucidchart · Jira · Confluence",
+    tools: "BPMN Â· Bizagi Â· Lucidchart Â· Jira Â· Confluence",
     cta: "Request BA Scoping",
   },
   {
@@ -182,7 +182,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Company Restructuring",
     icon: "network",
-    photo: "/images/professional-headshot.jpg",
+    photo: "/images/professional-headshot.webp",
     shortDescription: "Reorganise for efficiency, tax optimisation, or post-merger integration readiness.",
     heroHeadline: "Realign Your Organisation for Sustainable Growth.",
     painPoints: [
@@ -203,7 +203,7 @@ export const servicesData: ServiceData[] = [
       { title: "Transition Planning", desc: "Creating the step-by-step roadmap for legal, financial, and operational shifts." },
       { title: "Change Management Execution", desc: "Managing communications to maintain morale and productivity throughout." }
     ],
-    tools: "HR / Org Design Consultants · Tax Advisors · Corporate Lawyers",
+    tools: "HR / Org Design Consultants Â· Tax Advisors Â· Corporate Lawyers",
     cta: "Discuss Restructuring Options",
   },
   {
@@ -212,7 +212,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "VC & Fundraising Advisory",
     icon: "trending-up",
-    photo: "/images/professional-workspace.jpg",
+    photo: "/images/professional-workspace.webp",
     shortDescription: "Get investment-ready. From pitch deck to financial model and investor matching.",
     heroHeadline: "Secure the Capital to Accelerate Your Vision.",
     painPoints: [
@@ -220,7 +220,7 @@ export const servicesData: ServiceData[] = [
       "Financial models failing to withstand rigorous VC due diligence.",
       "Lack of warm introductions to active investors matching your thesis.",
     ],
-    solution: "We prepare high-growth companies to successfully raise capital. By stress-testing your financial models, refining your pitch deck, and managing the data room, we make you unequivocally 'investor-ready'—and leverage our networks for targeted introductions.",
+    solution: "We prepare high-growth companies to successfully raise capital. By stress-testing your financial models, refining your pitch deck, and managing the data room, we make you unequivocally 'investor-ready'â€”and leverage our networks for targeted introductions.",
     outcomes: [
       "Investor-ready pitch deck and financial model",
       "Valuation guidance and term sheet review",
@@ -233,7 +233,7 @@ export const servicesData: ServiceData[] = [
       { title: "Investor Outreach", desc: "Mapping the ecosystem and initiating warm dialogues with targeted funds." },
       { title: "Diligence & Deal Support", desc: "Navigating Q&A, term sheet negotiations, and closing procedures." }
     ],
-    tools: "VC Networks · Angel Groups · Pitch Platforms · Legal Counsel",
+    tools: "VC Networks Â· Angel Groups Â· Pitch Platforms Â· Legal Counsel",
     cta: "Start Fundraising Prep",
   },
 
@@ -244,7 +244,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Financial Management (FP&A)",
     icon: "pie-chart",
-    photo: "/images/mentor-coaching.jpg",
+    photo: "/images/mentor-coaching.webp",
     shortDescription: "Actionable financial planning, rolling forecasts, and live dashboards for decision support.",
     heroHeadline: "Navigate Uncertainty with Precision Financial Planning.",
     painPoints: [
@@ -265,7 +265,7 @@ export const servicesData: ServiceData[] = [
       { title: "Dashboard Implementation", desc: "Connecting your data sources to powerful visual dashboards for executive review." },
       { title: "Strategic Advisory", desc: "Ongoing monthly reviews to interpret data and guide commercial strategy." }
     ],
-    tools: "Power BI · Excel Models · Adaptive Planning Tools",
+    tools: "Power BI Â· Excel Models Â· Adaptive Planning Tools",
     cta: "Explore Financial Advisory",
   },
   {
@@ -274,7 +274,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Cashflow Optimisation",
     icon: "banknote",
-    photo: "/images/business-consulting.jpg",
+    photo: "/images/business-consulting.webp",
     shortDescription: "Improve working capital, extend supplier terms, and build 13-week cash forecasts.",
     heroHeadline: "Unlock Trapped Cash Working within Your Operations.",
     painPoints: [
@@ -295,7 +295,7 @@ export const servicesData: ServiceData[] = [
       { title: "Forecasting Setup", desc: "Deploying a rigorous, rolling 13-week cash visibility framework." },
       { title: "Execution Tracking", desc: "Monitoring cash conversion cycle improvements against established baselines." }
     ],
-    tools: "Cash Forecasting Modules · Collections Software · Factoring Partners",
+    tools: "Cash Forecasting Modules Â· Collections Software Â· Factoring Partners",
     cta: "Request a Cash Diagnostic",
   },
   {
@@ -304,7 +304,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Audit Services",
     icon: "shield-check",
-    photo: "/images/financial-analysis.jpg",
+    photo: "/images/financial-analysis.webp",
     shortDescription: "Independent assurance on financials and internal controls to build stakeholder confidence.",
     heroHeadline: "Protect Value with Rigorous Independent Assurance.",
     painPoints: [
@@ -325,7 +325,7 @@ export const servicesData: ServiceData[] = [
       { title: "Reporting", desc: "Delivering a clear, prioritised management letter outlining findings and risks." },
       { title: "Remediation Support", desc: "Assisting teams in closing audit gaps and strengthening control environments." }
     ],
-    tools: "CaseWare · ACL / IDEA · Excel · ISO / IIA Frameworks",
+    tools: "CaseWare Â· ACL / IDEA Â· Excel Â· ISO / IIA Frameworks",
     cta: "Schedule an Audit",
   },
   {
@@ -334,7 +334,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "System & IT Audits",
     icon: "server-crash",
-    photo: "/images/compliance-audit.jpg",
+    photo: "/images/compliance-audit.webp",
     shortDescription: "Identify structural vulnerabilities, fraud risks, and access violations in your ERP.",
     heroHeadline: "Secure Your Digital Core Against Hidden Threats.",
     painPoints: [
@@ -355,7 +355,7 @@ export const servicesData: ServiceData[] = [
       { title: "SOD Analysis", desc: "Detailed review of user permissions against established financial conflict matrices." },
       { title: "Harden & Resolve", desc: "Actionable guidance to patch vulnerabilities and secure your infrastructure." }
     ],
-    tools: "Nessus · ERP Security Checklists · Network Audit Tools",
+    tools: "Nessus Â· ERP Security Checklists Â· Network Audit Tools",
     cta: "Request a System Audit",
   },
   {
@@ -364,7 +364,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Bookkeeping & Cloud Accounting",
     icon: "calculator",
-    photo: "/images/organization-structure.jpg",
+    photo: "/images/organization-structure.webp",
     shortDescription: "Accurate, timely books that keep you tax-ready and management-informed.",
     heroHeadline: "Flawless Financial Records, Fully Outsourced.",
     painPoints: [
@@ -385,7 +385,7 @@ export const servicesData: ServiceData[] = [
       { title: "Monthly Processing", desc: "Reconciling transactions, running payroll, and preparing statutory tax filings." },
       { title: "Reporting", desc: "Delivering clear, actionable monthly management packs to leadership." }
     ],
-    tools: "QuickBooks · Xero · Sage · Wave",
+    tools: "QuickBooks Â· Xero Â· Sage Â· Wave",
     cta: "Get a Bookkeeping Quote",
   },
   {
@@ -394,7 +394,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Risk & Compliance Advisory",
     icon: "scale",
-    photo: "/images/financial-planning.jpg",
+    photo: "/images/financial-planning.webp",
     shortDescription: "Build practical enterprise risk frameworks covering AML, data privacy, and regulations.",
     heroHeadline: "Turn Compliance from a Burden into a Competitive Advantage.",
     painPoints: [
@@ -415,7 +415,7 @@ export const servicesData: ServiceData[] = [
       { title: "Framework Design", desc: "Drafting policies, procedures, and risk appetite statements." },
       { title: "Training & Rollout", desc: "Embedding compliance culture across the organisation through active training." }
     ],
-    tools: "ERM Frameworks · AML Tools · ISO 31000 · GDPR / Kenya DPA Guidance",
+    tools: "ERM Frameworks Â· AML Tools Â· ISO 31000 Â· GDPR / Kenya DPA Guidance",
     cta: "Request a Risk Assessment",
   },
   {
@@ -424,7 +424,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Company Secretarial",
     icon: "briefcase",
-    photo: "/images/financial-planning.jpg",
+    photo: "/images/financial-planning.webp",
     shortDescription: "Keep your corporate compliance, filings, and board governance in perfect order.",
     heroHeadline: "Seamless Corporate Governance and Statutory Compliance.",
     painPoints: [
@@ -445,7 +445,7 @@ export const servicesData: ServiceData[] = [
       { title: "Board Support", desc: "Drafting agendas, compiling board packs, and recording formal minutes." },
       { title: "Advisory", desc: "Providing ongoing guidance on directorship duties and corporate governance." }
     ],
-    tools: "Local Registrars · e-Filing Portals · Legal Counsel",
+    tools: "Local Registrars Â· e-Filing Portals Â· Legal Counsel",
     cta: "Set Up Secretarial Support",
   },
 
@@ -456,7 +456,7 @@ export const servicesData: ServiceData[] = [
     category: "Growth & Impact",
     name: "Digital Marketing",
     icon: "megaphone",
-    photo: "/images/analytics-dashboard.jpg",
+    photo: "/images/analytics-dashboard.webp",
     shortDescription: "Brand identity, SEO, and paid performance campaigns managed by one cohesive team.",
     heroHeadline: "Drive Demand with Cohesive Digital Marketing.",
     painPoints: [
@@ -477,7 +477,7 @@ export const servicesData: ServiceData[] = [
       { title: "Campaign Launch", desc: "Deploying targeted activity across Google, Meta, LinkedIn, and organic search." },
       { title: "Optimise & Scale", desc: "A/B testing ad copy, analyzing conversion rates, and scaling profitable channels." }
     ],
-    tools: "Google Ads · Meta Ads · HubSpot · Mailchimp · GA4",
+    tools: "Google Ads Â· Meta Ads Â· HubSpot Â· Mailchimp Â· GA4",
     cta: "Discuss Your Digital Growth",
   },
   // --- HR & PEOPLE SERVICES ---
@@ -487,7 +487,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "HR Advisory & Organisational Design",
     icon: "users",
-    photo: "/images/enterprise-solution.jpg",
+    photo: "/images/enterprise-solution.webp",
     shortDescription: "Workforce planning, job grading frameworks, org design and restructuring.",
     heroHeadline: "Build the Organisation Your Strategy Actually Needs.",
     painPoints: [
@@ -497,7 +497,7 @@ export const servicesData: ServiceData[] = [
     ],
     solution: "We design organisational structures that match strategy: clear job grades, reporting lines, and workforce plans tied to business outcomes rather than headcount inertia.",
     outcomes: [
-      "Workforce plan aligned to 12–24 month strategy",
+      "Workforce plan aligned to 12â€“24 month strategy",
       "Job grading framework with role profiles",
       "Org chart with clear reporting lines",
       "Restructuring roadmap with change-management plan",
@@ -508,7 +508,7 @@ export const servicesData: ServiceData[] = [
       { title: "Role Profiling", desc: "Define each role: purpose, accountabilities, KPIs, grade." },
       { title: "Transition Plan", desc: "Sequenced change plan with stakeholder communication." }
     ],
-    tools: "Job Evaluation Frameworks · Org Design Tools · HR Analytics",
+    tools: "Job Evaluation Frameworks Â· Org Design Tools Â· HR Analytics",
     cta: "Book an HR Advisory Session",
   },
   {
@@ -517,7 +517,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "HR Policy & Compliance",
     icon: "file-check",
-    photo: "/images/financial-planning.jpg",
+    photo: "/images/financial-planning.webp",
     shortDescription: "Employment contracts, HR handbooks, disciplinary procedures and Kenya Labour compliance.",
     heroHeadline: "Stay Compliant. Protect the Organisation. Treat People Fairly.",
     painPoints: [
@@ -538,7 +538,7 @@ export const servicesData: ServiceData[] = [
       { title: "Manager Enablement", desc: "Train line managers on applying policy fairly and consistently." },
       { title: "Annual Review", desc: "Refresh policies as legislation and business needs evolve." }
     ],
-    tools: "Kenya Employment Act · HR Templates · Case Law References",
+    tools: "Kenya Employment Act Â· HR Templates Â· Case Law References",
     cta: "Request a Policy Review",
   },
   {
@@ -547,7 +547,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "Payroll Management",
     icon: "wallet",
-    photo: "/images/financial-analysis.jpg",
+    photo: "/images/financial-analysis.webp",
     shortDescription: "End-to-end payroll outsourcing, statutory deductions (PAYE, NSSF, NHIF, NITA), payslips, reconciliations and regulatory submissions.",
     heroHeadline: "Accurate Payroll. On Time. Every Month.",
     painPoints: [
@@ -568,7 +568,7 @@ export const servicesData: ServiceData[] = [
       { title: "Statutory Filings", desc: "Submit PAYE, NSSF, NHIF, NITA and pay over deductions." },
       { title: "Reporting", desc: "Deliver monthly payroll report, variance analysis, and reconciliations." }
     ],
-    tools: "iTax · NSSF / NHIF Portals · Payroll Software · Bank APIs",
+    tools: "iTax Â· NSSF / NHIF Portals Â· Payroll Software Â· Bank APIs",
     cta: "Get a Payroll Quote",
   },
   {
@@ -577,28 +577,28 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "Recruitment & Talent Acquisition",
     icon: "user-plus",
-    photo: "/images/system-integration.jpg",
+    photo: "/images/system-integration.webp",
     shortDescription: "End-to-end hiring: job profiling, advertising, shortlisting, structured interviews, reference checks and onboarding frameworks.",
     heroHeadline: "Hire the Right People. The First Time.",
     painPoints: [
-      "Bad hires costing 6–9 months of salary in productivity and disruption.",
+      "Bad hires costing 6â€“9 months of salary in productivity and disruption.",
       "Unstructured interviews producing inconsistent and biased decisions.",
       "Onboarding gaps causing new hires to disengage in their first 90 days.",
     ],
     solution: "We run structured, end-to-end hiring: job profiling, sourcing, shortlisting, competency interviews, reference checks, and a 90-day onboarding plan that gets new hires productive fast.",
     outcomes: [
       "Job profile and competency framework per role",
-      "Shortlist of 3–5 qualified candidates",
+      "Shortlist of 3â€“5 qualified candidates",
       "Structured interview scorecards and reference checks",
       "90-day onboarding plan and new-hire scorecard",
     ],
     process: [
       { title: "Role Definition", desc: "Build a clear profile: outcomes, competencies, success criteria." },
-      { title: "Sourcing & Shortlist", desc: "Advertise, headhunt and screen to a 3–5 person shortlist." },
+      { title: "Sourcing & Shortlist", desc: "Advertise, headhunt and screen to a 3â€“5 person shortlist." },
       { title: "Structured Interviews", desc: "Competency-based panels with consistent scoring." },
       { title: "Onboarding", desc: "30 / 60 / 90-day onboarding plan and check-ins." }
     ],
-    tools: "LinkedIn Recruiter · ATS Platforms · Psychometric Assessments",
+    tools: "LinkedIn Recruiter Â· ATS Platforms Â· Psychometric Assessments",
     cta: "Start Your Search",
   },
   {
@@ -607,7 +607,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "Performance Management Systems",
     icon: "gauge",
-    photo: "/images/database-management.jpg",
+    photo: "/images/database-management.webp",
     shortDescription: "Design and implement KPI frameworks, appraisal cycles, performance improvement plans and talent review processes linked to business outcomes.",
     heroHeadline: "Turn Performance Conversations into Business Outcomes.",
     painPoints: [
@@ -628,7 +628,7 @@ export const servicesData: ServiceData[] = [
       { title: "Manager Training", desc: "Coaching skills, calibration sessions, difficult conversations." },
       { title: "Talent Review", desc: "9-box mapping, succession planning, and development plans." }
     ],
-    tools: "OKR Frameworks · Performance Software · Calibration Tools",
+    tools: "OKR Frameworks Â· Performance Software Â· Calibration Tools",
     cta: "Design Your Performance System",
   },
   {
@@ -637,7 +637,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "HR Technology / HRMS Implementation",
     icon: "monitor-cog",
-    photo: "/images/software-development.jpg",
+    photo: "/images/software-development.webp",
     shortDescription: "Selection and configuration of HRMS platforms like Odoo and SAP B1. Training and support provided.",
     heroHeadline: "Move Off Spreadsheets. Run HR on a Real System.",
     painPoints: [
@@ -658,7 +658,7 @@ export const servicesData: ServiceData[] = [
       { title: "Data Migration", desc: "Cleanse and migrate employee records and history." },
       { title: "Training & Go-Live", desc: "User training, go-live support, and 90-day hypercare." }
     ],
-    tools: "Odoo HR · SAP B1 · BambooHR · HRMS Selection Frameworks",
+    tools: "Odoo HR Â· SAP B1 Â· BambooHR Â· HRMS Selection Frameworks",
     cta: "Book an HRMS Demo",
   },
   {
@@ -667,7 +667,7 @@ export const servicesData: ServiceData[] = [
     category: "HR & People Services",
     name: "Learning & Development",
     icon: "book-open",
-    photo: "/images/cloud-computing.jpg",
+    photo: "/images/cloud-computing.webp",
     shortDescription: "Analyze training needs, design L&D strategy, develop e-learning and blended programs. Build capability.",
     heroHeadline: "Build the Capability Your Strategy Demands.",
     painPoints: [
@@ -688,7 +688,7 @@ export const servicesData: ServiceData[] = [
       { title: "Content Development", desc: "Build classroom, e-learning, and blended-learning materials." },
       { title: "Delivery & Measurement", desc: "Deliver, assess competency, and measure business impact." }
     ],
-    tools: "Moodle · TalentLMS · Articulate · Kirkpatrick Evaluation",
+    tools: "Moodle Â· TalentLMS Â· Articulate Â· Kirkpatrick Evaluation",
     cta: "Plan Your L&D Strategy",
   },
 
@@ -698,7 +698,7 @@ export const servicesData: ServiceData[] = [
     category: "Growth & Impact",
     name: "M&E / Impact Assessment",
     icon: "target",
-    photo: "/images/agile-methodology.jpg",
+    photo: "/images/agile-methodology.webp",
     shortDescription: "Design M&E frameworks that prove impact and satisfy stringent donor requirements.",
     heroHeadline: "Measure and Prove the Real Impact of Your Interventions.",
     painPoints: [
@@ -719,7 +719,7 @@ export const servicesData: ServiceData[] = [
       { title: "Field Execution", desc: "Deploying enumerators for rigorous baseline, midline, and endline surveys." },
       { title: "Reporting & Visualization", desc: "Translating raw data into compelling donor reports and live dashboards." }
     ],
-    tools: "LogFrame · KOBO · Power BI · Excel Dashboards",
+    tools: "LogFrame Â· KOBO Â· Power BI Â· Excel Dashboards",
     cta: "Discuss M&E Design",
   },
 ];

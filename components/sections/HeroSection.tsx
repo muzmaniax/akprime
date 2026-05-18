@@ -16,29 +16,29 @@ function vw(px: number, min: number) {
 }
 
 /*
- * Logo set: 6 logos, widths sum = 500.18px, 5 internal gaps × 63px = 315px,
- * 1 inter-set gap = 63px → one full set = 878px. Translate -878px for seamless loop.
+ * Logo set: 6 logos, widths sum = 500.18px, 5 internal gaps x 63px = 315px,
+ * 1 inter-set gap = 63px -> one full set = 878px. Translate -878px for seamless loop.
  */
 const LOGOS = [
-  { src: "/partners/partner-step.png",      alt: "Step Innovations Africa",      w: 95,     h: 37    },
-  { src: "/partners/partner-coastal.png",   alt: "Coastal Image Technologies",   w: 107.48, h: 34.57 },
-  { src: "/partners/partner-explosify.png", alt: "Explosify",                    w: 98.70,  h: 22.84 },
-  { src: "/partners/partner-moradio.png",   alt: "MO Radio",                     w: 51,     h: 40.91 },
-  { src: "/partners/partner-maxfill.png",   alt: "Maxfill Energy Limited",       w: 80,     h: 41    },
-  { src: "/partners/partner-sevenseas.png", alt: "Seven Seas Connection Agency", w: 68,     h: 53    },
+  { src: "/partners/partner-step.webp",      alt: "Step Innovations Africa",      w: 95,     h: 37    },
+  { src: "/partners/partner-coastal.webp",   alt: "Coastal Image Technologies",   w: 107.48, h: 34.57 },
+  { src: "/partners/partner-explosify.webp", alt: "Explosify",                    w: 98.70,  h: 22.84 },
+  { src: "/partners/partner-moradio.webp",   alt: "MO Radio",                     w: 51,     h: 40.91 },
+  { src: "/partners/partner-maxfill.webp",   alt: "Maxfill Energy Limited",       w: 80,     h: 41    },
+  { src: "/partners/partner-sevenseas.webp", alt: "Seven Seas Connection Agency", w: 68,     h: 53    },
 ];
 
 export function HeroSection({ onBooking }: { onBooking?: () => void }) {
   const heroBg = useSiteImage("hero.background");
-  const bgSrc = heroBg || "/images/hero-coins.jpg";
+  const bgSrc = heroBg || "/images/hero-coins.webp";
 
   return (
     <section
       className="relative overflow-hidden w-full"
-      /* svh = small viewport height — stable, ignores browser chrome resize */
+      /* svh = small viewport height â€” stable, ignores browser chrome resize */
       style={{ height: "calc(100svh - var(--navbar-h, 64px))", isolation: "isolate" }}
     >
-      {/* ── Keyframe animations ── */}
+      {/* â”€â”€ Keyframe animations â”€â”€ */}
       <style>{`
         @keyframes ken-burns {
           from { transform: scale(1);    }
@@ -62,7 +62,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         }
       `}</style>
 
-      {/* ── Background photo with Ken Burns slow zoom ── */}
+      {/* â”€â”€ Background photo with Ken Burns slow zoom â”€â”€ */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg"
         style={{
@@ -74,7 +74,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         }}
       />
 
-      {/* ── Desktop gradient ── */}
+      {/* â”€â”€ Desktop gradient â”€â”€ */}
       <div
         className="absolute inset-0 pointer-events-none hidden lg:block"
         style={{
@@ -84,7 +84,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           ].join(", "),
         }}
       />
-      {/* ── Mobile gradient — stronger bottom-up fade for text legibility ── */}
+      {/* â”€â”€ Mobile gradient â€” stronger bottom-up fade for text legibility â”€â”€ */}
       <div
         className="absolute inset-0 pointer-events-none lg:hidden"
         style={{
@@ -93,13 +93,13 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         }}
       />
 
-      {/* ══════════════════════════════════════
-          DESKTOP (≥ 1024px)
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+          DESKTOP (â‰¥ 1024px)
           Content: left 79px, top 37.9% (372/981)
           Trusted By: centred, pinned bottom
-      ══════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
 
-      {/* Content block — node 144:179 */}
+      {/* Content block â€” node 144:179 */}
       <div
         className="absolute inset-x-0 z-10 hidden lg:block"
         style={{ top: "clamp(110px, 28%, 340px)" }}
@@ -205,7 +205,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         </div>
       </div>
 
-      {/* Trusted By — desktop, animated marquee, pinned bottom */}
+      {/* Trusted By â€” desktop, animated marquee, pinned bottom */}
       <div
         className="absolute z-10 hidden lg:flex flex-col items-center"
         style={{
@@ -233,7 +233,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           TRUSTED BY:
         </p>
 
-        {/* Marquee track — overflow hidden clips edges cleanly */}
+        {/* Marquee track â€” overflow hidden clips edges cleanly */}
         <div
           style={{
             width: "100%",
@@ -241,7 +241,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
             overflow: "hidden",
           }}
         >
-          {/* Animated track — logos doubled for seamless loop */}
+          {/* Animated track â€” logos doubled for seamless loop */}
           <div
             style={{
               display: "flex",
@@ -270,7 +270,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         </div>
       </div>
 
-      {/* Scroll indicator — desktop only, bounces gently */}
+      {/* Scroll indicator â€” desktop only, bounces gently */}
       <div
         className="absolute z-10 hidden lg:flex flex-col items-center gap-1"
         style={{ left: "50%", transform: "translateX(-50%)", bottom: "104px" }}
@@ -285,9 +285,9 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         />
       </div>
 
-      {/* ══════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           MOBILE (< 1024px)
-      ══════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="lg:hidden absolute inset-0 z-10 flex flex-col justify-end px-5 pb-5">
         <div className="flex flex-col gap-3 mb-5">
           <p
@@ -332,7 +332,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           </div>
         </div>
 
-        {/* Trusted By — mobile marquee */}
+        {/* Trusted By â€” mobile marquee */}
         <div>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.65)", textAlign: "center", letterSpacing: "0.1em", marginBottom: 8 }}>
             TRUSTED BY:

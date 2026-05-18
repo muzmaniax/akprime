@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 import { Reveal, Eyebrow, StatCell, SectionHeader, CtaButton, GhostButton } from "@/components/ui/Primitives";
 import { FAQSection } from "@/components/sections/TestimonialsInsightsCTA";
 import { Database, Cloud, TrendingUp, Zap, Users, Shield } from "lucide-react";
@@ -40,7 +40,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 -z-0">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: `url('${heroBg || "/images/team-collaboration.jpg"}')` }}
+            style={{ backgroundImage: `url('${heroBg || "/images/team-collaboration.webp"}')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#082121]/80 via-[#082121]/90 to-[#082121]" />
         </div>
@@ -101,7 +101,7 @@ export default function AboutPage() {
             <Reveal delay={80}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
                 <img
-                  src={panel1 || "/images/hero-workspace-bw.jpg"}
+                  src={panel1 || "/images/hero-workspace-bw.webp"}
                   alt="Team collaboration"
                   className="w-full h-auto aspect-[3/4] lg:aspect-[4/5] object-cover"
                 />
@@ -110,7 +110,7 @@ export default function AboutPage() {
             <Reveal delay={160}>
               <div className="overflow-hidden rounded-xl ring-1 ring-white/10 lg:mt-8">
                 <img
-                  src={panel2 || "/images/business-meeting.jpg"}
+                  src={panel2 || "/images/business-meeting.webp"}
                   alt="Enterprise experience"
                   className="w-full h-auto aspect-[3/4] lg:aspect-[4/5] object-cover"
                 />

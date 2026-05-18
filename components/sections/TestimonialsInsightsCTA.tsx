@@ -9,7 +9,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { useSiteImage } from "@/lib/use-site-images";
 import { useCMSContent } from "@/lib/use-cms-content";
 
-/* ─── TESTIMONIALS ─── */
+/* â”€â”€â”€ TESTIMONIALS â”€â”€â”€ */
 const TESTIMONIALS = [
   {
     name: "Station Manager",
@@ -88,7 +88,7 @@ export function TestimonialsSection() {
       <div className="container-x">
         <div className="max-w-[1060px] mx-auto">
 
-        {/* Header — label only (no nav buttons) */}
+        {/* Header â€” label only (no nav buttons) */}
         <div className="grid lg:grid-cols-12 gap-10 items-start mb-8">
           <Reveal className="lg:col-span-4">
             <Eyebrow>Testimonials</Eyebrow>
@@ -98,7 +98,7 @@ export function TestimonialsSection() {
             </p>
           </Reveal>
 
-          {/* Right — quote card with slide animation */}
+          {/* Right â€” quote card with slide animation */}
           <Reveal delay={120} className="lg:col-span-8">
             <div className="rounded-3xl bg-[#F4FAFA] border border-[#082121]/8 p-8 lg:p-10 overflow-hidden relative">
               {/* Slide + fade content container */}
@@ -115,7 +115,7 @@ export function TestimonialsSection() {
               >
                 {/* Avatar + name */}
                 <div className="flex items-start gap-4">
-                  {/* Avatar placeholder — initials */}
+                  {/* Avatar placeholder â€” initials */}
                   <div className="w-14 h-14 rounded-full bg-[#0E3E3E] flex items-center justify-center shrink-0 ring-2 ring-[#37B4B4]/20">
                     <span className="text-[#37B4B4] text-[15px] font-semibold tracking-wide">
                       {t.initials}
@@ -149,7 +149,7 @@ export function TestimonialsSection() {
           </Reveal>
         </div>
 
-        {/* Navigation Arrows — Bottom Centered */}
+        {/* Navigation Arrows â€” Bottom Centered */}
         <div className="flex justify-center gap-3 mt-8">
           <button
             type="button"
@@ -175,7 +175,7 @@ export function TestimonialsSection() {
   );
 }
 
-/* ─── INSIGHTS — Tailwind UI "Blog section with 3-col card grid" ─── */
+/* â”€â”€â”€ INSIGHTS â€” Tailwind UI "Blog section with 3-col card grid" â”€â”€â”€ */
 const ARTICLES = [
   {
     slug: "why-most-business-problems-are-misdiagnosed",
@@ -183,7 +183,7 @@ const ARTICLES = [
     title: "Why most business problems are misdiagnosed",
     author: "Mark Wood",
     date: "Apr 3, 2026",
-    image: "/images/laptop-workspace.jpg",
+    image: "/images/laptop-workspace.webp",
   },
   {
     slug: "the-real-cost-of-poor-decision-making",
@@ -191,7 +191,7 @@ const ARTICLES = [
     title: "The real cost of poor decision-making for business",
     author: "Hanry Mandu",
     date: "Mar 14, 2026",
-    image: "/images/hero-workspace-bw.jpg",
+    image: "/images/hero-workspace-bw.webp",
   },
   {
     slug: "when-founders-should-seek-external-perspective",
@@ -199,7 +199,7 @@ const ARTICLES = [
     title: "When founders should seek external perspective",
     author: "Andy Milan",
     date: "Feb 20, 2026",
-    image: "/images/professional-headshot.jpg",
+    image: "/images/professional-headshot.webp",
   },
 ];
 
@@ -289,13 +289,13 @@ export function InsightsSection() {
   );
 }
 
-/* ─── FAQ — Tailwind UI "Offset with supporting text" two-column ─── */
+/* â”€â”€â”€ FAQ â€” Tailwind UI "Offset with supporting text" two-column â”€â”€â”€ */
 const FAQ = [
   { q: "What type of businesses do you work with?", a: "We work with SMEs, growth-stage companies, and established organisations across manufacturing, retail, healthcare, logistics, and professional services. Our clients are typically founders, CFOs, and leadership teams facing strategic, operational, or technology decisions." },
-  { q: "Do you implement ready-made software like Odoo or HRMS?", a: "Yes. We implement and customise proven platforms including Odoo ERP, HRMS solutions, and NetSuite — configured to fit your specific workflows. We also advise on system selection when you're evaluating options, so you adopt the right tool, not just any tool." },
-  { q: "What makes AK Prime different from other consulting firms?", a: "Senior-led delivery with no junior shuffle. We combine strategic advisory with hands-on implementation — whether that's an ERP rollout, a finance transformation, or an AI integration. You get one accountable team from diagnosis to go-live." },
-  { q: "How does a typical engagement work?", a: "We start with a 1–2 week discovery to understand your current state and define scope. From there, engagements typically run 4–16 weeks with clear milestones and deliverables agreed upfront. For product implementations like Odoo, we follow a structured configure-test-train-go-live methodology." },
-  { q: "When should a business consider hiring a consultant?", a: "When a decision carries weight you can't afford to get wrong — system migrations, finance restructures, scaling operations, entering a new market, or replacing a broken ERP. If the cost of delay or a wrong turn is high, that's the right moment." },
+  { q: "Do you implement ready-made software like Odoo or HRMS?", a: "Yes. We implement and customise proven platforms including Odoo ERP, HRMS solutions, and NetSuite â€” configured to fit your specific workflows. We also advise on system selection when you're evaluating options, so you adopt the right tool, not just any tool." },
+  { q: "What makes AK Prime different from other consulting firms?", a: "Senior-led delivery with no junior shuffle. We combine strategic advisory with hands-on implementation â€” whether that's an ERP rollout, a finance transformation, or an AI integration. You get one accountable team from diagnosis to go-live." },
+  { q: "How does a typical engagement work?", a: "We start with a 1â€“2 week discovery to understand your current state and define scope. From there, engagements typically run 4â€“16 weeks with clear milestones and deliverables agreed upfront. For product implementations like Odoo, we follow a structured configure-test-train-go-live methodology." },
+  { q: "When should a business consider hiring a consultant?", a: "When a decision carries weight you can't afford to get wrong â€” system migrations, finance restructures, scaling operations, entering a new market, or replacing a broken ERP. If the cost of delay or a wrong turn is high, that's the right moment." },
   { q: "Where do you operate?", a: "We are headquartered in Mombasa with offices in Nairobi and Dubai. We serve clients across East Africa and the Middle East, with capacity for remote and hybrid engagements globally." },
 ];
 
@@ -306,7 +306,7 @@ export function FAQSection() {
         <div className="max-w-[1060px] mx-auto">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
 
-          {/* Left — sticky header */}
+          {/* Left â€” sticky header */}
           <Reveal className="lg:col-span-5">
             <Eyebrow>FAQ</Eyebrow>
             <h2 className="mt-4 text-white text-balance max-w-[18ch]">
@@ -315,12 +315,12 @@ export function FAQSection() {
             <p className="mt-5 text-[14px] text-white/60 leading-relaxed">
               Can't find what you're looking for?{" "}
               <Link href="/contact" className="text-[#37B4B4] hover:text-[#29E0C8] font-semibold transition-colors">
-                Reach out directly →
+                Reach out directly â†’
               </Link>
             </p>
           </Reveal>
 
-          {/* Right — accordion */}
+          {/* Right â€” accordion */}
           <Reveal delay={80} className="lg:col-span-7">
             <Accordion className="w-full">
               {FAQ.map((item, i) => (
@@ -346,7 +346,7 @@ export function FAQSection() {
   );
 }
 
-/* ─── CTA BANNER — Tailwind UI "Dark panel with split layout" ─── */
+/* â”€â”€â”€ CTA BANNER â€” Tailwind UI "Dark panel with split layout" â”€â”€â”€ */
 export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
   const ctaBg = useSiteImage("insights.cta_bg");
   const ctaCard1 = useSiteImage("insights.card_1");
@@ -361,12 +361,12 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
           {/* Background image */}
           <div
             className="absolute inset-0 bg-cover bg-center opacity-15"
-            style={{ backgroundImage: `url('${ctaBg || "/images/team-collaboration.jpg"}')` }}
+            style={{ backgroundImage: `url('${ctaBg || "/images/team-collaboration.webp"}')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#082121]/80 via-[#082121]/40 to-transparent" />
 
           <div className="relative grid lg:grid-cols-2 gap-10 items-center px-8 py-14 lg:px-14 lg:py-16">
-            {/* Left — text */}
+            {/* Left â€” text */}
             <Reveal>
               <Eyebrow>Get In Touch</Eyebrow>
               <h2 className="mt-4 text-white text-balance max-w-[20ch]">
@@ -396,12 +396,12 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
               </div>
             </Reveal>
 
-            {/* Right — photo collage */}
+            {/* Right â€” photo collage */}
             <Reveal delay={120}>
               <div className="hidden lg:grid grid-cols-3 gap-3 h-[320px]">
                 <div className="col-span-2 overflow-hidden rounded-xl">
                   <img
-                    src={ctaCard1 || "/images/hero-workspace-bw.jpg"}
+                    src={ctaCard1 || "/images/hero-workspace-bw.webp"}
                     alt=""
                     className="w-full h-full object-cover"
                   />
@@ -409,14 +409,14 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
                 <div className="grid grid-rows-2 gap-3">
                   <div className="overflow-hidden rounded-xl">
                     <img
-                      src={ctaCard2 || "/images/laptop-workspace.jpg"}
+                      src={ctaCard2 || "/images/laptop-workspace.webp"}
                       alt=""
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl">
                     <img
-                      src={ctaCard3 || "/images/professional-headshot.jpg"}
+                      src={ctaCard3 || "/images/professional-headshot.webp"}
                       alt=""
                       className="w-full h-full object-cover"
                     />

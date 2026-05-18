@@ -64,6 +64,8 @@ export function Navbar() {
             <img
               src="/ak-logo.png"
               alt="AK Prime"
+              width={101}
+              height={40}
               className="h-full w-auto"
             />
           </Link>
