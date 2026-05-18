@@ -6,6 +6,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 export const metadata: Metadata = {
   title: "AI Automation & Intelligence | AI Integration Consulting Africa & Middle East",
   description: "AK Prime helps organisations deploy AI solutions that automate processes, generate insights, and improve decision making, starting with a low-risk proof of concept.",
+  alternates: { canonical: "https://akprime.co.ke/services/ai" },
 };
 
 const capabilities = [

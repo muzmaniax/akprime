@@ -5,6 +5,7 @@ import { ArrowRight, Home, CheckCircle2, Mail, Calendar } from "lucide-react";
 export const metadata: Metadata = {
   title: "Thank You | AK Prime Consulting",
   description: "Thank you for reaching out. A member of our team will be in touch within 24 hours.",
+  alternates: { canonical: "https://akprime.co.ke/thank-you" },
 };
 
 export default function ThankYouPage() {

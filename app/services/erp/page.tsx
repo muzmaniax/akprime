@@ -6,6 +6,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 export const metadata: Metadata = {
   title: "ERP Implementation | Odoo, SAP B1, Dynamics 365",
   description: "AK Prime Consulting delivers end-to-end ERP transformation, from vendor selection to go-live. We connect finance, operations, and supply chain in one real-time system.",
+  alternates: { canonical: "https://akprime.co.ke/services/erp" },
 };
 
 const deliveryProcess = [

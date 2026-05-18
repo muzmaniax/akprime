@@ -6,6 +6,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 export const metadata: Metadata = {
   title: "Resources & Free Downloads | AK Prime Consulting",
   description: "Free guides, checklists, and assessments from AK Prime Consulting, covering ERP implementation, AI strategy, cashflow optimisation, and digital transformation readiness.",
+  alternates: { canonical: "https://akprime.co.ke/resources" },
 };
 
 const resources = [

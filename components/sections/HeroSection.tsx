@@ -378,11 +378,6 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         </div>
       </div>
 
-      {/* ── Gradient bridge: blends dark hero bottom into the white section below ── */}
-      <div
-        className="absolute inset-x-0 bottom-0 pointer-events-none z-20"
-        style={{ height: "80px", background: "linear-gradient(to bottom, transparent 0%, #ffffff 100%)" }}
-      />
 
     </section>
   );

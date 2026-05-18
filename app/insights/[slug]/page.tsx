@@ -290,6 +290,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${article.title} | Insights | AK Prime Consulting`,
     description: article.excerpt,
+    alternates: { canonical: `https://akprime.co.ke/insights/${slug}` },
   };
 }
 
