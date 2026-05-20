@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow, StatCell } from "@/components/ui/Primitives";
 import { useSiteImage } from "@/lib/use-site-images";
@@ -94,10 +95,13 @@ export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => vo
           {/* RIGHT — photo */}
           <Reveal delay={120} className="lg:h-full">
             <div className="aspect-[4/5] lg:aspect-auto lg:h-full w-full overflow-hidden rounded-2xl">
-              <img
+              <Image
                 src={aboutPhoto || "/images/team-collaboration.webp"}
                 alt="AK Prime consulting team"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
               />
             </div>
           </Reveal>

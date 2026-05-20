@@ -288,6 +288,14 @@
 }
 .reveal-up { animation: reveal-up 500ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 
+/* LCP-safe CSS fade-up — used on hero text instead of framer-motion initial={{ opacity:0 }}
+   so the browser paints the LCP element before JS hydrates (Lighthouse #9 fix) */
+@keyframes ak-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ak-fade-up { animation: ak-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
 /* Marquee (kept for logo strip if needed) */
 @keyframes marquee {
   from { transform: translateX(0); }
