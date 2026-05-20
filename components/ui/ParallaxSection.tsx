@@ -42,8 +42,10 @@ export function ParallaxSection({
   // Y parallax: enters from offset, settles at 0 through the center, exits gently upwards
   const y = useTransform(smoothProgress, [0, 0.35, 1], [offset, 0, -offset * 0.3]);
 
-  // Opacity: fades in rapidly as soon as it breaches the viewport edge
-  const opacity = useTransform(smoothProgress, [0, 0.08], [0.4, 1]);
+  // Opacity: fades in as the section enters the viewport.
+  // Starting at 0 (not 0.4) makes the transition more intentional;
+  // and we only apply it when fadeIn is requested.
+  const opacity = useTransform(smoothProgress, [0, 0.12], [0, 1]);
 
   // Scale: optionally zooms in as it enters
   const scale = useTransform(

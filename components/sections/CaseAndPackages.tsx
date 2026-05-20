@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -23,11 +24,14 @@ export function CaseStudiesSection() {
           className="group relative block w-full min-h-[500px] lg:min-h-[550px] rounded-[32px] lg:rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700"
         >
           {/* Background Image */}
-          <img
-              src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80"
-              alt="Featured Case Study"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            />
+          <Image
+            src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80"
+            alt="Featured Case Study — manufacturing plant"
+            fill
+            className="object-cover transition-transform duration-1000 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 95vw, 1280px"
+            loading="lazy"
+          />
             <div className="absolute inset-0 bg-gradient-to-t from-[#082121]/90 via-[#082121]/40 to-[#082121]/10 opacity-90 group-hover:opacity-100 transition-opacity duration-700" />
             
             {/* Context Labels — top-left, absolutely positioned */}

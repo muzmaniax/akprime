@@ -1,10 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Toaster } from "sonner";
+
+// PageLoader is pure UI — defer so it never blocks first paint or SSR
+const PageLoader = dynamic(
+  () => import("@/components/layout/PageLoader").then(m => ({ default: m.PageLoader })),
+  { ssr: false }
+);
 
 export function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <PageLoader />
       {children}
       <Toaster
         position="bottom-right"

@@ -17,7 +17,9 @@ export function ScrollReveal({
   once = true,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once, margin: "0px" });
+  // margin: "-50px" triggers the animation slightly before the element enters
+  // the viewport, preventing the jarring "pop in" when scrolling fast
+  const inView = useInView(ref, { once, margin: "-50px 0px" });
 
   return (
     <motion.div

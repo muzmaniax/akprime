@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 const partnerLogos = [
   "/partners/client-1.png",
@@ -33,10 +34,13 @@ export function TrustedLogosCarousel() {
               className="flex-shrink-0 w-[220px] sm:w-[280px] md:w-[320px] h-32 rounded-lg flex items-center justify-center px-4"
               style={{ background: "transparent" }}
             >
-              <img
+              <Image
                 src={logo}
-                alt={`Client Logo ${idx + 1}`}
+                alt={`Trusted client logo ${(idx % partnerLogos.length) + 1}`}
+                width={280}
+                height={108}
                 className="max-w-full max-h-[108px] object-contain"
+                loading="lazy"
               />
             </div>
           ))}

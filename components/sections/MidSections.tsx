@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { 
-  AlertTriangle, 
-  Rocket, 
-  CheckCircle2, 
-  XCircle, 
-  TrendingUp, 
-  Cpu, 
-  Database, 
+import {
+  AlertTriangle,
+  Rocket,
+  CheckCircle2,
+  XCircle,
+  TrendingUp,
+  Cpu,
+  Database,
   LayoutPanelTop,
   ArrowRight
 } from "lucide-react";
@@ -56,17 +57,16 @@ export function PhotoStrip() {
     <div className="grid grid-cols-2 md:grid-cols-4 h-auto md:h-[180px] overflow-hidden">
       {photos.map((src, i) => (
         <div key={i} className="relative overflow-hidden group aspect-[4/3] md:aspect-auto">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={src}
-            alt="AK Prime Consulting"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-            style={{ filter: "brightness(.72)" }}
-            onMouseOver={(e) => (e.currentTarget.style.filter = "brightness(.88)")}
-            onMouseOut={(e) => (e.currentTarget.style.filter = "brightness(.72)")}
+            alt="AK Prime Consulting team"
+            fill
+            className="object-cover brightness-[.72] transition-all duration-500 group-hover:brightness-[.88] group-hover:scale-[1.06]"
+            sizes="(max-width: 768px) 50vw, 25vw"
+            loading="lazy"
           />
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none z-10"
             style={{ background: "linear-gradient(to top, rgba(8,33,33,.7) 0%, transparent 60%)" }}
           />
         </div>
@@ -125,10 +125,13 @@ export function ProblemSection({ onBooking }: { onBooking: () => void }) {
               >
                 {/* Photo Area Scale: Desktop 180px, Tablet 180px, Mobile 180px */}
                 <div className="relative h-[180px] sm:h-[180px] lg:h-[180px] w-full overflow-hidden flex-shrink-0">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070"
                     alt="Office chaos spreadsheets"
-                    className="w-full h-full object-cover object-top transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.06]"
+                    fill
+                    className="object-cover object-top transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.06]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 620px"
+                    loading="lazy"
                   />
                   {/* Progressive blur fade at bottom - 50% height */}
                   <div 
@@ -181,10 +184,13 @@ export function ProblemSection({ onBooking }: { onBooking: () => void }) {
               >
                 {/* Photo Area Scale: Desktop 180px, Tablet 180px, Mobile 180px */}
                 <div className="relative h-[180px] sm:h-[180px] lg:h-[180px] w-full overflow-hidden flex-shrink-0">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070"
                     alt="Modern data dashboard"
-                    className="w-full h-full object-cover object-top transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.06]"
+                    fill
+                    className="object-cover object-top transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.06]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 620px"
+                    loading="lazy"
                   />
                   {/* Progressive blur fade at bottom - 50% height */}
                   <div 

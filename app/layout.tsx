@@ -1,8 +1,6 @@
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { PageLoader } from "@/components/layout/PageLoader";
-import { Toaster } from "sonner";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -58,9 +56,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/*
+          Preload the system UI / Inter font early so the browser fetches it
+          before it's discovered in CSS — removes it from the critical-path
+          latency (Lighthouse issue #7). The crossOrigin attr is required for
+          CORS-protected font responses.
+        */}
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="antialiased font-sans min-h-screen bg-[#082121] text-white overflow-x-hidden">
         <ClientProviders>
-          <PageLoader />
           <Navbar />
           <main className="pb-16 lg:pb-0">{children}</main>
           <Footer />

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export interface IndustryCardProps {
@@ -19,14 +20,16 @@ export function IndustryCard({ image, title, description, href = "#", onClick }:
 
   const cardContent = (
     <div className="relative rounded-[22px] overflow-hidden w-full h-full">
-      {/* Background image */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      {/* Background image — Next.js Image for responsive srcset + lazy loading */}
+      <Image
         src={image}
         alt={title}
+        fill
         draggable={false}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+        className="object-cover transition-transform duration-700"
         style={{ transform: isHovered ? "scale(1.04)" : "scale(1)" }}
+        sizes="(max-width: 768px) 85vw, (max-width: 1280px) 30vw, 380px"
+        loading="lazy"
       />
 
       {/* Gradient overlay */}

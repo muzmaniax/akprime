@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Sparkles } from "@/components/ui-layouts/sparkles";
@@ -130,12 +131,14 @@ function InsightCard({ a, delay }: { a: any; delay: number }) {
           className="relative rounded-[22px] overflow-hidden cursor-pointer group"
           style={{ height: "300px" }}
         >
-          {/* Background image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* Background image — uses Next.js Image for responsive srcset + lazy loading */}
+          <Image
             src={a.photo}
             alt={a.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.07]"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.07]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 400px"
+            loading="lazy"
           />
 
           {/* Teal tint overlay at top (matches Figma mint bg) */}

@@ -107,13 +107,18 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
               </TextEffect>
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.2 }}
-              className="text-[15px] lg:text-[16px] text-white/80 leading-[1.7] tracking-wide max-w-xl mb-8"
+            {/*
+              LCP element — must be immediately visible in HTML (no JS-gated opacity).
+              Using CSS animation so the browser can paint it before JS hydrates.
+              Framer-motion initial={{ opacity: 0 }} sets an inline style that hides
+              the element until React runs — direct cause of 2,740 ms LCP delay.
+            */}
+            <p
+              className="text-[15px] lg:text-[16px] text-white/80 leading-[1.7] tracking-wide max-w-xl mb-8 ak-fade-up"
+              style={{ animationDelay: "0.2s" }}
             >
               Headquartered in <span className="text-[#37B4B4] font-medium">Nairobi</span> with a branch in <span className="text-[#37B4B4] font-medium">Mombasa</span>, we provide world-class tech advisory across <span className="text-white font-medium">Africa</span> and the <span className="text-white font-medium">Middle East</span>.
-            </motion.p>
+            </p>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
@@ -141,13 +146,12 @@ export function HeroSection({ onBooking }: HeroSectionProps) {
               </a>
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.46 }}
-              className="text-white/50 text-[13px] lg:text-[13px] leading-relaxed tracking-wide max-w-lg"
+            <p
+              className="text-white/50 text-[13px] lg:text-[13px] leading-relaxed tracking-wide max-w-lg ak-fade-up"
+              style={{ animationDelay: "0.46s" }}
             >
               Trusted by organisations across finance, logistics, healthcare, education and the public sector — in Africa and the Middle East.
-            </motion.p>
+            </p>
 
             {/* Stats bar */}
             <motion.div
