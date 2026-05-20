@@ -1,11 +1,11 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { X, Save, Loader2, Plus, Trash2, ExternalLink } from "lucide-react";
 import { caseStudies } from "@/data/case-studies";
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Static insight definitions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────── Static insight definitions ─────────────────── */
 export const STATIC_INSIGHTS = [
   {
     slug: "why-most-business-problems-are-misdiagnosed",
@@ -39,7 +39,7 @@ export const STATIC_INSIGHTS = [
   },
 ];
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────── Types ─────────────────── */
 type CaseStudyEdit = {
   title: string; tagline: string; summary: string; duration: string; image: string;
   metrics: { value: string; label: string }[];
@@ -57,7 +57,7 @@ export type ContentItem =
   | { kind: "case-study"; id: string }
   | { kind: "insight";    slug: string };
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Style helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────── Style helpers ─────────────────── */
 const IS: React.CSSProperties = {
   background: "rgba(255,255,255,0.05)",
   border: "1px solid rgba(255,255,255,0.1)",
@@ -75,7 +75,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   return <div><label style={LS}>{label}</label>{children}</div>;
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Case Study Editor â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────── Case Study Editor ─────────────────── */
 type CSTab = "overview" | "story" | "metrics" | "approach" | "testimonial";
 
 function CaseStudyEditor({
@@ -119,7 +119,7 @@ function CaseStudyEditor({
         {tab === "overview" && (<>
           <Field label="Title"><input style={IS} value={form.title} onChange={e => set("title", e.target.value)} placeholder="Case study title" /></Field>
           <Field label="Tagline"><input style={IS} value={form.tagline} onChange={e => set("tagline", e.target.value)} placeholder="One-line result statement" /></Field>
-          <Field label="Summary"><textarea style={{ ...IS, minHeight: 80 }} value={form.summary} onChange={e => set("summary", e.target.value)} placeholder="2â€“3 sentence summary shown on listing card" /></Field>
+          <Field label="Summary"><textarea style={{ ...IS, minHeight: 80 }} value={form.summary} onChange={e => set("summary", e.target.value)} placeholder="2–3 sentence summary shown on listing card" /></Field>
           <Field label="Image"><input style={IS} value={form.image} onChange={e => set("image", e.target.value)} placeholder="/images/case-study-image.webp" /></Field>
           <div className="grid grid-cols-2 gap-4">
             <Field label="Duration"><input style={IS} value={form.duration} onChange={e => set("duration", e.target.value)} placeholder="e.g. 3 months" /></Field>
@@ -174,7 +174,7 @@ function CaseStudyEditor({
                   <div className="space-y-2">
                     {phase.points.map((pt, j) => (
                       <div key={j} className="flex items-start gap-2">
-                        <span style={{ color: "#37B4B4", fontSize: 16, lineHeight: "34px", flexShrink: 0 }}>Â·</span>
+                        <span style={{ color: "#37B4B4", fontSize: 16, lineHeight: "34px", flexShrink: 0 }}>·</span>
                         <input style={{ ...IS, flex: 1 }} value={pt} onChange={e => { const n = form.approach.map((a, ai) => ai === pi ? { ...a, points: a.points.map((p, k) => k === j ? e.target.value : p) } : a); set("approach", n); }} />
                         {phase.points.length > 1 && (
                           <button onClick={() => { const n = form.approach.map((a, ai) => ai === pi ? { ...a, points: a.points.filter((_, k) => k !== j) } : a); set("approach", n); }} className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-red-500/10 transition-colors" style={{ color: "rgba(255,255,255,0.25)" }}><Trash2 size={12} /></button>
@@ -215,7 +215,7 @@ function CaseStudyEditor({
           {dirty && <button onClick={() => setForm(initial)} className="px-4 py-2 rounded-lg text-[12px] font-medium" style={{ background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.5)" }}>Discard</button>}
           <button onClick={() => onSave(form)} disabled={!dirty || saving} className="flex items-center gap-2 px-5 py-2 rounded-lg text-[13px] font-semibold disabled:opacity-40" style={{ background: "#37B4B4", color: "#082121" }}>
             {saving ? <Loader2 size={13} className="animate-spin" /> : <Save size={13} />}
-            {saving ? "Savingâ€¦" : "Save"}
+            {saving ? "Saving…" : "Save"}
           </button>
         </div>
       </div>
@@ -223,7 +223,7 @@ function CaseStudyEditor({
   );
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Insight Editor â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────── Insight Editor ─────────────────── */
 type INTab = "meta" | "content";
 
 function InsightEditor({
@@ -264,7 +264,7 @@ function InsightEditor({
             <Field label="Author"><input style={IS} value={form.author} onChange={e => set("author", e.target.value)} /></Field>
             <Field label="Author Role"><input style={IS} value={form.authorRole} onChange={e => set("authorRole", e.target.value)} /></Field>
           </div>
-          <Field label="Excerpt"><textarea style={{ ...IS, minHeight: 80 }} value={form.excerpt} onChange={e => set("excerpt", e.target.value)} placeholder="1â€“2 sentence preview shown on listing cards" /></Field>
+          <Field label="Excerpt"><textarea style={{ ...IS, minHeight: 80 }} value={form.excerpt} onChange={e => set("excerpt", e.target.value)} placeholder="1–2 sentence preview shown on listing cards" /></Field>
         </>)}
 
         {tab === "content" && (<>
@@ -285,7 +285,7 @@ function InsightEditor({
           {dirty && <button onClick={() => setForm(initial)} className="px-4 py-2 rounded-lg text-[12px] font-medium" style={{ background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.5)" }}>Discard</button>}
           <button onClick={() => onSave(form)} disabled={!dirty || saving} className="flex items-center gap-2 px-5 py-2 rounded-lg text-[13px] font-semibold disabled:opacity-40" style={{ background: "#37B4B4", color: "#082121" }}>
             {saving ? <Loader2 size={13} className="animate-spin" /> : <Save size={13} />}
-            {saving ? "Savingâ€¦" : "Save"}
+            {saving ? "Saving…" : "Save"}
           </button>
         </div>
       </div>
@@ -294,7 +294,7 @@ function InsightEditor({
 }
 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   ContentEditorDialog â€” the outer modal shell
+   ContentEditorDialog — the outer modal shell
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 export function ContentEditorDialog({
   item,
@@ -309,11 +309,11 @@ export function ContentEditorDialog({
 }) {
   const [saving, setSaving] = useState(false);
 
-  /* Narrow once at top â€” needed in both the if-blocks and JSX */
+  /* Narrow once at top — needed in both the if-blocks and JSX */
   const csId   = item.kind === "case-study" ? item.id   : null;
   const inSlug = item.kind === "insight"    ? item.slug : null;
 
-  /* â”€â”€ Build initial merged data for the selected item â”€â”€ */
+  /* ── Build initial merged data for the selected item ── */
   let previewHref = "/";
   let editorNode: React.ReactNode = null;
 

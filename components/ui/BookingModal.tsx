@@ -73,7 +73,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
             <DialogClose className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/20 hover:bg-black/35 flex items-center justify-center text-white transition-colors backdrop-blur-sm">
               <X size={15} strokeWidth={2.5} />
             </DialogClose>
-            {/* LEFT â€” info panel (dark, photo-backed) */}
+            {/* LEFT — info panel (dark, photo-backed) */}
             <div className="hidden md:flex flex-col relative bg-[#082121] text-white p-7">
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-25"
@@ -103,13 +103,13 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
                 <div className="mt-auto pt-6 space-y-3 text-[13px]">
                   <ContactRow icon={<Mail size={14} />} value="info@akprime.co.ke" />
                   <ContactRow icon={<Phone size={14} />} value="0118 001 001" />
-                  <ContactRow icon={<MapPin size={14} />} value="Mombasa Â· Nairobi Â· Dubai" />
-                  <ContactRow icon={<Clock size={14} />} value="Monâ€“Fri Â· 9amâ€“6pm EAT" />
+                  <ContactRow icon={<MapPin size={14} />} value="Mombasa · Nairobi · Dubai" />
+                  <ContactRow icon={<Clock size={14} />} value="Mon–Fri · 9am–6pm EAT" />
                 </div>
               </div>
             </div>
 
-            {/* RIGHT â€” form panel (light) */}
+            {/* RIGHT — form panel (light) */}
             <div className="bg-white p-6 sm:p-8 overflow-y-auto">
               {/* Mobile header (md hidden uses left panel, mobile shows compact title) */}
               <div className="md:hidden mb-5">
@@ -182,7 +182,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
                 <Field label="Tell us about your situation" optional>
                   <textarea
                     {...register("message")}
-                    placeholder="Brief overview of what you're working onâ€¦"
+                    placeholder="Brief overview of what you're working on…"
                     rows={4}
                     className={cn(inputCls(false), "resize-none py-3 leading-relaxed")}
                   />
@@ -194,7 +194,7 @@ export function BookingModal({ open, onOpenChange, prefilledService }: BookingMo
                     disabled={isSubmitting}
                     className="btn-cta disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? "Sendingâ€¦" : <>Submit request <ArrowUpRight size={16} strokeWidth={2.5} /></>}
+                    {isSubmitting ? "Sending…" : <>Submit request <ArrowUpRight size={16} strokeWidth={2.5} /></>}
                   </button>
                   <p className="text-[11.5px] text-[#3a5a5a] leading-snug">
                     By submitting you agree to be contacted by AK Prime regarding your request.

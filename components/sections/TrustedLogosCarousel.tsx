@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useSiteImage } from "@/lib/use-site-images";
 
-/* Per-logo sizing â€” tuned to visual weight, not uniform height.
+/* Per-logo sizing — tuned to visual weight, not uniform height.
    Aspect ratios: Coastal 2.44 | Explosify 4.06 | Maxfill 1.96 | MO Radio 1.27 | Seven Seas 1.30 | Step 2.55
    Goal: equal perceived area + readable at strip scale.
    mix-blend-screen + grayscale + invert â†’ white logo backgrounds dissolve into dark hero. */

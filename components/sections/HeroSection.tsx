@@ -35,10 +35,10 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
   return (
     <section
       className="relative overflow-hidden w-full"
-      /* svh = small viewport height â€” stable, ignores browser chrome resize */
+      /* svh = small viewport height — stable, ignores browser chrome resize */
       style={{ height: "calc(100svh - var(--navbar-h, 64px))", isolation: "isolate" }}
     >
-      {/* â”€â”€ Keyframe animations â”€â”€ */}
+      {/* ── Keyframe animations ── */}
       <style>{`
         @keyframes ken-burns {
           from { transform: scale(1);    }
@@ -62,7 +62,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         }
       `}</style>
 
-      {/* â”€â”€ Background photo with Ken Burns slow zoom â”€â”€ */}
+      {/* ── Background photo with Ken Burns slow zoom ── */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg"
         style={{
@@ -74,7 +74,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         }}
       />
 
-      {/* â”€â”€ Desktop gradient â”€â”€ */}
+      {/* ── Desktop gradient ── */}
       <div
         className="absolute inset-0 pointer-events-none hidden lg:block"
         style={{
@@ -84,7 +84,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           ].join(", "),
         }}
       />
-      {/* â”€â”€ Mobile gradient â€” stronger bottom-up fade for text legibility â”€â”€ */}
+      {/* ── Mobile gradient — stronger bottom-up fade for text legibility ── */}
       <div
         className="absolute inset-0 pointer-events-none lg:hidden"
         style={{
@@ -99,7 +99,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           Trusted By: centred, pinned bottom
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
 
-      {/* Content block â€” node 144:179 */}
+      {/* Content block — node 144:179 */}
       <div
         className="absolute inset-x-0 z-10 hidden lg:block"
         style={{ top: "clamp(110px, 28%, 340px)" }}
@@ -205,7 +205,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         </div>
       </div>
 
-      {/* Trusted By â€” desktop, animated marquee, pinned bottom */}
+      {/* Trusted By — desktop, animated marquee, pinned bottom */}
       <div
         className="absolute z-10 hidden lg:flex flex-col items-center"
         style={{
@@ -233,7 +233,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           TRUSTED BY:
         </p>
 
-        {/* Marquee track â€” overflow hidden clips edges cleanly */}
+        {/* Marquee track — overflow hidden clips edges cleanly */}
         <div
           style={{
             width: "100%",
@@ -241,7 +241,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
             overflow: "hidden",
           }}
         >
-          {/* Animated track â€” logos doubled for seamless loop */}
+          {/* Animated track — logos doubled for seamless loop */}
           <div
             style={{
               display: "flex",
@@ -270,7 +270,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         </div>
       </div>
 
-      {/* Scroll indicator â€” desktop only, bounces gently */}
+      {/* Scroll indicator — desktop only, bounces gently */}
       <div
         className="absolute z-10 hidden lg:flex flex-col items-center gap-1"
         style={{ left: "50%", transform: "translateX(-50%)", bottom: "104px" }}
@@ -332,7 +332,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
           </div>
         </div>
 
-        {/* Trusted By â€” mobile marquee */}
+        {/* Trusted By — mobile marquee */}
         <div>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.65)", textAlign: "center", letterSpacing: "0.1em", marginBottom: 8 }}>
             TRUSTED BY:

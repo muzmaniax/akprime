@@ -9,7 +9,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { useSiteImage } from "@/lib/use-site-images";
 import { useCMSContent } from "@/lib/use-cms-content";
 
-/* â”€â”€â”€ TESTIMONIALS â”€â”€â”€ */
+/* ─── TESTIMONIALS ─── */
 const TESTIMONIALS = [
   {
     name: "Station Manager",
@@ -88,7 +88,7 @@ export function TestimonialsSection() {
       <div className="container-x">
         <div className="max-w-[1060px] mx-auto">
 
-        {/* Header â€” label only (no nav buttons) */}
+        {/* Header — label only (no nav buttons) */}
         <div className="grid lg:grid-cols-12 gap-10 items-start mb-8">
           <Reveal className="lg:col-span-4">
             <Eyebrow>Testimonials</Eyebrow>
@@ -98,7 +98,7 @@ export function TestimonialsSection() {
             </p>
           </Reveal>
 
-          {/* Right â€” quote card with slide animation */}
+          {/* Right — quote card with slide animation */}
           <Reveal delay={120} className="lg:col-span-8">
             <div className="rounded-3xl bg-[#F4FAFA] border border-[#082121]/8 p-8 lg:p-10 overflow-hidden relative">
               {/* Slide + fade content container */}
@@ -115,7 +115,7 @@ export function TestimonialsSection() {
               >
                 {/* Avatar + name */}
                 <div className="flex items-start gap-4">
-                  {/* Avatar placeholder â€” initials */}
+                  {/* Avatar placeholder — initials */}
                   <div className="w-14 h-14 rounded-full bg-[#0E3E3E] flex items-center justify-center shrink-0 ring-2 ring-[#37B4B4]/20">
                     <span className="text-[#37B4B4] text-[15px] font-semibold tracking-wide">
                       {t.initials}
@@ -149,7 +149,7 @@ export function TestimonialsSection() {
           </Reveal>
         </div>
 
-        {/* Navigation Arrows â€” Bottom Centered */}
+        {/* Navigation Arrows — Bottom Centered */}
         <div className="flex justify-center gap-3 mt-8">
           <button
             type="button"
@@ -175,7 +175,7 @@ export function TestimonialsSection() {
   );
 }
 
-/* â”€â”€â”€ INSIGHTS â€” Tailwind UI "Blog section with 3-col card grid" â”€â”€â”€ */
+/* ─── INSIGHTS — Tailwind UI "Blog section with 3-col card grid" ─── */
 const ARTICLES = [
   {
     slug: "why-most-business-problems-are-misdiagnosed",
@@ -289,13 +289,13 @@ export function InsightsSection() {
   );
 }
 
-/* â”€â”€â”€ FAQ â€” Tailwind UI "Offset with supporting text" two-column â”€â”€â”€ */
+/* ─── FAQ — Tailwind UI "Offset with supporting text" two-column ─── */
 const FAQ = [
   { q: "What type of businesses do you work with?", a: "We work with SMEs, growth-stage companies, and established organisations across manufacturing, retail, healthcare, logistics, and professional services. Our clients are typically founders, CFOs, and leadership teams facing strategic, operational, or technology decisions." },
-  { q: "Do you implement ready-made software like Odoo or HRMS?", a: "Yes. We implement and customise proven platforms including Odoo ERP, HRMS solutions, and NetSuite â€” configured to fit your specific workflows. We also advise on system selection when you're evaluating options, so you adopt the right tool, not just any tool." },
-  { q: "What makes AK Prime different from other consulting firms?", a: "Senior-led delivery with no junior shuffle. We combine strategic advisory with hands-on implementation â€” whether that's an ERP rollout, a finance transformation, or an AI integration. You get one accountable team from diagnosis to go-live." },
-  { q: "How does a typical engagement work?", a: "We start with a 1â€“2 week discovery to understand your current state and define scope. From there, engagements typically run 4â€“16 weeks with clear milestones and deliverables agreed upfront. For product implementations like Odoo, we follow a structured configure-test-train-go-live methodology." },
-  { q: "When should a business consider hiring a consultant?", a: "When a decision carries weight you can't afford to get wrong â€” system migrations, finance restructures, scaling operations, entering a new market, or replacing a broken ERP. If the cost of delay or a wrong turn is high, that's the right moment." },
+  { q: "Do you implement ready-made software like Odoo or HRMS?", a: "Yes. We implement and customise proven platforms including Odoo ERP, HRMS solutions, and NetSuite — configured to fit your specific workflows. We also advise on system selection when you're evaluating options, so you adopt the right tool, not just any tool." },
+  { q: "What makes AK Prime different from other consulting firms?", a: "Senior-led delivery with no junior shuffle. We combine strategic advisory with hands-on implementation — whether that's an ERP rollout, a finance transformation, or an AI integration. You get one accountable team from diagnosis to go-live." },
+  { q: "How does a typical engagement work?", a: "We start with a 1–2 week discovery to understand your current state and define scope. From there, engagements typically run 4–16 weeks with clear milestones and deliverables agreed upfront. For product implementations like Odoo, we follow a structured configure-test-train-go-live methodology." },
+  { q: "When should a business consider hiring a consultant?", a: "When a decision carries weight you can't afford to get wrong — system migrations, finance restructures, scaling operations, entering a new market, or replacing a broken ERP. If the cost of delay or a wrong turn is high, that's the right moment." },
   { q: "Where do you operate?", a: "We are headquartered in Mombasa with offices in Nairobi and Dubai. We serve clients across East Africa and the Middle East, with capacity for remote and hybrid engagements globally." },
 ];
 
@@ -306,7 +306,7 @@ export function FAQSection() {
         <div className="max-w-[1060px] mx-auto">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
 
-          {/* Left â€” sticky header */}
+          {/* Left — sticky header */}
           <Reveal className="lg:col-span-5">
             <Eyebrow>FAQ</Eyebrow>
             <h2 className="mt-4 text-white text-balance max-w-[18ch]">
@@ -320,7 +320,7 @@ export function FAQSection() {
             </p>
           </Reveal>
 
-          {/* Right â€” accordion */}
+          {/* Right — accordion */}
           <Reveal delay={80} className="lg:col-span-7">
             <Accordion className="w-full">
               {FAQ.map((item, i) => (
@@ -346,7 +346,7 @@ export function FAQSection() {
   );
 }
 
-/* â”€â”€â”€ CTA BANNER â€” Tailwind UI "Dark panel with split layout" â”€â”€â”€ */
+/* ─── CTA BANNER — Tailwind UI "Dark panel with split layout" ─── */
 export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
   const ctaBg = useSiteImage("insights.cta_bg");
   const ctaCard1 = useSiteImage("insights.card_1");
@@ -366,7 +366,7 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
           <div className="absolute inset-0 bg-gradient-to-r from-[#082121]/80 via-[#082121]/40 to-transparent" />
 
           <div className="relative grid lg:grid-cols-2 gap-10 items-center px-8 py-14 lg:px-14 lg:py-16">
-            {/* Left â€” text */}
+            {/* Left — text */}
             <Reveal>
               <Eyebrow>Get In Touch</Eyebrow>
               <h2 className="mt-4 text-white text-balance max-w-[20ch]">
@@ -396,7 +396,7 @@ export function CTABannerSection({ onBooking }: { onBooking?: () => void }) {
               </div>
             </Reveal>
 
-            {/* Right â€” photo collage */}
+            {/* Right — photo collage */}
             <Reveal delay={120}>
               <div className="hidden lg:grid grid-cols-3 gap-3 h-[320px]">
                 <div className="col-span-2 overflow-hidden rounded-xl">
