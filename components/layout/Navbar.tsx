@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
@@ -61,12 +62,13 @@ export function Navbar() {
         <div className="container-x h-full flex items-center justify-between gap-6">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0 h-10" aria-label="AK Prime home">
-            <img
+            <Image
               src="/ak-logo.png"
               alt="AK Prime"
               width={101}
               height={40}
               className="h-full w-auto"
+              priority
             />
           </Link>
 

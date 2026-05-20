@@ -9,7 +9,7 @@ import siteImages from "@/data/site-images.json";
 const inter = Inter({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
   variable: "--font-heading",
   preload: true,
 });
@@ -137,7 +137,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${SITE_URL}/logo-primary.png`,
+    url: `${SITE_URL}/Logos/ak-logo.png`,
     width: 200,
     height: 60,
   },

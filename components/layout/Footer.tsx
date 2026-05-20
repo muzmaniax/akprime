@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
 
 const services = [
@@ -31,13 +32,15 @@ export function Footer() {
         <div className="grid lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
           <div className="lg:col-span-5 space-y-5">
             <div className="flex items-center h-12">
-              <img
+              <Image
                 src="/ak-logo.png"
                 alt="AK Prime"
+                width={101}
+                height={40}
                 className="h-full w-auto"
               />
             </div>
-            <p className="text-[15px] text-white/65 max-w-md leading-relaxed">
+            <p className="text-[15px] text-white/80 max-w-md leading-relaxed">
               Strategic consulting for organisations navigating complexity. We make
               informed decisions and build systems that scale.
             </p>
