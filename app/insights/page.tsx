@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow } from "@/components/ui/Primitives";
@@ -68,7 +68,7 @@ export default function InsightsPage() {
   const rest = articles.filter((a) => !a.featured);
   return (
     <div className="bg-white">
-      {/* â”€â”€ Hero â”€â”€ */}
+      {/* ── Hero ── */}
 
       <section className="section-dark border-b border-white/[0.06]" style={{ paddingTop: "calc(var(--navbar-h, 64px) + 40px)", paddingBottom: "40px" }}>
         <div className="container-x max-w-3xl text-center">
@@ -86,7 +86,7 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Featured article â”€â”€ */}
+      {/* ── Featured article ── */}
       <section className="bg-white pt-16 pb-0">
         <div className="container-x max-w-5xl">
           <Reveal>
@@ -106,7 +106,7 @@ export default function InsightsPage() {
                     <span className="inline-block text-[11px] font-semibold tracking-widest uppercase text-[#37B4B4]">
                       {featured.category}
                     </span>
-                    <span className="text-[#082121]/20">Â·</span>
+                    <span className="text-[#082121]/20">·</span>
                     <span className="text-[12px] text-[#3a5a5a]">{featured.readTime}</span>
                   </div>
                   <h2 className="text-[#082121] text-balance group-hover:text-[#37B4B4] transition-colors">
@@ -118,7 +118,7 @@ export default function InsightsPage() {
                   <div className="mt-6 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-[13px] text-[#3a5a5a]">
                       <span>{featured.author}</span>
-                      <span className="text-[#082121]/25">Â·</span>
+                      <span className="text-[#082121]/25">·</span>
                       <time>{featured.date}</time>
                     </div>
                     <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all flex-wrap">
@@ -132,12 +132,12 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Divider â”€â”€ */}
+      {/* ── Divider ── */}
       <div className="container-x max-w-5xl py-12">
         <div className="border-t border-[#082121]/8" />
       </div>
 
-      {/* â”€â”€ Article grid â”€â”€ */}
+      {/* ── Article grid ── */}
       <section className="bg-white pb-20">
         <div className="container-x max-w-5xl">
           <div className="grid sm:grid-cols-2 gap-8">
@@ -156,7 +156,7 @@ export default function InsightsPage() {
                       <span className="text-[11px] font-semibold tracking-widest uppercase text-[#37B4B4]">
                         {a.category}
                       </span>
-                      <span className="text-[#082121]/20">Â·</span>
+                      <span className="text-[#082121]/20">·</span>
                       <span className="text-[12px] text-[#3a5a5a]">{a.readTime}</span>
                     </div>
                     <h3 className="text-[#082121] text-[18px] font-medium leading-snug group-hover:text-[#37B4B4] transition-colors">
@@ -167,7 +167,7 @@ export default function InsightsPage() {
                     </p>
                     <div className="mt-4 flex items-center gap-2 text-[12px] text-[#3a5a5a]">
                       <span>{a.author}</span>
-                      <span className="text-[#082121]/25">Â·</span>
+                      <span className="text-[#082121]/25">·</span>
                       <time>{a.date}</time>
                     </div>
                   </div>

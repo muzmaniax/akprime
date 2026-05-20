@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | AK Prime Consulting",
   },
   description:
-    "AK Prime Consulting â€” Kenya's leading ERP, finance & AI advisory firm. We help organisations replace broken systems, automate operations, and scale with confidence. SAP, Odoo & NetSuite specialists. Offices in Mombasa, Nairobi & Dubai.",
+    "AK Prime Consulting — Kenya's leading ERP, finance & AI advisory firm. We help organisations replace broken systems, automate operations, and scale with confidence. SAP, Odoo & NetSuite specialists. Offices in Mombasa, Nairobi & Dubai.",
   keywords: [
     "AK Prime",
     "AKPrime",
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "AK Prime Consulting â€” ERP, AI & Strategic Advisory",
+        alt: "AK Prime Consulting — ERP, AI & Strategic Advisory",
       },
     ],
   },
@@ -288,7 +288,7 @@ const faqSchema = {
       name: "Can AK Prime help with HR consulting and HRMS implementation?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. AK Prime handles HR strategy, organisation design, payroll compliance, and end-to-end HRMS implementation â€” including system selection, configuration, and staff training.",
+        text: "Yes. AK Prime handles HR strategy, organisation design, payroll compliance, and end-to-end HRMS implementation — including system selection, configuration, and staff training.",
       },
     },
     {
@@ -341,7 +341,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* LCP preload â€” hero background image discovered early */}
+        {/* LCP preload — hero background image discovered early */}
         <link rel="preload" as="image" href={heroImage} fetchPriority="high" />
         <script
           type="application/ld+json"
