@@ -2,12 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
-interface MobileCTABarProps {
-  onBooking: () => void;
-}
-
-export function MobileCTABar({ onBooking }: MobileCTABarProps) {
+export function MobileCTABar() {
   const [visible, setVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
 
@@ -32,12 +29,12 @@ export function MobileCTABar({ onBooking }: MobileCTABarProps) {
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="px-4 pb-4 pt-8" style={{ background: "linear-gradient(to top, rgba(8,33,33,0.97) 0%, transparent 100%)" }}>
-        <button
-          onClick={onBooking}
-          className="w-full h-[52px] btn-cta justify-center text-[15px]"
+        <Link
+          href="/book"
+          className="w-full h-[52px] btn-cta justify-center text-[15px] flex items-center gap-2"
         >
           Book a strategy call <ArrowUpRight size={16} strokeWidth={2.25} />
-        </button>
+        </Link>
       </div>
     </div>
   );

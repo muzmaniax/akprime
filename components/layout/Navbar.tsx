@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
-import { BookingModal } from "@/components/ui/BookingModal";
 import { servicesData, ServiceCategory } from "@/data/services";
 import { industriesData } from "@/data/industries";
 import { cn } from "@/lib/utils";
@@ -26,7 +25,6 @@ const CATEGORIES: ServiceCategory[] = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [bookingOpen, setBookingOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<"services" | "industries" | null>(null);
   const [mobAccordion, setMobAccordion] = useState<"services" | "industries" | null>(null);
   const pathname = usePathname();
@@ -109,14 +107,13 @@ export function Navbar() {
             >
               Contact
             </Link>
-            <button
-              type="button"
-              onClick={() => setBookingOpen(true)}
+            <Link
+              href="/book"
               className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] text-[13px] font-semibold transition-colors"
             >
               Book a call
               <ArrowUpRight size={14} strokeWidth={2.5} />
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -171,7 +168,7 @@ export function Navbar() {
                       className="group p-4 rounded-2xl border border-white/8 hover:border-[#37B4B4]/40 hover:bg-white/[0.03] transition-colors"
                     >
                       <div className="flex items-start justify-between gap-4">
-                        <div className="text-[15px] font-medium text-white group-hover:text-[#37B4B4] transition-colors">
+                        <div className="text-[15px] font-semibold text-white group-hover:text-[#37B4B4] transition-colors">
                           {ind.name}
                         </div>
                         <ArrowUpRight size={14} className="text-white/40 group-hover:text-[#37B4B4] transition-colors mt-1" />
@@ -242,18 +239,17 @@ export function Navbar() {
             ))}
             <Link href="/contact" className="block py-3 text-[20px] font-normal text-white border-b border-white/10">Contact</Link>
 
-            <button
-              type="button"
-              onClick={() => { setMobileOpen(false); setBookingOpen(true); }}
+            <Link
+              href="/book"
+              onClick={() => setMobileOpen(false)}
               className="w-full mt-8 py-3.5 px-4 rounded-lg bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] text-[15px] font-semibold inline-flex items-center justify-center gap-2 transition-colors"
             >
               Book a Strategy Call <ArrowUpRight size={16} strokeWidth={2.25} />
-            </button>
+            </Link>
           </div>
         </div>
       )}
 
-      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 }

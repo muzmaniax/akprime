@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import dynamic from "next/dynamic";
-import { BookingModal } from "@/components/ui/BookingModal";
+import { useRouter } from "next/navigation";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProblemSection } from "@/components/sections/MidSections";
 import { ServicesSection } from "@/components/sections/ServicesSection";
@@ -43,13 +42,13 @@ const ContactSection = dynamic(
 );
 
 export function HomePageClient() {
-  const [bookingOpen, setBookingOpen] = useState(false);
-  const openBooking = () => setBookingOpen(true);
+  const router = useRouter();
+  const goToBook = () => router.push("/book");
 
   return (
     <>
-      <HeroSection onBooking={openBooking} />
-      <ProblemSection onBooking={openBooking} />
+      <HeroSection onBooking={goToBook} />
+      <ProblemSection onBooking={goToBook} />
       <ServicesSection />
       <ProcessSection />
       <IndustriesSection />
@@ -57,9 +56,8 @@ export function HomePageClient() {
       <TestimonialsSection />
       <InsightsSection />
       <FAQSection />
-      <CTABannerSection onBooking={openBooking} />
+      <CTABannerSection onBooking={goToBook} />
       <ContactSection />
-      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 }
