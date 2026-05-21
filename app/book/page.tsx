@@ -1,13 +1,9 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, Calendar, CheckCircle2, Clock, Shield, Star } from "lucide-react";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Book a Strategy Consultation | AK Prime Consulting",
-  description: "Book a free 30-minute strategy consultation with AK Prime Consulting. Get an honest assessment of your situation and a clear next step.",
-  alternates: { canonical: "https://akprime.co.ke/book" },
-};
+import Link from "next/link";
+import { CheckCircle2, Clock, Shield, Star } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { useEffect } from "react";
 
 const benefits = [
   "Honest assessment. No hard sell, no wasted time.",
@@ -17,6 +13,16 @@ const benefits = [
 ];
 
 export default function BookPage() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#082121] pt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -63,44 +69,13 @@ export default function BookPage() {
             </p>
           </ScrollReveal>
 
-          {/* Right — Calendar embed placeholder */}
+          {/* Right — Calendly embed */}
           <ScrollReveal delay={0.15}>
-            <div className="glass-card rounded-2xl p-8 border border-white/8">
-              <div className="flex items-center gap-2 mb-6">
-                <Calendar size={20} className="text-[#37B4B4]" />
-                <span className="text-white font-semibold">Select a Time</span>
-              </div>
-
-              {/* Calendly placeholder */}
-              <div className="bg-[#082121] rounded-xl p-8 text-center border border-white/5 mb-6">
-                <Calendar size={36} className="text-[#37B4B4] mx-auto mb-4 opacity-60" />
-                <p className="text-white/50 text-sm mb-2">Calendar Integration</p>
-                <p className="text-white/30 text-xs mb-6">
-                  Connect your Calendly or Cal.com embed here. Replace this placeholder with your booking widget script.
-                </p>
-                <div className="space-y-2">
-                  {["Tuesday 18 March · 10:00 AM", "Tuesday 18 March · 2:00 PM", "Wednesday 19 March · 9:00 AM", "Wednesday 19 March · 11:00 AM"].map((slot) => (
-                    <button
-                      key={slot}
-                      className="w-full px-4 py-3 rounded-xl border border-white/10 text-white/60 hover:border-[#37B4B4]/40 hover:text-white hover:bg-[#37B4B4]/5 transition-all text-sm"
-                    >
-                      {slot}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <p className="text-center text-white/30 text-xs mb-4">
-                All times shown in EAT (UTC+3)
-              </p>
-
-              <Link
-                href="/contact"
-                className="w-full flex items-center justify-center gap-2 bg-[#37B4B4] hover:bg-[#29E0C8] text-[#082121] font-semibold py-3.5 rounded-xl cta-pulse transition-all"
-              >
-                Or Send Us a Message <ArrowRight size={16} />
-              </Link>
-            </div>
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/akprime/30min?hide_gdpr_banner=1&background_color=082121&text_color=ffffff&primary_color=37B4B4"
+              style={{ minWidth: "320px", height: "700px" }}
+            />
           </ScrollReveal>
         </div>
       </div>
