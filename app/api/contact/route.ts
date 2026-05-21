@@ -1,5 +1,15 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST || "mail.akprime.co.ke",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
 export async function POST(request: Request) {
   try {
@@ -9,11 +19,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
     // Notification to AK Prime team
-    await resend.emails.send({
-      from: "AK Prime Website <noreply@akprime.co.ke>",
+    await transporter.sendMail({
+      from: `"AK Prime Website" <${process.env.SMTP_USER}>`,
       to: "info@akprime.co.ke",
       replyTo: email,
       subject: `New enquiry from ${first} ${last}`,
@@ -49,8 +57,8 @@ export async function POST(request: Request) {
     });
 
     // Auto-reply to sender
-    await resend.emails.send({
-      from: "AK Prime Consulting <info@akprime.co.ke>",
+    await transporter.sendMail({
+      from: `"AK Prime Consulting" <${process.env.SMTP_USER}>`,
       to: email,
       subject: "We received your message — AK Prime Consulting",
       html: `
@@ -72,6 +80,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Contact form error:", err);
-    return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to send message", detail: String(err) }, { status: 500 });
   }
 }
