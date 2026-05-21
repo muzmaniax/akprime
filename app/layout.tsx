@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
 import siteImages from "@/data/site-images.json";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   weight: ["400", "500", "600", "700"],
@@ -369,6 +370,7 @@ export default function RootLayout({
           </PageTransition>
           <Footer />
         </ClientProviders>
+        <SpeedInsights />
       </body>
     </html>
   );
