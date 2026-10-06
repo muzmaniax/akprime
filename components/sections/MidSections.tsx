@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow, StatCell } from "@/components/ui/Primitives";
 import { useSiteImage } from "@/lib/use-site-images";
+import { useI18n } from "@/lib/i18n/context";
 
 /* ── Animated counter — counts from 0 to target when scrolled into view ── */
 function CountUp({ raw }: { raw: string }) {
@@ -49,7 +50,16 @@ function CountUp({ raw }: { raw: string }) {
 
 /* ── About / Stats block ── */
 export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => void }) {
+  const { locale, isRTL } = useI18n();
   const aboutPhoto = useSiteImage("home.about_photo");
+
+  const stats = [
+    { value: "20+", label: isRTL ? "شراكة استشارية منجزة" : "Engagements delivered" },
+    { value: "23",  label: isRTL ? "مسار خدمة متكامل" : "Integrated service lines" },
+    { value: "98%", label: isRTL ? "نسبة رضا العملاء" : "Client satisfaction" },
+    { value: "94%", label: isRTL ? "معدل التبني المؤسسي" : "Avg. user adoption" },
+  ];
+
   return (
     <section className="bg-white section-py">
       <div className="container-x">
@@ -58,30 +68,28 @@ export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => vo
 
           {/* LEFT — text + stats */}
           <Reveal>
-            <Eyebrow>About AK Prime</Eyebrow>
+            <Eyebrow>{isRTL ? "عن إيه كي برايم" : "About AK Prime"}</Eyebrow>
             <h2 className="mt-3 text-[#082121] text-balance">
-              A consulting firm helping organisations move with clarity.
+              {isRTL
+                ? "بيت خبرة استشاري يساعد المؤسسات على المضي برؤية واضحة وانضباط راسخ."
+                : "A consulting firm helping organisations move with clarity."}
             </h2>
             <p className="mt-3 text-[13px] font-light text-[#5a7a7a] leading-[1.65] tracking-[0.01em] max-w-[42ch]">
-              Headquartered in Mombasa with offices in Nairobi and Dubai, we help
-              organisations build the systems, structure, and financial discipline
-              that growth demands.
+              {isRTL
+                ? "انطلاقاً من مقرنا الرئيسي في مومباسا ومكاتبنا في نيروبي ودبي، نساعد المؤسسات والشركات الرائدة على بناء الأنظمة والهيكلة التشغيلية والانضباط المالي الذي يتطلبه النمو المستدام."
+                : "Headquartered in Mombasa with offices in Nairobi and Dubai, we help organisations build the systems, structure, and financial discipline that growth demands."}
             </p>
             <Link
-              href="/about"
+              href={`/${locale}/about`}
               className="mt-5 inline-flex items-center gap-2 text-[#37B4B4] hover:text-[#082121] text-[13px] font-semibold transition-colors"
             >
-              Learn more about us <ArrowUpRight size={13} />
+              <span>{isRTL ? "تعرف على المزيد عنا" : "Learn more about us"}</span>
+              <ArrowUpRight size={13} className="rtl-mirror shrink-0" />
             </Link>
 
             {/* Stats row */}
             <dl className="mt-7 lg:mt-5 grid grid-cols-2 gap-x-6 gap-y-6 lg:gap-y-4 border-t border-[#082121]/10 pt-7 lg:pt-5">
-              {[
-                { value: "20+", label: "Engagements delivered" },
-                { value: "23",  label: "Integrated service lines" },
-                { value: "98%", label: "Client satisfaction" },
-                { value: "94%", label: "Avg. user adoption" },
-              ].map((s) => (
+              {stats.map((s) => (
                 <div key={s.label}>
                   <dt className="text-[11px] text-[#3a5a5a] leading-tight">{s.label}</dt>
                   <dd className="mt-0.5 text-[28px] lg:text-[26px] font-semibold tracking-tight text-[#082121] leading-none">
@@ -97,7 +105,7 @@ export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => vo
             <div className="aspect-[4/5] lg:aspect-auto lg:h-full w-full overflow-hidden rounded-2xl">
               <Image
                 src={aboutPhoto || "/images/team-collaboration.webp"}
-                alt="AK Prime consulting team"
+                alt={isRTL ? "فريق عمل إيه كي برايم للاستشارات" : "AK Prime consulting team"}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

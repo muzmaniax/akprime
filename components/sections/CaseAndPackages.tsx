@@ -3,16 +3,22 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, Eyebrow, StaggerReveal } from "@/components/ui/Primitives";
-import { caseStudies, type CaseStudy } from "@/data/case-studies";
+import { type CaseStudy } from "@/data/case-studies";
 import { useSiteImage } from "@/lib/use-site-images";
 import { useCMSContent } from "@/lib/use-cms-content";
+import { useI18n } from "@/lib/i18n/context";
+import { getLocalizedCaseStudies } from "@/lib/i18n/localized-data";
 
 export function CaseStudiesSection() {
+  const { locale, isRTL } = useI18n();
   const cms = useCMSContent();
 
-  const top = caseStudies.slice(0, 2).map((cs) => {
+  const localizedStudies = getLocalizedCaseStudies(locale);
+
+  const top = localizedStudies.slice(0, 2).map((cs) => {
     const cardImage = useSiteImage(`casestudy.${cs.id}.image`) || cs.image;
-    const cmsCs = cms?.["case-studies"]?.[cs.id] as Record<string, unknown> | undefined;
+    // CMS content is English-only; skip it for Arabic.
+    const cmsCs = locale === "ar" ? undefined : (cms?.["case-studies"]?.[cs.id] as Record<string, unknown> | undefined);
     return {
       ...cs,
       image: cardImage,
@@ -29,17 +35,20 @@ export function CaseStudiesSection() {
 
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
           <Reveal>
-            <Eyebrow>Case Studies</Eyebrow>
+            <Eyebrow>{isRTL ? "دراسات الحالة وقصص النجاح" : "Case Studies"}</Eyebrow>
             <h2 className="mt-3 text-white text-balance max-w-[26ch]">
-              Advisory engagements with business leaders
+              {isRTL ? "مشاريع استشارية وشراكات استراتيجية مع قادة الأعمال" : "Advisory engagements with business leaders"}
             </h2>
             <p className="mt-3 text-[13px] text-white/60 leading-relaxed max-w-xl">
-              We help leaders see their business clearly, identify the real problems, and design strategies that can actually be executed.
+              {isRTL
+                ? "نساعد القيادات على رؤية أعمالهم بوضوح تام، وتشخيص التحديات الحقيقية، وصياغة استراتيجيات قابلة للتنفيذ على أرض الواقع."
+                : "We help leaders see their business clearly, identify the real problems, and design strategies that can actually be executed."}
             </p>
           </Reveal>
           <Reveal delay={80}>
-            <Link href="/case-studies" className="inline-flex items-center gap-1.5 text-[#37B4B4] hover:text-[#29E0C8] text-[13px] font-semibold transition-colors">
-              All case studies <ArrowUpRight size={13} />
+            <Link href={`/${locale}/case-studies`} className="inline-flex items-center gap-1.5 text-[#37B4B4] hover:text-[#29E0C8] text-[13px] font-semibold transition-colors">
+              <span>{isRTL ? "جميع دراسات الحالة" : "All case studies"}</span>
+              <ArrowUpRight size={13} className="rtl-mirror shrink-0" />
             </Link>
           </Reveal>
         </div>
@@ -48,7 +57,7 @@ export function CaseStudiesSection() {
           {top.map((cs) => (
             <div key={cs.id} className="h-full">
               <Link
-                href={`/case-studies/${cs.id}`}
+                href={`/${locale}/case-studies/${cs.id}`}
                 className="group flex flex-col h-full rounded-2xl overflow-hidden border border-white/0 hover:border-[#37B4B4]/30 transition-colors"
               >
                 {/* Mobile layout */}
@@ -75,7 +84,8 @@ export function CaseStudiesSection() {
                     <div className="mt-auto flex items-center justify-between pt-3 border-t border-[#082121]/8">
                       <span className="text-[12px] text-[#3a5a5a] font-medium">{cs.industry}</span>
                       <div className="inline-flex items-center gap-1 text-[12px] font-semibold text-[#37B4B4] group-hover:text-[#29E0C8] transition-colors">
-                        View <ArrowUpRight size={13} strokeWidth={2.5} />
+                        <span>{isRTL ? "عرض التفاصيل" : "View"}</span>
+                        <ArrowUpRight size={13} strokeWidth={2.5} className="rtl-mirror shrink-0" />
                       </div>
                     </div>
                   </div>
@@ -97,11 +107,14 @@ export function CaseStudiesSection() {
                     </div>
                     <div className="flex items-end justify-between mt-4 pt-3 border-t border-[#082121]/10">
                       <div>
-                        <div className="text-[9px] tracking-caption uppercase text-[#3a5a5a]/60 font-medium">Industry</div>
+                        <div className="text-[9px] tracking-caption uppercase text-[#3a5a5a]/60 font-medium">
+                          {isRTL ? "القطاع" : "Industry"}
+                        </div>
                         <div className="text-[13px] font-medium text-[#082121] mt-0.5">{cs.industry}</div>
                       </div>
                       <div className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#37B4B4] group-hover:gap-2.5 transition-all">
-                        View case study <ArrowUpRight size={13} strokeWidth={2.25} />
+                        <span>{isRTL ? "قراءة دراسة الحالة" : "View case study"}</span>
+                        <ArrowUpRight size={13} strokeWidth={2.25} className="rtl-mirror shrink-0" />
                       </div>
                     </div>
                   </div>

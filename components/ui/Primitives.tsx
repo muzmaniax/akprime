@@ -227,15 +227,27 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 max-w-3xl",
+        "flex flex-col gap-3.5 max-w-3xl",
         align === "center" && "items-center text-center mx-auto",
         className
       )}
     >
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className={cn("text-balance", light ? "text-[#082121]" : "text-white")}>{title}</h2>
+      <h2
+        className={cn(
+          "text-balance text-[26px] sm:text-[32px] lg:text-[38px] font-medium leading-[1.2]",
+          light ? "text-[#082121]" : "text-white"
+        )}
+      >
+        {title}
+      </h2>
       {sub && (
-        <p className={cn("text-[15px] md:text-[17px] leading-relaxed", light ? "text-[#3a5a5a]" : "text-white/65")}>
+        <p
+          className={cn(
+            "text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed",
+            light ? "text-[#3a5a5a]" : "text-white/65"
+          )}
+        >
           {sub}
         </p>
       )}

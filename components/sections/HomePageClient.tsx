@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/lib/i18n/context";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProblemSection } from "@/components/sections/MidSections";
 import { ServicesSection } from "@/components/sections/ServicesSection";
@@ -43,7 +44,8 @@ const ContactSection = dynamic(
 
 export function HomePageClient() {
   const router = useRouter();
-  const goToBook = () => router.push("/book");
+  const { locale } = useI18n();
+  const goToBook = () => router.push(`/${locale}/book`);
 
   return (
     <>

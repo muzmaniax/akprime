@@ -1,9 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { useSiteImage } from "@/lib/use-site-images";
 import { MagneticWrapper } from "@/components/ui/Primitives";
+import { useI18n } from "@/lib/i18n/context";
+import { HeroThreeBackground } from "./HeroThreeBackground";
+import { useEffect } from "react";
+import anime from "animejs";
 
 /*
  * Figma reference: node 144:166, canvas 1920px wide.
@@ -29,15 +34,32 @@ const LOGOS = [
 ];
 
 export function HeroSection({ onBooking }: { onBooking?: () => void }) {
+  const { locale, isRTL, t } = useI18n();
   const heroBg = useSiteImage("hero.background");
   const bgSrc = heroBg || "/images/hero-coins.webp";
 
+  useEffect(() => {
+    const tl = anime.timeline({
+      easing: "spring(1, 80, 10, 0)",
+      duration: 1000,
+    });
+    
+    tl.add({
+      targets: ".hero-stagger",
+      translateY: [40, 0],
+      opacity: [0, 1],
+      delay: anime.stagger(120),
+    });
+  }, []);
+
   return (
     <section
-      className="relative overflow-hidden w-full"
+      className="relative overflow-hidden w-full bg-[#031010]"
       /* svh = small viewport height — stable, ignores browser chrome resize */
       style={{ height: "calc(100svh - var(--navbar-h, 64px))", isolation: "isolate" }}
     >
+      <HeroThreeBackground />
+      
       {/* ── Keyframe animations ── */}
       <style>{`
         @keyframes ken-burns {
@@ -58,21 +80,29 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         }
         /* Mobile: pan image right so the dramatic coins fill the frame */
         @media (max-width: 1023px) {
-          .hero-bg { background-position: 70% center; }
+          .hero-bg img { object-position: 70% center !important; }
         }
       `}</style>
 
       {/* ── Background photo with Ken Burns slow zoom ── */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg"
+        className="absolute inset-0 hero-bg"
         style={{
-          backgroundImage: `url('${bgSrc}')`,
           animation: "ken-burns 22s ease-out forwards",
           willChange: "transform",
           backfaceVisibility: "hidden",
           WebkitBackfaceVisibility: "hidden",
         }}
-      />
+      >
+        <Image
+          src={bgSrc}
+          alt="Hero background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
       {/* ── Desktop gradient ── */}
       <div
@@ -118,40 +148,58 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         <div style={{ display: "flex", flexDirection: "column", gap: vw(16, 12) }}>
           {/* Headline */}
           <p
+            className="hero-stagger opacity-0"
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif",
               fontWeight: 500,
               fontSize: vw(46, 24),
-              lineHeight: 1.08,
-              letterSpacing: "-0.04em",
+              lineHeight: isRTL ? 1.3 : 1.08,
+              letterSpacing: isRTL ? "0em" : "-0.04em",
               color: "white",
               wordWrap: "break-word",
               textShadow:
                 "0px 7px 15px rgba(0,0,0,0.08), 0px 27px 27px rgba(0,0,0,0.07), 0px 62px 37px rgba(0,0,0,0.04), 0px 110px 44px rgba(0,0,0,0.01), 0px 172px 48px rgba(0,0,0,0)",
             }}
           >
-            Built for organisations that hold themselves to<br />a higher standard.
+            {isRTL ? (
+              <>
+                مُصممة للمؤسسات التي تضع لنفسها<br />أعلى معايير الريادة والتميز.
+              </>
+            ) : (
+              <>
+                Built for organisations that hold themselves to<br />a higher standard.
+              </>
+            )}
           </p>
 
           {/* Body */}
           <p
+            className="hero-stagger opacity-0"
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif",
               fontWeight: 400,
               fontSize: vw(15, 13),
               lineHeight: 1.6,
               letterSpacing: "0em",
               color: "rgba(255,255,255,0.68)",
-              maxWidth: vw(420, 260),
+              maxWidth: vw(460, 260),
               wordWrap: "break-word",
             }}
           >
-            Senior advisory for leadership teams who need<br />financial discipline, operational clarity, and systems that scale.
+            {isRTL ? (
+              <>
+                استشارات تنفيذية واستراتيجية لقيادات الأعمال الباحثة عن<br />الانضباط المالي، والوضوح التشغيلي، والأنظمة القابلة للتوسع.
+              </>
+            ) : (
+              <>
+                Senior advisory for leadership teams who need<br />financial discipline, operational clarity, and systems that scale.
+              </>
+            )}
           </p>
         </div>
 
         {/* Buttons */}
-        <div style={{ display: "flex", alignItems: "center", gap: vw(10, 8) }}>
+        <div className="hero-stagger opacity-0" style={{ display: "flex", alignItems: "center", gap: vw(10, 8) }}>
           <MagneticWrapper>
             <button
               type="button"
@@ -172,14 +220,14 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
               onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 28px rgba(55,180,180,0.45)"; }}
               onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.boxShadow = "none"; }}
             >
-              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "#0a3030", whiteSpace: "nowrap" }}>
-                Book a Call
+              <span style={{ fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "#0a3030", whiteSpace: "nowrap" }}>
+                {t.hero.bookConsultation}
               </span>
             </button>
           </MagneticWrapper>
           <MagneticWrapper>
             <Link
-              href="/contact"
+              href={`/${locale}/contact`}
               style={{
                 height: vw(40, 36),
                 padding: `0 ${vw(18, 16)}`,
@@ -194,8 +242,8 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
                 flexShrink: 0,
               }}
             >
-              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "white", whiteSpace: "nowrap" }}>
-                Contact
+              <span style={{ fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "white", whiteSpace: "nowrap" }}>
+                {t.nav.contact}
               </span>
             </Link>
           </MagneticWrapper>
@@ -219,7 +267,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
         {/* "TRUSTED BY:" label */}
         <p
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif",
             fontWeight: 400,
             fontSize: 14,
             lineHeight: 1,
@@ -230,7 +278,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
               "0px 1px 3px rgba(0,0,0,0.29), 0px 5px 5px rgba(0,0,0,0.26), 0px 12px 7px rgba(0,0,0,0.15), 0px 21px 8px rgba(0,0,0,0.04), 0px 33px 9px rgba(0,0,0,0.01)",
           }}
         >
-          TRUSTED BY:
+          {isRTL ? "شركاء النجاح في أفريقيا والشرق الأوسط:" : "TRUSTED BY:"}
         </p>
 
         {/* Marquee track — overflow hidden clips edges cleanly */}
@@ -291,6 +339,7 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
       <div className="lg:hidden absolute inset-0 z-10 flex flex-col justify-end px-5 pb-5">
         <div className="flex flex-col gap-3 mb-5">
           <p
+            className="hero-stagger opacity-0"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 500,
@@ -298,44 +347,63 @@ export function HeroSection({ onBooking }: { onBooking?: () => void }) {
               lineHeight: 1.1,
               letterSpacing: "-0.04em",
               color: "white",
+              textShadow: "0px 2px 8px rgba(0,0,0,0.6)",
             }}
           >
-            Built for organisations<br />that hold themselves to<br />a higher standard.
+            {isRTL ? (
+              <>
+                مُصممة للمؤسسات<br />التي تضع لنفسها<br />أعلى معايير الريادة.
+              </>
+            ) : (
+              <>
+                Built for organisations<br />that hold themselves to<br />a higher standard.
+              </>
+            )}
           </p>
           <p
+            className="hero-stagger opacity-0"
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif",
               fontWeight: 400,
               fontSize: 13,
               lineHeight: 1.6,
               letterSpacing: "0em",
               color: "rgba(255,255,255,0.68)",
-              maxWidth: 300,
+              textShadow: "0px 1px 4px rgba(0,0,0,0.6)",
+              maxWidth: 320,
             }}
           >
-            Senior advisory for leadership teams who need<br />financial discipline, operational clarity, and systems that scale.
+            {isRTL ? (
+              <>
+                استشارات تنفيذية واستراتيجية لقيادات الأعمال الباحثة عن<br />الانضباط المالي والوضوح التشغيلي.
+              </>
+            ) : (
+              <>
+                Senior advisory for leadership teams who need<br />financial discipline, operational clarity, and systems that scale.
+              </>
+            )}
           </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+          <div className="hero-stagger opacity-0" style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
             <button
               type="button"
               onClick={onBooking}
-              style={{ height: 36, padding: "0 16px", background: "#37b4b4", border: "1px solid #36c0c0", borderRadius: 7, color: "#0a3030", fontSize: 13, fontWeight: 500, fontFamily: "'Inter', sans-serif", letterSpacing: "-0.01em", cursor: "pointer", display: "flex", alignItems: "center", whiteSpace: "nowrap" }}
+              style={{ height: 36, padding: "0 16px", background: "#37b4b4", border: "1px solid #36c0c0", borderRadius: 7, color: "#0a3030", fontSize: 13, fontWeight: 500, fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", letterSpacing: "-0.01em", cursor: "pointer", display: "flex", alignItems: "center", whiteSpace: "nowrap" }}
             >
-              Book a Call
+              {t.hero.bookConsultation}
             </button>
             <Link
-              href="/contact"
-              style={{ height: 36, padding: "0 16px", background: "rgba(227,227,227,0.1)", border: "1px solid #767676", borderRadius: 7, color: "white", fontSize: 13, fontWeight: 500, fontFamily: "'Inter', sans-serif", letterSpacing: "-0.01em", boxShadow: "0px 4px 4px rgba(0,0,0,0.25)", display: "flex", alignItems: "center", whiteSpace: "nowrap", textDecoration: "none" }}
+              href={`/${locale}/contact`}
+              style={{ height: 36, padding: "0 16px", background: "rgba(227,227,227,0.1)", border: "1px solid #767676", borderRadius: 7, color: "white", fontSize: 13, fontWeight: 500, fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", letterSpacing: "-0.01em", boxShadow: "0px 4px 4px rgba(0,0,0,0.25)", display: "flex", alignItems: "center", whiteSpace: "nowrap", textDecoration: "none" }}
             >
-              Contact
+              {t.nav.contact}
             </Link>
           </div>
         </div>
 
         {/* Trusted By — mobile marquee */}
         <div>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.65)", textAlign: "center", letterSpacing: "0.1em", marginBottom: 8 }}>
-            TRUSTED BY:
+          <p style={{ fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.65)", textAlign: "center", letterSpacing: "0.1em", marginBottom: 8 }}>
+            {isRTL ? "شركاء النجاح:" : "TRUSTED BY:"}
           </p>
           {/* Mobile marquee */}
           <div

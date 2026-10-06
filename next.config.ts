@@ -68,8 +68,6 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    // next/font/google needs TLS access to fonts.googleapis.com at build time
-    turbopackUseSystemTlsCerts: true,
     // Inline critical CSS to remove render-blocking stylesheet requests
     optimizeCss: true,
   },

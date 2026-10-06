@@ -3,8 +3,11 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n/context";
 
 export function MobileCTABar() {
+  const { locale, t } = useI18n();
+  const isAr = locale === "ar";
   const [visible, setVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
 
@@ -30,10 +33,11 @@ export function MobileCTABar() {
     >
       <div className="px-4 pb-4 pt-8" style={{ background: "linear-gradient(to top, rgba(8,33,33,0.97) 0%, transparent 100%)" }}>
         <Link
-          href="/book"
+          href={`/${locale}/book`}
           className="w-full h-[52px] btn-cta justify-center text-[15px] flex items-center gap-2"
         >
-          Book a strategy call <ArrowUpRight size={16} strokeWidth={2.25} />
+          {isAr ? "احجز جلسة استراتيجية" : "Book a strategy call"}{" "}
+          <ArrowUpRight size={16} strokeWidth={2.25} className="rtl-mirror" />
         </Link>
       </div>
     </div>
