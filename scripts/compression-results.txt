@@ -1,0 +1,83 @@
+🖼️  Starting image compression...
+
+Found 70 images to compress
+
+✗ 1778497289401-hand-man-playing-chess-business-planning-comparison-metaphor-selective-focus.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778497289401-hand-man-playing-chess-business-planning-comparison-metaphor-selective-focus.jpg'
+✗ 1778497593983-interior-view-steel-factory.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778497593983-interior-view-steel-factory.jpg'
+✗ 1778497907831-african-american-young-couple-review-their-expenses-taxes-reports.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778497907831-african-american-young-couple-review-their-expenses-taxes-reports.jpg'
+✗ 1778498019563-aerial-view-container-cargo-ship-sea.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778498019563-aerial-view-container-cargo-ship-sea.jpg'
+✗ 1778498192850-nurse-measuring-patient-blood-pressure.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778498192850-nurse-measuring-patient-blood-pressure.jpg'
+✓ 1778500490077-gemini-generated-image-3cnure3cnure3cnu.png: 2.0MB → 1.9MB (-7.2%)
+⊘ 1778500621825-medium-shot-happy-kids-window.jpg: already optimized
+✗ 1778501673401-manager-analyzing-financial-growth-report-with-coworker.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778501673401-manager-analyzing-financial-growth-report-with-coworker.jpg'
+✗ 1778501929570-african-business-male-people-shaking-hands.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778501929570-african-business-male-people-shaking-hands.jpg'
+✗ 1778501961522-african-business-male-people-shaking-hands.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778501961522-african-business-male-people-shaking-hands.jpg'
+✗ 1778574528376-photorealistic-money-with-plant.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778574528376-photorealistic-money-with-plant.jpg'
+✓ 1778579091054-hero.png: 0.5MB → 0.5MB (-8.3%)
+✗ 1778583095667-financial-growth-investment-success-with-stacks-gold-coins.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778583095667-financial-growth-investment-success-with-stacks-gold-coins.jpg'
+✓ 1778653125347-mo-radio-logo.png: 0.0MB → 0.0MB (-13.7%)
+✗ 1778653228835-radiomoo.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778653228835-radiomoo.jpg'
+✓ 1778653416050-mo-radio-logo.png: 0.0MB → 0.0MB (-13.7%)
+⊘ 1778653874346-edited-1778653874241.jpg: already optimized
+⊘ 1778653885001-edited-1778653884978.jpg: already optimized
+⊘ 1778653969235-edited-1778653969202.jpg: already optimized
+✗ 1778654007493-radiomoo.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778654007493-radiomoo.jpg'
+⊘ 1778654015107-edited-1778654015078.jpg: already optimized
+✗ 1778654055432-radiomoo.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778654055432-radiomoo.jpg'
+⊘ 1778654134383-edited-1778654134354.jpg: already optimized
+✗ 1778654460894-radiomoo.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778654460894-radiomoo.jpg'
+⊘ 1778654467407-edited-1778654467386.jpg: already optimized
+✓ 1778654489104-coastal-image-tech-logo.png: 0.0MB → 0.0MB (-15.7%)
+⊘ 1778654513820-cit.jpg: already optimized
+⊘ 1778654596542-cit.jpg: already optimized
+⊘ 1778654648570-edited-1778654648555.jpg: already optimized
+✗ 1778930248996-edited-1778930248884.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\1778930248996-edited-1778930248884.jpg'
+✗ agile-methodology.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\agile-methodology.jpg'
+⊘ analytics-dashboard.jpg: already optimized
+✗ avatar-consultant.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\avatar-consultant.jpg'
+✗ avatar-professional.jpg: Input file contains unsupported image format
+✗ avatar-user.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\avatar-user.jpg'
+⊘ business-analysis.jpg: already optimized
+✗ business-consulting.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\business-consulting.jpg'
+⊘ business-growth.jpg: already optimized
+✗ business-meeting.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\business-meeting.jpg'
+✗ business-team.jpg: Input file contains unsupported image format
+⊘ cloud-computing.jpg: already optimized
+⊘ compliance-audit.jpg: already optimized
+⊘ data-analysis.jpg: already optimized
+⊘ database-management.jpg: already optimized
+✗ digital-transformation.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\digital-transformation.jpg'
+⊘ diverse-team.jpg: already optimized
+⊘ enterprise-solution.jpg: already optimized
+✗ financial-analysis.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\financial-analysis.jpg'
+✗ financial-planning.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\financial-planning.jpg'
+⊘ hero-coins.jpg: already optimized
+✗ hero-workspace-bw.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\hero-workspace-bw.jpg'
+✓ hero.png: 0.5MB → 0.5MB (-8.3%)
+⊘ innovation-lab.jpg: already optimized
+✗ laptop-workspace.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\laptop-workspace.jpg'
+✗ mentor-coaching.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\mentor-coaching.jpg'
+⊘ modern-office.jpg: already optimized
+✗ office-culture.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\office-culture.jpg'
+✗ organization-structure.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\organization-structure.jpg'
+⊘ professional-discussion.jpg: already optimized
+✗ professional-headshot.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\professional-headshot.jpg'
+✗ professional-workspace.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\professional-workspace.jpg'
+✗ remote-work.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\remote-work.jpg'
+✗ software-development.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\software-development.jpg'
+✗ startup-meeting.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\startup-meeting.jpg'
+✗ strategy-planning.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\strategy-planning.jpg'
+✗ success-team.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\success-team.jpg'
+✗ system-integration.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\system-integration.jpg'
+✗ team-brainstorm.jpg: UNKNOWN: unknown error, open 'C:\Users\Administrator\Documents\Claude\akprime\.claude\worktrees\intelligent-banzai-4b2c41\public\images\team-brainstorm.jpg'
+⊘ team-collaboration.jpg: already optimized
+⊘ tech-workspace.jpg: already optimized
+
+============================================================
+Total Original:   30.2MB
+Total Compressed: 30.0MB
+Total Saved:      0.2MB
+Overall Reduction: 0.8%
+============================================================
+
+✅ Image compression complete!

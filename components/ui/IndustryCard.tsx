@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export interface IndustryCardProps {
   image: string;
@@ -19,14 +19,16 @@ export function IndustryCard({ image, title, description, href = "#", onClick }:
 
   const cardContent = (
     <div className="relative rounded-[22px] overflow-hidden w-full h-full">
-      {/* Background image */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      {/* Background image — Next.js Image for responsive srcset + AVIF/WebP */}
+      <Image
         src={image}
         alt={title}
+        fill
         draggable={false}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+        className="object-cover transition-transform duration-700"
         style={{ transform: isHovered ? "scale(1.04)" : "scale(1)" }}
+        sizes="(max-width: 768px) 85vw, (max-width: 1280px) 30vw, 380px"
+        loading="lazy"
       />
 
       {/* Gradient overlay */}
@@ -71,12 +73,29 @@ export function IndustryCard({ image, title, description, href = "#", onClick }:
             }}
             transition={{ duration: 0.38, ease: SMOOTH }}
           >
-            <ArrowRight
-              size={18}
-              strokeWidth={2.5}
-              color={isHovered ? "#37B4B4" : "#111827"}
-              className={`transition-all duration-300 ${isHovered ? "-rotate-45" : ""}`}
-            />
+            <motion.svg
+              width="18"
+              height="18"
+              viewBox="0 0 19.9904 19.9904"
+              fill="none"
+              animate={{ rotate: isHovered ? -45 : 0 }}
+              transition={{ duration: 0.38, ease: SMOOTH }}
+            >
+              <path
+                d="M4.16467 9.99522H15.8258"
+                stroke={isHovered ? "#ffffff" : "#111827"}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.66587"
+              />
+              <path
+                d="M9.99522 4.16467L15.8258 9.99522L9.99522 15.8258"
+                stroke={isHovered ? "#ffffff" : "#111827"}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.66587"
+              />
+            </motion.svg>
           </motion.div>
         </div>
 
@@ -94,7 +113,7 @@ export function IndustryCard({ image, title, description, href = "#", onClick }:
   return (
     <motion.div
       className="flex-shrink-0 cursor-pointer w-full"
-      style={{ height: "380px", fontFamily: "inherit" }}
+      style={{ height: "460px", fontFamily: "inherit" }}
       animate={{ scale: isHovered ? 1.02 : 1 }}
       transition={{ duration: 0.38, ease: SMOOTH }}
       onMouseEnter={() => setIsHovered(true)}

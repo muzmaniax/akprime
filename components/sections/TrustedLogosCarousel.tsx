@@ -1,47 +1,54 @@
 "use client";
 
-import React from "react";
+import Image from "next/image";
+import { useSiteImage } from "@/lib/use-site-images";
 
-const partnerLogos = [
-  "/partners/client-1.png",
-  "/partners/client-2.png",
-  "/partners/client-3.png",
-  "/partners/client-4.png",
+/* Per-logo sizing — tuned to visual weight, not uniform height.
+   Aspect ratios: Coastal 2.44 | Explosify 4.06 | Maxfill 1.96 | MO Radio 1.27 | Seven Seas 1.30 | Step 2.55
+   Goal: equal perceived area + readable at strip scale.
+   mix-blend-screen + grayscale + invert â†’ white logo backgrounds dissolve into dark hero. */
+const PARTNER_META = [
+  { alt: "Coastal Image Technologies",  w: 661, h: 271, imgClass: "h-9 w-auto max-w-[100px]",  fallback: "/partners/partner-1.webp" },
+  { alt: "Explosify",                   w: 727, h: 179, imgClass: "h-7 w-auto max-w-[100px]",  fallback: "/partners/partner-2.webp" },
+  { alt: "Maxfill Energy Limited",      w: 689, h: 351, imgClass: "h-11 w-auto max-w-[100px]", fallback: "/partners/partner-3.webp" },
+  { alt: "MO Radio",                    w: 388, h: 305, imgClass: "h-14 w-auto max-w-[72px]",  fallback: "/partners/partner-4.webp" },
+  { alt: "Seven Seas Connection Agency",w: 395, h: 305, imgClass: "h-14 w-auto max-w-[72px]",  fallback: "/partners/partner-5.webp" },
+  { alt: "Step Innovations Africa",     w: 695, h: 273, imgClass: "h-11 w-auto max-w-[110px]", fallback: "/partners/partner-6.webp" },
 ];
 
-export function TrustedLogosCarousel() {
-  // Duplicate array 4 times to loop seamlessly even on ultra-wide screens with only 4 logos
-  const doubledLogos = [...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos];
+export function TrustedLogosCarousel({ label }: { label?: string }) {
+  const p1 = useSiteImage("partner.1");
+  const p2 = useSiteImage("partner.2");
+  const p3 = useSiteImage("partner.3");
+  const p4 = useSiteImage("partner.4");
+  const p5 = useSiteImage("partner.5");
+  const p6 = useSiteImage("partner.6");
+
+  const srcs = [p1, p2, p3, p4, p5, p6];
 
   return (
-    <section className="py-8 bg-[#ffffff] border-b border-gray-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
-        <p className="text-sm font-medium text-[#3a5a5a]">
-          Trusted by leading organisations
-        </p>
-      </div>
+    <div className="py-5 px-4">
+      <p className="text-center text-[10px] font-semibold tracking-widest uppercase text-white/35 mb-5">
+        {label ?? "Trusted by teams at"}
+      </p>
 
-      <div className="relative w-full overflow-hidden flex items-center h-40 group">
-        {/* Left/Right Fades for smooth edge blending */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-        <div className="marquee-track flex items-center gap-12 md:gap-20 px-4">
-          {doubledLogos.map((logo, idx) => (
-            <div
-              key={idx}
-              className="flex-shrink-0 w-[220px] sm:w-[280px] md:w-[320px] h-32 rounded-lg flex items-center justify-center px-4"
-              style={{ background: "transparent" }}
-            >
-              <img
-                src={logo}
-                alt={`Client Logo ${idx + 1}`}
-                className="max-w-full max-h-[108px] object-contain"
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-x-6 gap-y-5 items-center justify-items-center max-w-3xl mx-auto">
+        {PARTNER_META.map((p, i) => {
+          const src = srcs[i] || p.fallback;
+          return (
+            <div key={i} className="flex items-center justify-center w-full">
+              <Image
+                src={src}
+                alt={p.alt}
+                width={p.w}
+                height={p.h}
+                className={`${p.imgClass} object-contain grayscale invert mix-blend-screen opacity-60 hover:opacity-90 transition-opacity duration-300`}
+                unoptimized
               />
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 }

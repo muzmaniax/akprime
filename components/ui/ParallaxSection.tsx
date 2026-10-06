@@ -1,6 +1,6 @@
 "use client";
 import { useRef, ReactNode } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface ParallaxSectionProps {
   children: ReactNode;
@@ -29,25 +29,18 @@ export function ParallaxSection({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ["start end", "end start"], // track from element entering to leaving
   });
 
-  // Silky smooth spring physics added to the scroll position
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 20,
-    restDelta: 0.001,
-  });
+  // Parallax Y: starts at +offset, ends at -offset
+  const y = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
 
-  // Y parallax: enters from offset, settles at 0 through the center, exits gently upwards
-  const y = useTransform(smoothProgress, [0, 0.35, 1], [offset, 0, -offset * 0.3]);
+  // Fade in: 0 → 1 over the first 30% of travel
+  const opacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0.3, 1, 1, 0.3]);
 
-  // Opacity: fades in rapidly as soon as it breaches the viewport edge
-  const opacity = useTransform(smoothProgress, [0, 0.08], [0.4, 1]);
-
-  // Scale: optionally zooms in as it enters
+  // Scale: always call useTransform (React hook rules) — neutral 1→1 when not used
   const scale = useTransform(
-    smoothProgress,
+    scrollYProgress,
     [0, 0.3],
     [scaleFrom ?? 1, 1]
   );

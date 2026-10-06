@@ -1,301 +1,448 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { TrendingUp, CheckCircle2, Globe2, Bot, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import Link from "next/link";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
-import { BorderTrail } from "@/components/motion-primitives/border-trail";
-import { Sparkles } from "@/components/ui-layouts/sparkles";
-import { TickerBand, PhotoStrip } from "@/components/sections/MidSections";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import { useSiteImage } from "@/lib/use-site-images";
+import { MagneticWrapper } from "@/components/ui/Primitives";
+import { useI18n } from "@/lib/i18n/context";
+import { HeroThreeBackground } from "./HeroThreeBackground";
+import { useEffect } from "react";
+import anime from "animejs";
 
-const stats = [
-  { target: 99.9, suffix: "%", label: "System Uptime" },
-  { target: 40, suffix: "%", label: "OpEx Reduction" },
-  { target: 3, suffix: "x", label: "Faster Financial Close" },
-  { target: 100, suffix: "%", label: "Visibility on ROI" },
-];
-
-const TICKER_H = "44px"; // Matches the TickerBand compact height for balance
-
-const kpis = [
-  { label: "Automation", value: 62, suffix: "%" },
-  { label: "Close Time", value: 3, suffix: "d" },
-  { label: "Adoption", value: 94, suffix: "%" },
-];
-
-const streams = [
-  { label: "ERP Go-Live", pct: 82 },
-  { label: "AI Workflows", pct: 67 },
-  { label: "Finance Reporting", pct: 91 },
-];
-
-interface HeroSectionProps {
-  onBooking: () => void;
+/*
+ * Figma reference: node 144:166, canvas 1920px wide.
+ * We target ~1280px viewport width and ~650px viewport height (browser chrome
+ * typically eats ~90px from a 768px screen, plus navbar ~64px).
+ * vw() clamps between a comfortable minimum and the Figma maximum.
+ */
+function vw(px: number, min: number) {
+  return `clamp(${min}px, ${((px / 1920) * 100).toFixed(3)}vw, ${px}px)`;
 }
 
-export function HeroSection({ onBooking }: HeroSectionProps) {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
-  const orb1Y = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
-  const orb2Y = useTransform(scrollYProgress, [0, 1], ["0%", "9%"]);
+/*
+ * Logo set: 6 logos, widths sum = 500.18px, 5 internal gaps x 63px = 315px,
+ * 1 inter-set gap = 63px -> one full set = 878px. Translate -878px for seamless loop.
+ */
+const LOGOS = [
+  { src: "/partners/partner-step.webp",      alt: "Step Innovations Africa",      w: 95,     h: 37    },
+  { src: "/partners/partner-coastal.webp",   alt: "Coastal Image Technologies",   w: 107.48, h: 34.57 },
+  { src: "/partners/partner-explosify.webp", alt: "Explosify",                    w: 98.70,  h: 22.84 },
+  { src: "/partners/partner-moradio.webp",   alt: "MO Radio",                     w: 51,     h: 40.91 },
+  { src: "/partners/partner-maxfill.webp",   alt: "Maxfill Energy Limited",       w: 80,     h: 41    },
+  { src: "/partners/partner-sevenseas.webp", alt: "Seven Seas Connection Agency", w: 68,     h: 53    },
+];
 
-  const [barsVisible, setBarsVisible] = useState(false);
+export function HeroSection({ onBooking }: { onBooking?: () => void }) {
+  const { locale, isRTL, t } = useI18n();
+  const heroBg = useSiteImage("hero.background");
+  const bgSrc = heroBg || "/images/hero-coins.webp";
+
   useEffect(() => {
-    const t = setTimeout(() => setBarsVisible(true), 800);
-    return () => clearTimeout(t);
+    const tl = anime.timeline({
+      easing: "spring(1, 80, 10, 0)",
+      duration: 1000,
+    });
+    
+    tl.add({
+      targets: ".hero-stagger",
+      translateY: [40, 0],
+      opacity: [0, 1],
+      delay: anime.stagger(120),
+    });
   }, []);
 
   return (
     <section
-      ref={heroRef}
-      className={`relative min-h-[var(--section-h)] flex flex-col overflow-hidden`}
-      style={{ background: "#082121" }}
+      className="relative overflow-hidden w-full bg-[#031010]"
+      /* svh = small viewport height — stable, ignores browser chrome resize */
+      style={{ height: "calc(100svh - var(--navbar-h, 64px))", isolation: "isolate" }}
     >
-      {/* Video Background Layer with Teal Overlay */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <video
-          autoPlay loop muted playsInline
-          className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity scale-105"
-          src="https://assets.mixkit.co/videos/download/mixkit-abstract-technology-network-connections-3156.mp4"
+      <HeroThreeBackground />
+      
+      {/* ── Keyframe animations ── */}
+      <style>{`
+        @keyframes ken-burns {
+          from { transform: scale(1);    }
+          to   { transform: scale(1.08); }
+        }
+        @keyframes marquee-scroll {
+          from { transform: translateX(0);     }
+          to   { transform: translateX(-878px); }
+        }
+        @keyframes marquee-scroll-mobile {
+          from { transform: translateX(0);     }
+          to   { transform: translateX(-540px); }
+        }
+        @keyframes bounce-y {
+          0%, 100% { transform: translateY(0);   opacity: 0.5; }
+          50%       { transform: translateY(6px); opacity: 1;   }
+        }
+        /* Mobile: pan image right so the dramatic coins fill the frame */
+        @media (max-width: 1023px) {
+          .hero-bg img { object-position: 70% center !important; }
+        }
+      `}</style>
+
+      {/* ── Background photo with Ken Burns slow zoom ── */}
+      <div
+        className="absolute inset-0 hero-bg"
+        style={{
+          animation: "ken-burns 22s ease-out forwards",
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
+        }}
+      >
+        <Image
+          src={bgSrc}
+          alt="Hero background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-[#082121]/95 mix-blend-multiply z-10" />
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <div className="absolute inset-0 bg-[#37B4B4]/10 mix-blend-overlay z-10" />
       </div>
 
-      {/* Grid parallax */}
-      <motion.div style={{ y: gridY }} className="absolute inset-0 grid-bg opacity-60 pointer-events-none z-0" />
+      {/* ── Desktop gradient ── */}
+      <div
+        className="absolute inset-0 pointer-events-none hidden lg:block"
+        style={{
+          backgroundImage: [
+            "linear-gradient(180deg, rgba(0,0,0,0.215) 64.767%, rgba(0,0,0,0.86) 94.252%)",
+            "linear-gradient(89.57deg, rgba(0,0,0,0.3) 2.315%, rgba(0,0,0,0) 67.248%)",
+          ].join(", "),
+        }}
+      />
+      {/* ── Mobile gradient — stronger bottom-up fade for text legibility ── */}
+      <div
+        className="absolute inset-0 pointer-events-none lg:hidden"
+        style={{
+          backgroundImage:
+            "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%)",
+        }}
+      />
 
-      {/* Orbs */}
-      <motion.div style={{ y: orb1Y, background: "#37B4B4" }} className="orb w-[560px] h-[560px] opacity-[0.13] -top-32 -right-32" />
-      <div className="orb w-[560px] h-[560px] bg-[#37B4B4] opacity-[0.11] -top-32 -right-32 pointer-events-none" />
-      <div className="orb w-[380px] h-[380px] bg-[#29E0C8] opacity-[0.07] bottom-0 -left-20 pointer-events-none" style={{ animationDelay: "3s" }} />
-      <div className="orb w-[260px] h-[260px] bg-[#37B4B4] opacity-[0.09] top-1/2 left-1/3 pointer-events-none" style={{ animationDelay: "5.5s" }} />
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+          DESKTOP (â‰¥ 1024px)
+          Content: left 79px, top 37.9% (372/981)
+          Trusted By: centred, pinned bottom
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
 
-      {/* Content wrapper centered between navbar and ticker */}
-      <div 
-        className="relative flex-1 flex flex-col justify-center w-full z-10"
-        style={{ paddingTop: "30px" }} // Adjusted to shift content down 2px, reducing bottom gap
+      {/* Content block — node 144:179 */}
+      <div
+        className="absolute inset-x-0 z-10 hidden lg:block"
+        style={{ top: "clamp(110px, 28%, 340px)" }}
       >
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 lg:py-10">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div className="container-x">
+          <div className="max-w-[1060px] mx-auto">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: vw(28, 20),
+            maxWidth: vw(620, 280),
+          }}
+        >
+        {/* Text group */}
+        <div style={{ display: "flex", flexDirection: "column", gap: vw(16, 12) }}>
+          {/* Headline */}
+          <p
+            className="hero-stagger opacity-0"
+            style={{
+              fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif",
+              fontWeight: 500,
+              fontSize: vw(46, 24),
+              lineHeight: isRTL ? 1.3 : 1.08,
+              letterSpacing: isRTL ? "0em" : "-0.04em",
+              color: "white",
+              wordWrap: "break-word",
+              textShadow:
+                "0px 7px 15px rgba(0,0,0,0.08), 0px 27px 27px rgba(0,0,0,0.07), 0px 62px 37px rgba(0,0,0,0.04), 0px 110px 44px rgba(0,0,0,0.01), 0px 172px 48px rgba(0,0,0,0)",
+            }}
+          >
+            {isRTL ? (
+              <>
+                مُصممة للمؤسسات التي تضع لنفسها<br />أعلى معايير الريادة والتميز.
+              </>
+            ) : (
+              <>
+                Built for organisations that hold themselves to<br />a higher standard.
+              </>
+            )}
+          </p>
 
-          {/* ── Left text col (Constrained) ── */}
-          <div className="lg:col-span-7 xl:col-span-7 relative z-20">
-            <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-              <span className="section-overline mb-5 inline-flex items-center gap-2 text-[10px] sm:text-[11px] tracking-wide px-3 py-1.5 sm:px-4 sm:py-2">
-                <Globe2 size={12} className="sm:size-3.5" /> 
-                Strategy • Middle East &amp; Africa
+          {/* Body */}
+          <p
+            className="hero-stagger opacity-0"
+            style={{
+              fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif",
+              fontWeight: 400,
+              fontSize: vw(15, 13),
+              lineHeight: 1.6,
+              letterSpacing: "0em",
+              color: "rgba(255,255,255,0.68)",
+              maxWidth: vw(460, 260),
+              wordWrap: "break-word",
+            }}
+          >
+            {isRTL ? (
+              <>
+                استشارات تنفيذية واستراتيجية لقيادات الأعمال الباحثة عن<br />الانضباط المالي، والوضوح التشغيلي، والأنظمة القابلة للتوسع.
+              </>
+            ) : (
+              <>
+                Senior advisory for leadership teams who need<br />financial discipline, operational clarity, and systems that scale.
+              </>
+            )}
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div className="hero-stagger opacity-0" style={{ display: "flex", alignItems: "center", gap: vw(10, 8) }}>
+          <MagneticWrapper>
+            <button
+              type="button"
+              onClick={onBooking}
+              style={{
+                height: vw(40, 36),
+                padding: `0 ${vw(18, 16)}`,
+                background: "#37b4b4",
+                border: "1px solid #36c0c0",
+                borderRadius: 7,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                flexShrink: 0,
+                transition: "box-shadow 220ms ease, background 200ms ease",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 28px rgba(55,180,180,0.45)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.boxShadow = "none"; }}
+            >
+              <span style={{ fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "#0a3030", whiteSpace: "nowrap" }}>
+                {t.hero.bookConsultation}
               </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.1 }}
-              className="text-[1.4rem] sm:text-[2.2rem] lg:text-[2.35rem] font-medium text-white leading-[1.1] md:leading-[1.05] tracking-tighter mb-4 whitespace-normal"
+            </button>
+          </MagneticWrapper>
+          <MagneticWrapper>
+            <Link
+              href={`/${locale}/contact`}
+              style={{
+                height: vw(40, 36),
+                padding: `0 ${vw(18, 16)}`,
+                background: "rgba(227,227,227,0.1)",
+                border: "1px solid #767676",
+                borderRadius: 7,
+                boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textDecoration: "none",
+                flexShrink: 0,
+              }}
             >
-              Modernise your<br />
-              <Sparkles color="#29E0C8" count={6}>
-                <span className="text-[#37B4B4]">business operations</span>
-              </Sparkles><br />
-              <TextEffect as="span" preset="fade" per="word" className="inline">
-                with AI, ERP &amp; strategic advisory
-              </TextEffect>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.2 }}
-              className="text-[15px] lg:text-[16px] text-white/80 leading-[1.7] tracking-wide max-w-xl mb-8"
-            >
-              Headquartered in <span className="text-[#37B4B4] font-medium">Nairobi</span> with a branch in <span className="text-[#37B4B4] font-medium">Mombasa</span>, we provide world-class tech advisory across <span className="text-white font-medium">Africa</span> and the <span className="text-white font-medium">Middle East</span>.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.32 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-5"
-            >
-              <button
-                onClick={onBooking}
-                className="pill-e cta-pulse"
-              >
-                <div className="pill-e-group">
-                  Book strategy consultation
-                  <div className="pill-e-icon"><ArrowRight /></div>
-                </div>
-              </button>
-              <a
-                href="#services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="pill-f"
-              >
-                Explore services
-              </a>
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.46 }}
-              className="text-white/50 text-[13px] lg:text-[13px] leading-relaxed tracking-wide max-w-lg"
-            >
-              Trusted by organisations across finance, logistics, healthcare, education and the public sector — in Africa and the Middle East.
-            </motion.p>
-
-            {/* Stats bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.58 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/8"
-            >
-              {stats.map((s) => (
-                <AnimatedCounter key={s.label} target={s.target} suffix={s.suffix} label={s.label} />
-              ))}
-            </motion.div>
-          </div>
-
-          {/* ── Right dashboard col (Hover Widget) ── */}
-          <div className="lg:col-start-9 lg:col-span-4 xl:col-start-9 xl:col-span-4 flex items-center justify-end mt-12 mb-10 lg:mt-0 lg:mb-0 relative z-20">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative w-full max-w-sm mx-auto lg:max-w-[300px] lg:scale-90 xl:scale-95 origin-right transition-transform"
-            >
-              {/* Main dashboard card */}
-              <div className="dashboard-float relative">
-                <BorderTrail
-                  className="bg-gradient-to-r from-[#37B4B4] via-[#29E0C8] to-transparent opacity-70"
-                  size={80}
-                  transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                />
-                <div
-                  className="rounded-[22px] p-[10px] relative"
-                  style={{
-                    background: "rgba(255,255,255,0.06)",
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                  }}
-                >
-                  {/* Header row */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <div className="flex items-center gap-1.5 mb-1">
-                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                        <span className="pill-d !text-[10px] !h-6 !px-3 font-semibold !text-white/40 border-white/10">Live data</span>
-                      </div>
-                      <p className="text-white font-semibold text-sm">Operations Dashboard</p>
-                    </div>
-                    <div className="w-9 h-9 rounded-lg bg-[#37B4B4]/20 flex items-center justify-center">
-                      <TrendingUp size={16} className="text-[#37B4B4]" />
-                    </div>
-                  </div>
-
-                  {/* KPI tiles */}
-                  <div className="grid grid-cols-3 gap-2 mb-4">
-                    {kpis.map((k, i) => (
-                      <motion.div
-                        key={k.label}
-                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.7 + i * 0.12 }}
-                        className="rounded-[12px] p-3 text-center"
-                        style={{ background: "rgba(55,180,180,0.08)", border: "1px solid rgba(55,180,180,0.15)" }}
-                      >
-                        <div className="text-[#37B4B4] font-bold text-lg leading-none">
-                          {k.value}{k.suffix}
-                        </div>
-                        <div className="text-white/45 text-[10px] mt-1">{k.label}</div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Progress bars */}
-                  <div className="space-y-3">
-                    {streams.map((s, i) => (
-                      <div key={s.label}>
-                        <div className="flex justify-between text-[11px] mb-1">
-                          <span className="text-white/55">{s.label}</span>
-                          <span className="text-[#37B4B4] font-semibold">{s.pct}%</span>
-                        </div>
-                        <div className="h-1.5 rounded-full bg-white/8 overflow-hidden">
-                          <motion.div
-                            className="h-full rounded-full"
-                            style={{ background: "linear-gradient(90deg,#37B4B4,#29E0C8)" }}
-                            initial={{ width: 0 }}
-                            animate={barsVisible ? { width: `${s.pct}%` } : { width: 0 }}
-                            transition={{ duration: 1.1, delay: 0.9 + i * 0.15, ease: "easeOut" }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* All systems operational */}
-                  <div className="mt-4 pt-4 border-t border-white/6 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-green-400" />
-                    <span className="text-white/40 text-[11px]">All Systems Operational</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating mini-cards */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-5 -right-5 rounded-xl px-3.5 py-2.5 z-20"
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                  backdropFilter: "blur(14px)",
-                  border: "1px solid rgba(55,180,180,0.25)",
-                  borderRadius: "12px"
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <TrendingUp size={16} className="text-[#37B4B4]" />
-                  <span className="text-white text-xs font-semibold whitespace-nowrap">ERP go-live on track</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-                className="absolute -bottom-5 -left-5 rounded-xl px-3.5 py-2.5 z-20"
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                  backdropFilter: "blur(14px)",
-                  border: "1px solid rgba(55,180,180,0.2)",
-                  borderRadius: "12px"
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <Bot size={16} className="text-[#37B4B4]" />
-                  <span className="text-white text-xs font-semibold whitespace-nowrap">AI workflows active: 24</span>
-                </div>
-              </motion.div>
-
-              {/* Glow */}
-              <div className="absolute inset-0 rounded-2xl pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at center,rgba(55,180,180,0.12),transparent 70%)", filter: "blur(24px)", zIndex: -1 }} />
-            </motion.div>
+              <span style={{ fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", fontWeight: 500, fontSize: vw(13, 13), lineHeight: 1, letterSpacing: "-0.01em", color: "white", whiteSpace: "nowrap" }}>
+                {t.nav.contact}
+              </span>
+            </Link>
+          </MagneticWrapper>
+        </div>
+        </div>
           </div>
         </div>
       </div>
-      </div>
-      
-      {/* Structural Bottom TickerBand inside the Hero flow */}
-      <div 
-        className="relative z-20 w-full overflow-hidden bg-[#082121]"
-        style={{ height: TICKER_H }}
+
+      {/* Trusted By — desktop, animated marquee, pinned bottom */}
+      <div
+        className="absolute z-10 hidden lg:flex flex-col items-center"
+        style={{
+          left: "50%",
+          transform: "translateX(-50%) scale(0.813)",
+          transformOrigin: "bottom center",
+          bottom: "32px",
+          width: "816px",
+        }}
       >
-        <TickerBand />
+        {/* "TRUSTED BY:" label */}
+        <p
+          style={{
+            fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif",
+            fontWeight: 400,
+            fontSize: 14,
+            lineHeight: 1,
+            color: "white",
+            textAlign: "center",
+            marginBottom: 8,
+            textShadow:
+              "0px 1px 3px rgba(0,0,0,0.29), 0px 5px 5px rgba(0,0,0,0.26), 0px 12px 7px rgba(0,0,0,0.15), 0px 21px 8px rgba(0,0,0,0.04), 0px 33px 9px rgba(0,0,0,0.01)",
+          }}
+        >
+          {isRTL ? "شركاء النجاح في أفريقيا والشرق الأوسط:" : "TRUSTED BY:"}
+        </p>
+
+        {/* Marquee track — overflow hidden clips edges cleanly */}
+        <div
+          style={{
+            width: "100%",
+            height: 53,
+            overflow: "hidden",
+          }}
+        >
+          {/* Animated track — logos doubled for seamless loop */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 63,
+              height: 53,
+              opacity: 0.70,
+              width: "max-content",
+              animation: "marquee-scroll 25s linear infinite",
+              willChange: "transform",
+            }}
+          >
+            {[...LOGOS, ...LOGOS].map((logo, i) => (
+              <img
+                key={i}
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                decoding="async"
+                width={Math.round(logo.w)}
+                height={Math.round(logo.h)}
+                style={{ width: logo.w, height: logo.h, objectFit: "contain", flexShrink: 0 }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* Scroll indicator — desktop only, bounces gently */}
+      <div
+        className="absolute z-10 hidden lg:flex flex-col items-center gap-1"
+        style={{ left: "50%", transform: "translateX(-50%)", bottom: "104px" }}
+      >
+        <ChevronDown
+          size={20}
+          strokeWidth={1.5}
+          style={{
+            color: "rgba(255,255,255,0.45)",
+            animation: "bounce-y 2s ease-in-out infinite",
+          }}
+        />
+      </div>
+
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+          MOBILE (< 1024px)
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      <div className="lg:hidden absolute inset-0 z-10 flex flex-col justify-end px-5 pb-5">
+        <div className="flex flex-col gap-3 mb-5">
+          <p
+            className="hero-stagger opacity-0"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 500,
+              fontSize: "clamp(22px, 5.5vw, 32px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.04em",
+              color: "white",
+              textShadow: "0px 2px 8px rgba(0,0,0,0.6)",
+            }}
+          >
+            {isRTL ? (
+              <>
+                مُصممة للمؤسسات<br />التي تضع لنفسها<br />أعلى معايير الريادة.
+              </>
+            ) : (
+              <>
+                Built for organisations<br />that hold themselves to<br />a higher standard.
+              </>
+            )}
+          </p>
+          <p
+            className="hero-stagger opacity-0"
+            style={{
+              fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif",
+              fontWeight: 400,
+              fontSize: 13,
+              lineHeight: 1.6,
+              letterSpacing: "0em",
+              color: "rgba(255,255,255,0.68)",
+              textShadow: "0px 1px 4px rgba(0,0,0,0.6)",
+              maxWidth: 320,
+            }}
+          >
+            {isRTL ? (
+              <>
+                استشارات تنفيذية واستراتيجية لقيادات الأعمال الباحثة عن<br />الانضباط المالي والوضوح التشغيلي.
+              </>
+            ) : (
+              <>
+                Senior advisory for leadership teams who need<br />financial discipline, operational clarity, and systems that scale.
+              </>
+            )}
+          </p>
+          <div className="hero-stagger opacity-0" style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+            <button
+              type="button"
+              onClick={onBooking}
+              style={{ height: 36, padding: "0 16px", background: "#37b4b4", border: "1px solid #36c0c0", borderRadius: 7, color: "#0a3030", fontSize: 13, fontWeight: 500, fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", letterSpacing: "-0.01em", cursor: "pointer", display: "flex", alignItems: "center", whiteSpace: "nowrap" }}
+            >
+              {t.hero.bookConsultation}
+            </button>
+            <Link
+              href={`/${locale}/contact`}
+              style={{ height: 36, padding: "0 16px", background: "rgba(227,227,227,0.1)", border: "1px solid #767676", borderRadius: 7, color: "white", fontSize: 13, fontWeight: 500, fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", letterSpacing: "-0.01em", boxShadow: "0px 4px 4px rgba(0,0,0,0.25)", display: "flex", alignItems: "center", whiteSpace: "nowrap", textDecoration: "none" }}
+            >
+              {t.nav.contact}
+            </Link>
+          </div>
+        </div>
+
+        {/* Trusted By — mobile marquee */}
+        <div>
+          <p style={{ fontFamily: isRTL ? "var(--font-arabic), 'Cairo', sans-serif" : "'Inter', sans-serif", fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.65)", textAlign: "center", letterSpacing: "0.1em", marginBottom: 8 }}>
+            {isRTL ? "شركاء النجاح:" : "TRUSTED BY:"}
+          </p>
+          {/* Mobile marquee */}
+          <div
+            style={{
+              width: "100%",
+              height: 36,
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 32,
+                height: 36,
+                opacity: 0.7,
+                width: "max-content",
+                animation: "marquee-scroll-mobile 20s linear infinite",
+                willChange: "transform",
+              }}
+            >
+              {[...LOGOS, ...LOGOS].map((logo, i) => (
+                <img
+                  key={i}
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width={Math.round(logo.w)}
+                  height={Math.round(logo.h)}
+                  style={{ height: Math.round(logo.h * 0.6), width: "auto", objectFit: "contain", flexShrink: 0 }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </section>
   );
 }

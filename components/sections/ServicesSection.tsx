@@ -1,261 +1,156 @@
 "use client";
-import Link from "next/link";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { TiltCard } from "@/components/ui/TiltCard";
-import { BorderTrail } from "@/components/motion-primitives/border-trail";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
-import {
-  Server, Sparkles, LayoutGrid, Activity, ShieldCheck, Receipt,
-  ScanLine, PieChart, Banknote, GitMerge, Zap,
-  GraduationCap, ScrollText, TrendingUp, ShieldAlert, BarChart3,
-} from "lucide-react";
 
-const services = [
+import Link from "next/link";
+import { ArrowUpRight, Cpu, Shield, BarChart3, Users, TrendingUp } from "lucide-react";
+import { Reveal, Eyebrow, StaggerReveal } from "@/components/ui/Primitives";
+import { servicesData, type ServiceCategory } from "@/data/services";
+import { useI18n } from "@/lib/i18n/context";
+
+type ServiceItem = {
+  key: ServiceCategory;
+  icon: React.ElementType;
+  headlineEn: string;
+  headlineAr: string;
+  blurbEn: string;
+  blurbAr: string;
+};
+
+const SERVICES: ServiceItem[] = [
   {
-    icon: <Server size={28} strokeWidth={1.4} />,
-    title: "ERP Implementation",
-    desc: <>Unify <span className="text-white/80 font-medium">finance, ops and data</span> in one real-time system.</>,
-    tools: ["Odoo", "SAP B1", "Dynamics 365"],
-    href: "/services/erp-implementation",
-    badge: { text: "Popular", bg: "#37B4B4" },
-    color: "#37B4B4",
+    key: "Systems & Technology",
+    icon: Cpu,
+    headlineEn: "Systems & Technology",
+    headlineAr: "الأنظمة والتقنية",
+    blurbEn:
+      "ERP implementation, AI integration, and digital transformation. We replace fragmented tools with unified, scalable operating platforms.",
+    blurbAr:
+      "تطبيق أنظمة تخطيط الموارد (ERP)، تكامل الذكاء الاصطناعي، والتحول الرقمي. نستبدل الأدوات المتفرقة بمنصات تشغيل موحدة وقابلة للتوسع.",
   },
   {
-    icon: <Sparkles size={28} strokeWidth={1.4} />,
-    title: "AI Integration & Automation",
-    desc: <>Automate <span className="text-white/80 font-medium">workflows</span> and unlock predictive business <span className="text-white/80 font-medium">intelligence</span>.</>,
-    tools: ["OpenAI", "Azure AI", "LangChain"],
-    href: "/services/ai-integration-automation",
-    badge: { text: "New", bg: "#29E0C8" },
-    color: "#29E0C8",
+    key: "Finance & Compliance",
+    icon: Shield,
+    headlineEn: "Finance & Compliance",
+    headlineAr: "المالية والامتثال",
+    blurbEn:
+      "CFO advisory, FP&A modelling, audit frameworks and regulatory readiness, built for organisations that need rigour without the overhead.",
+    blurbAr:
+      "استشارات الإدارة المالية، نمذجة التخطيط والتحليل المالي (FP&A)، وأطر التدقيق والجاهزية التنظيمية لدقة وانضباط مالي متكامل.",
   },
   {
-    icon: <LayoutGrid size={28} strokeWidth={1.4} />,
-    title: "Project Management",
-    desc: <><span className="text-white/80 font-medium">On scope, on time, on budget</span> — every engagement.</>,
-    tools: ["MS Project", "Asana", "Jira"],
-    href: "/services/project-management",
-    badge: null,
-    color: "#37B4B4",
+    key: "Strategy & Transformation",
+    icon: BarChart3,
+    headlineEn: "Strategy & Transformation",
+    headlineAr: "الاستراتيجية والتحول",
+    blurbEn:
+      "Governance design, business analysis, and capital readiness strategies that turn complex decisions into executable plans.",
+    blurbAr:
+      "تصميم الحوكمة، تحليل الأعمال وإعادة هندسة العمليات، واستراتيجيات الجاهزية الاستثمارية لتحويل القرارات المعقدة إلى خطط قابلة للتنفيذ.",
   },
   {
-    icon: <Activity size={28} strokeWidth={1.4} />,
-    title: "Business Analysis",
-    desc: <>Clear <span className="text-white/80 font-medium">requirements</span> that eliminate costly rework.</>,
-    tools: ["BPMN", "Jira", "Lucidchart"],
-    href: "/services/business-analysis",
-    badge: null,
-    color: "#37B4B4",
+    key: "HR & People Services",
+    icon: Users,
+    headlineEn: "HR & People Services",
+    headlineAr: "الموارد البشرية والكوادر",
+    blurbEn:
+      "Organisation design, payroll, recruitment, and L&D, integrated into one people platform that actually works at scale.",
+    blurbAr:
+      "التصميم التنظيمي، إدارة الرواتب، استقطاب الكفاءات، والتعلم والتطوير، ضمن منظومة موارد بشرية موحدة تلبي متطلبات التوسع.",
   },
   {
-    icon: <ShieldCheck size={28} strokeWidth={1.4} />,
-    title: "Audit Services",
-    desc: <><span className="text-white/80 font-medium">Independent assurance</span> that reduces risk and builds trust.</>,
-    tools: ["CaseWare", "ACL", "IDEA"],
-    href: "/services/audit-assurance",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <Receipt size={28} strokeWidth={1.4} />,
-    title: "Bookkeeping",
-    desc: <>Accurate, timely books that keep you <span className="text-white/80 font-medium">tax-ready</span> always.</>,
-    tools: ["QuickBooks", "Xero", "Sage"],
-    href: "/services/cloud-accounting",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <ScanLine size={28} strokeWidth={1.4} />,
-    title: "System & IT Audits",
-    desc: <>Find <span className="text-white/80 font-medium">ERP and security gaps</span> before they find you.</>,
-    tools: ["ERP Security", "Nessus", "Controls"],
-    href: "/services/it-systems-audit",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <PieChart size={28} strokeWidth={1.4} />,
-    title: "Financial Management",
-    desc: <><span className="text-white/80 font-medium">FP&A</span>, forecasting and interim <span className="text-white/80 font-medium">CFO support</span>.</>,
-    tools: ["Power BI", "Excel", "Adaptive"],
-    href: "/services/financial-management",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <Banknote size={28} strokeWidth={1.4} />,
-    title: "Cashflow Optimisation",
-    desc: <>Improve <span className="text-white/80 font-medium">liquidity</span> without taking on new <span className="text-white/80 font-medium">debt</span>.</>,
-    tools: ["Cash Forecasting", "Collections"],
-    href: "/services/cashflow-optimisation",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <GitMerge size={28} strokeWidth={1.4} />,
-    title: "Company Restructuring",
-    desc: <>Reorganise for <span className="text-white/80 font-medium">efficiency, compliance and growth</span>.</>,
-    tools: ["Org Design", "Tax", "Legal"],
-    href: "/services/company-restructuring",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <Zap size={28} strokeWidth={1.4} />,
-    title: "Financial Modelling",
-    desc: <><span className="text-white/80 font-medium">Decision-ready models</span> for fundraising and scale.</>,
-    tools: ["Excel", "Python", "Valuation"],
-    href: "/services/financial-modelling",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <GraduationCap size={28} strokeWidth={1.4} />,
-    title: "Training Services",
-    desc: "ERP and systems training that drives real adoption.",
-    tools: ["Moodle", "TalentLMS", "Zoom"],
-    href: "/services/systems-training",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <ScrollText size={28} strokeWidth={1.4} />,
-    title: "Company Secretarial",
-    desc: "Statutory compliance and governance handled.",
-    tools: ["e-Filing", "Registrars", "Legal"],
-    href: "/services/company-secretarial",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <TrendingUp size={28} strokeWidth={1.4} />,
-    title: "VC Advisory",
-    desc: "Get investment-ready and close your fundraising round.",
-    tools: ["VC Networks", "Pitch Platforms"],
-    href: "/services/vc-fundraising-advisory",
-    badge: null,
-    color: "#29E0C8",
-  },
-  {
-    icon: <ShieldAlert size={28} strokeWidth={1.4} />,
-    title: "Risk & Compliance",
-    desc: "Enterprise risk frameworks that protect and enable.",
-    tools: ["ERM", "AML", "ISO 31000"],
-    href: "/services/risk-compliance",
-    badge: null,
-    color: "#37B4B4",
-  },
-  {
-    icon: <BarChart3 size={28} strokeWidth={1.4} />,
-    title: "M&E / Impact Assessment",
-    desc: "Measure outcomes and report impact with confidence.",
-    tools: ["LogFrame", "KOBO", "Power BI"],
-    href: "/services/monitoring-evaluation",
-    badge: null,
-    color: "#37B4B4",
+    key: "Growth & Impact",
+    icon: TrendingUp,
+    headlineEn: "Growth & Impact",
+    headlineAr: "النمو والأثر المؤسسي",
+    blurbEn:
+      "Brand strategy, performance marketing, and impact frameworks calibrated to your business model and growth stage.",
+    blurbAr:
+      "استراتيجيات العلامة التجارية، التسويق الرقمي للأداء، وأطر قياس الأثر الموجهة لنموذج عملك ومرحلة نموك.",
   },
 ];
 
 export function ServicesSection() {
+  const { locale, isRTL, t } = useI18n();
+  const totalCount = servicesData.length;
+
   return (
-    <section id="services" className="py-10 lg:py-14 section-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-10">
-            <span className="section-overline mb-3 inline-block">What we do</span>
-            <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] text-white mb-3">
-              16 integrated service lines
-            </h2>
-            <p className="text-white/55 text-sm md:text-base max-w-xl mx-auto">
-              From day-one bookkeeping to enterprise AI — every service delivers measurable ROI.
-            </p>
+    <section className="bg-white section-py border-t border-[#082121]/8">
+      <div className="container-x">
+        <div className="max-w-[1060px] mx-auto">
+          {/* Header row */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
+            <Reveal>
+              <Eyebrow>{t.servicesSection.overline}</Eyebrow>
+              <h2 className="mt-3 text-[#082121] text-balance max-w-[26ch] text-[28px] sm:text-[34px] lg:text-[40px] font-medium leading-tight">
+                {locale === "ar" ? (
+                  <>
+                    {totalCount} مسار خدمة متكامل.<br className="hidden sm:block" /> خمسة مجالات خبرة. فريق استشاري واحد.
+                  </>
+                ) : (
+                  <>
+                    {totalCount} service lines.<br className="hidden sm:block" /> Five practice areas. One team.
+                  </>
+                )}
+              </h2>
+            </Reveal>
+            <Reveal delay={80}>
+              <Link
+                href={`/${locale}/services`}
+                className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#37B4B4] hover:text-[#082121] transition-colors"
+              >
+                <span>
+                  {locale === "ar"
+                    ? `عرض كافة الخدمات الـ ${totalCount}`
+                    : `View all ${totalCount} services`}
+                </span>
+                <ArrowUpRight size={14} className="rtl-mirror shrink-0" />
+              </Link>
+            </Reveal>
           </div>
-        </ScrollReveal>
 
-        <div
-          className="grid gap-5"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))" }}
-        >
-          {services.map((s, i) => (
-            <ScrollReveal key={s.title} delay={i * 0.04}>
-              <TiltCard className="h-full">
-                <Link href={s.href} className="block h-full active:scale-[0.98] transition-transform">
-                  <div
-                    className="glass-card rounded-[18px] p-[16px] h-full flex flex-col gap-3 cursor-pointer group hover:border-[#37B4B4]/40 transition-all duration-300 relative overflow-hidden"
-                    style={{ minHeight: "200px" }}
-                  >
-                    <BorderTrail
-                      className="bg-gradient-to-r from-[#37B4B4] via-transparent to-[#29E0C8] opacity-0 group-hover:opacity-100 transition-opacity"
-                      size={60}
-                      transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
-                    />
-
-                    {/* Icon + badge row */}
-                    <div className="flex items-start justify-between">
-                      <div
-                        className="w-11 h-11 rounded-[10px] flex items-center justify-center transition-colors duration-300 group-hover:scale-110 transition-transform"
-                        style={{
-                          background: `rgba(${s.color === "#29E0C8" ? "41,224,200" : "55,180,180"},0.12)`,
-                          color: s.color,
-                        }}
-                      >
-                        {s.icon}
-                      </div>
-                      {s.badge && (
-                        <span
-                          className="pill-a mt-1"
-                          style={{ background: s.badge.bg, color: "#082121", border: "none" }}
-                        >
-                          {s.badge.text}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Title */}
-                    <div>
-                      <h3
-                        className="text-white font-bold text-base leading-snug mb-1.5 group-hover:text-[#37B4B4] transition-colors"
-                        style={{ letterSpacing: "-0.01em" }}
-                      >
-                        {s.title}
-                      </h3>
-                      {/* One-sentence prop */}
-                      <p className="text-white/55 text-sm leading-relaxed flex-1">
-                        {s.desc}
-                      </p>
-                    </div>
-
-                    {/* Tool badges */}
-                    <div className="flex flex-wrap gap-1.5 mt-auto">
-                      {s.tools.map((t) => (
-                        <span
-                          key={t}
-                          className="pill-g"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Learn more */}
-                    <span className="text-[#37B4B4] text-sm font-semibold group-hover:text-[#29E0C8] transition-colors">
-                      Learn More →
-                    </span>
-                  </div>
-                </Link>
-              </TiltCard>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-[#37B4B4] hover:text-[#29E0C8] font-semibold text-sm transition-colors border border-[#37B4B4]/30 px-7 py-3.5 rounded-xl hover:bg-[#37B4B4]/10"
+          {/* Feature grid — 3 top, 2 bottom */}
+          <StaggerReveal
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            stagger={0.07}
           >
-            View Full Service Details →
-          </Link>
+            {SERVICES.map((service, i) => {
+              const Icon = service.icon;
+              const count = servicesData.filter((s) => s.category === service.key).length;
+              const headline = locale === "ar" ? service.headlineAr : service.headlineEn;
+              const blurb = locale === "ar" ? service.blurbAr : service.blurbEn;
+
+              return (
+                <div key={service.key} className={i === 3 ? "lg:col-start-1" : ""}>
+                  <Link
+                    href={`/${locale}/services`}
+                    className="group flex flex-col h-full rounded-2xl border border-[#082121]/8 hover:border-[#37B4B4]/40 bg-[#F4FAFA] hover:bg-white transition-all duration-200 p-6 lg:p-7"
+                  >
+                    {/* Icon */}
+                    <div className="w-10 h-10 rounded-xl bg-white border border-[#082121]/8 flex items-center justify-center mb-5 group-hover:border-[#37B4B4]/30 transition-colors">
+                      <Icon size={18} strokeWidth={1.75} className="text-[#37B4B4]" />
+                    </div>
+
+                    {/* Text */}
+                    <h3 className="text-[#082121] text-[17px] font-medium leading-snug mb-2">
+                      {headline}
+                    </h3>
+                    <p className="text-[13.5px] text-[#3a5a5a] leading-relaxed flex-1">
+                      {blurb}
+                    </p>
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between mt-6 pt-4 border-t border-[#082121]/8">
+                      <span className="text-[11px] font-semibold tracking-widest uppercase text-[#3a5a5a]/50">
+                        {locale === "ar" ? `${count} خدمات متخصصة` : `${count} services`}
+                      </span>
+                      <span className="w-7 h-7 rounded-full border border-[#082121]/10 flex items-center justify-center text-[#3a5a5a]/50 group-hover:border-[#37B4B4] group-hover:text-[#37B4B4] group-hover:bg-[#37B4B4]/8 transition-all">
+                        <ArrowUpRight size={13} strokeWidth={2} className="rtl-mirror" />
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </StaggerReveal>
         </div>
       </div>
     </section>

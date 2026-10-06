@@ -2,7 +2,8 @@ export type ServiceCategory =
   | "Systems & Technology"
   | "Finance & Compliance"
   | "Strategy & Transformation"
-  | "Growth & Impact";
+  | "Growth & Impact"
+  | "HR & People Services";
 
 export interface ServiceData {
   id: string;
@@ -29,8 +30,8 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "ERP Implementation",
     icon: "database",
-    photo: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1200&q=80",
-    shortDescription: "We manage the full ERP journey — from vendor selection to go-live training. Unify your operations.",
+    photo: "/images/office-culture.webp",
+    shortDescription: "We manage the full ERP journey, from vendor selection to go-live training. Unify your operations.",
     heroHeadline: "Stop Wrestling with Data. Unify Your Operations with ERP.",
     painPoints: [
       "Month-end close takes 15+ days due to manual reconciliations.",
@@ -59,7 +60,7 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "AI Integration & Automation",
     icon: "cpu",
-    photo: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80",
+    photo: "/images/remote-work.webp",
     shortDescription: "Pragmatic AI deployments that automate workflows and predict demand, governed by strict ethics.",
     heroHeadline: "Turn AI from a Buzzword into a Bottom-Line Advantage.",
     painPoints: [
@@ -89,8 +90,8 @@ export const servicesData: ServiceData[] = [
     category: "Systems & Technology",
     name: "Training Services",
     icon: "graduation-cap",
-    photo: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80",
-    shortDescription: "Role-based ERP and systems training that drives real adoption — not just awareness.",
+    photo: "/images/cloud-computing.webp",
+    shortDescription: "Role-based ERP and systems training that drives real adoption, not just awareness.",
     heroHeadline: "Software Only Works If Your People Know How to Use It.",
     painPoints: [
       "Low adoption rates following heavy investments in new software systems.",
@@ -121,7 +122,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Project Management",
     icon: "kanban",
-    photo: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+    photo: "/images/hero-workspace-bw.webp",
     shortDescription: "Structured governance from initiation to close. Deliver on time and on budget.",
     heroHeadline: "Deliver Complex Projects Without the Chaos.",
     painPoints: [
@@ -151,7 +152,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Business Analysis",
     icon: "file-search",
-    photo: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
+    photo: "/images/data-analysis.webp",
     shortDescription: "Translating stakeholder needs into clear specifications so developers build the right thing.",
     heroHeadline: "Bridge the Gap Between Business Strategy and IT Delivery.",
     painPoints: [
@@ -181,7 +182,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "Company Restructuring",
     icon: "network",
-    photo: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80",
+    photo: "/images/professional-headshot.webp",
     shortDescription: "Reorganise for efficiency, tax optimisation, or post-merger integration readiness.",
     heroHeadline: "Realign Your Organisation for Sustainable Growth.",
     painPoints: [
@@ -211,7 +212,7 @@ export const servicesData: ServiceData[] = [
     category: "Strategy & Transformation",
     name: "VC & Fundraising Advisory",
     icon: "trending-up",
-    photo: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80",
+    photo: "/images/professional-workspace.webp",
     shortDescription: "Get investment-ready. From pitch deck to financial model and investor matching.",
     heroHeadline: "Secure the Capital to Accelerate Your Vision.",
     painPoints: [
@@ -243,7 +244,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Financial Management (FP&A)",
     icon: "pie-chart",
-    photo: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80",
+    photo: "/images/mentor-coaching.webp",
     shortDescription: "Actionable financial planning, rolling forecasts, and live dashboards for decision support.",
     heroHeadline: "Navigate Uncertainty with Precision Financial Planning.",
     painPoints: [
@@ -273,7 +274,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Cashflow Optimisation",
     icon: "banknote",
-    photo: "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=1200&q=80",
+    photo: "/images/business-consulting.webp",
     shortDescription: "Improve working capital, extend supplier terms, and build 13-week cash forecasts.",
     heroHeadline: "Unlock Trapped Cash Working within Your Operations.",
     painPoints: [
@@ -303,7 +304,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Audit Services",
     icon: "shield-check",
-    photo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
+    photo: "/images/financial-analysis.webp",
     shortDescription: "Independent assurance on financials and internal controls to build stakeholder confidence.",
     heroHeadline: "Protect Value with Rigorous Independent Assurance.",
     painPoints: [
@@ -333,7 +334,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "System & IT Audits",
     icon: "server-crash",
-    photo: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80",
+    photo: "/images/compliance-audit.webp",
     shortDescription: "Identify structural vulnerabilities, fraud risks, and access violations in your ERP.",
     heroHeadline: "Secure Your Digital Core Against Hidden Threats.",
     painPoints: [
@@ -363,7 +364,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Bookkeeping & Cloud Accounting",
     icon: "calculator",
-    photo: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&q=80",
+    photo: "/images/organization-structure.webp",
     shortDescription: "Accurate, timely books that keep you tax-ready and management-informed.",
     heroHeadline: "Flawless Financial Records, Fully Outsourced.",
     painPoints: [
@@ -393,7 +394,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Risk & Compliance Advisory",
     icon: "scale",
-    photo: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
+    photo: "/images/financial-planning.webp",
     shortDescription: "Build practical enterprise risk frameworks covering AML, data privacy, and regulations.",
     heroHeadline: "Turn Compliance from a Burden into a Competitive Advantage.",
     painPoints: [
@@ -423,7 +424,7 @@ export const servicesData: ServiceData[] = [
     category: "Finance & Compliance",
     name: "Company Secretarial",
     icon: "briefcase",
-    photo: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
+    photo: "/images/financial-planning.webp",
     shortDescription: "Keep your corporate compliance, filings, and board governance in perfect order.",
     heroHeadline: "Seamless Corporate Governance and Statutory Compliance.",
     painPoints: [
@@ -455,7 +456,7 @@ export const servicesData: ServiceData[] = [
     category: "Growth & Impact",
     name: "Digital Marketing",
     icon: "megaphone",
-    photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+    photo: "/images/analytics-dashboard.webp",
     shortDescription: "Brand identity, SEO, and paid performance campaigns managed by one cohesive team.",
     heroHeadline: "Drive Demand with Cohesive Digital Marketing.",
     painPoints: [
@@ -479,13 +480,225 @@ export const servicesData: ServiceData[] = [
     tools: "Google Ads · Meta Ads · HubSpot · Mailchimp · GA4",
     cta: "Discuss Your Digital Growth",
   },
+  // --- HR & PEOPLE SERVICES ---
+  {
+    id: "hr-advisory",
+    slug: "hr-advisory-org-design",
+    category: "HR & People Services",
+    name: "HR Advisory & Organisational Design",
+    icon: "users",
+    photo: "/images/enterprise-solution.webp",
+    shortDescription: "Workforce planning, job grading frameworks, org design and restructuring.",
+    heroHeadline: "Build the Organisation Your Strategy Actually Needs.",
+    painPoints: [
+      "Org structure that no longer reflects how the business actually operates.",
+      "Unclear job grades and reporting lines causing internal friction.",
+      "Workforce plans built on instinct rather than data.",
+    ],
+    solution: "We design organisational structures that match strategy: clear job grades, reporting lines, and workforce plans tied to business outcomes rather than headcount inertia.",
+    outcomes: [
+      "Workforce plan aligned to 12–24 month strategy",
+      "Job grading framework with role profiles",
+      "Org chart with clear reporting lines",
+      "Restructuring roadmap with change-management plan",
+    ],
+    process: [
+      { title: "Current-State Diagnostic", desc: "Map existing structure, span of control, and capability gaps." },
+      { title: "Future-State Design", desc: "Build the target org around strategy, not historical accident." },
+      { title: "Role Profiling", desc: "Define each role: purpose, accountabilities, KPIs, grade." },
+      { title: "Transition Plan", desc: "Sequenced change plan with stakeholder communication." }
+    ],
+    tools: "Job Evaluation Frameworks · Org Design Tools · HR Analytics",
+    cta: "Book an HR Advisory Session",
+  },
+  {
+    id: "hr-policy",
+    slug: "hr-policy-compliance",
+    category: "HR & People Services",
+    name: "HR Policy & Compliance",
+    icon: "file-check",
+    photo: "/images/financial-planning.webp",
+    shortDescription: "Employment contracts, HR handbooks, disciplinary procedures and Kenya Labour compliance.",
+    heroHeadline: "Stay Compliant. Protect the Organisation. Treat People Fairly.",
+    painPoints: [
+      "Outdated or missing employment contracts exposing the company to risk.",
+      "Inconsistent disciplinary practice opening the door to wrongful-dismissal claims.",
+      "HR handbook that doesn't reflect current Kenya Labour law.",
+    ],
+    solution: "We draft watertight HR policies and contracts aligned with the Kenya Employment Act, plus a clear handbook and disciplinary framework that's enforceable, fair, and easy for managers to apply.",
+    outcomes: [
+      "Employment contracts compliant with Kenya Labour law",
+      "Comprehensive HR handbook covering policy and conduct",
+      "Disciplinary and grievance procedures with templates",
+      "Manager training on fair-procedure application",
+    ],
+    process: [
+      { title: "Policy Audit", desc: "Review existing contracts, handbooks, and HR practice for gaps and risks." },
+      { title: "Policy Drafting", desc: "Draft contracts, handbook, and disciplinary procedures to current law." },
+      { title: "Manager Enablement", desc: "Train line managers on applying policy fairly and consistently." },
+      { title: "Annual Review", desc: "Refresh policies as legislation and business needs evolve." }
+    ],
+    tools: "Kenya Employment Act · HR Templates · Case Law References",
+    cta: "Request a Policy Review",
+  },
+  {
+    id: "payroll",
+    slug: "payroll-management",
+    category: "HR & People Services",
+    name: "Payroll Management",
+    icon: "wallet",
+    photo: "/images/financial-analysis.webp",
+    shortDescription: "End-to-end payroll outsourcing, statutory deductions (PAYE, NSSF, NHIF, NITA), payslips, reconciliations and regulatory submissions.",
+    heroHeadline: "Accurate Payroll. On Time. Every Month.",
+    painPoints: [
+      "Statutory submissions (PAYE, NSSF, NHIF, NITA) missed or filed late.",
+      "Payroll errors eroding employee trust and creating reconciliation chaos.",
+      "Internal payroll consuming senior finance time better spent elsewhere.",
+    ],
+    solution: "We run payroll end-to-end: calculations, statutory deductions, payslip distribution, and on-time submissions to KRA, NSSF, NHIF, and NITA. Your team gets a clean monthly report; we handle the rest.",
+    outcomes: [
+      "Monthly payroll processed and paid on agreed dates",
+      "PAYE, NSSF, NHIF and NITA submissions filed on time",
+      "Digital payslips and year-end P9 forms",
+      "Bank reconciliation and management reports",
+    ],
+    process: [
+      { title: "Payroll Setup", desc: "Configure employees, salary structures, statutory codes and bank details." },
+      { title: "Monthly Run", desc: "Calculate gross-to-net, generate payslips, prepare bank file." },
+      { title: "Statutory Filings", desc: "Submit PAYE, NSSF, NHIF, NITA and pay over deductions." },
+      { title: "Reporting", desc: "Deliver monthly payroll report, variance analysis, and reconciliations." }
+    ],
+    tools: "iTax · NSSF / NHIF Portals · Payroll Software · Bank APIs",
+    cta: "Get a Payroll Quote",
+  },
+  {
+    id: "recruitment",
+    slug: "recruitment-talent-acquisition",
+    category: "HR & People Services",
+    name: "Recruitment & Talent Acquisition",
+    icon: "user-plus",
+    photo: "/images/system-integration.webp",
+    shortDescription: "End-to-end hiring: job profiling, advertising, shortlisting, structured interviews, reference checks and onboarding frameworks.",
+    heroHeadline: "Hire the Right People. The First Time.",
+    painPoints: [
+      "Bad hires costing 6–9 months of salary in productivity and disruption.",
+      "Unstructured interviews producing inconsistent and biased decisions.",
+      "Onboarding gaps causing new hires to disengage in their first 90 days.",
+    ],
+    solution: "We run structured, end-to-end hiring: job profiling, sourcing, shortlisting, competency interviews, reference checks, and a 90-day onboarding plan that gets new hires productive fast.",
+    outcomes: [
+      "Job profile and competency framework per role",
+      "Shortlist of 3–5 qualified candidates",
+      "Structured interview scorecards and reference checks",
+      "90-day onboarding plan and new-hire scorecard",
+    ],
+    process: [
+      { title: "Role Definition", desc: "Build a clear profile: outcomes, competencies, success criteria." },
+      { title: "Sourcing & Shortlist", desc: "Advertise, headhunt and screen to a 3–5 person shortlist." },
+      { title: "Structured Interviews", desc: "Competency-based panels with consistent scoring." },
+      { title: "Onboarding", desc: "30 / 60 / 90-day onboarding plan and check-ins." }
+    ],
+    tools: "LinkedIn Recruiter · ATS Platforms · Psychometric Assessments",
+    cta: "Start Your Search",
+  },
+  {
+    id: "performance",
+    slug: "performance-management-systems",
+    category: "HR & People Services",
+    name: "Performance Management Systems",
+    icon: "gauge",
+    photo: "/images/database-management.webp",
+    shortDescription: "Design and implement KPI frameworks, appraisal cycles, performance improvement plans and talent review processes linked to business outcomes.",
+    heroHeadline: "Turn Performance Conversations into Business Outcomes.",
+    painPoints: [
+      "Annual appraisals that nobody takes seriously and nothing changes.",
+      "KPIs disconnected from strategy, measuring activity not impact.",
+      "No structured way to surface, develop, or exit underperformers.",
+    ],
+    solution: "We design KPI frameworks tied to business strategy and run quarterly cycles that drive real conversations, including talent reviews, succession planning, and structured PIPs where needed.",
+    outcomes: [
+      "KPI framework cascading from strategy to roles",
+      "Quarterly appraisal cycle with manager training",
+      "Talent review and 9-box succession framework",
+      "Performance improvement plan templates",
+    ],
+    process: [
+      { title: "KPI Architecture", desc: "Map strategy to team and individual KPIs with clear targets." },
+      { title: "Cycle Design", desc: "Quarterly check-ins, mid-year and annual review structure." },
+      { title: "Manager Training", desc: "Coaching skills, calibration sessions, difficult conversations." },
+      { title: "Talent Review", desc: "9-box mapping, succession planning, and development plans." }
+    ],
+    tools: "OKR Frameworks · Performance Software · Calibration Tools",
+    cta: "Design Your Performance System",
+  },
+  {
+    id: "hrms",
+    slug: "hrms-implementation",
+    category: "HR & People Services",
+    name: "HR Technology / HRMS Implementation",
+    icon: "monitor-cog",
+    photo: "/images/software-development.webp",
+    shortDescription: "Selection and configuration of HRMS platforms like Odoo and SAP B1. Training and support provided.",
+    heroHeadline: "Move Off Spreadsheets. Run HR on a Real System.",
+    painPoints: [
+      "HR data scattered across spreadsheets, email, and paper files.",
+      "No employee self-service for leave, payslips or document access.",
+      "Reporting takes days instead of minutes.",
+    ],
+    solution: "We select and implement HRMS platforms (Odoo HR, SAP B1, or specialist HR tools) with full configuration, data migration, training, and post-go-live support so the system actually gets used.",
+    outcomes: [
+      "HRMS selected and fitted to your processes",
+      "Migration of employee, leave, and payroll data",
+      "Self-service portal for employees and managers",
+      "Training and 90-day support package",
+    ],
+    process: [
+      { title: "Vendor Selection", desc: "Shortlist platforms against your requirements and budget." },
+      { title: "Configuration", desc: "Set up modules: core HR, leave, performance, recruitment." },
+      { title: "Data Migration", desc: "Cleanse and migrate employee records and history." },
+      { title: "Training & Go-Live", desc: "User training, go-live support, and 90-day hypercare." }
+    ],
+    tools: "Odoo HR · SAP B1 · BambooHR · HRMS Selection Frameworks",
+    cta: "Book an HRMS Demo",
+  },
+  {
+    id: "learning",
+    slug: "learning-development",
+    category: "HR & People Services",
+    name: "Learning & Development",
+    icon: "book-open",
+    photo: "/images/cloud-computing.webp",
+    shortDescription: "Analyze training needs, design L&D strategy, develop e-learning and blended programs. Build capability.",
+    heroHeadline: "Build the Capability Your Strategy Demands.",
+    painPoints: [
+      "Training spend that produces certificates but no behaviour change.",
+      "No clear link between L&D investment and business outcomes.",
+      "Fragmented programmes that miss the capabilities the strategy actually needs.",
+    ],
+    solution: "We diagnose capability gaps, design an L&D strategy tied to business outcomes, and deliver blended programmes (classroom, e-learning, and on-the-job) with assessment to prove behaviour change.",
+    outcomes: [
+      "Training needs analysis tied to strategy",
+      "L&D strategy and curriculum roadmap",
+      "Custom e-learning and blended programmes",
+      "Post-training competency and impact assessment",
+    ],
+    process: [
+      { title: "Needs Analysis", desc: "Identify capability gaps using strategy, role profiles, and 360 data." },
+      { title: "Strategy & Curriculum", desc: "Design the L&D portfolio and prioritise programmes." },
+      { title: "Content Development", desc: "Build classroom, e-learning, and blended-learning materials." },
+      { title: "Delivery & Measurement", desc: "Deliver, assess competency, and measure business impact." }
+    ],
+    tools: "Moodle · TalentLMS · Articulate · Kirkpatrick Evaluation",
+    cta: "Plan Your L&D Strategy",
+  },
+
   {
     id: "me",
     slug: "monitoring-evaluation",
     category: "Growth & Impact",
     name: "M&E / Impact Assessment",
     icon: "target",
-    photo: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+    photo: "/images/agile-methodology.webp",
     shortDescription: "Design M&E frameworks that prove impact and satisfy stringent donor requirements.",
     heroHeadline: "Measure and Prove the Real Impact of Your Interventions.",
     painPoints: [

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -8,7 +9,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Geist", "Inter", system-ui, sans-serif;
-  --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Geist", "Inter", system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-arabic: "Cairo", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -39,79 +41,42 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 22px; /* Outer */
-  --radius-xl: 12px; /* Inner */
-  --radius-2xl: 22px;
-  --radius-3xl: 24px;
-  --radius-4xl: 32px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
 
-  /* Specific AK Prime design system constants */
-  --ak-radius-outer: 22px;
-  --ak-radius-inner: 12px;
-  --ak-gap: 10px;
-
-  /* AK Prime custom tokens */
-  --color-ak-bg:          #082121;
-  --color-ak-surface:     #0E3E3E;
-  --color-ak-accent:      #37B4B4;
-  --color-ak-accent2:     #29E0C8;
-  --color-ak-glow:        rgba(55,180,180,0.35);
-
-  --animate-border: animate-border 4s linear infinite;
+  --color-ak-bg: #082121;
+  --color-ak-surface: #0E3E3E;
+  --color-ak-accent: #37B4B4;
+  --color-ak-accent2: #29E0C8;
 }
 
-@property --border-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes animate-border {
-  to {
-    --border-angle: 360deg;
-  }
-}
-
-/* ──────────────────────────────────────────
-   AK Prime Brand Tokens — global CSS vars
-────────────────────────────────────────── */
 :root {
-  /* ── Layout geometry ───────────────────────────────────────────────────── */
-  --navbar-h:   60px;                            /* mobile navbar height     */
-  --section-h:  calc(100dvh - var(--navbar-h));  /* usable viewport height   */
+  --navbar-h: 64px;
 
-  /* page / section bg */
-  --dark:       #082121;
-  --surface:    #0E3E3E;
-  --accent:     #37B4B4;
-  --accent2:    #29E0C8;
-  --light:      #FFFFFF;
-  --tint:       #F4FAFA;
+  --dark: #082121;
+  --surface: #0E3E3E;
+  --surface-2: #0A2C2C;
+  --accent: #37B4B4;
+  --accent2: #29E0C8;
+  --light: #FFFFFF;
+  --tint: #F4FAFA;
 
-  /* text on light/tint sections */
-  --head-lt:    #082121;
-  --body-lt:    #3a5a5a;
+  --head-lt: #082121;
+  --body-lt: #3a5a5a;
+  --muted-dk: rgba(255,255,255,.6);
 
-  /* dark section text */
-  --muted-dk:   rgba(255,255,255,.58);
+  --border-dk: rgba(255,255,255,.1);
+  --border-lt: rgba(8,33,33,.08);
 
-  /* glass / borders / glow */
-  --glass:      rgba(255,255,255,.06);
-  --border-dk:  rgba(255,255,255,.08);
-  --border-lt:  rgba(55,180,180,.18);
-  --glow:       rgba(55,180,180,.35);
+  --text-display: clamp(2.25rem, 1.5rem + 3.5vw, 4.5rem);
+  --text-h2:      clamp(1.75rem, 1.35rem + 1.85vw, 3rem);
+  --text-h3:      clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  --text-body-lg: clamp(1rem, 0.95rem + 0.3vw, 1.1875rem);
+  --text-body:    clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+  --text-caption: 0.75rem;
 
-  /* ── Fluid type scale (clamp: min @ 375px, max @ 1440px) ── */
-  --text-display:   clamp(1.875rem, 1.5rem + 2.5vw, 3.5rem);   /* H1 hero     700 */
-  --text-h2:        clamp(1.5rem,   1.25rem + 1.75vw, 2.5rem);  /* Section h2  700 */
-  --text-h3:        clamp(1.0rem,   0.95rem + 0.5vw, 1.25rem);  /* Card titles 600 */
-  --text-body-lg:   clamp(1rem,     0.95rem + 0.25vw, 1.125rem);/* Lead / desc 400 */
-  --text-body:      clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem); /* Body      400 */
-  --text-caption:   clamp(0.6875rem,0.65rem + 0.1vw, 0.75rem);  /* Meta/capt  500 */
-  --text-label:     0.6875rem;                                   /* Badge pills 700 */
-
-  /* shadcn token overrides (oklch) */
   --background: oklch(0.128 0.03 175);
   --foreground: oklch(1 0 0);
   --card: oklch(0.22 0.035 178);
@@ -124,13 +89,12 @@
   --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.22 0.035 178);
   --muted-foreground: oklch(0.72 0.05 186);
-  --accent-css: oklch(0.675 0.12 186);
   --accent-foreground: oklch(0.128 0.03 175);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(1 0 0 / 8%);
+  --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 10%);
   --ring: oklch(0.675 0.12 186);
-  --radius: 1rem;  /* slightly larger — matches modern Figma components */
+  --radius: 1.25rem;
   --chart-1: oklch(0.675 0.12 186);
   --chart-2: oklch(0.6 0.16 200);
   --chart-3: oklch(0.55 0.18 210);
@@ -147,13 +111,7 @@
 }
 
 @media (min-width: 1024px) {
-  :root { 
-    --navbar-h: 68px; 
-    --section-h: calc(111.112vh - var(--navbar-h));
-  }
-  body {
-    zoom: 0.9;
-  }
+  :root { --navbar-h: 72px; }
 }
 
 .dark {
@@ -169,431 +127,377 @@
   --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.22 0.035 178);
   --muted-foreground: oklch(0.72 0.05 186);
-  --accent-css: oklch(0.675 0.12 186);
   --accent-foreground: oklch(0.128 0.03 175);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 8%);
+  --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 10%);
   --ring: oklch(0.675 0.12 186);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+  * { @apply border-border; }
+  html { @apply font-sans; }
   body {
     @apply bg-background text-foreground;
     font-size: var(--text-body);
-    line-height: 1.65;
-    scroll-behavior: smooth;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  html {
-    @apply font-sans;
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+  h1 { font-size: var(--text-display); font-weight: 500; line-height: 1.05; letter-spacing: -0.03em; }
+  h2 { font-size: var(--text-h2);      font-weight: 500; line-height: 1.08; letter-spacing: -0.04em; }
+  h3 { font-size: var(--text-h3);      font-weight: 500; line-height: 1.25; letter-spacing: -0.015em; }
+  h4 { font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; }
+  h5, h6 { font-weight: 500; letter-spacing: -0.01em; }
+
+  /* Reset letter spacing for Arabic / RTL to preserve cursive ligature connections */
+  [dir="rtl"], html[dir="rtl"] { letter-spacing: normal !important; }
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+  html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4, html[dir="rtl"] h5, html[dir="rtl"] h6 {
+    letter-spacing: normal !important;
   }
-  h1 { font-family: var(--font-heading), sans-serif; font-size: var(--text-display); font-weight: 500; text-transform: none; line-height: 1.1;  letter-spacing: -0.02em; }
-  h2 { font-family: var(--font-heading), sans-serif; font-size: var(--text-h2);      font-weight: 500; text-transform: none; line-height: 1.15; letter-spacing: -0.015em; }
-  h3 { font-family: var(--font-heading), sans-serif; font-size: var(--text-h3);      font-weight: 500; text-transform: none; line-height: 1.25;  letter-spacing: 0; }
-  h4 { font-family: var(--font-heading), sans-serif; font-weight: 500; text-transform: none; line-height: 1.3; }
-  h5, h6 { font-family: var(--font-heading), sans-serif; font-weight: 500; text-transform: none; }
-  body { font-size: var(--text-body); }
 }
 
-/* ─────────────────────────────────────────────
-   Section background utility classes
-───────────────────────────────────────────── */
-.section-dark  { background: var(--dark); }
-.section-light { background: var(--light); }
-.section-tint  { background: var(--tint); }
+@layer components {
+  /* Section backgrounds */
+  .section-dark    { background: var(--dark); color: #fff; }
+  .section-surface { background: var(--surface-2); color: #fff; }
+  .section-light   { background: var(--light); color: var(--head-lt); }
+  .section-tint    { background: var(--tint);  color: var(--head-lt); }
 
-/* ─────────────────────────────────────────────
-   Glassmorphism card (dark sections)
-───────────────────────────────────────────── */
-.glass-card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Section padding */
+  .section-py    { padding-top: clamp(64px, 7vw, 112px); padding-bottom: clamp(64px, 7vw, 112px); }
+  .section-py-sm { padding-top: clamp(40px, 5vw, 72px);  padding-bottom: clamp(40px, 5vw, 72px); }
+
+  /* Container */
+  .container-x { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: clamp(20px, 4vw, 40px); }
 }
 
-/* ─────────────────────────────────────────────
-   Liquid Glass (Premium backdrop effect)
-   Used for high-end overlays and bottom navs
-───────────────────────────────────────────── */
+/* Editorial measure */
+.measure { max-width: 70ch; }
+.measure-narrow { max-width: 56ch; }
+
+/* Typography tracking/letter-spacing system */
+.tracking-display { letter-spacing: -0.03em; }
+.tracking-heading { letter-spacing: -0.02em; }
+.tracking-subheading { letter-spacing: -0.015em; }
+.tracking-base { letter-spacing: -0.005em; }
+.tracking-label { letter-spacing: 0.12em; }
+.tracking-caption { letter-spacing: 0.08em; }
+
+/* Eyebrow — small caps category tag with leading dot */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.eyebrow-light { color: var(--accent); }
+
+/* Hairline divider */
+.hairline { border-top: 1px solid var(--border-dk); }
+.hairline-lt { border-top: 1px solid var(--border-lt); }
+
+/* Cards */
+.card-dark {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-dk);
+  border-radius: var(--radius-lg);
+  transition: border-color 200ms ease, background 200ms ease;
+}
+.card-dark:hover { border-color: rgba(55,180,180,0.4); background: rgba(255,255,255,0.05); }
+
+.card-light {
+  background: #fff;
+  border: 1px solid var(--border-lt);
+  border-radius: var(--radius-lg);
+}
+
+/* Section overline (legacy pages) */
+.section-overline, .section-label, .section-label-light {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 999px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--accent); background: rgba(55,180,180,0.1);
+  border: 1px solid rgba(55,180,180,0.25);
+  width: fit-content; white-space: nowrap;
+}
+.section-label-light { color: var(--accent); background: rgba(55,180,180,0.08); border-color: rgba(55,180,180,0.2); }
+
+/* Light card (legacy) */
+.light-card { background: #fff; border: 1px solid rgba(8,33,33,0.08); border-radius: var(--radius-lg); }
+
+/* Glass pane — frosted overlay used over photo cards */
+.glass-pane {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 24px rgba(8, 33, 33, 0.18);
+}
+.glass-pane-dark {
+  background: rgba(8, 33, 33, 0.78);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Light eyebrow override */
+.eyebrow-on-light { color: #37B4B4; }
+
+/* Light hero gradient (Synergos-inspired sky) */
+.hero-light-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(55,180,180,0.18), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 100% 30%, rgba(41,224,200,0.10), transparent 70%),
+    linear-gradient(180deg, #F4FAFA 0%, #FFFFFF 70%);
+}
+
+/* Glass card (legacy — flattened) */
+.glass-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); }
+
+/* Liquid glass (used by mobile bottom nav etc.) */
 .liquid-glass {
-  background: rgba(8, 33, 33, 0.7);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.2);
+  background: rgba(8,33,33,0.78);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.pb-safe {
-  padding-bottom: env(safe-area-inset-bottom);
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 3px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.08); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Reveal animation (used by Reveal primitive) */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.reveal-up { animation: reveal-up 500ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-/* ─────────────────────────────────────────────
-   Light card (used on light/tint sections)
-───────────────────────────────────────────── */
-.light-card {
-  background: #ffffff;
-  border: 1px solid rgba(55,180,180,.12);
-  box-shadow: 0 2px 24px rgba(8,33,33,.06);
+/* LCP-safe CSS fade-up — used on hero text instead of framer-motion initial={{ opacity:0 }}
+   so the browser paints the LCP element before JS hydrates (Lighthouse #9 fix) */
+@keyframes ak-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.ak-fade-up { animation: ak-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-/* ─────────────────────────────────────────────
-   Teal glow helpers
-───────────────────────────────────────────── */
-.teal-glow    { box-shadow: 0 0 32px rgba(55, 180, 180, 0.35); }
-.teal-glow-lg { box-shadow: 0 0 48px rgba(55, 180, 180, 0.50); }
-
-/* ─────────────────────────────────────────────
-   CTA pulse glow animation
-───────────────────────────────────────────── */
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 24px rgba(55,180,180,0.35); }
-  50%       { box-shadow: 0 0 44px rgba(55,180,180,0.65); }
-}
-.cta-pulse { animation: glow-pulse 2s ease-in-out infinite; }
-
-/* ─────────────────────────────────────────────
-   Marquee ticker
-───────────────────────────────────────────── */
+/* Marquee (kept for logo strip if needed) */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-.marquee-track {
-  animation: marquee 35s linear infinite;
-  display: flex;
-  white-space: nowrap;
-}
+.marquee-track { animation: marquee 40s linear infinite; display: flex; white-space: nowrap; }
 .marquee-track:hover { animation-play-state: paused; }
 
-/* ─────────────────────────────────────────────
-   Animated grid background
-───────────────────────────────────────────── */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(55,180,180,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(55,180,180,.06) 1px, transparent 1px);
-  background-size: 60px 60px;
+/* ═══════════════════════════════════════════════════════
+   MOTION SYSTEM — 2025 interaction layer
+═══════════════════════════════════════════════════════ */
+
+/* CTA banner animated glow (replaces canvas Waves) */
+@keyframes glow-pulse { 0%, 100% { opacity: 0.75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.14); } }
+@keyframes glow-drift  { from { transform: translate(0, 0) rotate(-8deg); } to { transform: translate(18%, 10%) rotate(8deg); } }
+
+.cta-glow-bg {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.cta-glow-bg::before {
+  content: "";
+  position: absolute; inset: -20%;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(55,180,180,0.20), transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(41,224,200,0.12), transparent 60%);
+  animation: glow-pulse 9s ease-in-out infinite;
+}
+.cta-glow-bg::after {
+  content: "";
+  position: absolute; top: -50%; left: -30%; width: 70%; height: 160%;
+  background: radial-gradient(ellipse 60% 50%, rgba(55,180,180,0.10), transparent 70%);
+  animation: glow-drift 14s ease-in-out infinite alternate;
 }
 
-/* ─────────────────────────────────────────────
-   Radial glow orbs
-───────────────────────────────────────────── */
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50%       { transform: translateY(-20px) scale(1.04); }
+/* Card hover — spring lift + teal glow border */
+.card-dark {
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms ease,
+    background 200ms ease;
 }
-.orb {
-  animation: float-slow 9s ease-in-out infinite;
-  border-radius: 50%;
-  filter: blur(70px);
+.card-dark:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(55,180,180,0.18);
+  border-color: rgba(55,180,180,0.45);
+  background: rgba(255,255,255,0.06);
+}
+
+/* Image container — smooth scale on hover */
+.img-zoom { overflow: hidden; }
+.img-zoom img { transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
+.img-zoom:hover img { transform: scale(1.045); }
+
+/* Inline link hover underline */
+.link-hover {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+}
+.link-hover::after {
+  content: '';
   position: absolute;
-  pointer-events: none;
+  bottom: -1px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-hover:hover::after { width: 100%; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cta-glow-bg::before, .cta-glow-bg::after { animation: none; }
+  .card-dark, .card-dark:hover { transform: none !important; }
+  .img-zoom:hover img { transform: none !important; }
+  .btn-cta:hover, .btn-cta:active,
+  .btn-ghost:hover, .btn-ghost:active { transform: none !important; box-shadow: none !important; }
 }
 
-/* ─────────────────────────────────────────────
-   Dashboard float animation
-───────────────────────────────────────────── */
-@keyframes dashboard-float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-10px); }
-}
-.dashboard-float {
-  animation: dashboard-float 7s ease-in-out infinite;
-}
-
-/* ─────────────────────────────────────────────
-   Radial CTA banner pulse
-───────────────────────────────────────────── */
-@keyframes radial-pulse {
-  0%, 100% { opacity: 0.6; }
-  50%       { opacity: 1; }
-}
-.radial-pulse {
-  animation: radial-pulse 4s ease-in-out infinite;
-}
-
-/* ─────────────────────────────────────────────
-   Standardised section spacing utilities
-───────────────────────────────────────────── */
-.section-py    { padding-top: 80px;  padding-bottom: 80px; }
-.section-py-sm { padding-top: 56px;  padding-bottom: 56px; }
-@media (max-width: 768px) {
-  .section-py    { padding-top: 56px;  padding-bottom: 56px; }
-  .section-py-sm { padding-top: 40px;  padding-bottom: 40px; }
-}
-
-/* ─────────────────────────────────────────────
-   Animated progress bars
-───────────────────────────────────────────── */
-@keyframes bar-fill {
-  from { width: 0%; }
-}
-
-/* ─────────────────────────────────────────────
-   Section Labels (Eyebrow / Overlines)
-───────────────────────────────────────────── */
-.section-overline, .section-label, .section-label-light {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px; /* Reduced from 10px 20px */
-  border-radius: 9999px;
-  font-size: 13px; /* Reduced from 14px */
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: #37B4B4;
-  background: rgba(55, 180, 180, 0.1);
-  border: 1px solid rgba(55, 180, 180, 0.2);
-  text-transform: none;
-  width: fit-content;
-  max-width: 320px; /* Ensure it doesn't exceed title's typical mobile width */
-  white-space: normal;
-  text-align: center;
-}
-
-/* On desktop, keep it nowrap if possible, but fit-content is key */
-@media (min-width: 768px) {
-  .section-overline {
-    white-space: nowrap;
-  }
-}
-.section-overline::before, .section-label::before, .section-label-light::before {
-  content: none;
-}
-
-/* ─────────────────────────────────────────────
-   Universal Pill Token System (Variants A-G)
-───────────────────────────────────────────── */
-.pill-base {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-/* Variant A — CATEGORY PILL */
-.pill-a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  padding: 0 14px;
-  border-radius: 15px;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  background: rgba(55, 180, 180, 0.1);
-  color: #37B4B4;
-  border: 1px solid rgba(55, 180, 180, 0.2);
-  text-transform: none;
-  white-space: nowrap;
-}
-
-/* Variant B — ACTIVE FILTER PILL */
-.pill-b {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  height: 34px;
-  padding: 0 18px;
-  border-radius: 17px;
-  font-size: 14px;
-  font-weight: 500;
-  background: #37B4B4;
-  color: #082121;
-  border: none;
-  cursor: pointer;
-  box-shadow: none;
-  text-transform: none;
-}
-
-/* Variant C — INACTIVE FILTER PILL */
-.pill-c {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 34px;
-  padding: 0 18px;
-  border-radius: 17px;
-  font-size: 14px;
-  font-weight: 500;
-  background: transparent;
-  color: rgba(8, 33, 33, 0.45);
-  border: 1px solid rgba(8, 33, 33, 0.1);
-  cursor: pointer;
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  text-transform: none;
-  white-space: nowrap;
-}
-.pill-c:hover {
-  background: rgba(8, 33, 33, 0.03);
-  border-color: rgba(55, 180, 180, 0.4);
-  color: #37B4B4;
-}
-
-/* Variant D — META PILL */
-.pill-d {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 28px;
-  padding: 0 12px;
-  border-radius: 14px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-transform: none;
-  white-space: nowrap;
-}
-
-/* Variant E — CTA BUTTON PILL */
-.pill-e {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  height: 48px; 
-  padding: 0 24px; /* Clean, perfectly symmetric padding */
-  border-radius: 9999px;
-  font-size: 14px;
-  font-weight: 600;
-  background: #37B4B4;
-  color: #082121;
-  border: none;
-  cursor: pointer;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: none;
-  width: fit-content;
-  text-decoration: none;
-  line-height: 1; /* Prevent line height from altering vertical flex centering */
-}
-
-@media (min-width: 640px) {
-  .pill-e {
-    min-width: 200px;
-  }
-}
-
-.pill-e-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px; /* strict structural gap */
-}
-
-.pill-e-icon {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  width: 32px; /* Rigid, safe width instead of aspect-ratio to prevent layout squashing */
-  height: 32px;
-  background: #082121;
-  border: 1px solid rgba(55, 180, 180, 0.3);
-  border-radius: 50%;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-/* Clean SVG targeting, guarantees horizontal and vertical flow center */
-.pill-e-icon svg {
-  color: #37B4B4;
-  width: 18px;
-  height: 18px;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.pill-e:hover .pill-e-icon svg {
-  transform: translateX(2px);
-  color: #29E0C8;
-}
-
-/* Variant F — GHOST BUTTON PILL */
-.pill-f {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  height: 42px; /* Reduced from 48px */
-  padding: 0 20px;
-  border-radius: 9999px;
-  font-size: 14px; /* Reduced from 15px */
-  font-weight: 500;
-  background: transparent;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.3);
-  cursor: pointer;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: none;
-  width: fit-content;
-}
-.pill-f:hover {
-  border-color: #37B4B4;
-  color: #37B4B4;
-}
-
-/* Variant G — TOOL/TECH TAG */
-.pill-g {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  padding: 0 14px;
-  border-radius: 15px;
-  font-size: 12px;
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  text-transform: none;
-  white-space: nowrap;
-  transition: all 300ms ease;
-}
-
-/* Variant H — ALERT/STATUS PILL */
-.pill-h {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 26px;
-  padding: 0 12px;
-  border-radius: 13px;
-  font-size: 11px;
-  font-weight: 600;
-  background: rgba(217, 83, 79, 0.1);
-  color: #d9534f;
-  border: 1px solid rgba(217, 83, 79, 0.2);
-  text-transform: none;
-  white-space: nowrap;
-}
-.pill-g:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
-}
-
-/* ─────────────────────────────────────────────
-   Scrollbar
-───────────────────────────────────────────── */
-/* vertical scrollbar */
-::-webkit-scrollbar       { width: 6px; height: 3px; }
-::-webkit-scrollbar-track { background: rgba(0,0,0,0.08); }
-::-webkit-scrollbar-thumb { background: #37B4B4; border-radius: 999px; }
-
-/* horizontal-only override — even thinner track */
-::-webkit-scrollbar:horizontal       { height: 3px; }
-::-webkit-scrollbar-track:horizontal { background: rgba(0,0,0,0.08); }
-
-/* ─────────────────────────────────────────────
-   Carousel track — hide horizontal scrollbar
-───────────────────────────────────────────── */
+/* Carousel track helper */
 .carousel-track::-webkit-scrollbar { display: none; }
+
+/* ── Button utilities (used across the site) ── */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  height: 2.625rem;           /* 42px */
+  padding-inline: 1.375rem;   /* 22px */
+  border-radius: 0.5rem;
+  background: var(--accent);
+  color: #082121;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background 200ms ease,
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 220ms ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.btn-cta:hover  { background: #45cfcf; transform: translateY(-2px) scale(1.01); box-shadow: 0 8px 28px rgba(55,180,180,0.38); }
+.btn-cta:active { transform: translateY(1px) scale(0.97); box-shadow: none; transition-duration: 80ms; }
+.btn-cta:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  height: 2.625rem;
+  padding-inline: 1.375rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1.5px solid var(--accent);
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 220ms ease;
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.btn-ghost:hover  { background: rgba(55,180,180,0.08); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(55,180,180,0.18); }
+.btn-ghost:active { transform: translateY(1px) scale(0.97); box-shadow: none; transition-duration: 80ms; }
+
+.btn-ghost-light {
+  color: #082121;
+  border-color: rgba(8,33,33,0.25);
+}
+.btn-ghost-light:hover { background: rgba(8,33,33,0.06); }
+
+/* ─────────────────────────────────────────────
+   Arabic & RTL Specialised Typography & Layout
+───────────────────────────────────────────── */
+html[dir="rtl"], [dir="rtl"] {
+  font-family: var(--font-arabic) !important;
+  letter-spacing: 0 !important;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-family: var(--font-arabic) !important;
+  letter-spacing: 0 !important;
+  line-height: 1.35 !important;
+}
+
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] a,
+[dir="rtl"] button,
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  letter-spacing: 0 !important;
+}
+
+[dir="rtl"] body {
+  line-height: 1.8;
+}
+
+/* Directional Icon Flipping */
+[dir="rtl"] .rtl-mirror {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .rtl-rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Hover directional icon motion for RTL */
+[dir="rtl"] .group:hover .rtl-hover-translate-x {
+  transform: translateX(-4px) scaleX(-1);
+}
+
+/* LTR isolation for numbers, emails, phone numbers & code */
+.ltr-isolate,
+[dir="rtl"] .ltr-isolate {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block;
+  text-align: left;
+}

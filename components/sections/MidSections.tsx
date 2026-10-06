@@ -1,239 +1,125 @@
 "use client";
 
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { 
-  AlertTriangle, 
-  Rocket, 
-  CheckCircle2, 
-  XCircle, 
-  TrendingUp, 
-  Cpu, 
-  Database, 
-  LayoutPanelTop,
-  ArrowRight
-} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { Reveal, Eyebrow, StatCell } from "@/components/ui/Primitives";
+import { useSiteImage } from "@/lib/use-site-images";
+import { useI18n } from "@/lib/i18n/context";
 
+/* ── Animated counter — counts from 0 to target when scrolled into view ── */
+function CountUp({ raw }: { raw: string }) {
+  const match = raw.match(/^(\d+)(.*)$/);
+  if (!match) return <>{raw}</>;
+  const target = parseInt(match[1], 10);
+  const suffix = match[2]; // "+", "%", or ""
 
-const photos = [
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-  "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80",
-  "https://images.unsplash.com/photo-1664575602554-2087b04935a5?w=600&q=80",
-];
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
 
-const serviceNames = [
-  "ERP Implementation","AI Integration & Automation","Project Management","Business Analysis",
-  "Audit Services","Bookkeeping & Cloud Accounting","System & IT Audits","Financial Management & FP&A",
-  "Cashflow Optimisation","Company Restructuring","Digital Marketing","Training Services",
-  "Company Secretarial","VC & Fundraising Advisory","Risk & Compliance","M&E / Impact Assessment",
-];
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf: number;
 
-export function TickerBand() {
-  const items = [...serviceNames, ...serviceNames]; // doubled for seamless loop
-  return (
-    <div
-      className="relative overflow-hidden py-1.5"
-      style={{
-        background: "rgba(55,180,180,.06)",
-        borderTop: "1px solid rgba(55,180,180,.1)",
-        borderBottom: "1px solid rgba(55,180,180,.1)",
-      }}
-    >
-      <div className="marquee-track">
-        {items.map((name, i) => (
-          <span key={i} className="flex items-center shrink-0">
-            <span className="text-white/70 text-sm font-medium px-6 whitespace-nowrap">{name}</span>
-            <span className="text-[#37B4B4] opacity-60 select-none">·</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        const duration = 1400;
+        let startTime: number | null = null;
+        const step = (ts: number) => {
+          if (!startTime) startTime = ts;
+          const progress = Math.min((ts - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+          setCount(Math.floor(eased * target));
+          if (progress < 1) raf = requestAnimationFrame(step);
+          else setCount(target);
+        };
+        raf = requestAnimationFrame(step);
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
+    return () => { observer.disconnect(); cancelAnimationFrame(raf); };
+  }, [target]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
 }
 
-export function PhotoStrip() {
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-4 h-auto md:h-[180px] overflow-hidden">
-      {photos.map((src, i) => (
-        <div key={i} className="relative overflow-hidden group aspect-[4/3] md:aspect-auto">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={src}
-            alt="AK Prime Consulting"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-            style={{ filter: "brightness(.72)" }}
-            onMouseOver={(e) => (e.currentTarget.style.filter = "brightness(.88)")}
-            onMouseOut={(e) => (e.currentTarget.style.filter = "brightness(.72)")}
-          />
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "linear-gradient(to top, rgba(8,33,33,.7) 0%, transparent 60%)" }}
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
+/* ── About / Stats block ── */
+export function ProblemSection({ onBooking: _onBooking }: { onBooking?: () => void }) {
+  const { locale, isRTL } = useI18n();
+  const aboutPhoto = useSiteImage("home.about_photo");
 
-export function ProblemSection({ onBooking }: { onBooking: () => void }) {
+  const stats = [
+    { value: "20+", label: isRTL ? "شراكة استشارية منجزة" : "Engagements delivered" },
+    { value: "23",  label: isRTL ? "مسار خدمة متكامل" : "Integrated service lines" },
+    { value: "98%", label: isRTL ? "نسبة رضا العملاء" : "Client satisfaction" },
+    { value: "94%", label: isRTL ? "معدل التبني المؤسسي" : "Avg. user adoption" },
+  ];
+
   return (
-    <section className="py-12 lg:py-16 relative overflow-hidden bg-white">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-start">
-          {/* Left Content */}
-          <ScrollReveal>
-            <span className="section-overline mb-4 inline-block">The challenge</span>
-            <h2 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tighter leading-[1.05] mb-4 text-[#082121]">
-              Most organisations run on systems that no longer scale.
+    <section className="bg-white section-py">
+      <div className="container-x">
+        <div className="max-w-[1060px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center lg:items-stretch">
+
+          {/* LEFT — text + stats */}
+          <Reveal>
+            <Eyebrow>{isRTL ? "عن إيه كي برايم" : "About AK Prime"}</Eyebrow>
+            <h2 className="mt-3 text-[#082121] text-balance">
+              {isRTL
+                ? "بيت خبرة استشاري يساعد المؤسسات على المضي برؤية واضحة وانضباط راسخ."
+                : "A consulting firm helping organisations move with clarity."}
             </h2>
-            <p className="text-base lg:text-lg leading-relaxed mb-6 font-medium" style={{ color: "#3a5a5a" }}>
-              Disconnected software, manual spreadsheets, and fragmented processes make it impossible to see the full picture of your business.
+            <p className="mt-3 text-[13px] font-light text-[#5a7a7a] leading-[1.65] tracking-[0.01em] max-w-[42ch]">
+              {isRTL
+                ? "انطلاقاً من مقرنا الرئيسي في مومباسا ومكاتبنا في نيروبي ودبي، نساعد المؤسسات والشركات الرائدة على بناء الأنظمة والهيكلة التشغيلية والانضباط المالي الذي يتطلبه النمو المستدام."
+                : "Headquartered in Mombasa with offices in Nairobi and Dubai, we help organisations build the systems, structure, and financial discipline that growth demands."}
             </p>
-
-            {/* Pain list */}
-            <ul className="space-y-3 mb-6">
-              {[
-                "Financial reports take weeks — not hours",
-                "Operations run on outdated, siloed tools",
-                "Teams work in isolation instead of shared data",
-                "Decisions are based on guesswork, not intelligence",
-              ].map((pain) => (
-                <li key={pain} className="flex items-start gap-3 text-sm lg:text-base font-semibold" style={{ color: "#3a5a5a" }}>
-                  <span className="shrink-0 mt-0.5 font-bold" style={{ color: "#d9534f" }}>✗</span>
-                  {pain}
-                </li>
-              ))}
-            </ul>
-
-            <button
-              onClick={onBooking}
-              className="pill-e shadow-2xl shadow-black/20"
+            <Link
+              href={`/${locale}/about`}
+              className="mt-5 inline-flex items-center gap-2 text-[#37B4B4] hover:text-[#082121] text-[13px] font-semibold transition-colors"
             >
-              <div className="pill-e-group">
-                Start free assessment
-                <div className="pill-e-icon"><ArrowRight /></div>
-              </div>
-            </button>
-          </ScrollReveal>
+              <span>{isRTL ? "تعرف على المزيد عنا" : "Learn more about us"}</span>
+              <ArrowUpRight size={13} className="rtl-mirror shrink-0" />
+            </Link>
 
-          {/* Right Comparison Cards */}
-          <ScrollReveal delay={0.15}>
-            <div className="grid sm:grid-cols-2 gap-6 lg:gap-10 items-stretch">
-              {/* Card 1: The status quo */}
-              <div 
-                className="group relative w-full lg:max-w-[620px] rounded-[20px] overflow-hidden flex flex-col transition-transform duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default hover:-translate-y-1 h-full"
-              >
-                {/* Photo Area Scale: Desktop 180px, Tablet 180px, Mobile 180px */}
-                <div className="relative h-[180px] sm:h-[180px] lg:h-[180px] w-full overflow-hidden flex-shrink-0">
-                  <img
-                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070"
-                    alt="Office chaos spreadsheets"
-                    className="w-full h-full object-cover object-top transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.06]"
-                  />
-                  {/* Progressive blur fade at bottom - 50% height */}
-                  <div 
-                    className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none"
-                    style={{
-                      background: "linear-gradient(to bottom, transparent 0%, #4a0a0a 100%)"
-                    }}
-                  />
+            {/* Stats row */}
+            <dl className="mt-7 lg:mt-5 grid grid-cols-2 gap-x-6 gap-y-6 lg:gap-y-4 border-t border-[#082121]/10 pt-7 lg:pt-5">
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <dt className="text-[11px] text-[#3a5a5a] leading-tight">{s.label}</dt>
+                  <dd className="mt-0.5 text-[28px] lg:text-[26px] font-semibold tracking-tight text-[#082121] leading-none">
+                    <CountUp raw={s.value} />
+                  </dd>
                 </div>
+              ))}
+            </dl>
+          </Reveal>
 
-                {/* Content Area */}
-                <div className="flex-1 bg-[#4a0a0a] px-6 pb-8 pt-0 flex flex-col justify-start">
-                  <div className="-mt-[18px] mb-4 relative z-10 self-start">
-                    <span 
-                      className="inline-flex items-center justify-center h-7 px-4 rounded-full text-[11px] font-semibold tracking-[0.06em] uppercase backdrop-blur-[6px]"
-                      style={{ 
-                        background: "rgba(255,255,255,0.12)", 
-                        color: "#fca5a5", 
-                        border: "1px solid rgba(255,150,150,0.28)" 
-                      }}
-                    >
-                      The status quo
-                    </span>
-                  </div>
-                  <h4 className="text-[19px] sm:text-[17px] lg:text-[19px] font-medium text-white m-0 leading-[1.25] mb-3">
-                    Where most businesses are stuck
-                  </h4>
-                  <p className="text-[13px] text-white/60 leading-relaxed mb-4">
-                    Fragmented systems create invisible costs every single day.
-                  </p>
-                  <div className="flex flex-wrap gap-y-[7px]">
-                    {[
-                      "12-day closures",
-                      "Siloed software",
-                      "Manual entry",
-                      "Revenue leakage",
-                    ].map((item) => (
-                      <div key={item} className="w-1/2 flex items-center gap-[7px] whitespace-nowrap pr-[8px]">
-                        <div className="w-[6px] h-[6px] rounded-full bg-[#fca5a5] shrink-0" />
-                        <span className="text-[12px] font-medium text-white/80">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2: The AK Prime edge */}
-              <div 
-                className="group relative w-full lg:max-w-[620px] rounded-[20px] overflow-hidden flex flex-col transition-transform duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)] cursor-default hover:-translate-y-1 h-full"
-              >
-                {/* Photo Area Scale: Desktop 180px, Tablet 180px, Mobile 180px */}
-                <div className="relative h-[180px] sm:h-[180px] lg:h-[180px] w-full overflow-hidden flex-shrink-0">
-                  <img
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070"
-                    alt="Modern data dashboard"
-                    className="w-full h-full object-cover object-top transition-transform duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-[1.06]"
-                  />
-                  {/* Progressive blur fade at bottom - 50% height */}
-                  <div 
-                    className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none"
-                    style={{
-                      background: "linear-gradient(to bottom, transparent 0%, #082121 100%)"
-                    }}
-                  />
-                </div>
-
-                {/* Content Area */}
-                <div className="flex-1 bg-[#082121] px-6 pb-8 pt-0 flex flex-col justify-start">
-                  <div className="-mt-[18px] mb-4 relative z-10 self-start">
-                    <span 
-                      className="inline-flex items-center justify-center h-7 px-4 rounded-full text-[11px] font-semibold tracking-[0.06em] uppercase backdrop-blur-[6px]"
-                      style={{ 
-                        background: "rgba(55,180,180,0.18)", 
-                        color: "#29E0C8", 
-                        border: "1px solid rgba(55,180,180,0.32)" 
-                      }}
-                    >
-                      The AK Prime edge
-                    </span>
-                  </div>
-                  <h4 className="text-[19px] sm:text-[17px] lg:text-[19px] font-medium text-white m-0 leading-[1.25] mb-3">
-                    Where we take you
-                  </h4>
-                  <p className="text-[13px] text-white/60 leading-relaxed mb-4">
-                    A unified platform with real-time visibility across all operations.
-                  </p>
-                  <div className="flex flex-wrap gap-y-[7px]">
-                    {[
-                      "3-day close",
-                      "Unified platform",
-                      "60% automation",
-                      "Live dashboards",
-                    ].map((item) => (
-                      <div key={item} className="w-1/2 flex items-center gap-[7px] whitespace-nowrap pr-[8px]">
-                        <div className="w-[6px] h-[6px] rounded-full bg-[#29E0C8] shrink-0" />
-                        <span className="text-[12px] font-medium text-white/80">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+          {/* RIGHT — photo */}
+          <Reveal delay={120} className="lg:h-full">
+            <div className="aspect-[4/5] lg:aspect-auto lg:h-full w-full overflow-hidden rounded-2xl">
+              <Image
+                src={aboutPhoto || "/images/team-collaboration.webp"}
+                alt={isRTL ? "فريق عمل إيه كي برايم للاستشارات" : "AK Prime consulting team"}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+              />
             </div>
-          </ScrollReveal>
+          </Reveal>
+
+        </div>
         </div>
       </div>
     </section>
   );
 }
+
+export function TickerBand() { return null; }
+export function PhotoStrip() { return null; }
